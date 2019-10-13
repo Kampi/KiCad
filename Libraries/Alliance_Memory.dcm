@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AS6C62256A
+D 256K, 2.7-5.5V, 70ns 32K x 8 Asynch SRAM
+F https://www.alliancememory.com/wp-content/uploads/pdf/AS6C62256A.pdf
+$ENDCMP
+#
+#End Doc Library
