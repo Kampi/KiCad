@@ -6,7 +6,7 @@ EESchema-LIBRARY Version 2.4
 DEF ConBarrel X 0 40 Y Y 1 F N
 F0 "X" -150 200 50 H V C CNN
 F1 "ConBarrel" 0 -200 50 H I C CNN
-F2 "Connector_BarrelJack:BarrelJack_Wuerth_6941xx301002" 50 -40 50 H I C CNN
+F2 "Wuerth:BarrelJack_Wuerth_6941xx301002" 50 -40 50 H I C CNN
 F3 "" 50 -40 50 H I C CNN
 F4 "Wurth Elektronik" 0 0 50 H I C CNN "Mfr."
 F5 "694106301002" 0 0 50 H I C CNN "Mfr. No."

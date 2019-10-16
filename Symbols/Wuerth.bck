@@ -12,10 +12,4 @@ K DC power barrel jack connector
 F ~
 $ENDCMP
 #
-$CMP W
-D DC Barrel Jack
-K DC power barrel jack connector
-F https://katalog.we-online.de/em/datasheet/6941xx301002.pdf
-$ENDCMP
-#
 #End Doc Library
