@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Mini-DIN-6
+D 6-pin Mini-DIN connector
+K Mini-DIN
+F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F5749180%7FA1%7Ftif%7FEnglish%7FENG_CD_5749180_A1.tif%7F5749180-1
+$ENDCMP
+#
+$CMP USB-B
+D USB Type B connector
+K connector USB
+F  ~
+$ENDCMP
+#
+$CMP USB_B
+D USB Type B connector
+K connector USB
+F  ~
+$ENDCMP
+#
+#End Doc Library
