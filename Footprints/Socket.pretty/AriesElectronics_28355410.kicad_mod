@@ -1,4 +1,4 @@
-(module AriesElectronics_28355410 (layer F.Cu) (tedit 5DCC0DF1)
+(module AriesElectronics_28355410 (layer F.Cu) (tedit 5DCC2919)
   (descr 28-3554-10-1)
   (tags Connector)
   (fp_text reference J** (at 0 -2.985 90) (layer F.SilkS)
@@ -57,7 +57,7 @@
   (pad MH1 thru_hole circle (at 0 23.62 90) (size 2.67 2.67) (drill 1.78) (layers *.Cu *.Mask))
   (pad MH2 thru_hole circle (at 0 -22.48 90) (size 2.67 2.67) (drill 1.78) (layers *.Cu *.Mask))
   (model ${KICAD_LIBRARY}/3D/Socket/DIP_Socket/ZIF-Socket-28-pin.stp
-    (offset (xyz 0 -1 0))
+    (offset (xyz 0 -0.8 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 -90))
   )
