@@ -1,8 +1,8 @@
-(module AriesElectronics_28355410 (layer F.Cu) (tedit 5DC2EC4A)
+(module AriesElectronics_28355410 (layer F.Cu) (tedit 5DCBC963)
   (descr 28-3554-10-1)
   (tags Connector)
   (fp_text reference J** (at 0 -2.985 90) (layer F.SilkS)
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
+    (effects (font (size 1 1) (thickness 0.15)))
   )
   (fp_text value AriesElectronics_28355410 (at 0 -2.985 90) (layer F.SilkS) hide
     (effects (font (size 1.27 1.27) (thickness 0.254)))
