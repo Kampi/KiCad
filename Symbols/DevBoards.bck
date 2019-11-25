@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AT90USBKey
+D AT90USBKey Microcontroller Module
+K AT90USBKey Microcontroller Module Atmel AVR USB
+F http://ww1.microchip.com/downloads/en/devicedoc/doc7627.pdf
+$ENDCMP
+#
+#End Doc Library
