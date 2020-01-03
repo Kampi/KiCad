@@ -4,7 +4,7 @@
 
 - [KiCAD](#kicad)
   - [Table of Contents](#table-of-contents)
-    - [About](#about)
+  - [About](#about)
   - [Directories](#directories)
   - [Maintainer](#maintainer)
 
