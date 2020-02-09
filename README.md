@@ -27,4 +27,4 @@ The library contain the following directory and file structure:
 
 ## Maintainer
 
-- [Daniel Kampert](DanielKampert@kampis-elektroecke.de)
+- [Daniel Kampert](mailto:DanielKampert@kampis-elektroecke.de)
