@@ -1,0 +1,37 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 74AHC273
+D 8-bit D Flip-Flop, reset
+K TTL DFF DFF8
+F http://www.ti.com/lit/gpn/sn74LS273
+$ENDCMP
+#
+$CMP 74AHCT273
+D 8-bit D Flip-Flop, reset
+K AHCTMOS DFF DFF8
+F https://assets.nexperia.com/documents/data-sheet/74AHC_AHCT273.pdf
+$ENDCMP
+#
+$CMP 74HC138
+D Decoder 3 to 8 active low outputs
+K TTL DECOD DECOD8
+F http://www.ti.com/lit/gpn/sn74HC138
+$ENDCMP
+#
+$CMP 74HC148
+F https://www.ti.com/lit/ds/symlink/sn74hc148.pdf
+$ENDCMP
+#
+$CMP 74HC273
+D 8-bit D Flip-Flop, reset
+K HCMOS DFF DFF8
+F https://assets.nexperia.com/documents/data-sheet/74HC_HCT273.pdf
+$ENDCMP
+#
+$CMP 74HCT273
+D 8-bit D Flip-Flop, reset
+K HCTMOS DFF DFF8
+F https://assets.nexperia.com/documents/data-sheet/74HC_HCT273.pdf
+$ENDCMP
+#
+#End Doc Library
