@@ -6,4 +6,8 @@ K AT90USBKey Microcontroller Module Atmel AVR USB
 F http://ww1.microchip.com/downloads/en/devicedoc/doc7627.pdf
 $ENDCMP
 #
+$CMP ParticleArgon
+F https://docs.particle.io/datasheets/wi-fi/argon-datasheet/
+$ENDCMP
+#
 #End Doc Library
