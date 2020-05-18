@@ -51,13 +51,14 @@ html = html.replace("<!--COMPCOUNT-->", "<b>Component Count:</b>" + str(len(comp
 
 row = "<tr>"
 row += "<th>Ref</th>"
-row += "<th>Qnty</th>"
+row += "<th>Description</th>"
 row += "<th>Value</th>"
 row += "<th>Footprint</th>"
-row += "<th>Description</th>" 
 row += "<th>Mfr.</th>" 
 row += "<th>Mfr. Part Nr.</th>" 
-row += "<th>Mouser</th>"
+row += "<th>Distributor</th>" 
+row += "<th>Order Number</th>"
+row += "<th>Qnty</th>"
 row += "</tr>"
 
 html = html.replace("<!--TABLEROW-->", row + "<!--TABLEROW-->")
@@ -78,8 +79,8 @@ for group in grouped:
 		refs += component.getRef()
 		c = component
 
-	row = "<tr><td>" + refs 
-	row += "</td><td>" + str(len(group))
+	row = "<tr><td>" + refs
+	row += "</td><td>" + c.getDescription()
 	row += "</td><td>" + c.getValue()
 	
 	Temp = c.getFootprint().split(":")
@@ -88,10 +89,11 @@ for group in grouped:
 	else:
 		row += "</td><td>" + Temp[0]
 	
-	row += "</td><td>" + c.getDescription()
 	row += "</td><td>" + c.getField("Mfr.")
 	row += "</td><td>" + c.getField("Mfr. No.")
-	row += "</td><td>" + c.getField("Mouser")
+	row += "</td><td>" + c.getField("Distributor")
+	row += "</td><td>" + c.getField("Order Number")
+	row += "</td><td>" + str(len(group))
 	row += "</td></tr>"
 
 	html = html.replace("<!--TABLEROW-->", row + "<!--TABLEROW-->")
