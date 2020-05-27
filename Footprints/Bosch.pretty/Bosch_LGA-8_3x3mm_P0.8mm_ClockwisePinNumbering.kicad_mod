@@ -1,4 +1,4 @@
-(module Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering (layer F.Cu) (tedit 5EBA875D)
+(module Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering (layer F.Cu) (tedit 5ECE11AE)
   (descr "Bosch  LGA, 8 Pin (https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST-BME680-DS001-00.pdf#page=44), generated with kicad-footprint-generator ipc_noLead_generator.py")
   (tags "Bosch LGA NoLead")
   (attr smd)
@@ -33,6 +33,6 @@
   (model ${KICAD_LIBRARY}/3D/Packages/Bosch/BME680.stp
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 -180))
+    (rotate (xyz 0 0 0))
   )
 )
