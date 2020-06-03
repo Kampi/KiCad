@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AD725
+D Low Cost RGB to NTSC/PAL Encoder with Luma Trap Port
+K Video
+F https://www.analog.com/media/en/technical-documentation/data-sheets/AD725.pdf
+$ENDCMP
+#
+#End Doc Library
