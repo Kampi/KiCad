@@ -1,3 +1,15 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP TRF792A
+F https://www.ti.com/lit/ds/symlink/trf7962a.pdf?ts=1591176946193
+$ENDCMP
+#
+$CMP TRF7962A
+F https://www.ti.com/lit/ds/symlink/trf7962a.pdf?ts=1591176946193
+$ENDCMP
+#
+$CMP TSP61023
+F https://www.ti.com/lit/ds/symlink/tps61023.pdf
+$ENDCMP
+#
 #End Doc Library
