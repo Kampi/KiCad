@@ -19,6 +19,7 @@ Please write an e-mail to [DanielKampert@kampis-elektroecke.de](DanielKampert@ka
 The library contain the following directory and file structure:
 
 - `3D` : All 3D models in `step` format used by the library
+- `Drawings` : Inventor projects for different 3D models
 - `Footprints` : Part footprints
 - `Layout` : Layout templates
 - `Scripts` : Python scripts for KiCad
