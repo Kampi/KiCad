@@ -1,9 +1,7 @@
 EESchema-DOCLIB  Version 2.0
 #
 $CMP VEML6070
-D Low Cost RGB to NTSC/PAL Encoder with Luma Trap Port
-K Video
-F https://www.analog.com/media/en/technical-documentation/data-sheets/AD725.pdf
+F https://www.vishay.com/docs/84277/veml6070.pdf
 $ENDCMP
 #
 #End Doc Library
