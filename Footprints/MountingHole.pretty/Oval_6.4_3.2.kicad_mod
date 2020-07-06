@@ -1,0 +1,10 @@
+(module Oval_6.4_3.2 (layer F.Cu) (tedit 5F02B257)
+  (descr Oval_6.4_3.2)
+  (fp_text reference REF** (at 0 0.5) (layer F.SilkS) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value Oval_6.4_3.2 (at 0 -0.5) (layer F.Fab) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (pad "" thru_hole oval (at 0 0) (size 6.4 3.2) (drill oval 6.4 3.2) (layers *.Cu *.Mask))
+)
