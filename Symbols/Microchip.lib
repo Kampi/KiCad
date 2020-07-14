@@ -10,7 +10,8 @@ F2 "Package_SO:MSOP-8_3x3mm_P0.65mm" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 F4 "Microchip" 0 0 50 H I C CNN "Mfr."
 F5 "MCP9808T-E/MS " 0 0 50 H I C CNN "Mfr. No."
-F6 "579-MCP9808T-E/MS " 0 0 50 H I C CNN "Mouser"
+F6 "Mouser" 0 0 50 H V C CNN "Distributor"
+F7 "579-MCP9808T-E/MS " 0 0 50 H I C CNN "Order Number"
 DRAW
 S -300 400 300 -400 1 1 10 f
 X SDA 1 -400 300 100 R 50 50 1 1 B
