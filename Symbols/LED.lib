@@ -1,12 +1,12 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# ZAQS0807
+# LED-Array-8
 #
-DEF ZAQS0807 LED 0 40 Y Y 1 F N
+DEF LED-Array-8 LED 0 40 Y Y 1 F N
 F0 "LED" 50 0 50 H V C CNN
-F1 "ZAQS0807" 50 0 50 H V C CNN
-F2 "SignalConstruct:ZAQS07x7" 50 -100 50 H I C CNN
+F1 "LED-Array-8" 50 0 50 H V C CNN
+F2 "" 50 -100 50 H I C CNN
 F3 "" 50 -100 50 H I C CNN
 DRAW
 S -50 450 150 -450 1 1 10 f

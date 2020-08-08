@@ -1,7 +1,7 @@
 EESchema-DOCLIB  Version 2.0
 #
-$CMP ZAQS0807
-F https://asset.conrad.com/media10/add/160267/c1/-/gl/000185760DS01/datenblatt-185760-signal-construct-zaqs-0807-led-reihe-8fach-rot-l-x-b-x-h-20-x-7-x-4-mm.pdf
+$CMP LED-Array-8
+K led, array, 8
 $ENDCMP
 #
 #End Doc Library

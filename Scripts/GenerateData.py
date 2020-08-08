@@ -1,4 +1,5 @@
 import os
+import datetime
 
 from pcbnew import *
 from zipfile import ZipFile
@@ -42,7 +43,7 @@ def CreateDocumentation(Path):
 
     PlotController.ClosePlot()
 
-def CreateGeber(Path):
+def CreateGerber(Path):
     PlotOptions.SetOutputDirectory(Path)
     PlotOptions.SetPlotFrameRef(False)
     PlotOptions.SetPlotValue(True)
@@ -98,6 +99,17 @@ def CreateDrillFiles(Path):
     #   - Don´t use a reporter
     DrillWriter.CreateDrillandMapFilesSet(Path, True, True, None)
 
+def CreatePickAndPlace(Path):
+    # Create pick and place file
+    # Create BOM
+    if(not(os.path.exists(Path))):
+        os.makedirs(Path)
+
+    pass
+
+def Create3D():
+    pass
+
 def CreatePackage(InputPath, OutputPath):
     FilesList = [] 
 
@@ -112,8 +124,9 @@ def CreatePackage(InputPath, OutputPath):
 
 if(__name__ == "__main__"):
     CreateDocumentation(os.path.join(OutputPath, "docs"))
-    CreateGeber(os.path.join(OutputPath, "production"))
-    CreateDrillFiles(os.path.join(OutputPath, "production"))
+    CreateGerber(os.path.join(OutputPath, "gerber"))
+    CreateDrillFiles(os.path.join(OutputPath, "gerber"))
+    CreatePickAndPlace(os.path.join(OutputPath, "assembly"))
 
     # Compress the gerber files
-    CreatePackage(os.path.join(OutputPath, "production"), os.path.join(OutputPath, "Gerber"))
+    CreatePackage(os.path.join(OutputPath, "production"), os.path.join(OutputPath, "Gerber_"), datetime.date.today().strftime("%Y%m%d"))
