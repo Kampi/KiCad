@@ -4,9 +4,9 @@ import datetime
 from pcbnew import *
 from zipfile import ZipFile
 
-Board = LoadBoard("C:\Users\Daniel.Kampert\Desktop\Git\SensorHub\hardware\SensorHub.kicad_pcb")
+Board = LoadBoard("C:/Users/Daniel.Kampert/Desktop/Git/SensorHub/hardware/SensorHub.kicad_pcb")
 #board = pcbnew.GetBoard()
-OutputPath = "C:/Users/Daniel.Kampert/Desktop/Git/SensorHub/hardware"
+OutputPath = "C:/Users/Daniel.Kampert/Desktop/Git/SensorHub/production"
 PlotController = PLOT_CONTROLLER(Board)
 PlotOptions = PlotController.GetPlotOptions()
 DrillWriter = EXCELLON_WRITER(Board)
@@ -24,8 +24,21 @@ def CreateDocumentation(Path):
 
     DocumentationFiles = [
         ("Ref_Top", F_Fab, "Placement top"),
-        ("Ref_Bot", B_Fab, "Placement bottom"),
+        ("Mechanical", Cmts_User, "User comments"),
+        ("Mechanical", Dwgs_User, "User drawings"),
     ]
+
+    # Check if the bottom side contains components
+    BottomUsed = False
+    for Component in Board.GetModules():
+        if(Component.GetLayer() == 31):
+            BottomUsed = True
+
+    if(BottomUsed):
+        print("[INFO] Generate documentation for both sides")
+        DocumentationFiles += ("Ref_Bot", B_Fab, "Placement bottom"),
+    else:
+        print("[INFO] Generate documentation for top sides")
 
     # Generate the production documentation
     for File in DocumentationFiles:
@@ -107,6 +120,9 @@ def CreatePickAndPlace(Path):
 
     pass
 
+def CreateBOM(Path):
+    pass
+
 def Create3D():
     pass
 
@@ -122,11 +138,41 @@ def CreatePackage(InputPath, OutputPath):
         for File in FilesList: 
             ZIP.write(File, os.path.basename(File)) 
 
+# Generate all necessary output files
+#   - Gerber files
+#   - Drill files
+#   - Pack the Gerber and Drill files as ZIP and rename them to "Gerber_YYYYMMDD"
+#   - PDF documentation
+#       - Mechanical.pdf
+#           - Edge.Cuts
+#           - Cmts.User
+#           - Dwgs.User
+#       - Ref_Top.pdf
+#           - Edge.Cuts
+#           - F.Fab
+#       - Ref_Bot.pdf
+#           - Edge.Cuts
+#           - B.Fab
+#   - Generate Pick & Place
+#   - Generate BOM
 if(__name__ == "__main__"):
-    CreateDocumentation(os.path.join(OutputPath, "docs"))
-    CreateGerber(os.path.join(OutputPath, "gerber"))
-    CreateDrillFiles(os.path.join(OutputPath, "gerber"))
-    CreatePickAndPlace(os.path.join(OutputPath, "assembly"))
+    # Create the output directory
+    if(not(os.path.exists(OutputPath))):
+        os.makedirs(OutputPath)
 
-    # Compress the gerber files
-    CreatePackage(os.path.join(OutputPath, "production"), os.path.join(OutputPath, "Gerber_"), datetime.date.today().strftime("%Y%m%d"))
+    # Generate the Gerber files
+    CreateGerber(os.path.join(OutputPath, "gerber"))
+
+    # Generate the Drill files
+    CreateDrillFiles(os.path.join(OutputPath, "gerber"))
+
+    # Compress the Gerber and the Drill files
+    CreatePackage(os.path.join(OutputPath, "gerber"), os.path.join(OutputPath, "Gerber_" + datetime.date.today().strftime("%Y%m%d")))
+
+    # Generate the PDF documentation
+    CreateDocumentation(os.path.join(OutputPath, "docs"))
+
+    CreatePickAndPlace(os.path.join(OutputPath, "production"))
+
+    # Generate the BOM
+    CreateBOM(os.path.join(OutputPath, "production"))
