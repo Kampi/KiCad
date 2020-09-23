@@ -11,6 +11,10 @@ PlotController = PLOT_CONTROLLER(Board)
 PlotOptions = PlotController.GetPlotOptions()
 DrillWriter = EXCELLON_WRITER(Board)
 
+# ToDo:
+#   - Update the date in the frames
+#   - Add frame to the sheets (not possible with KiCAD 5.16)
+
 def CreateDocumentation(Path):
     PlotOptions.SetOutputDirectory(Path)
     PlotOptions.SetPlotFrameRef(False)
