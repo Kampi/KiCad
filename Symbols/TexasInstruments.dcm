@@ -1,5 +1,10 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP DRV425
+K DRV425, WQFN
+F https://www.ti.com/lit/ds/symlink/drv425.pdf?ts=1600166825310&ref_url=https%253A%252F%252Fwww.google.com%252F
+$ENDCMP
+#
 $CMP TRF7962A
 F https://www.ti.com/lit/ds/symlink/trf7962a.pdf?ts=1591176946193
 $ENDCMP
