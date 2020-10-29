@@ -10,7 +10,7 @@
 
 ### About
 
-My privat KiCad repository with symbols, 3D models (most of the models are delivered by the part manufacturer) and footprints for my projects.
+My private KiCad repository with symbols, 3D models (most of the models are delivered by the part manufacturer), and footprints for my projects.
 
 Please write an e-mail to [DanielKampert@kampis-elektroecke.de](DanielKampert@kampis-elektroecke.de) if you have any questions.
 
