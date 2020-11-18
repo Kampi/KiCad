@@ -4,9 +4,9 @@ import datetime
 from pcbnew import *
 from zipfile import ZipFile
 
-Board = LoadBoard("C:/Users/Daniel.Kampert/Desktop/Git/SensorHub/hardware/SensorHub.kicad_pcb")
+Board = LoadBoard("C:/Users/Daniel.Kampert/Desktop/Git/Boost-Converter/hardware/BoostConverter.kicad_pcb")
 #board = pcbnew.GetBoard()
-OutputPath = "C:/Users/Daniel.Kampert/Desktop/Git/SensorHub/production"
+OutputPath = "C:/Users/Daniel.Kampert/Desktop/Git/Boost-Converter/production"
 PlotController = PLOT_CONTROLLER(Board)
 PlotOptions = PlotController.GetPlotOptions()
 DrillWriter = EXCELLON_WRITER(Board)
@@ -17,7 +17,7 @@ DrillWriter = EXCELLON_WRITER(Board)
 
 def CreateDocumentation(Path):
     PlotOptions.SetOutputDirectory(Path)
-    PlotOptions.SetPlotFrameRef(False)
+    PlotOptions.SetPlotFrameRef(True)
     PlotOptions.SetLineWidth(FromMM(0.35))
     PlotOptions.SetUseGerberAttributes(True)
     PlotOptions.SetExcludeEdgeLayer(False)
