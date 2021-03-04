@@ -1,0 +1,7 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ESP32_Dev_Kit
+F https://www.espressif.com/en/products/devkits
+$ENDCMP
+#
+#End Doc Library

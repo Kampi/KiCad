@@ -4,9 +4,9 @@ import datetime
 from pcbnew import *
 from zipfile import ZipFile
 
-Board = LoadBoard("C:/Users/Daniel.Kampert/Desktop/Git/Boost-Converter/hardware/BoostConverter.kicad_pcb")
+Board = LoadBoard("H:/NextCloud/Git/OneWire-Adapter/hardware/OneWire-Adapter.kicad_pcb")
 #board = pcbnew.GetBoard()
-OutputPath = "C:/Users/Daniel.Kampert/Desktop/Git/Boost-Converter/production"
+OutputPath = "D:/Downloads/Git/Boost-Converter/production"
 PlotController = PLOT_CONTROLLER(Board)
 PlotOptions = PlotController.GetPlotOptions()
 DrillWriter = EXCELLON_WRITER(Board)
