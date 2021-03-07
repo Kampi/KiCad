@@ -1,5 +1,10 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP CSD13380F3
+D 12 V N-Channel
+F https://www.ti.com/lit/ds/symlink/csd13380f3.pdf?ts=1615049947559&ref_url=https%253A%252F%252Fwww.google.com%252F
+$ENDCMP
+#
 $CMP CSD13381F4
 D 12 V N-Channel
 F https://www.ti.com/lit/ds/symlink/csd13381f4.pdf?ts=1614879669058

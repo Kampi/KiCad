@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Pmod_Header_2x06
+D Pin-Header 2x06 right angle
+F https://reference.digilentinc.com/_media/reference/pmod/pmod-interface-specification-1_2_0.pdf
+$ENDCMP
+#
+#End Doc Library
