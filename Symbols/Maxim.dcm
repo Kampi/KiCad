@@ -1,6 +1,7 @@
 EESchema-DOCLIB  Version 2.0
 #
 $CMP MAX6775
+D Low-Power, 1%-Accurate Battery Monitor
 F https://datasheets.maximintegrated.com/en/ds/MAX6775-MAX6781.pdf
 $ENDCMP
 #

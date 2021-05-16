@@ -1,0 +1,7 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ESP32_USART
+F https://www.tag-connect.com/wp-content/uploads/bsk-pdf-manager/TC2030-MCP-NL_PCB_Footprint_5.pdf
+$ENDCMP
+#
+#End Doc Library
