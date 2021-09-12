@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP RAK3172
+D SMD LoRaWAN module
+F https://docs.rakwireless.com/Product-Categories/WisDuo/RAK3172-Module/Datasheet/#overview
+$ENDCMP
+#
+#End Doc Library
