@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP BMP384
+D pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-10
+K Bosch pressure environment environmental measurement digital
+F https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp384-ds003.pdf
+$ENDCMP
+#
+#End Doc Library
