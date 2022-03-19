@@ -4,9 +4,9 @@ import datetime
 from pcbnew import *
 from zipfile import ZipFile
 
-Board = LoadBoard("H:/NextCloud/Git/OneWire-Adapter/hardware/OneWire-Adapter.kicad_pcb")
+Board = LoadBoard("H:/NextCloud/Git/PlantControl/hardware/Controller/PlantControl.kicad_pcb")
 #board = pcbnew.GetBoard()
-OutputPath = "D:/Downloads/Git/Boost-Converter/production"
+OutputPath = "H:/NextCloud/Git/PlantControl/production/Test"
 PlotController = PLOT_CONTROLLER(Board)
 PlotOptions = PlotController.GetPlotOptions()
 DrillWriter = EXCELLON_WRITER(Board)
@@ -18,7 +18,7 @@ DrillWriter = EXCELLON_WRITER(Board)
 def CreateDocumentation(Path):
     PlotOptions.SetOutputDirectory(Path)
     PlotOptions.SetPlotFrameRef(True)
-    PlotOptions.SetLineWidth(FromMM(0.35))
+    #PlotOptions.SetLineWidth(FromMM(0.35))
     PlotOptions.SetUseGerberAttributes(True)
     PlotOptions.SetExcludeEdgeLayer(False)
     PlotOptions.SetUseAuxOrigin(False)
@@ -34,9 +34,9 @@ def CreateDocumentation(Path):
 
     # Check if the bottom side contains components
     BottomUsed = False
-    for Component in Board.GetModules():
-        if(Component.GetLayer() == 31):
-            BottomUsed = True
+    #for Component in Board.GetModules():
+    #    if(Component.GetLayer() == 31):
+    #        BottomUsed = True
 
     if(BottomUsed):
         print("[INFO] Generate documentation for both sides")
