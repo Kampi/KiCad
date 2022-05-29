@@ -10,9 +10,10 @@
 """
 from __future__ import print_function
 
+import kicad_netlist_reader
+import kicad_utils
 import os
 import sys
-import kicad_netlist_reader
 
 net = kicad_netlist_reader.netlist(sys.argv[1])
 
