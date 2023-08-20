@@ -9,7 +9,7 @@
     (property "Footprint" "Tag Connect:TC2030-MCP-NL" (at -1.27 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "https://www.tag-connect.com/wp-content/uploads/bsk-pdf-manager/TC2030-MCP-NL_PCB_Footprint_5.pdf" (at 0 0 0)
+    (property "Datasheet" "https://www.tag-connect.com/wp-content/uploads/bsk-pdf-manager/TC2030-MCP-NL_PCB_Footprint_5.pdf" (at 0 2.54 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "ESP32_1_1"
@@ -66,7 +66,7 @@
         (number "2" (effects (font (size 1.27 1.27))))
       )
       (pin passive line (at 10.16 3.81 180) (length 2.54)
-        (name "~{Reset}" (effects (font (size 1.27 1.27))))
+        (name "~{RESET}" (effects (font (size 1.27 1.27))))
         (number "3" (effects (font (size 1.27 1.27))))
       )
       (pin output line (at 10.16 -1.27 180) (length 2.54)
