@@ -11,7 +11,7 @@
 
 ### About
 
-My private KiCad repository with symbols, 3D models (most of the models are delivered by the part manufacturer), and footprints for my projects.
+My private KiCad repository with symbols, 3D models (most of the models are delivered by the part manufacturer), and footprints for different projects.
 
 Please write an e-mail to [DanielKampert@kampis-elektroecke.de](DanielKampert@kampis-elektroecke.de) if you have any questions.
 
@@ -29,7 +29,7 @@ The library contain the following directory and file structure:
 - `Layout` : Layout templates
 - `Scripts` : Python scripts for KiCad
 - `Symbols` : Part symbols
-- `Template.xlsx` : BOM template
+- `__Project__` : Project template
 
 ## Maintainer
 
