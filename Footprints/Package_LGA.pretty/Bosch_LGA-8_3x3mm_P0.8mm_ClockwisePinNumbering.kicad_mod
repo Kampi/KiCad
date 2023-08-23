@@ -41,7 +41,7 @@
   (pad "6" smd rect (at 0.4 1.1875) (size 0.5 0.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 36ae2592-21ed-4cf9-a4d6-e3efefd32058))
   (pad "7" smd rect (at -0.4 1.1875) (size 0.5 0.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 160d7c4c-b37a-4512-8548-5d8fc87f6db2))
   (pad "8" smd rect (at -1.2 1.1875) (size 0.5 0.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp f374ecbe-c59f-4f70-9930-f955beece9c7))
-  (model "${KICAD_DIR}/3D/Bosch/BME680.stp"
+  (model "${KICAD_LIBRARY}/3D/Bosch/BME680.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

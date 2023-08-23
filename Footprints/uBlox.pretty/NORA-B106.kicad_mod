@@ -131,7 +131,7 @@
       )
     )
   )
-  (model ":KICAD_DIR:3D/u-blox/NORA-B1x6.stp"
+  (model ":KICAD_LIBRARY:3D/u-blox/NORA-B1x6.stp"
     (offset (xyz -7.5 5.5 0.5))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 90))
