@@ -1,7 +1,7 @@
 (footprint "SOT-325-5" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
   (attr smd)
-  (fp_text reference "REF**" (at 0 -0.5 unlocked) (layer "F.SilkS")
+  (fp_text reference "REF**" (at 0 -1.905 unlocked) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.1)))
     (tstamp 0022d37c-63f7-438e-9d20-c7ea0c71d77a)
   )
@@ -36,7 +36,7 @@
   (pad "3" smd rect (at -1.0875 0.65) (size 1 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 537dc3cb-957d-43d4-aca5-a0eb4a2244d1))
   (pad "4" smd rect (at 1.1875 0.65) (size 1 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp bee9161d-59e4-4d42-8616-c6eb08559ebe))
   (pad "5" smd rect (at 1.1875 -0.65) (size 1 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ccb27759-bf0a-4c17-89cd-018337205183))
-  (model ":KICAD_DIR:3D/Packages/SOT-323-5.stp"
+  (model "${KICAD_LIBRARY}/3D/Packages/SOT-323-5.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))
