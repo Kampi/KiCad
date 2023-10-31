@@ -1,6 +1,6 @@
 (kicad_symbol_lib (version 20220914) (generator kicad_symbol_editor)
   (symbol "NORA-B106" (in_bom yes) (on_board yes)
-    (property "Reference" "M" (at -17.78 44.45 0)
+    (property "Reference" "M" (at -12.065 22.86 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "" (at 0 0 0)
