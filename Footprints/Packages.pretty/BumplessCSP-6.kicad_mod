@@ -35,7 +35,7 @@
     (thermal_bridge_angle 45) (tstamp 88f12c16-c9ab-48da-9822-730d454e251b))
   (pad "B3" smd rect (at 0.25 0.587) (size 0.3 0.3) (layers "F.Cu" "F.Paste" "F.Mask")
     (thermal_bridge_angle 45) (tstamp d5d28065-df69-4bc8-b0db-a2e8777d78fd))
-  (model "${KICAD_LIBRARY}3D/ST/MLPF-WB55-01E3_STM.stp"
+  (model "${KICAD_LIBRARY}/3D/ST/MLPF-WB55-01E3_STM.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

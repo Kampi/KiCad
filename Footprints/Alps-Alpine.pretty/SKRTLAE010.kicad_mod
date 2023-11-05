@@ -44,7 +44,7 @@
     (thermal_bridge_angle 45) (tstamp 402ead65-0168-4725-aea8-667a43f0db45))
   (pad "SH" smd rect (at 1.85 0) (size 1.3 0.9) (layers "F.Cu" "F.Paste" "F.Mask")
     (thermal_bridge_angle 45) (tstamp b5f088bf-b5ba-4343-aca9-c868b07cebd6))
-  (model "${KICAD_LIBRARY}3D/Alps Alpine/SKRTLA.stp"
+  (model "${KICAD_LIBRARY}/3D/Alps Alpine/SKRTLA.stp"
     (offset (xyz 0 0 1.5))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

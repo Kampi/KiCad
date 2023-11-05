@@ -33,7 +33,7 @@
   (pad "8" smd rect (at 0.6 -0.25) (size 0.58 0.25) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 79da13d5-d209-40f1-9ffa-82801d2a2f0e))
   (pad "9" smd rect (at 0.6 -0.75) (size 0.58 0.25) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 29435540-4595-4b8f-8577-65ca05d9701d))
   (pad "10" smd rect (at 0 -0.85 90) (size 0.63 0.35) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp e84fcb24-defd-46dd-8df0-c5665e2f3bad))
-  (model "${KICAD_LIBRARY}3D/Packages/UQFN-10.stp"
+  (model "${KICAD_LIBRARY}/3D/Packages/UQFN-10.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))
