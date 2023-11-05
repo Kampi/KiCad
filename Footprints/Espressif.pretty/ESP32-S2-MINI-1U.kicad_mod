@@ -127,7 +127,7 @@
           (xy 0.6 -0.6)
         ) (width 0) (fill yes))
     ) (tstamp fbe04df8-d9ea-457e-8524-7ca8dc449847))
-  (model "${ESPRESSIF_3DMODELS}/ESP32-S2-MINI-1U.STEP"
+  (model "${KICAD_LIBRARY}/3D/ESP32-S2-MINI-1U.STEP"
     (offset (xyz -7.7 7.7 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

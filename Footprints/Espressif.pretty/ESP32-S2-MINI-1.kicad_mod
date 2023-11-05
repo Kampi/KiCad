@@ -133,7 +133,7 @@
   (pad "46" smd rect (at -1.7 -7) (size 0.4 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp e71dea81-09de-4f94-a05e-2a85ce537c40))
   (pad "46" smd rect (at 0.85 -7) (size 0.4 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ead67650-197d-41fe-9104-700c17e48fea))
   (pad "46" smd rect (at -3.4 -7) (size 0.4 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp f9e7ff71-7662-40d2-9968-aeace1e0fed4))
-  (model "${ESPRESSIF_3DMODELS}/ESP32-S2-MINI-1.STEP"
+  (model "${KICAD_LIBRARY}/3D/ESP32-S2-MINI-1.STEP"
     (offset (xyz -7.7 -7.7 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

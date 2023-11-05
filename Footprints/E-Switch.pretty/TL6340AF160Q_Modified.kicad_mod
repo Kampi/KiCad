@@ -44,7 +44,7 @@
   (pad "SH" smd rect (at 1.55 0) (size 1.35 0.95) (layers "B.Cu" "B.Paste" "B.Mask")
     (thermal_bridge_angle 45) (tstamp 440b04e9-b70e-405b-84cf-5d49f0b686b1))
   (pad "SH" thru_hole circle (at 1.825 0.05 180) (size 0.8 0.8) (drill 0.6) (layers "*.Cu") (tstamp 103c9f8a-aefc-4bcc-be43-54b8942c6816))
-  (model ":KICAD_LIBRARY:3D/E-Switch/TL6340AF160Q.stp"
+  (model "${KICAD_LIBRARY}3D/E-Switch/TL6340AF160Q.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 180))

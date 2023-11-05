@@ -43,7 +43,7 @@
   (pad "2" smd rect (at 0.7 0.52) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ecbc9d6d-720d-41c1-9c05-95646137c0dc))
   (pad "3" smd rect (at 0.7 -0.58) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ef1c2d53-fb8b-4d03-87a7-b6cec66dc4c2))
   (pad "4" smd rect (at -0.7 -0.58) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 2528787a-54bd-4070-81b6-6e2b2c4e0b16))
-  (model ":KICAD_LIBRARY:3D/NDK/NX2016SA_NDK.stp"
+  (model "${KICAD_LIBRARY}3D/NDK/NX2016SA_NDK.stp"
     (offset (xyz -0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 90))

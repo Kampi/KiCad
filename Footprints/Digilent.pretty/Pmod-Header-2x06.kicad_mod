@@ -119,7 +119,7 @@
   (pad 9 thru_hole oval (at -1.27 -1.27 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
   (pad 12 thru_hole oval (at -1.27 6.35 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
   (pad 6 thru_hole oval (at 1.27 6.35 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
-  (model H:/KiCad/3D/Amphenol/77317-412-12LFc.stp
+  (model ${KICAD_LIBRARY}/3D/Amphenol/77317-412-12LFc.stp
     (offset (xyz -4.25 7 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 90))

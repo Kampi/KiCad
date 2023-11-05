@@ -47,7 +47,7 @@
   (pad "2" smd roundrect (at 0.6 -1.875) (size 0.6 0.85) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25) (tstamp 67e529fe-f5ea-4ebb-9e03-59063133322b))
   (pad "MP" smd roundrect (at -1.75 1.9) (size 0.7 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25) (tstamp e82bc6ca-064f-4398-80c2-dea896a29e34))
   (pad "MP" smd roundrect (at 1.75 1.9) (size 0.7 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25) (tstamp e342a947-8208-4d6d-92fb-ef4f712280fe))
-  (model ":KICAD_LIBRARY:3D/Molex/781710002.stp"
+  (model "${KICAD_LIBRARY}3D/Molex/781710002.stp"
     (offset (xyz 0 0 1.5))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))

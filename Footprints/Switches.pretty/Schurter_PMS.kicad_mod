@@ -21,7 +21,7 @@
   (pad 2 thru_hole circle (at -6.35 3.81) (size 2 2) (drill 1.4) (layers *.Cu *.Mask))
   (pad 3 thru_hole circle (at 6.35 3.81) (size 2 2) (drill 1.4) (layers *.Cu *.Mask))
   (pad 4 thru_hole circle (at 6.35 -3.81) (size 2 2) (drill 1.4) (layers *.Cu *.Mask))
-  (model H:/KiCad/3D/Switches/Schurter/1241.1602.stp
+  (model ${KICAD_LIBRARY}/3D/Switches/Schurter/1241.1602.stp
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))

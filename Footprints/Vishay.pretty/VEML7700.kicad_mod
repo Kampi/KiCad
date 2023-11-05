@@ -47,7 +47,7 @@
     (solder_mask_margin 0.102) (tstamp abf77429-8c8d-4305-8c52-2c281c6e7c16))
   (pad "4" smd rect (at 0.675 1.905) (size 1.4 0.7) (layers "F.Cu" "F.Paste" "F.Mask")
     (solder_mask_margin 0.102) (tstamp f526d003-4800-4d83-bea9-4185ae1c71a0))
-  (model ":KICAD_LIBRARY:3D/Vishay/VEML7700.stp"
+  (model "${KICAD_LIBRARY}3D/Vishay/VEML7700.stp"
     (offset (xyz 1.5 3.5 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 90 -90))

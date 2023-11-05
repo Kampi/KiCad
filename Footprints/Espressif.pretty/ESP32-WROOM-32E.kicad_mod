@@ -83,7 +83,7 @@
   (pad 39 smd rect (at 0.845 -1.195 180) (size 1.05 1.05) (layers F.Cu F.Paste F.Mask))
   (pad 39 smd rect (at -0.68 -1.195 180) (size 1.05 1.05) (layers F.Cu F.Paste F.Mask))
   (pad 39 smd rect (at -2.205 -1.195 180) (size 1.05 1.05) (layers F.Cu F.Paste F.Mask))
-  (model ${ESPRESSIF_3DMODELS}/ESP32-WROOM-32E.STEP
+  (model ${KICAD_LIBRARY}/3D/ESP32-WROOM-32E.STEP
     (offset (xyz -9.01 -9.6 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

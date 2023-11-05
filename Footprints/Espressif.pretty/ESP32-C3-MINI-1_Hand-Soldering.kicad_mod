@@ -115,7 +115,7 @@
   (pad "36" smd rect (at 1.975 1.975 90) (size 1.45 1.45) (layers "F.Cu" "F.Paste" "F.Mask")
     (zone_connect 2) (tstamp e6f55e57-c10f-46cf-985f-7a37dbbf9653))
   (pad "36" smd rect (at -6.35 5.4 90) (size 1.7 1.7) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp f8254034-00e9-48c7-952e-43a3450b8f39))
-  (model "${ESPRESSIF_3DMODELS}/ESP32-C3-MINI-1.STEP"
+  (model "${KICAD_LIBRARY}/3D/ESP32-C3-MINI-1.STEP"
     (offset (xyz -6.6 -5.6 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

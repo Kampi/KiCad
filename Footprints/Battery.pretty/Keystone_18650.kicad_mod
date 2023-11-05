@@ -21,7 +21,7 @@
   (pad "" thru_hole circle (at -27.6 7.87) (size 3.55 3.55) (drill 3.55) (layers *.Cu *.Mask))
   (pad "" thru_hole circle (at 27.6 -7.87) (size 3.55 3.55) (drill 3.55) (layers *.Cu *.Mask))
   (pad "" thru_hole circle (at 36.11 7.87) (size 2.39 2.39) (drill 2.39) (layers *.Cu *.Mask))
-  (model H:/KiCad/3D/Batteryholder/Keystone/1043.stp
+  (model ${KICAD_LIBRARY}/3D/Batteryholder/Keystone/1043.stp
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 -90))

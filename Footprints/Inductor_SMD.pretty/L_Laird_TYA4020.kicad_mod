@@ -17,7 +17,7 @@
   (fp_line (start 2 -2) (end 2 2) (layer F.CrtYd) (width 0.05))
   (pad 1 smd rect (at -1.5 0) (size 1.1 3.7) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 1.5 0) (size 1.1 3.7) (layers F.Cu F.Paste F.Mask))
-  (model "H:/KiCad/3D/Taiyo Yuden/NR3015.stp"
+  (model "${KICAD_LIBRARY}/3D/Taiyo Yuden/NR3015.stp"
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

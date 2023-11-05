@@ -43,7 +43,7 @@
   (pad "8" smd rect (at 0.7625 0.5) (size 0.37 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 26fddf7c-bcb5-42b1-9c56-a6dd91333130))
   (pad "9" smd rect (at 0.7625 0) (size 0.37 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 7309c90c-06b3-430e-8689-3eeb90ecf588))
   (pad "10" smd rect (at 0.7625 -0.5) (size 0.37 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp b65247bb-32a5-49e2-8251-1f6ba1c013e2))
-  (model ":KICAD_LIBRARY:3D/Bosch/BMP581.stp"
+  (model "${KICAD_LIBRARY}3D/Bosch/BMP581.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))

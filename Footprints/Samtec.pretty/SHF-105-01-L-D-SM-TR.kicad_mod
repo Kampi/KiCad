@@ -101,7 +101,7 @@
   (pad "8" smd rect (at 1.968 1.253) (size 2.4 0.74) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp aaacd33b-f58a-403b-bfec-5829ee8bd3b6))
   (pad "9" smd rect (at -1.932 2.523) (size 2.4 0.74) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 5ac8b420-7811-48b3-bb2c-8289a3fcf877))
   (pad "10" smd rect (at 1.968 2.523) (size 2.4 0.74) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 1bfec0d8-4f3f-4c2e-8b57-d8a050b77cd1))
-  (model ":KICAD_LIBRARY:3D/Samtec/SHF-105-01-L-D-SM-TR.stp"
+  (model "${KICAD_LIBRARY}3D/Samtec/SHF-105-01-L-D-SM-TR.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 90))
