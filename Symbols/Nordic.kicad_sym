@@ -421,7 +421,7 @@
     (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.6x3.6mm_ThermalVias" (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 0 -2.54 0)
+    (property "Datasheet" "https://infocenter.nordicsemi.com/index.jsp?topic=%2Fstruct_pmic%2Fstruct%2Fnpm1300.html" (at 0 -2.54 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "nPM1300-QEXX_1_0"
