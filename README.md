@@ -11,7 +11,7 @@
 
 ### About
 
-My private KiCad repository with symbols, 3D models (most of the models are delivered by the part manufacturer), and footprints for different projects.
+My private KiCad repository with symbols, 3D models (most of the models are delivered by the part manufacturer, [GrabCAD](https://grabcad.com/), [3D ContentCentral](https://www.3dcontentcentral.com/Default.aspx) or [SnapEDA](https://www.snapeda.com/)), and footprints for different projects.
 
 Please write an e-mail to [DanielKampert@kampis-elektroecke.de](DanielKampert@kampis-elektroecke.de) if you have any questions.
 
