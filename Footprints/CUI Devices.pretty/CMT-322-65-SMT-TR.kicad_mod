@@ -35,7 +35,7 @@
     (thermal_bridge_angle 45) (tstamp 69d27c99-e2e9-4912-860e-0aa775cf85d4))
   (pad "2" smd rect (at 0 1.1) (size 1.5 1.6) (layers "F.Cu" "F.Paste" "F.Mask")
     (thermal_bridge_angle 45) (tstamp c8483f08-29d3-4333-9233-e1a2f05cd20d))
-  (model ":KICAD_LIBRARY:3D/CUI Devices/CMT-322-65-SMT-TR.stp"
+  (model "${KICAD_LIBRARY}/3D/CUI Devices/CMT-322-65-SMT-TR.stp"
     (offset (xyz -0.5 1.75 -0.5))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 90))
