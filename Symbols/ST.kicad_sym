@@ -459,7 +459,7 @@
         (number "7" (effects (font (size 1.27 1.27))))
       )
       (pin passive line (at -3.81 -35.56 90) (length 2.54)
-        (name "VSSA" (effects (font (size 1.27 1.27))))
+        (name "GND" (effects (font (size 1.27 1.27))))
         (number "8" (effects (font (size 1.27 1.27))))
       )
       (pin power_in line (at 5.08 33.02 270) (length 2.54)
