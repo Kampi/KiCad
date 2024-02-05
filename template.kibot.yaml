@@ -1,29 +1,42 @@
 kibot:
   version: 1
 
+variants:
+  - name: "Watch"
+    comment: "Regular Watch PCB"
+    type: kibom
+  - name: "Sensor"
+    comment: "Reduced Watch PCB for sensing applications"
+    type: kibom
+    variant: Env
+
 global:
   out_dir: "../production/Export-%D"
   date_format: "%Y-%m-%d"
-  environment:
-    extra_os:
-      - name: KICAD_LIBRARY
-        value: "/home/daniel/KiCad"
 
 outputs:
+  - name: "Naviagation results"
+    comment: "Create navigation results page"
+    type: navigate_results
+    dir: "./"
+
   - name: "Download datasheets"
-    comment: "Download the components datasheets"
+    comment: "Download component datasheets"
     type: download_datasheets
     dir: docs/datasheets
+    category: "documentation"
 
   - name: "Generate IBOM"
     comment: "Interactive Bill of Materials"
     type: ibom
     dir: docs
+    category: "documentation"
 
   - name: "Print Schematics"
     comment: "Print schematic (PDF)"
     type: pdf_sch_print
     dir: docs
+    category: "documentation"
     options:
       output: Schematic.%x
 
@@ -31,6 +44,7 @@ outputs:
     comment: "Top layer view"
     type: pcbdraw
     dir: docs/images
+    category: "documentation"
     options:
       format: png
       bottom: false
@@ -40,6 +54,7 @@ outputs:
     comment: "Bottom layer view"
     type: pcbdraw
     dir: docs/images
+    category: "documentation"
     options:
       format: png
       bottom: true
@@ -49,6 +64,7 @@ outputs:
     comment: "Generate drill files"
     type: excellon
     dir: gerber
+    category: "production"
     options:
       metric_units: true
       mirror_y_axis: false
@@ -63,6 +79,7 @@ outputs:
     comment: "Generate Gerbers"
     type: gerber
     dir: gerber
+    category: "production"
     options:
       exclude_edge_layer: false
       exclude_pads_from_silkscreen: false
@@ -135,6 +152,7 @@ outputs:
     comment: "Pick & Place"
     type: position
     dir: centroid
+    category: "production"
     options:
       format: ASCII
       only_smd: false
@@ -143,6 +161,7 @@ outputs:
     comment: "PCB Specifications"
     type: pcb_print
     dir: docs
+    category: "production"
     options:
       output: "PCB.pdf"
       format: PDF
@@ -157,6 +176,7 @@ outputs:
     comment: "Ref Top"
     type: pcb_print
     dir: docs
+    category: "documentation"
     options:
       output: "Ref_Top.%x"
       format: PDF
@@ -171,6 +191,7 @@ outputs:
     comment: "Ref Bottom"
     type: pcb_print
     dir: docs
+    category: "documentation"
     options:
       output: "Ref_Bot.%x"
       format: PDF
@@ -186,6 +207,7 @@ outputs:
     comment: "BOM for PCBWay"
     type: bom
     dir: docs
+    category: "purchasing"
     options:
       format: XLSX
       count_smd_tht: true
@@ -218,6 +240,7 @@ outputs:
   - name: "ZIP Gerber"
     comment: "ZIP Gerber"
     dir: .
+    category: "purchasing"
     type: compress
     options:
       format: ZIP
@@ -228,6 +251,7 @@ outputs:
   - name: "ZIP Centroid"
     comment: "ZIP Centroid"
     dir: .
+    category: "purchasing"
     type: compress
     options:
       format: ZIP
@@ -239,11 +263,13 @@ outputs:
     comment: "STEP file generation"
     type: step
     dir: cad
+    category: "mechanical"
 
   - name: "3D rendering"
     comment: "3D rendering"
     type: render_3d
     dir: docs/images
+    category: "documentation"
     options:
       ray_tracing: true
       rotate_x: 3
