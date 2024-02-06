@@ -199,4 +199,9 @@
         )
         (width 0.01) (fill yes))
     ) (tstamp 7ec64ed7-ef4f-4cbb-816e-626697499968))
+  (model "${KICAD_LIBRARY}/3D/Knowles/SPK0641HT4H.stp"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 90 180 180))
+  )
 )
