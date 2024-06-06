@@ -64,7 +64,7 @@
   (pad "31" smd rect (at -2.5 -7.55 270) (size 2 0.7) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 6cc1c47e-f979-4334-b5fc-3db011ca2b6d))
   (pad "32" smd rect (at -3.5 -7.55 270) (size 2 0.7) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp a050041b-ca69-4a79-a82f-d4efb52c8bf3))
   (model "${KICAD_LIBRARY}/3D/RAK/RAK3172.stp"
-    (offset (xyz 7.5 7.75 0))
+    (offset (xyz 7.5 7.75 1))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 180))
   )
