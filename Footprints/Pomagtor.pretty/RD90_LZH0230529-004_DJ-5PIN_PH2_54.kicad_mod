@@ -1,6 +1,6 @@
 (footprint "RD90_LZH0230529-004_DJ-5PIN_PH2_54" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
-  (attr smd)
+  (attr through_hole)
   (fp_text reference "REF**" (at 0 -0.5 unlocked) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.1)))
     (tstamp 35ab569e-804c-460f-acdf-382cbef446fb)
