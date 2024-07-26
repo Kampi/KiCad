@@ -84,7 +84,7 @@
     (property "Value" "ICT-153x" (at -0.635 -6.35 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_BGA:WLP-4_0.83x0.83mm_P0.4mm" (at 0 0 0)
+    (property "Footprint" "Package_BGA_Kampi:WLP-4_0.83x0.83mm_P0.4mm" (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 0 0 0)
