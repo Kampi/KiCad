@@ -1,0 +1,192 @@
+(footprint "RAC10E"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0.025 0)
+		(layer "F.SilkS")
+		(uuid "35c0710e-b8d2-41b9-877d-c5bf912d4168")
+		(effects
+			(font
+				(size 1.4 1.4)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "RAC10E"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "1f6292b0-b2ca-4af6-bf24-04b197072360")
+		(effects
+			(font
+				(size 1.4 1.4)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "52026611-3e6a-4b35-94e5-22f486b52081")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "72ad0330-22ce-4f02-8870-e01be6289caf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "53de455e-ae10-47a1-a338-7ee4a134bf12")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -22.85 -12.7)
+		(end 22.85 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "5e34427a-eb68-43d8-9431-f5eab57ea0d0")
+	)
+	(fp_line
+		(start -22.85 12.7)
+		(end -22.85 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9f775c8b-46e4-408a-bc44-2948d2b0af81")
+	)
+	(fp_line
+		(start 22.85 -12.675)
+		(end 22.85 12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "7f60ea9c-a5c0-4bda-b3a7-3dc2ad8869aa")
+	)
+	(fp_line
+		(start 22.85 12.7)
+		(end -22.85 12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "0f1c6888-2c45-4823-874b-f95c94a0dd37")
+	)
+	(fp_line
+		(start -22.85 -12.7)
+		(end 22.85 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d1eaf0c0-ea9c-44a6-a518-343d2049a6d0")
+	)
+	(fp_line
+		(start -22.85 12.7)
+		(end -22.85 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "64e912c9-9825-4e96-9415-3f50431c9c01")
+	)
+	(fp_line
+		(start 22.85 -12.7)
+		(end 22.85 12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "635ae439-0af4-4e8a-b2b0-bca9248b22cc")
+	)
+	(fp_line
+		(start 22.85 12.7)
+		(end -22.85 12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "18a32433-bc73-44c0-b778-84d03ad8036f")
+	)
+	(pad "1" thru_hole rect
+		(at -19.25 -1.5)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "dc55910d-814d-4738-9ead-56b5f1c5e691")
+	)
+	(pad "2" thru_hole circle
+		(at -19.25 9.25)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "db1c2843-e6ea-4a5e-b489-25579f4c3595")
+	)
+	(pad "3" thru_hole circle
+		(at 19.25 9.25)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "56936fcd-2f36-471b-8f5c-8ed2a3092d29")
+	)
+	(pad "4" thru_hole circle
+		(at 19.25 1.25)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "0deba554-42e2-4804-894b-e92ae9ec64ea")
+	)
+	(model "${KICAD_LIBRARY}/3D/RECOM/RAC10E-SK_277.stp"
+		(offset
+			(xyz -21 11 16.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 180 180)
+		)
+	)
+)
