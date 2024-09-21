@@ -4,19 +4,19 @@
 	(generator_version "8.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at -0.1 0.1 0)
+		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "ff210414-df5d-47db-a594-1cc212b9adbd")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.1)
+				(thickness 0.15)
 			)
 		)
 	)
 	(property "Value" "ER-CON0.4-24P"
-		(at 0 0.1 0)
+		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "3f971565-6d3b-4a89-84b5-3e28a0cf8926")
@@ -79,7 +79,7 @@
 		(start -3.675 -1.325)
 		(end 3.675 -1.325)
 		(stroke
-			(width 0.05)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.CrtYd")
@@ -89,7 +89,7 @@
 		(start -3.675 1.325)
 		(end -3.675 -1.325)
 		(stroke
-			(width 0.05)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.CrtYd")
@@ -99,7 +99,7 @@
 		(start 3.675 -1.325)
 		(end 3.675 1.325)
 		(stroke
-			(width 0.05)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.CrtYd")
@@ -109,7 +109,7 @@
 		(start 3.675 1.325)
 		(end -3.675 1.325)
 		(stroke
-			(width 0.05)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.CrtYd")

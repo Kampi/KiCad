@@ -1,0 +1,171 @@
+(footprint "MCV_1,5_2-G-3.81_1x02_P3.81mm_Vertical"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "Generic Phoenix Contact connector footprint for: MCV_1,5/2-G-3.81; number of pins: 02; pin pitch: 3.81mm; Vertical || order number: 1803426 8A 160V")
+	(tags "phoenix_contact connector MCV_01x02_G_3.81mm")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "b30b6cfb-1f5e-482f-8376-273e5b8fcefd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "MCV_1,5_2-G-3.81_1x02_P3.81mm_Vertical"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "428bab72-46e7-4772-832f-0b38dc5e4cd2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at -1.905 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "09d9012a-f14b-4275-9b9e-a43321cc2a19")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at -1.905 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4681bf3a-2fa8-432b-a12a-05d39fda7387")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at -1.905 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1bc2a618-0e12-45bf-919c-8810181b1b25")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -4.5 -4.25)
+		(end 4.5 3)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "4e117a6d-ee97-4a7d-b04e-10fc2f15fdcc")
+	)
+	(fp_line
+		(start -4.505 -4.25)
+		(end -4.505 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "1c26822a-d592-4457-9789-0c12f106e6be")
+	)
+	(fp_line
+		(start -4.505 3)
+		(end 4.505 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7a0534dc-4eaa-47e7-82af-be88c2a0ccc2")
+	)
+	(fp_line
+		(start 4.505 -4.25)
+		(end -4.505 -4.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7b9ed724-c2af-40b5-90e1-dbd2ad6344e2")
+	)
+	(fp_line
+		(start 4.505 3)
+		(end 4.505 -4.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "1861553d-d6c5-4d80-8b55-4fd769cd6f74")
+	)
+	(fp_circle
+		(center -1.905 -6.125)
+		(end -1.705 -6.125)
+		(stroke
+			(width 0.4)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "7f3f1355-9ff0-4b80-9cc0-1fab673514a1")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "477382cb-5b09-4656-9b8a-3bd9c4dc11b9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at -1.905 -3.4)
+		(size 1.8 3.6)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.14)
+		(uuid "71cfd54c-66a2-444e-85a0-ad73ed41a791")
+	)
+	(pad "2" thru_hole oval
+		(at 1.905 -3.4)
+		(size 1.8 3.6)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "fdd0ba21-2c45-43d4-a756-a02e1db37810")
+	)
+	(model "${KICAD_LIBRARY}/3D/Phoenix/MC-1-5-2-G-3-81.stp"
+		(offset
+			(xyz -4.5 -4.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

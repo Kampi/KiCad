@@ -4,12 +4,12 @@
 	(generator_version "8.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at 0 0.025 0)
+		(at 0 0 0)
 		(layer "F.SilkS")
 		(uuid "35c0710e-b8d2-41b9-877d-c5bf912d4168")
 		(effects
 			(font
-				(size 1.4 1.4)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -20,7 +20,7 @@
 		(uuid "1f6292b0-b2ca-4af6-bf24-04b197072360")
 		(effects
 			(font
-				(size 1.4 1.4)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -141,6 +141,17 @@
 		)
 		(layer "F.Fab")
 		(uuid "18a32433-bc73-44c0-b778-84d03ad8036f")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "b07d6499-2aee-403c-9f5f-b0f8395f6cc6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
 	)
 	(pad "1" thru_hole rect
 		(at -19.25 -1.5)

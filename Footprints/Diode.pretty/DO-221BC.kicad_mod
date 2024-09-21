@@ -1,32 +1,210 @@
-(module DO-221BC (layer F.Cu) (tedit 5F577412)
-  (fp_text reference REF** (at 0 -2.159) (layer F.SilkS)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_text value DO-221BC (at 0 2.54) (layer F.Fab)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_text user %R (at 0 0) (layer F.Fab)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_line (start 2.1 -1.35) (end 2.1 1.35) (layer F.Fab) (width 0.1))
-  (fp_line (start -2.1 -1.35) (end 2.1 -1.35) (layer F.Fab) (width 0.1))
-  (fp_line (start 2.921 -1.546) (end 2.921 1.524) (layer F.CrtYd) (width 0.05))
-  (fp_line (start -1.01 0.35) (end -1.51 0) (layer F.Fab) (width 0.1))
-  (fp_line (start -2.916 1.524) (end -2.916 -1.535) (layer F.CrtYd) (width 0.05))
-  (fp_line (start -1.01 -0.35) (end -1.01 0.35) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.51 0) (end -1.01 -0.35) (layer F.Fab) (width 0.1))
-  (fp_line (start -2.916 -1.535) (end 2.921 -1.546) (layer F.CrtYd) (width 0.05))
-  (fp_line (start -2.1 -1.35) (end -2.1 1.35) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.01 0) (end -0.76 0) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.51 0) (end -1.71 0) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.51 -0.35) (end -1.51 0.35) (layer F.Fab) (width 0.1))
-  (fp_line (start -2.1 1.35) (end 2.1 1.35) (layer F.Fab) (width 0.1))
-  (fp_line (start 2.921 1.524) (end -2.916 1.524) (layer F.CrtYd) (width 0.05))
-  (pad 2 smd rect (at 2.01 0 180) (size 1.5 1.52) (layers F.Cu F.Paste F.Mask))
-  (pad 1 smd rect (at -1.21 0 180) (size 3.1 2.2) (layers F.Cu F.Paste F.Mask))
-  (model ${KICAD_LIBRARY}/3D/Packages/Vishay/SMPA.stp
-    (offset (xyz 25.8 1 5.2))
-    (scale (xyz 1 1 1))
-    (rotate (xyz -90 0 0))
-  )
+(footprint "DO-221BC"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "8594aac0-2ae3-4118-9a3a-1097a1fbe9c0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "DO-221BC"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "faacc98a-3d5c-4bd5-b859-7658c833e449")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "be4f3e09-8695-44a0-a9a1-d5a4f7885a75")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8d64af04-b4e3-44d7-a448-18611857c7ae")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3c535d24-d79d-4706-9b02-665919bc0ed7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -2.8 -1.4)
+		(end 2.8 1.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "c0877d3d-f248-4a52-b18a-e27f9058e2ca")
+	)
+	(fp_line
+		(start -2.1 -1.35)
+		(end -2.1 1.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "cb1fd631-3501-451a-8fef-665edfcb6a70")
+	)
+	(fp_line
+		(start -2.1 -1.35)
+		(end 2.1 -1.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e0714eed-c1ea-466f-b493-6e670f47777b")
+	)
+	(fp_line
+		(start -2.1 1.35)
+		(end 2.1 1.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b5f2865d-f1f2-458e-a23a-f0449c9ed545")
+	)
+	(fp_line
+		(start -1.51 -0.35)
+		(end -1.51 0.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7cccbd91-5772-444d-89ef-be1ae71ee57b")
+	)
+	(fp_line
+		(start -1.51 0)
+		(end -1.71 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "4484f79a-c205-40ce-a15b-d6dd2d536a28")
+	)
+	(fp_line
+		(start -1.51 0)
+		(end -1.01 -0.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a2933c37-7c43-49e2-996c-15fa1469f406")
+	)
+	(fp_line
+		(start -1.01 -0.35)
+		(end -1.01 0.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "796de642-8c27-4db3-8bf2-ac566985441b")
+	)
+	(fp_line
+		(start -1.01 0)
+		(end -0.76 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a1c205b6-07c1-44a2-a752-ca2c0ba4a0d8")
+	)
+	(fp_line
+		(start -1.01 0.35)
+		(end -1.51 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "3c39d78a-20ce-442c-8ad7-e4c5e4a4fece")
+	)
+	(fp_line
+		(start 2.1 -1.35)
+		(end 2.1 1.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a3c87c1b-9a24-4b36-b46f-dad21c45d40a")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "8561371c-f656-4162-b405-f9728fd2628b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.21 0 180)
+		(size 3.1 2.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e60866b3-d538-4c6c-a75c-1ef5a0691134")
+	)
+	(pad "2" smd rect
+		(at 2.01 0 180)
+		(size 1.5 1.52)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "6ecd6388-07ce-4a59-89eb-55ca0891b9d8")
+	)
+	(model "${KICAD_LIBRARY}/3D/Packages/Vishay/SMPA.stp"
+		(offset
+			(xyz 25.8 1 5.2)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
 )

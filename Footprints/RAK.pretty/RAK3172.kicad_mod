@@ -4,7 +4,7 @@
 	(generator_version "8.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at -5.461 -8.509 0)
+		(at 0 0 0)
 		(layer "F.SilkS")
 		(uuid "78ec97c8-d8c0-4af8-8085-9bc14997a937")
 		(effects
@@ -15,7 +15,7 @@
 		)
 	)
 	(property "Value" "RAK3172"
-		(at -4.318 8.636 0)
+		(at 0 0 0)
 		(layer "F.Fab")
 		(uuid "6fd8c5b8-405c-4331-acb5-245e0717d885")
 		(effects

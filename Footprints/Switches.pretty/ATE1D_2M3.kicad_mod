@@ -1,20 +1,140 @@
-(module ATE1D_2M3 (layer F.Cu) (tedit 5EF3A3E4)
-  (fp_text reference REF** (at 0 0.5) (layer F.SilkS)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_text value ATE1D_2M3 (at 0 -0.5) (layer F.Fab)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_line (start -4.75 -2.5) (end 4.75 -2.5) (layer F.CrtYd) (width 0.12))
-  (fp_line (start 4.75 -2.5) (end 4.75 2.5) (layer F.CrtYd) (width 0.12))
-  (fp_line (start 4.75 2.5) (end -4.75 2.5) (layer F.CrtYd) (width 0.12))
-  (fp_line (start -4.75 2.5) (end -4.75 -2.5) (layer F.CrtYd) (width 0.12))
-  (pad 1 thru_hole circle (at -2.54 0) (size 1.8 1.8) (drill 1) (layers *.Cu *.Mask))
-  (pad 2 thru_hole circle (at 0 0) (size 1.8 1.8) (drill 1) (layers *.Cu *.Mask))
-  (pad 3 thru_hole circle (at 2.54 0) (size 1.8 1.8) (drill 1) (layers *.Cu *.Mask))
-  (model ${KICAD_LIBRARY}/3D/Switches/Switch_SubMini_SPDT.stp
-    (at (xyz 0 0 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 90))
-  )
+(footprint "ATE1D_2M3"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "568a14ae-6f7c-4d3a-92c3-6ab61c93cb6f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "ATE1D_2M3"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "4d699bda-a5b8-4bb7-89d2-84d386c8aaa6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b9498ebe-2f78-4554-8003-9c179e9ee72b")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9b01934a-2d86-487c-83b5-ad8b256e62be")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e801e551-5ed8-4eea-be4c-9e3534d10647")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -4.75 -2.5)
+		(end 4.75 -2.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d4ddc0e9-f62b-405e-a672-110839fd26bd")
+	)
+	(fp_line
+		(start -4.75 2.5)
+		(end -4.75 -2.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "896bfb8d-4eba-4399-b909-7175eed76381")
+	)
+	(fp_line
+		(start 4.75 -2.5)
+		(end 4.75 2.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "8b5db9cb-7bd1-4712-a65d-ed58889ae1f7")
+	)
+	(fp_line
+		(start 4.75 2.5)
+		(end -4.75 2.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "4a829d91-85f0-4094-9348-18248f9e8740")
+	)
+	(pad "1" thru_hole circle
+		(at -2.54 0)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f32b862f-0f4e-4765-aac9-dca82414b250")
+	)
+	(pad "2" thru_hole circle
+		(at 0 0)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b96e33db-9215-4cdd-b732-1e8336584d7c")
+	)
+	(pad "3" thru_hole circle
+		(at 2.54 0)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2a07a2d9-aa63-4cf4-8a41-1acad1ec7ece")
+	)
+	(model "${KICAD_LIBRARY}/3D/Switches/Switch_SubMini_SPDT.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 90)
+		)
+	)
 )

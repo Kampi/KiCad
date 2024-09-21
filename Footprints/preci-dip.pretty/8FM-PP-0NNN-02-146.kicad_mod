@@ -1,23 +1,152 @@
-(module 8FM-PP-0NNN-02-146 (layer F.Cu) (tedit 5EE23205)
-  (fp_text reference REF** (at 0 0) (layer F.SilkS)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_text value 8FM-PP-0NNN-02-146 (at 0 5.08) (layer F.Fab)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_line (start -7.62 -3.2) (end 7.62 -3.2) (layer F.CrtYd) (width 0.12))
-  (fp_line (start 7.62 -3.2) (end 7.62 3.2) (layer F.CrtYd) (width 0.12))
-  (fp_line (start 7.62 3.2) (end -7.62 3.2) (layer F.CrtYd) (width 0.12))
-  (fp_line (start -7.62 3.2) (end -7.62 -3.2) (layer F.CrtYd) (width 0.12))
-  (pad 6 smd rect (at 6.35 0) (size 1.8 6.4) (layers F.Cu F.Paste F.Mask))
-  (pad 5 smd rect (at 3.81 0) (size 1.8 6.4) (layers F.Cu F.Paste F.Mask))
-  (pad 4 smd rect (at 1.27 0) (size 1.8 6.4) (layers F.Cu F.Paste F.Mask))
-  (pad 3 smd rect (at -1.27 0) (size 1.8 6.4) (layers F.Cu F.Paste F.Mask))
-  (pad 2 smd rect (at -3.81 0) (size 1.8 6.4) (layers F.Cu F.Paste F.Mask))
-  (pad 1 smd rect (at -6.35 0) (size 1.8 6.4) (layers F.Cu F.Paste F.Mask))
-  (model ${KICAD_LIBRARY}/3D/Connector_254/preci-dip/8fm-38-0006-02-146.stp
-    (offset (xyz 0 0.7 0.8))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 90 -180 -90))
-  )
+(footprint "8FM-PP-0NNN-02-146"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "66ecdcba-fa23-4c7a-892f-a299993c86ce")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "8FM-PP-0NNN-02-146"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "01768acb-e134-4182-bf08-0d9b9fd89f7f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5fcdebc7-3a54-4569-9d50-6679d54d96d2")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c993033d-ed61-4f54-be2a-683f32143bf6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9d6b9800-a4eb-42eb-9905-92d9db0b3f1f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -7.62 -3.2)
+		(end 7.62 -3.2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "c1e9deb3-8fc3-4b4e-9796-44c9a26ab3f1")
+	)
+	(fp_line
+		(start -7.62 3.2)
+		(end -7.62 -3.2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "63be4f7f-201e-42c3-a48c-19d7e479379e")
+	)
+	(fp_line
+		(start 7.62 -3.2)
+		(end 7.62 3.2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d7215b19-67bf-4b72-ba96-fe66dd7372b7")
+	)
+	(fp_line
+		(start 7.62 3.2)
+		(end -7.62 3.2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "c89f867b-76f7-43aa-876b-a531e664123e")
+	)
+	(pad "1" smd rect
+		(at -6.35 0)
+		(size 1.8 6.4)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "da821b8a-0847-482a-91f2-997764afe97e")
+	)
+	(pad "2" smd rect
+		(at -3.81 0)
+		(size 1.8 6.4)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "71a7e5f0-5add-4750-97fe-e09c4269532d")
+	)
+	(pad "3" smd rect
+		(at -1.27 0)
+		(size 1.8 6.4)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "59e0b129-f15d-4e29-b0c0-167ed37c4241")
+	)
+	(pad "4" smd rect
+		(at 1.27 0)
+		(size 1.8 6.4)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "ffa3ccfb-88e3-4c79-a874-906103fb2adf")
+	)
+	(pad "5" smd rect
+		(at 3.81 0)
+		(size 1.8 6.4)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "afca887c-be77-4ca3-bfce-40f714988798")
+	)
+	(pad "6" smd rect
+		(at 6.35 0)
+		(size 1.8 6.4)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "017f6151-ac42-4508-85f2-aabf8c5af4be")
+	)
+	(model "${KICAD_LIBRARY}/3D/Connector_254/preci-dip/8fm-38-0006-02-146.stp"
+		(offset
+			(xyz 0 0.7 0.8)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 90 -180 -90)
+		)
+	)
 )

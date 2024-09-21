@@ -1,0 +1,140 @@
+(footprint "MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0.025 0 0)
+		(layer "F.SilkS")
+		(uuid "68137617-af1a-48a0-972d-e0ee0114843e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "0a025997-18f2-49c1-b35a-53379a51bf16")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "920ca30b-1e31-4dcf-8411-6c51610d6b9c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "52fd8c67-790e-4f85-8267-c24075ce5019")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0cfe1068-efe7-43d8-a1b0-b3c28e13736f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -10.15 -6)
+		(end 10.15 6)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "a9105d34-5d99-4306-a59e-d360f90c11f1")
+	)
+	(fp_rect
+		(start -10.15 -6)
+		(end 10.15 6)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "e71c5505-cc86-422a-aea6-aa26f80c51d5")
+	)
+	(fp_circle
+		(center -2.54 -6.7)
+		(end -2.34 -6.7)
+		(stroke
+			(width 0.4)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "bbb46654-1296-4224-968d-e52a55e92dfb")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "23c12b0e-a940-409a-b99c-1659eabaac32")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at -2.54 -3)
+		(size 2 4)
+		(drill 1.5)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.125)
+		(uuid "214837bf-0d06-4f45-9578-b00d1818d030")
+	)
+	(pad "2" thru_hole oval
+		(at 2.54 -3)
+		(size 2 4)
+		(drill 1.5)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "67872cf3-cc6b-4096-a0be-250e1bfe6e6e")
+	)
+	(model "${KICAD_LIBRARY}/3D/Phoenix/MSTBA-2-5-2-G-5-08-LR.stp"
+		(offset
+			(xyz -10 -7 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
