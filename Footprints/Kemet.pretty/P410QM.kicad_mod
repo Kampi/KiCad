@@ -1,4 +1,4 @@
-(footprint "PMR209MC"
+(footprint "P410QM"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -7,7 +7,7 @@
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "c0084988-ff53-4a11-8f6d-3d65f8c6bb10")
+		(uuid "f42d4ad2-e560-4375-81ec-a397b25de72f")
 		(effects
 			(font
 				(size 1 1)
@@ -15,11 +15,11 @@
 			)
 		)
 	)
-	(property "Value" "PMR209MC"
+	(property "Value" "P410QM"
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "aaff8e03-9f47-4c7e-ada3-ae96005d5132")
+		(uuid "76e94cc2-035a-4dbd-9c9e-d5703a45ef19")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "3d476c0a-2e8a-45f6-b435-78209a49d5f6")
+		(uuid "0384d600-f66a-4530-ba0a-784e83426c26")
 		(effects
 			(font
 				(size 1 1)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "4ba780d9-1179-4865-b9ff-f5612da37a2d")
+		(uuid "428b1e7e-3b13-4cdd-81f8-7d46992279f4")
 		(effects
 			(font
 				(size 1 1)
@@ -58,7 +58,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "02ac8f38-063e-4bd9-94e5-c89221aa388a")
+		(uuid "3c95aa61-8a7c-410b-99f1-da1e83cc5d21")
 		(effects
 			(font
 				(size 1 1)
@@ -66,34 +66,34 @@
 			)
 		)
 	)
-	(attr through_hole)
+	(attr smd)
 	(fp_rect
-		(start -12 -3.8)
-		(end 12 3.8)
+		(start -9.25 -3.65)
+		(end 9.25 3.65)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(fill none)
 		(layer "F.CrtYd")
-		(uuid "ca30713d-5ca3-4290-b91a-354cfd61e9ef")
+		(uuid "9c34cf74-bb8d-407d-8c2f-8a847c881903")
 	)
 	(fp_rect
-		(start -12 -3.8)
-		(end 12 3.8)
+		(start -9.25 -3.65)
+		(end 9.25 3.65)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(fill none)
 		(layer "F.Fab")
-		(uuid "31627308-c6ef-467a-b044-b2a18c82b249")
+		(uuid "856131b8-8af0-4fe9-a3c1-5dd68ac2a4ed")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "354fc798-663f-4e66-ad91-4cae747a5c25")
+		(uuid "5d72c14d-632c-458a-8c1d-da83c942c53f")
 		(effects
 			(font
 				(size 1 1)
@@ -102,19 +102,30 @@
 		)
 	)
 	(pad "1" thru_hole circle
-		(at -10.15 0)
+		(at -7.6 0)
 		(size 1.35 1.35)
-		(drill 0.9)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "9e0c7c57-32e0-4731-b5ff-60183247cf7e")
+		(uuid "425910b6-0b9c-4039-80a7-58f52848acc8")
 	)
 	(pad "2" thru_hole circle
-		(at 10.15 0)
+		(at 7.6 0)
 		(size 1.35 1.35)
-		(drill 0.9)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "b6bdf59b-2f70-4e40-979d-086868f6899a")
+		(uuid "cf34d2b3-debb-415e-bc2a-56b1f45aed78")
+	)
+	(model "${KICAD_LIBRARY}/3D/Kemet/P410QM223M300AH101.stp"
+		(offset
+			(xyz -9.23 3.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
 	)
 )

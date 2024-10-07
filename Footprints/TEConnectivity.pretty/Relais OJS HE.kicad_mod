@@ -1,0 +1,147 @@
+(footprint "Relais OJS HE"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "0649320c-b61e-4023-bfef-b53e5b08be0c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Relais OJS HE"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "9fa18b32-b2ad-4dd4-8faa-77ed9736ce43")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "360d055a-7393-4e54-b192-69ec82fbd8ca")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d893f144-9fdd-4666-a820-c63726ab0aaa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1108ec77-154e-454d-80d2-faf659c9f15f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -9.1 -5.1)
+		(end 9.1 5.1)
+		(stroke
+			(width 0.14)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "ade272a6-b613-4661-a015-60aecffa0bcb")
+	)
+	(fp_rect
+		(start -9.1 5.1)
+		(end 9.1 -5.1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "e741d61c-b0f4-457c-b533-6d8de43d8bd5")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e05a6e22-7921-4d69-8ba5-b7b3ad94ba58")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "13" thru_hole circle
+		(at 7.62 -3.55)
+		(size 3 3)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0d24c6c5-6a43-4dc5-b68f-1cb526d41dd7")
+	)
+	(pad "14" thru_hole circle
+		(at 5.08 3.55)
+		(size 3 3)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "255501ba-964b-4887-bbb4-e96bead921c6")
+	)
+	(pad "A1" thru_hole circle
+		(at -7.62 -3.8)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "cb80a7c0-ffc9-4448-8319-c9c77312d787")
+	)
+	(pad "A2" thru_hole circle
+		(at -7.62 3.8)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "64296b94-d00b-4b54-98b0-55b11c40f738")
+	)
+	(model "${KICAD_LIBRARY}/3D/TE Connectivity/1-2071556-2.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -180 0 0)
+		)
+	)
+)

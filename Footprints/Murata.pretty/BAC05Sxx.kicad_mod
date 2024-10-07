@@ -1,0 +1,306 @@
+(footprint "BAC05Sxx"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "ACDC-Converter, Murata, 5W, ClassB, https://www.murata.com/products/productdata/8809982558238/KAC-BAC05.pdf")
+	(tags "switching power supply tht")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "b47aaa20-22c2-4375-9e94-bcc301d43228")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "BAC05Sxx"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "8cdf4863-57ed-42c2-bb3e-19c498320402")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at -10.16 -10.16 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d7d9eb59-f53b-4a92-bcda-4fd3597412cc")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at -10.16 -10.16 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "78a951db-4527-4d70-8c57-1d69cbda74de")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at -10.16 -10.16 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "151cfab6-5982-414c-aa78-fcc226d9bd11")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -12.95 -12.95)
+		(end 12.95 12.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "8cbc80f0-ade2-43a8-b093-74bd5b5e2a75")
+	)
+	(fp_line
+		(start -12.7 11.7)
+		(end -12.7 -11.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2e1e6231-e4eb-4dd3-a1f5-5065c8a69cde")
+	)
+	(fp_line
+		(start -10.86 -12.7)
+		(end -11.7 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "fbeaedc4-3318-407a-96fe-8deca17e087f")
+	)
+	(fp_line
+		(start -10.16 -12)
+		(end -10.86 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6292f250-f39e-4b18-b8c0-f91bfff7c6da")
+	)
+	(fp_line
+		(start -9.46 -12.7)
+		(end -10.16 -12)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "98b426e6-fc1f-4471-8139-97a6dedcd4fd")
+	)
+	(fp_line
+		(start -9.46 -12.7)
+		(end 11.7 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0cbdff34-950f-40f6-830f-b10ae739be53")
+	)
+	(fp_line
+		(start 11.7 12.7)
+		(end -11.7 12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e1af456a-7836-4fb4-93e6-9db694bbc9c7")
+	)
+	(fp_line
+		(start 12.7 -11.7)
+		(end 12.7 11.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "707e2229-f260-4309-87f0-64b33ae0a856")
+	)
+	(fp_arc
+		(start -12.7 -11.7)
+		(mid -12.407107 -12.407107)
+		(end -11.7 -12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6b28a9ef-d712-41b3-94f6-3f59ec4ee76a")
+	)
+	(fp_arc
+		(start -11.7 12.7)
+		(mid -12.407107 12.407107)
+		(end -12.7 11.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "3c887196-05ef-4f02-9c06-87379688ddae")
+	)
+	(fp_arc
+		(start 11.7 -12.7)
+		(mid 12.407107 -12.407107)
+		(end 12.7 -11.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "35870c6f-a8e2-46e2-91d1-baaf2c668922")
+	)
+	(fp_arc
+		(start 12.7 11.7)
+		(mid 12.407107 12.407107)
+		(end 11.7 12.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ce4d26e5-757a-42f5-9621-3b4b36a83c2d")
+	)
+	(fp_text user "Isolation barrier"
+		(at 1.79 -0.6 -90)
+		(unlocked yes)
+		(layer "Cmts.User")
+		(uuid "166d2b0c-6680-426f-bd3b-c96358bca934")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "9e5121eb-14a2-4e3e-9d1a-ad13a79f33b7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at -10.16 -10.16)
+		(size 1.6 1.6)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.25)
+		(uuid "a43e1ce1-6098-4bf5-8b9a-d17c99486c42")
+	)
+	(pad "2" thru_hole circle
+		(at -10.16 -5.08)
+		(size 1.6 1.6)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e2880e1f-7b27-4e1e-a408-e18b08818517")
+	)
+	(pad "3" thru_hole circle
+		(at 10.16 10.16)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4b650afb-9cbd-458f-9d5a-d78cae4e4218")
+	)
+	(pad "4" thru_hole circle
+		(at 10.16 0)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "791766a0-5866-4b07-bceb-711e964663ba")
+	)
+	(pad "5" thru_hole circle
+		(at 10.16 -10.16)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c03dd006-97ba-4876-86b0-15aef4ddefe9")
+	)
+	(zone
+		(net 0)
+		(net_name "")
+		(layers "*.Cu")
+		(uuid "45e2d9c9-3384-4c0d-9318-16cf44454b58")
+		(name "Isolation barrier")
+		(hatch full 0.508)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.254)
+		(filled_areas_thickness no)
+		(keepout
+			(tracks not_allowed)
+			(vias not_allowed)
+			(pads not_allowed)
+			(copperpour not_allowed)
+			(footprints not_allowed)
+		)
+		(fill
+			(thermal_gap 0.508)
+			(thermal_bridge_width 0.508)
+		)
+		(polygon
+			(pts
+				(xy 3.66 -2.66) (xy 8.66 -2.66) (xy 8.66 12.74) (xy 0.14 12.74) (xy 0.14 5.09) (xy -0.36 4.84) (xy -0.81 4.565)
+				(xy -1.26 4.265) (xy -1.685 3.94) (xy -2.11 3.565) (xy -2.46 3.215) (xy -2.735 2.915) (xy -2.86 2.765)
+				(xy -3.085 2.49) (xy -3.285 2.215) (xy -3.635 1.665) (xy -3.835 1.315) (xy -4.135 0.665) (xy -4.285 0.315)
+				(xy -4.41 -0.035) (xy -4.535 -0.435) (xy -4.61 -0.71) (xy -4.685 -1.01) (xy -4.735 -1.285) (xy -4.81 -1.735)
+				(xy -4.86 -2.26) (xy -4.86 -2.81) (xy -4.86 -12.735) (xy 3.66 -12.735)
+			)
+		)
+	)
+	(model "${KICAD8_3DMODEL_DIR}/Converter_ACDC.3dshapes/Converter_ACDC_Murata_BAC05SxxDC_THT.wrl"
+		(offset
+			(xyz -10.5 10 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
