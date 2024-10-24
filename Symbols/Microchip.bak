@@ -297,7 +297,7 @@
 				(start -7.62 7.62)
 				(end 7.62 -7.62)
 				(stroke
-					(width 0)
+					(width 0.254)
 					(type default)
 				)
 				(fill
