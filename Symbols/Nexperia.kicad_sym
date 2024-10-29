@@ -55,24 +55,6 @@
 				(hide yes)
 			)
 		)
-		(property "Mfr." "Nexperia"
-			(at -2.54 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. No." "BSH205G2AR"
-			(at -2.54 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "ki_keywords" "P-Channel MOSFET"
 			(at 0 0 0)
 			(effects
@@ -354,25 +336,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr." "Nexperia"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. No." "PMV50XNEAR"
+		(property "Description" "-3.4A Id, -30V Vds, P-Channel MOSFET, SOT-23"
 			(at 0 0 0)
 			(effects
 				(font
@@ -650,51 +614,6 @@
 			)
 		)
 		(property "Description" "0.59A Id, 30V Vds, N-Channel MOSFET, DFN-1006-3"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr." ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. No." ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Order-Nr." ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "CONFIG" ""
 			(at 0 0 0)
 			(effects
 				(font
@@ -988,26 +907,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "-0.5A Id, -20V Vds, P-Channel MOSFET, SOT-23"
+		(property "Description" "-0.5A Id, -20V Vds, P-Channel MOSFET, DFN-1006-3"
 			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr." "Nexperia"
-			(at -2.54 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfr. No." "BSH205G2AR"
-			(at -2.54 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)

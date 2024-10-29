@@ -103,7 +103,7 @@
 			(pin power_in line
 				(at 0 12.7 270)
 				(length 2.54)
-				(name "VCC"
+				(name "V_{DD}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -208,24 +208,6 @@
 					)
 				)
 			)
-			(pin no_connect line
-				(at 10.16 -7.62 180)
-				(length 2.54)
-				(name "NC"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 		)
 	)
 	(symbol "KXTJ3-1057"
@@ -297,7 +279,7 @@
 			(pin power_in line
 				(at 1.27 11.43 270)
 				(length 2.54) hide
-				(name "VDD"
+				(name "V_{DD}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -315,7 +297,7 @@
 			(pin power_in line
 				(at -1.27 11.43 270)
 				(length 2.54) hide
-				(name "VDDIO"
+				(name "V_{IO}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -369,7 +351,7 @@
 			(pin power_in line
 				(at -1.27 11.43 270)
 				(length 2.54)
-				(name "VDDIO"
+				(name "V_{IO}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -441,7 +423,7 @@
 			(pin power_in line
 				(at 1.27 11.43 270)
 				(length 2.54)
-				(name "VDD"
+				(name "V_{DD}"
 					(effects
 						(font
 							(size 1.27 1.27)

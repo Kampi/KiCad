@@ -7,6 +7,7 @@
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.SilkS")
+		(hide yes)
 		(uuid "3dc1aec7-4f2e-4b6a-b4d8-3a41253c21a1")
 		(effects
 			(font
@@ -66,6 +67,7 @@
 			)
 		)
 	)
+	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_rect
 		(start -1.5 -1.6)
@@ -154,12 +156,6 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "5bd467a6-a43b-49ff-a45a-c3f82d7b5055")
 	)
-	(pad "B1" smd circle
-		(at -1.2 -1)
-		(size 0.2 0.2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
-		(uuid "2edfef62-6caf-4e41-8d05-5206c3f6882b")
-	)
 	(pad "B2" smd circle
 		(at -0.8 -1)
 		(size 0.2 0.2)
@@ -195,12 +191,6 @@
 		(size 0.2 0.2)
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "e1782ac7-5ccf-4ccd-8f2f-edd4fca06d1f")
-	)
-	(pad "C1" smd circle
-		(at -1.2 -0.6)
-		(size 0.2 0.2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
-		(uuid "826baffc-808e-4f9d-b06f-d54e1d2c06aa")
 	)
 	(pad "C2" smd circle
 		(at -0.8 -0.6)
@@ -255,12 +245,6 @@
 		(size 0.2 0.2)
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "6d778312-5e31-49dc-8fd5-7d5f57d18eea")
-	)
-	(pad "D4" smd circle
-		(at 0 -0.2)
-		(size 0.2 0.2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
-		(uuid "0802c112-d9ef-4892-be50-57cb9a8d0ccf")
 	)
 	(pad "D5" smd circle
 		(at 0.4 -0.2)
@@ -447,5 +431,16 @@
 		(size 0.2 0.2)
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "d71f7181-f5fd-47f6-b072-5cccf643af0e")
+	)
+	(model "${KICAD_LIBRARY}/3D/Nordic Semiconductor/NRF52832-CIAA-R.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
 	)
 )
