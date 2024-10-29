@@ -1,7 +1,7 @@
 (footprint "L_Taiyo-Yuden_NR-3015"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -21,18 +21,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "87883bba-ad36-4e7e-94d2-62d9c489d2ab")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -62,34 +50,14 @@
 		)
 	)
 	(attr smd)
-	(fp_line
-		(start -1.6 -1.6)
-		(end 1.6 -1.6)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "98324750-9312-44f3-af5b-02e010f7764b")
-	)
-	(fp_line
-		(start -1.6 1.6)
-		(end 1.6 1.6)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "6ac7e96d-4bfe-465e-93a3-1e2880b7fb19")
-	)
 	(fp_rect
 		(start -1.5 -1.5)
 		(end 1.5 1.5)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "4bd368f3-0fb6-4307-9ad7-2774c55766e2")
 	)
@@ -97,7 +65,7 @@
 		(start -1.5 -1.5)
 		(end -1.5 1.5)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -107,7 +75,7 @@
 		(start -1.5 1.5)
 		(end 1.5 1.5)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -117,7 +85,7 @@
 		(start 1.5 -1.5)
 		(end -1.5 -1.5)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -127,7 +95,7 @@
 		(start 1.5 1.5)
 		(end 1.5 -1.5)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -147,15 +115,16 @@
 	(pad "1" smd rect
 		(at -1.1 0)
 		(size 0.8 2.7)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "80365b65-7973-4d7d-a997-b2c3e6580282")
 	)
 	(pad "2" smd rect
 		(at 1.1 0)
 		(size 0.8 2.7)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "9763f04c-9333-46f5-a5a2-5f4d4f012cf1")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Taiyo Yuden/NR3015.stp"
 		(offset
 			(xyz 0 0 0)

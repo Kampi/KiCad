@@ -6,7 +6,7 @@
 	(descr "Potentiometer, vertical, Bourns 3386P")
 	(tags "Potentiometer vertical Bourns 3386P")
 	(property "Reference" "REF**"
-		(at -0.015 -8.555 0)
+		(at 0 0 0)
 		(layer "F.SilkS")
 		(uuid "1707d672-2f2a-4c03-9280-31bb3ee29ad0")
 		(effects
@@ -68,7 +68,7 @@
 		(start -4.775 -7.3)
 		(end 4.75 2.225)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(fill none)

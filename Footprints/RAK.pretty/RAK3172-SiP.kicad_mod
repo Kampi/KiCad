@@ -68,7 +68,7 @@
 		(start -6 -6)
 		(end 6 6)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(fill none)
@@ -577,7 +577,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "6e07fda6-6908-4f4b-80a7-95fe1231aada")
 	)
-	(model "${KICAD_LIBRARY}/3D/RAK/RAK3172-SiP.step"
+	(model "${KICAD_LIBRARY}/3D/RAK/RAK3172-SiP.stp"
 		(offset
 			(xyz -0.4 0.4 0)
 		)

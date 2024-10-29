@@ -1,16 +1,103 @@
-(module GB30586 (layer F.Cu) (tedit 5F033BF1)
-  (fp_text reference REF** (at 0 0) (layer F.SilkS)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_text value GB30586 (at 0 -0.5) (layer F.Fab)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (fp_circle (center 0 0) (end 15 0) (layer F.SilkS) (width 0.12))
-  (fp_circle (center 0 0) (end 15 0) (layer F.CrtYd) (width 0.12))
-  (fp_circle (center 0 0) (end 15 0) (layer F.Fab) (width 0.12))
-  (fp_text user %R (at 0 0 180) (layer F.Fab)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (pad 1 thru_hole circle (at -2 0) (size 2 2) (drill 1) (layers *.Cu *.Mask))
-  (pad 2 thru_hole circle (at 2 0) (size 2 2) (drill 1) (layers *.Cu *.Mask))
+(footprint "GB30586"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "89081410-157a-444a-a236-54c976695ec5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "GB30586"
+		(at 0 -0.5 0)
+		(layer "F.Fab")
+		(uuid "69a475f4-5d91-4aea-bd4e-7c79813c836a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "afa90a6c-e680-4a18-9132-38349306113c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b8cb7f91-d700-48ca-898a-b35254cd269a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_circle
+		(center 0 0)
+		(end 15 0)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "a100fd6e-447a-4780-80e5-ef12a3f9d969")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 15 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "4dd8771b-4594-4d08-b87f-3314e77e7dfe")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(uuid "e7c1b197-ee94-4cc0-9a50-e3f349ee573f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -2 0)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "703a174d-1266-4691-bf0b-7c39451a85fc")
+	)
+	(pad "2" thru_hole circle
+		(at 2 0)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b8dd1dc3-8c74-4c23-92e5-f6e4e7cb3949")
+	)
+	(embedded_fonts no)
 )

@@ -68,7 +68,7 @@
 		(start -2.2 -1.925)
 		(end 2.2 1.7)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(fill none)
@@ -205,7 +205,7 @@
 		(remove_unused_layers no)
 		(uuid "103c9f8a-aefc-4bcc-be43-54b8942c6816")
 	)
-	(model "${KICAD_LIBRARY}/3D/E-Switch/TL6340AF160Q.stp"
+	(model "${KICAD_LIBRARY}/3D/E-Switch/TL6340.stp"
 		(offset
 			(xyz 0 0 0)
 		)

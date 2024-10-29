@@ -1,0 +1,154 @@
+(footprint "TL3305"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "65c5fb42-d122-4cb1-9bda-53710e230c60")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "TL3305"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a9f2d563-a704-44e6-8c9f-a54f25cd9cca")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "40e9a77e-1675-4ec0-bb6f-3d821246f41d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1bf74cd7-8f67-4fb2-8453-67eb3db9b7f1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8c7802f3-a679-415b-bb83-89cecaeefefe")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -4.4 -2.3)
+		(end 4.4 2.3)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "d2331829-28a7-4f12-b014-1fa49f6de56f")
+	)
+	(fp_rect
+		(start -2.25 -2.25)
+		(end 2.25 2.25)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "d2801289-b1c4-405f-8b7a-f9350680a5cd")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1.25 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "0742801e-92a2-4d75-94e9-bf0fe3214ff0")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "5d95e13b-c28d-4d39-b7cb-8d96f6624df8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -3.7 1.65)
+		(size 1.4 1.1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(uuid "7ece889a-f97c-4b1c-8bc8-851225a774d4")
+	)
+	(pad "2" smd rect
+		(at 3.7 1.65)
+		(size 1.4 1.1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(uuid "8fb95e98-8bc5-4c3d-8f6e-a269389f3600")
+	)
+	(pad "3" smd rect
+		(at -3.7 -1.65)
+		(size 1.4 1.1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(uuid "24aa0599-5d59-44dd-9fe8-888b363de310")
+	)
+	(pad "4" smd rect
+		(at 3.7 -1.65)
+		(size 1.4 1.1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(uuid "7caf2d57-0ca4-48dc-952b-823ba2835b59")
+	)
+	(model "${KICAD_LIBRARY}/3D/E-Switch/TL3305.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

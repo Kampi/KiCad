@@ -62,51 +62,11 @@
 		)
 	)
 	(attr smd)
-	(fp_line
-		(start -2.46 0.4)
-		(end -2.46 0.86)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "c69af057-db91-423f-8b96-f89b2a418d62")
-	)
-	(fp_line
-		(start -2.46 0.86)
-		(end 2.46 0.86)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "c5ee8788-5446-493f-8cb8-41e04874319a")
-	)
-	(fp_line
-		(start -2.35 -0.86)
-		(end 2.46 -0.86)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "c43b0f8f-f6b4-450b-af5b-f42419635490")
-	)
-	(fp_line
-		(start 2.46 -0.86)
-		(end 2.46 0.86)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "c73a3bbe-a08f-44d3-8af1-a1251328a142")
-	)
 	(fp_rect
 		(start -2.35 -0.75)
 		(end 2.35 0.75)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(fill none)
@@ -165,40 +125,40 @@
 		)
 	)
 	(pad "1" smd rect
+		(at -2.02 0.335)
+		(size 0.66 0.63)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "0397bca5-385b-4e9f-a8a9-9d27b98963ff")
+	)
+	(pad "2" smd rect
 		(at -1.21 -0.25)
 		(size 0.4 0.8)
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "ae44161d-d5a1-4e49-8aeb-59397e2a98ab")
 	)
-	(pad "2" smd rect
-		(at 0.53 -0.25)
-		(size 0.4 0.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
-		(uuid "1253b963-c320-4f57-a9db-f2c9b4c07c94")
-	)
 	(pad "3" smd rect
-		(at 2.02 0.335)
-		(size 0.66 0.63)
-		(layers "F.Cu" "F.Paste" "F.Mask")
-		(uuid "9a026dee-99d5-456f-94f7-e1cad2ebd844")
-	)
-	(pad "4" smd rect
-		(at 1.21 -0.25)
-		(size 0.4 0.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
-		(uuid "57ea5585-e572-496f-a539-6fdbf26d7f97")
-	)
-	(pad "5" smd rect
 		(at -0.53 -0.25)
 		(size 0.4 0.8)
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "fba64a99-4462-495b-bed0-b52b4ff3953a")
 	)
+	(pad "4" smd rect
+		(at 0.53 -0.25)
+		(size 0.4 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "1253b963-c320-4f57-a9db-f2c9b4c07c94")
+	)
+	(pad "5" smd rect
+		(at 1.21 -0.25)
+		(size 0.4 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "57ea5585-e572-496f-a539-6fdbf26d7f97")
+	)
 	(pad "6" smd rect
-		(at -2.02 0.335)
+		(at 2.02 0.335)
 		(size 0.66 0.63)
 		(layers "F.Cu" "F.Paste" "F.Mask")
-		(uuid "0397bca5-385b-4e9f-a8a9-9d27b98963ff")
+		(uuid "9a026dee-99d5-456f-94f7-e1cad2ebd844")
 	)
 	(model "${KICAD_LIBRARY}/3D/Cree/QLS6B-FKW-CNSNSF043.stp"
 		(opacity 0.9800)

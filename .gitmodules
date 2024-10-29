@@ -1,3 +1,9 @@
 [submodule "GitHub/Espressif"]
 	path = GitHub/Espressif
 	url = https://github.com/espressif/kicad-libraries
+[submodule "Template-Project"]
+	path = Template-Project
+	url = https://github.com/Kampi/Template-Project.git
+[submodule "Plugins/KiCad-Project-Initialization-Plugin"]
+	path = Plugins/KiCad-Project-Initialization-Plugin
+	url = https://github.com/Kampi/KiCad-Project-Initialization-Plugin.git

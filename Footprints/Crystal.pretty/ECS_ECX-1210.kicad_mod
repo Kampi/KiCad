@@ -1,7 +1,7 @@
 (footprint "ECS_ECX-1210"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -20,19 +20,6 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "6a52db7b-f3c8-4d8f-b210-327399e16959")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "1119276b-6aae-4d4b-a03e-029e45eeb5c3")
 		(effects
 			(font
 				(size 1 1)
@@ -68,13 +55,13 @@
 	)
 	(attr smd)
 	(fp_rect
-		(start -0.6 -0.5)
-		(end 0.6 0.5)
+		(start -0.8 -0.6)
+		(end 0.8 0.6)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "adc24028-94bf-463c-8df3-40ff63481c42")
 	)
@@ -85,7 +72,7 @@
 			(width 0.1)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "ec1d9f5c-9813-41ec-9c8b-af59168df889")
 	)
@@ -104,15 +91,27 @@
 	(pad "1" smd rect
 		(at -0.4125 0 90)
 		(size 1.14 0.575)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
 		(uuid "a97f1867-497f-438f-b16a-222f750379da")
 	)
 	(pad "2" smd rect
 		(at 0.4125 0 90)
 		(size 1.14 0.575)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
 		(uuid "9f0fcc04-aef4-46f8-ab1c-318ca4e13955")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/ECS/ECS-.327-6-1210-TR.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
 	)
 )

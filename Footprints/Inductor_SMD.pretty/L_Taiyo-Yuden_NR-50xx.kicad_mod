@@ -1,7 +1,7 @@
 (footprint "L_Taiyo-Yuden_NR-50xx"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -21,18 +21,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 -0.1 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "c0e750fc-dfa6-4380-a4a6-92ff48a43384")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -62,34 +50,14 @@
 		)
 	)
 	(attr smd)
-	(fp_line
-		(start -3.45 -2.55)
-		(end 3.45 -2.55)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "faeef3c1-a8d9-49b5-909a-be71329d6347")
-	)
-	(fp_line
-		(start -3.45 2.55)
-		(end 3.45 2.55)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "36707232-c03a-477f-82f5-83d9dfc3cb22")
-	)
 	(fp_rect
 		(start -3.5 -2.55)
 		(end 3.5 2.55)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "e2ce1241-82a4-410e-a5ad-657ede985dac")
 	)
@@ -97,7 +65,7 @@
 		(start -2.45 -1.65)
 		(end -1.65 -2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -107,7 +75,7 @@
 		(start -2.45 0)
 		(end -2.45 -1.65)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -117,7 +85,7 @@
 		(start -2.45 0)
 		(end -2.45 1.65)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -127,7 +95,7 @@
 		(start -2.45 1.65)
 		(end -1.65 2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -137,7 +105,7 @@
 		(start -1.65 -2.45)
 		(end 0 -2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -147,7 +115,7 @@
 		(start -1.65 2.45)
 		(end 0 2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -157,7 +125,7 @@
 		(start 1.65 -2.45)
 		(end 0 -2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -167,7 +135,7 @@
 		(start 1.65 2.45)
 		(end 0 2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -177,7 +145,7 @@
 		(start 2.45 -1.65)
 		(end 1.65 -2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -187,7 +155,7 @@
 		(start 2.45 0)
 		(end 2.45 -1.65)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -197,7 +165,7 @@
 		(start 2.45 0)
 		(end 2.45 1.65)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -207,7 +175,7 @@
 		(start 2.45 1.65)
 		(end 1.65 2.45)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -227,15 +195,16 @@
 	(pad "1" smd rect
 		(at -2.25 0)
 		(size 2.4 4.2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "f916d530-638f-47e6-9314-0d35c84bfe2e")
 	)
 	(pad "2" smd rect
 		(at 2.25 0)
 		(size 2.4 4.2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "ab316594-89ec-4ab8-a380-6a37ae3264ae")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Inductor/Taiyo Yuden/NRS5030.stp"
 		(offset
 			(xyz -2.5 2.3 0)

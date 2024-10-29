@@ -1,0 +1,212 @@
+(footprint "VEMD5080X01"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "1ac436fd-e3ea-44ae-a6cb-78550c8494d5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "VEMD5080X01"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "82f1ec52-7d0e-4494-b305-f26ebefed3e9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1f4a53fb-f1a4-4718-ab33-483eb12dbb5a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "253efef6-fa0a-493e-ab41-ced030261f0a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a14501f4-fbac-4177-b099-b1e4852c2e0d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_circle
+		(center 2.3 -2.1)
+		(end 2.4 -2.1)
+		(stroke
+			(width 0.2)
+			(type default)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "e0017652-6761-46cf-b12b-e33bee5e314c")
+	)
+	(fp_rect
+		(start -2.3 -2.85)
+		(end 2.3 2.85)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "0469a418-363d-431b-92ee-3cc2d6df1a52")
+	)
+	(fp_line
+		(start -2 -2.5)
+		(end 2 -2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "216abe6c-3c7c-4c5d-9f2f-e35570f54a1a")
+	)
+	(fp_line
+		(start -2 2.5)
+		(end -2 -2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "14352b14-01f8-4bce-972c-55a416d1f647")
+	)
+	(fp_line
+		(start -1.5 -1.5)
+		(end 0.3 -1.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "39a9ad20-b26f-4573-bf41-26b163b0593f")
+	)
+	(fp_line
+		(start -1.5 1.5)
+		(end -1.5 -1.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "26a9ae75-69ae-4b83-b16b-ade492c4afcb")
+	)
+	(fp_line
+		(start -1.5 1.5)
+		(end 1.5 1.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "d71b84d9-ad1c-45d0-9ef6-8345a49375e8")
+	)
+	(fp_line
+		(start 0.3 -1.5)
+		(end 1.5 -0.3)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ee99830c-0aed-4c29-9dab-edd656e6c87e")
+	)
+	(fp_line
+		(start 1.5 1.5)
+		(end 1.5 -0.3)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "602434b8-ca53-4bc1-b2ec-96409fab596a")
+	)
+	(fp_line
+		(start 2 -2.5)
+		(end 2 2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5fefc19d-0855-4ac4-913d-7fb8f903f760")
+	)
+	(fp_line
+		(start 2 2.5)
+		(end -2 2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "66cbdff9-5587-4ab3-b1b3-48c802f70520")
+	)
+	(pad "1" smd rect
+		(at -1.275 -2.1)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "8ec9f15c-f585-452d-bd03-074606ccfa0f")
+	)
+	(pad "1" smd rect
+		(at 1.275 -2.1)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "8a10f859-3b1a-4246-9eee-9df49920f8a3")
+	)
+	(pad "2" smd rect
+		(at -1.275 2.1)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "ccf58955-f6ba-4c25-bc1a-243d221a71d9")
+	)
+	(pad "NC" smd rect
+		(at 1.275 2.1)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "642ca8d6-9a7c-4c31-bbcd-db16d2ecf2af")
+	)
+	(model "${KICAD_LIBRARY}/3D/Vishay/VEMD5080X01.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 90)
+		)
+	)
+)

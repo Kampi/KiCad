@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP SN74LVC2G04
-D Dual NOT Gate, Low-Voltage CMOS
-K Dual Gate NOT LVC CMOS
-F https://www.ti.com/lit/ds/symlink/sn74lvc2g04.pdf?HQS=TI-null-null-mousermode-df-pf-null-wwe&ts=1601356906646&ref_url=https%253A%252F%252Fwww.mouser.de%252F
-$ENDCMP
-#
-#End Doc Library

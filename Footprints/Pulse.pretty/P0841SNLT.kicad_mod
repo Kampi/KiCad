@@ -1,0 +1,119 @@
+(footprint "P0841SNLT"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "2a3fd78d-daaf-41c8-8c17-cfef4229ba8b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" " P0841SNLT"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "bc826394-d4ac-49ae-a63c-274383afd99b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a4ae5d64-a1f5-4ce0-8252-5b32e05d891e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cb75d585-5874-4eb4-9f39-0dfa6190bc6f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -12 -12)
+		(end 12 12)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "d988485f-6159-49eb-a94c-23e016343ca6")
+	)
+	(fp_rect
+		(start -12 -12)
+		(end 12 12)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "5701f0a0-ee4f-418c-9be5-73efd9cedf7a")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "8d854dce-fec2-45be-b08f-7e92345d5366")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -10.54 0 90)
+		(size 18 2.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.5)
+		(thermal_bridge_angle 45)
+		(uuid "29eb54dd-b963-4d60-86ae-8e4cb18a56c5")
+	)
+	(pad "2" smd roundrect
+		(at 10.54 0 90)
+		(size 18 2.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.5)
+		(thermal_bridge_angle 45)
+		(uuid "99cd6983-ac19-4392-984c-7ba53677ff5e")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Pulse Electronics/P0841SNLT.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)

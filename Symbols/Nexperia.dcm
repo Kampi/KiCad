@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP BSH205G2AR
-D -2A Id, -20V Vds, P-Channel MOSFET, SOT-23
-K P-Channel MOSFET
-F https://assets.nexperia.com/documents/data-sheet/BSH205G2A.pdf
-$ENDCMP
-#
-#End Doc Library

@@ -68,7 +68,7 @@
 		(start -2.2 -0.4)
 		(end 2.2 -0.4)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(layer "F.CrtYd")
@@ -78,7 +78,7 @@
 		(start -2.2 4.9)
 		(end -2.2 -0.4)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(layer "F.CrtYd")
@@ -88,7 +88,7 @@
 		(start 2.2 -0.4)
 		(end 2.2 4.9)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(layer "F.CrtYd")
@@ -98,7 +98,7 @@
 		(start 2.2 4.9)
 		(end -2.2 4.9)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(layer "F.CrtYd")

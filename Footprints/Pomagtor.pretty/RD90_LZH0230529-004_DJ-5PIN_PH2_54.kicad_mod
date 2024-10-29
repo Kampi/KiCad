@@ -68,7 +68,7 @@
 		(start -12 -2.8)
 		(end 12 2.8)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(fill none)

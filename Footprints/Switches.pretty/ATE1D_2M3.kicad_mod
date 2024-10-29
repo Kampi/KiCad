@@ -1,7 +1,7 @@
 (footprint "ATE1D_2M3"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -14,25 +14,13 @@
 			)
 		)
 	)
-	(property "Value" "ATE1D_2M3"
+	(property "Value" "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(uuid "4d699bda-a5b8-4bb7-89d2-84d386c8aaa6")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "b9498ebe-2f78-4554-8003-9c179e9ee72b")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -126,6 +114,7 @@
 		(remove_unused_layers no)
 		(uuid "2a07a2d9-aa63-4cf4-8a41-1acad1ec7ece")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Switches/Switch_SubMini_SPDT.stp"
 		(offset
 			(xyz 0 0 0)

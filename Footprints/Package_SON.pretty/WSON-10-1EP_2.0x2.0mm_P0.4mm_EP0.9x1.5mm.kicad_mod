@@ -1,0 +1,222 @@
+(footprint "WSON-10-1EP_2.0x2.0mm_P0.4mm_EP0.9x1.5mm"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "WSON, 10 Pin")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "4cce280b-d33e-40fd-a28d-93507783fe0c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "WSON-10-1EP_2.0x2.0mm_P0.4mm_EP0.9x1.5mm"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "2d508bac-e342-4543-9f86-a45a80cd7679")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "607c52ec-33da-44c2-9bcd-ef262ddd73a2")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "18446b5d-efba-44e0-931f-512cc61a59d6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -1.45 -1.25)
+		(end 1.45 1.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "21925c4c-d89e-4559-a1dc-2e1b0429c7f5")
+	)
+	(fp_line
+		(start -1.25 -0.625)
+		(end -0.625 -1.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9e3f9cd6-b0e1-4269-a72c-d6a80417c3de")
+	)
+	(fp_line
+		(start -1.25 1.25)
+		(end -1.25 -0.625)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9dd434ba-7370-4412-a714-e6e71301b2b0")
+	)
+	(fp_line
+		(start -0.625 -1.25)
+		(end 1.25 -1.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5d1d2f72-f634-4a02-9331-b5b644513737")
+	)
+	(fp_line
+		(start 1.25 -1.25)
+		(end 1.25 1.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "023d9589-125f-436e-9f21-cf5457995064")
+	)
+	(fp_line
+		(start 1.25 1.25)
+		(end -1.25 1.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "13fb5329-b261-467f-97cc-650c914014f8")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "f4bc763c-797a-4547-b3b5-9f6362cfca6e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.05 -0.8)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "7bbd072f-0e25-46c2-a9f6-e8660a8e7120")
+	)
+	(pad "2" smd rect
+		(at -1.05 -0.4)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a13b5ad8-c228-43b9-a515-bc9deb211846")
+	)
+	(pad "3" smd rect
+		(at -1.05 0)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "382b4661-e0b3-4aa0-bf07-05de56288f38")
+	)
+	(pad "4" smd rect
+		(at -1.05 0.4)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2a249f2a-5040-46b4-9223-531123126e6e")
+	)
+	(pad "5" smd rect
+		(at -1.05 0.8)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c30f9238-8277-4a07-9064-46ec0bb7a357")
+	)
+	(pad "6" smd rect
+		(at 1.05 0.8)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d4ed56d2-6bd1-45ca-ae0a-31364f68e5e4")
+	)
+	(pad "7" smd rect
+		(at 1.05 0.4)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "068a622c-d396-4a34-a1d5-214dbf6832bf")
+	)
+	(pad "8" smd rect
+		(at 1.05 0)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bd3770c8-4c35-49f6-9911-fe247c60c5b1")
+	)
+	(pad "9" smd rect
+		(at 1.05 -0.4)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e85f7d58-fa2c-4418-8f70-7c97f752e824")
+	)
+	(pad "10" smd rect
+		(at 1.05 -0.8)
+		(size 0.7 0.23)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "354c588e-f95d-4372-b2f1-b3eb6bba6286")
+	)
+	(pad "11" thru_hole circle
+		(at 0 -0.5)
+		(size 0.5 0.5)
+		(drill 0.2)
+		(layers "*.Cu" "F.Mask")
+		(remove_unused_layers no)
+		(solder_paste_margin -0.2)
+		(uuid "68fe38ae-944d-40f1-a584-9e1476414b7d")
+	)
+	(pad "11" smd rect
+		(at 0 0)
+		(size 0.9 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "305c305f-a47d-4361-85bc-49aa036631da")
+	)
+	(pad "11" thru_hole circle
+		(at 0 0.5)
+		(size 0.5 0.5)
+		(drill 0.2)
+		(layers "*.Cu" "F.Mask")
+		(remove_unused_layers no)
+		(solder_paste_margin -0.2)
+		(uuid "ca112d05-de75-4ddf-bc4f-3fe81189308a")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Packages/WSON-10-1EP_2.0x2.0mm_P0.4mm.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

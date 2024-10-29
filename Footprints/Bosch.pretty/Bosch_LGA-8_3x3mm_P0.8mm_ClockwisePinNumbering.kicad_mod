@@ -88,7 +88,7 @@
 		(start -1.5 -1.5)
 		(end 1.5 1.5)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(fill none)
@@ -212,7 +212,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "d55ff5b9-b77d-4ec6-bb8a-289af4a76313")
 	)
-	(model "${KICAD_LIBRARY}/3D/Packages/Bosch/BME680.stp"
+	(model "${KICAD_LIBRARY}/3D/Bosch/BME680.stp"
 		(offset
 			(xyz 0 0 0)
 		)

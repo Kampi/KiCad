@@ -1,7 +1,7 @@
 (footprint "73412-0110"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(tags "u.fl, sma")
 	(property "Reference" "REF**"
@@ -22,18 +22,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "861f0658-c429-4d10-93d2-5cde65288b46")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -167,10 +155,10 @@
 		(start -2 -2)
 		(end 2 2)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "bea8be03-c0b6-4782-b5fe-0dfbf5359d47")
 	)
@@ -251,7 +239,7 @@
 			(width 0.1)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "641c2c3e-50e1-40d1-9ba0-9685b3a319ee")
 	)
@@ -262,7 +250,7 @@
 			(width 0.1)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "e18464d6-6e11-42f0-b65c-dd09cd08eb18")
 	)
@@ -273,7 +261,7 @@
 			(width 0.1)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "62ebc212-684d-4747-8497-294cd65dd23d")
 	)
@@ -284,7 +272,7 @@
 			(width 0.1)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "b1ce727a-f8ee-4289-8079-cdc3da149ff1")
 	)
@@ -302,27 +290,28 @@
 	(pad "1" smd rect
 		(at 0 1.5)
 		(size 1 1)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "19bd4cdd-4ce8-4c7b-94d8-158d66c18582")
 	)
 	(pad "2" smd rect
 		(at -1.475 0)
 		(size 1.05 2.2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "bab1bb21-3ba3-401f-890d-647ea4caccc8")
 	)
 	(pad "2" smd rect
 		(at 0 -1.5)
 		(size 1 1)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "1a56df00-b748-449b-9998-bbf854a7438d")
 	)
 	(pad "2" smd rect
 		(at 1.475 0)
 		(size 1.05 2.2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "12d1c2ba-46e7-449c-8bb9-bb9e432c4590")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Molex/734120110.stp"
 		(offset
 			(xyz 0 0 1.25)
