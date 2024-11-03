@@ -1,7 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP VEML6070
-F https://www.vishay.com/docs/84277/veml6070.pdf
-$ENDCMP
-#
-#End Doc Library
