@@ -134,7 +134,7 @@
 				)
 			)
 			(pin input line
-				(at -2.54 22.86 270)
+				(at -5.08 22.86 270)
 				(length 2.54)
 				(name "VDDIO"
 					(effects
@@ -153,7 +153,7 @@
 			)
 			(pin input line
 				(at -5.08 22.86 270)
-				(length 2.54)
+				(length 2.54) hide
 				(name "VDDIO"
 					(effects
 						(font
@@ -188,8 +188,8 @@
 				)
 			)
 			(pin input line
-				(at 2.54 22.86 270)
-				(length 2.54)
+				(at 0 22.86 270)
+				(length 2.54) hide
 				(name "VDD"
 					(effects
 						(font
