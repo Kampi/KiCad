@@ -1,18 +1,22 @@
-name: Build
+name: Production
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
 
 jobs:
-  build:
-    runs-on: ubuntu-22.04
+  generate:
+    name: Generate production data
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
 
     permissions:
       contents: write
 
     env:
-      KICAD_LIBRARY: /home/runner/work/LoRa-GPS-Tracker/LoRa-GPS-Tracker/library
+      KICAD_LIBRARY: /home/runner/work/<Repo>/<Repo>/library
+      MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
 
     strategy:
       matrix:
@@ -28,28 +32,20 @@ jobs:
           path: .
           submodules: recursive
 
+      - name: Cache KiCost data
+        uses: actions/cache@v3
+        with:
+          path: ~/kicost_cache
+          key: kicost_cache
+
       - name: Dependencies
         run: |
-          sudo apt update
-
-          wget https://github.com/INTI-CMNB/KiBot/releases/download/v1.6.3/kibot_1.6.3-1_all.deb
-          sudo apt install ./kibot*_all.deb
-
-          wget https://github.com/INTI-CMNB/InteractiveHtmlBom/releases/download/v2.7.0-1/interactivehtmlbom.inti-cmnb_2.7.0-1_all.deb
-          sudo apt install ./interactivehtmlbom.inti-cmnb*_all.deb
-
-          wget https://github.com/INTI-CMNB/KiAuto/releases/download/v2.2.8/kiauto_2.2.8-1_all.deb
-          sudo apt install ./kiauto*_all.deb
-
-          sudo add-apt-repository --yes ppa:kicad/kicad-7.0-releases
-          sudo apt install --install-recommends kicad
-
           git clone https://github.com/Kampi/KiCad.git library
 
       - name: Extract branch name
         shell: bash
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
-        id: extract_branch
+        run: |
+		  echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
 
       - name: Initialize
         run: |
@@ -59,7 +55,20 @@ jobs:
       - name: Generate files
         run: |
           cd project
-          kibot -g variant=${{ matrix.device_type }} -d ../production/${{ matrix.device_type }}
+          kibot -vvvv -g variant=${{ matrix.device_type }} -d ../production/${{ matrix.device_type }} 2> ../log/kibot.log
+
+      - name: Clean up
+        run: |
+          cd production/${{ matrix.device_type }}
+          find . -type f -iname \*.log -delete
+          find . -type f -iname \*.ogv -delete
+
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: Log-${{ matrix.device_type }}
+          path: log
 
       - name: Upload Results
         uses: actions/upload-artifact@v4
