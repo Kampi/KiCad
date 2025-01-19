@@ -1,4 +1,4 @@
-(footprint "XCVR_BT40F"
+(footprint "BT40F"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -14,7 +14,7 @@
 			)
 		)
 	)
-	(property "Value" "XCVR_BT40F"
+	(property "Value" "BT40F"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(uuid "35cb6f14-3968-4c8b-a4de-9a42c3e635f1")
