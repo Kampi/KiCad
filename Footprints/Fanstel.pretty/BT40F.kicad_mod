@@ -61,7 +61,7 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.102)
+	(solder_mask_margin 0.1)
 	(attr smd)
 	(fp_line
 		(start -7.75 -10.75)

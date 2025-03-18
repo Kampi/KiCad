@@ -656,7 +656,7 @@
 			(pin bidirectional line
 				(at 16.51 -3.81 180)
 				(length 2.54)
-				(name "SDA-Sensor"
+				(name "SDA_{SENSOR}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -674,7 +674,7 @@
 			(pin output line
 				(at 16.51 -6.35 180)
 				(length 2.54)
-				(name "SCL-Sensor"
+				(name "SCL_{SENSOR}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -746,7 +746,7 @@
 			(pin input line
 				(at -16.51 0 0)
 				(length 2.54)
-				(name "Int-HR"
+				(name "INT_{HR}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -764,7 +764,7 @@
 			(pin input line
 				(at -16.51 -2.54 0)
 				(length 2.54)
-				(name "Int-ACC"
+				(name "INT_{ACC}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1034,7 +1034,7 @@
 			(pin output line
 				(at -16.51 -10.16 0)
 				(length 2.54)
-				(name "32k-Out"
+				(name "32k_{OUT}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1052,7 +1052,7 @@
 			(pin input line
 				(at -16.51 -7.62 0)
 				(length 2.54)
-				(name "32k-In"
+				(name "32k_{IN}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1131,7 +1131,7 @@
 			(pin output line
 				(at -16.51 -10.16 0)
 				(length 2.54)
-				(name "32k-Out"
+				(name "32k_{OUT}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1149,7 +1149,7 @@
 			(pin input line
 				(at -16.51 -7.62 0)
 				(length 2.54)
-				(name "32k-In"
+				(name "32k_{IN}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1239,7 +1239,7 @@
 			(pin bidirectional line
 				(at 16.51 -3.81 180)
 				(length 2.54)
-				(name "SDA-Sensor"
+				(name "SDA_{SENSOR}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1257,7 +1257,7 @@
 			(pin output line
 				(at 16.51 -6.35 180)
 				(length 2.54)
-				(name "SCL-Sensor"
+				(name "SCL_{SENSOR}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1293,7 +1293,7 @@
 			(pin input line
 				(at -16.51 -2.54 0)
 				(length 2.54)
-				(name "Int-ACC"
+				(name "INT_{ACC}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1311,7 +1311,7 @@
 			(pin input line
 				(at -16.51 0 0)
 				(length 2.54)
-				(name "Int-HR"
+				(name "INT_{HR}"
 					(effects
 						(font
 							(size 1.27 1.27)
