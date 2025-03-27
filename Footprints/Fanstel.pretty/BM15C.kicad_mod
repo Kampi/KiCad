@@ -68,8 +68,8 @@
 	)
 	(solder_mask_margin 0.1)
 	(fp_line
-		(start -5.2 8.6)
-		(end -5.2 9)
+		(start -5.05 8.5)
+		(end -5.05 8.9)
 		(stroke
 			(width 0.1)
 			(type default)
@@ -78,8 +78,8 @@
 		(uuid "0adb6734-4d3f-4c55-9112-6e88b9c700ca")
 	)
 	(fp_line
-		(start -5.2 9)
-		(end -4.8 9)
+		(start -5.05 8.9)
+		(end -4.65 8.9)
 		(stroke
 			(width 0.1)
 			(type default)
@@ -88,8 +88,8 @@
 		(uuid "845e19bc-f7a5-4e22-adfe-426c85a45815")
 	)
 	(fp_line
-		(start 5.2 8.6)
-		(end 5.2 9)
+		(start 5.05 8.5)
+		(end 5.05 8.9)
 		(stroke
 			(width 0.1)
 			(type default)
@@ -98,8 +98,8 @@
 		(uuid "18c0a2ef-35da-4a9b-806c-be8225723b36")
 	)
 	(fp_line
-		(start 5.2 9)
-		(end 4.8 9)
+		(start 5.05 8.9)
+		(end 4.65 8.9)
 		(stroke
 			(width 0.1)
 			(type default)
@@ -129,10 +129,10 @@
 		(layer "F.Fab")
 		(uuid "f4bdef1d-4d65-4035-90d2-3bb56fa888d6")
 	)
-	(fp_text user "BM15C"
+	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(unlocked yes)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "bd29fe1b-b2c7-4b9c-a87d-febbc0a8cf7b")
 		(effects
 			(font
@@ -593,7 +593,6 @@
 		(uuid "83fcd465-5294-4ea0-accb-a898d8f650e0")
 	)
 	(model "${KICAD_LIBRARY}/3D/Fanstel/BM15C.stp"
-		(opacity 0.3600)
 		(offset
 			(xyz 0 -4 0.5)
 		)

@@ -40,7 +40,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "nRF54L module with chip antenna"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "nRF54L"
 			(at 0 0 0)
 			(effects
 				(font
@@ -749,8 +758,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "nRF54L module with chip antenna"
 			(at -23.876 38.354 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "nRF54L"
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1628,6 +1646,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "nRF53 module with PCB antenna"
 			(at 0 0 0)
 			(effects
 				(font
