@@ -148,14 +148,25 @@ outputs:
         suffix: User_1
         description: User layer 1
 
-  - name: "Pick & Place"
-    comment: "Pick & Place"
+  - name: "Pick & Place (ASCII, Separate)"
+    comment: "Pick & Place with separate ASCII files. Useful for ordering at PCBWay."
     type: position
     dir: centroid
     category: "production"
     options:
       format: ASCII
       only_smd: false
+      separate_files_for_front_and_back: true
+
+  - name: "Pick & Place (CSV, Single)"
+    comment: "Pick & Place with a single CSV file. Useful for ordering at JLCPCB."
+    type: position
+    dir: centroid
+    category: "production"
+    options:
+      format: CSV
+      only_smd: false
+      separate_files_for_front_and_back: false
 
   - name: "PCB Specifications"
     comment: "PCB Specifications"
