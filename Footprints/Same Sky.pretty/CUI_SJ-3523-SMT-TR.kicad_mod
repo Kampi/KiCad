@@ -9,7 +9,7 @@
 		(uuid "0fc174c6-9a30-40bd-8d1f-4504c1e16ac5")
 		(effects
 			(font
-				(size 1.5 1.5)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -20,7 +20,7 @@
 		(uuid "09d42d4e-afee-4c5b-b536-c7ff8fa9155a")
 		(effects
 			(font
-				(size 1.5 1.5)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -32,7 +32,7 @@
 		(uuid "b32a668a-9dac-4e59-b166-fbd2dffa920d")
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -44,7 +44,7 @@
 		(uuid "61cb69a6-99d9-451f-ace2-b1a3c3855af0")
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -56,7 +56,7 @@
 		(uuid "052d0b06-fa69-423a-a9f8-c4d59c38389b")
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)

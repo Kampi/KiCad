@@ -127,7 +127,7 @@
 		(start -1.175 -3.4)
 		(end 1.175 3.4)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type default)
 		)
 		(fill none)

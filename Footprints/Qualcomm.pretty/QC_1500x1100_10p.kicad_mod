@@ -14,7 +14,7 @@
     (tstamp 03a7b046-7d50-4bda-863e-e8605515c30c)
   )
   (fp_rect (start -0.75 -0.55) (end 0.75 0.55)
-    (stroke (width 0.1) (type default)) (fill none) (layer "F.CrtYd") (tstamp 7bad074e-352c-49c0-bc2c-b486a5e3dfcb))
+    (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd") (tstamp 7bad074e-352c-49c0-bc2c-b486a5e3dfcb))
   (fp_line (start -0.75 -0.55) (end 0.75 -0.55)
     (stroke (width 0.1) (type default)) (layer "F.Fab") (tstamp 23c647bf-5a5d-4086-9b15-c675aa960c46))
   (fp_line (start -0.75 0.15) (end -0.75 -0.55)
