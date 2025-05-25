@@ -31,6 +31,8 @@ outputs:
     type: ibom
     dir: docs
     category: "documentation"
+    options:
+      show_fabrication: true
 
   - name: "Print Schematics"
     comment: "Print schematic (PDF)"
