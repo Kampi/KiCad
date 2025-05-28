@@ -575,7 +575,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "NCP705MT33TCG"
+	(symbol "NCP705MTxx"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -587,7 +587,7 @@
 				)
 			)
 		)
-		(property "Value" "NCP705MT33TCG"
+		(property "Value" "NCP705MTxx"
 			(at 1.27 0 0)
 			(effects
 				(font
@@ -613,7 +613,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "500-mA Ultra-Low-Noise Low-IQ LDO, 3.3V, WDFN-6"
+		(property "Description" "500-mA Ultra-Low-Noise Low-IQ LDO, WDFN-6"
 			(at 0 0 0)
 			(effects
 				(font
@@ -640,7 +640,7 @@
 				(hide yes)
 			)
 		)
-		(symbol "NCP705MT33TCG_0_1"
+		(symbol "NCP705MTxx_0_1"
 			(rectangle
 				(start -5.08 -5.08)
 				(end 5.08 5.08)
@@ -763,7 +763,7 @@
 				)
 			)
 		)
-		(symbol "NCP705MT33TCG_1_1"
+		(symbol "NCP705MTxx_1_1"
 			(pin power_in line
 				(at 1.27 -7.62 90)
 				(length 2.54)
