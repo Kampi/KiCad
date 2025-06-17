@@ -15,7 +15,7 @@ global:
   date_format: "%Y-%m-%d"
 
 outputs:
-  - name: "Naviagation results"
+  - name: "Navigation results"
     comment: "Create navigation results page"
     type: navigate_results
     dir: overview
@@ -270,7 +270,6 @@ outputs:
           - Digi-Key
         title: "%f BOM"
         hide_stats_info: false
-        quote_all: true
         logo_scale: 0.5
 
   - name: "BOM for Mouser"

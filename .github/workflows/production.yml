@@ -15,7 +15,7 @@ jobs:
       contents: write
 
     env:
-      KICAD_LIBRARY: /home/runner/work/<Repo>/<Repo>/library
+      KICAD_LIBRARY: ${{ github.workspace }}/library
       MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
 
     strategy:

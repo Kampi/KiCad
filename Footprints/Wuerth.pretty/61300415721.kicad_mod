@@ -1,0 +1,179 @@
+(footprint "61300415721"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "2fdc3768-a0c5-484e-9ea0-c65a941b93f9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "61300415721"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "ca35e7f9-6b29-4ed1-b6e6-bb80384ad64f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a0552ff2-0603-4cb9-9ac4-acb4b38e39a4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "baf9b348-3ff9-497e-acc8-6f075a7c04d8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_circle
+		(center -3.81 0)
+		(end -3.21 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "84aaec08-6f82-4646-99e4-cb23d880a34a")
+	)
+	(fp_circle
+		(center -1.27 0)
+		(end -0.67 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "0abf02c2-81bb-46a1-a605-09a77999b26a")
+	)
+	(fp_circle
+		(center 1.27 0)
+		(end 1.87 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "3d8e296a-a99d-4b21-9604-67e82949693a")
+	)
+	(fp_circle
+		(center 3.81 0)
+		(end 4.41 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "b4094492-256f-49a4-8bdc-087d8f74c0bb")
+	)
+	(fp_rect
+		(start -5.38 -1.27)
+		(end 5.38 1.27)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "f5cc183f-1491-4cff-a119-24a0b8c7d918")
+	)
+	(fp_rect
+		(start -5.38 -1.27)
+		(end 5.38 1.27)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "1f697403-5ba1-418f-8c20-7c4a5a4bcd87")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "10987761-68b9-4cbd-ab00-a2ecd726754d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -3.81 -2.54)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d592eca6-320c-466d-abca-323312c7e5db")
+	)
+	(pad "2" thru_hole circle
+		(at -1.27 2.54)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d18bfea9-9bfa-43b2-8a24-b2260dda663f")
+	)
+	(pad "3" thru_hole circle
+		(at 1.27 -2.54)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "377e7b84-cd17-481c-802f-3ef90636a0fb")
+	)
+	(pad "4" thru_hole circle
+		(at 3.81 2.54)
+		(size 1.8 1.8)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "34026f85-49b4-40cd-8142-6dc180effb23")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Wuerth Elektronik/61300415721.stp"
+		(offset
+			(xyz 0 0 3)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)
