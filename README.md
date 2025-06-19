@@ -7,6 +7,7 @@
   - [About](#about)
   - [Setup](#setup)
   - [Directories](#directories)
+  - [Ressources](#ressources)
   - [Maintainer](#maintainer)
 
 ### About
@@ -30,6 +31,10 @@ The library contain the following directory and file structure:
 - `Scripts` : Python scripts for KiCad
 - `Symbols` : Part symbols
 - `__Project__` : Project template
+
+## Ressources
+
+- [KiBot Template](https://github.com/nguyen-v/KDT_Hierarchical_KiBot)
 
 ## Maintainer
 
