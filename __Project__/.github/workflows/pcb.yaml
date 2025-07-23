@@ -12,7 +12,7 @@ on:
       - '*.md'
 
 env:
-  kicad_board: BeeLight
+  kicad_board: Template
   kibot_config: kibot_yaml/kibot_main.yaml
 
   # Output directory for the run results from KiBot
@@ -23,7 +23,7 @@ env:
   # PRELIMINARY: will generate both schematic and PCB documents, but no ERC/DRC
   # CHECKED: will generate both schematic and PCB documents, with ERC/DRC
   # RELEASED: similar to CHECKED, automatically selected when pushing a tag to main
-  kibot_variant: PRELIMINARY
+  kibot_variant: DRAFT
 
   MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
 
@@ -58,6 +58,7 @@ jobs:
         with:
           args: |
             Schematic/*.pdf
+            Purchasing/*
             Manufacturing/Assembly/*
             Manufacturing/Fabrication/*.pdf
             Manufacturing/Fabrication/*.zip
@@ -76,10 +77,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Getting the dependencies
+      - name: Initialize
         run: |
-          git clone https://github.com/Kampi/KiCad.git library
-          echo "KICAD_LIBRARY=$(pwd)/library" >> $GITHUB_ENV
+          mkdir -p log
+          echo "DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
 
       # Run these changelog update steps only on tag pushes
       - name: Pull latest changes for changelog update
@@ -89,6 +90,11 @@ jobs:
           git config --global user.name "GitHub Actions"
           git fetch
           git pull origin main
+
+      - name: Getting the dependencies
+        run: |
+          git clone https://github.com/Kampi/KiCad.git library
+          echo "KICAD_LIBRARY=$(pwd)/library" >> $GITHUB_ENV
 
       - name: Extract release notes
         if: ${{ github.ref_type == 'tag' }}
@@ -157,19 +163,42 @@ jobs:
         if: ${{ env.kibot_variant != 'DRAFT' }}
         run: |
           cd hardware
-          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s all -g variant=${{ env.kibot_variant }} notes
+          kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s all -g variant=${{ env.kibot_variant }} notes 2> ../log/kibot_notes.log
 
       - name: Generate README only
         if: ${{ env.kibot_variant == 'DRAFT' }}
         run: |
           cd hardware
-          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s draw_fancy_stackup,set_text_variables,erc,drc -g variant=${{ env.kibot_variant }} md_readme
+          kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -s draw_fancy_stackup,set_text_variables,erc,drc -g variant=${{ env.kibot_variant }} md_readme 2> ../log/kibot_readme.log
 
-      # Generate outputs
       - name: Generate outputs
         run: |
           cd hardware
-          kibot -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -g variant=${{ env.kibot_variant }} ${{ env.additional_args }}
+          kibot -vvvv -c ${{ env.kibot_config }} -d ${{ env.kibot_output_dir }} -b ${{ env.kicad_board }}.kicad_pcb -g variant=${{ env.kibot_variant }} ${{ env.additional_args }} 2> ../log/kibot_output.log
+
+      - name: Collect PCB costs
+        run: |
+          cd hardware
+          revision=$(python3 kibot_resources/scripts/get_changelog_version.py -f CHANGELOG.md)
+          if [[ $? -ne 0 ]]; then
+              echo -e "${YELLOW}Warning: Unable to determine version from CHANGELOG.md. Defaulting to empty revision.${NC}"
+              revision=""
+          fi
+          kibot -vvvv  --skip-pre erc,drc,draw_fancy_stackup -c kibot_yaml/kibot_main.yaml -d ${{ env.kibot_output_dir }} -g variant=${{ env.kibot_variant }} -E REVISION='$revision' -E KICOST_CONFIG=kibot_yaml/kicost_config_local.yaml xlsx_bom 2> ../log/kibot_output.log
+
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: Log-${{ env.kibot_variant }}
+          path: log
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.kibot_variant }}
+          path: production
+          if-no-files-found: ignore
 
       - name: Pull latest changes
         run: |
@@ -203,8 +232,13 @@ jobs:
           git clean -f "*.kicad_dru"
           git clean -f "*.kicad_prl"
 
-      - name: Update Outputs
+      - name: Clean up
+        run: |
+          find . -type f -iname \*.log -delete
+          find . -type f -iname \*.ogv -delete
+
+      - name: Push Outputs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.ref_name }}
-          commit_message: Update Outputs
+          commit_message: Push outputs from CI/CD (${{ env.DATE }})

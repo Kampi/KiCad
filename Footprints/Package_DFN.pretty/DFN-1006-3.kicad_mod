@@ -1,7 +1,7 @@
-(footprint "SOT-883"
-	(version 20240108)
+(footprint "DFN-1006-3"
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(descr "SOT-883")
 	(tags "SOT-883")
@@ -16,26 +16,13 @@
 			)
 		)
 	)
-	(property "Value" "SOT-883"
+	(property "Value" "DFN-1006-3"
 		(at -0.025 0 0)
 		(layer "F.Fab")
 		(uuid "fe49d716-899b-49ee-9e14-f80a0f442d80")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "92e56d39-66b7-42d4-9e81-d698c9323904")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -208,27 +195,28 @@
 		(layers "F.Paste")
 		(uuid "7e47e66e-b291-4da2-b610-52752773af51")
 	)
-	(pad "1" smd roundrect
-		(at -0.35 -0.225)
-		(size 0.4 0.25)
-		(layers "F.Cu" "F.Mask")
-		(roundrect_rratio 0.2)
-		(uuid "31cb01ce-bef8-41b0-836b-fba020e82d97")
-	)
-	(pad "2" smd roundrect
-		(at -0.35 0.225)
-		(size 0.4 0.25)
-		(layers "F.Cu" "F.Mask")
-		(roundrect_rratio 0.2)
-		(uuid "fd01b9bd-c419-4bfb-842e-860d88a88f96")
-	)
-	(pad "3" smd roundrect
+	(pad "D" smd roundrect
 		(at 0.35 0)
 		(size 0.4 0.7)
 		(layers "F.Cu" "F.Mask")
 		(roundrect_rratio 0.125)
 		(uuid "3a11627e-2e73-42c2-a3cb-4c1a4a6d315d")
 	)
+	(pad "G" smd roundrect
+		(at -0.35 -0.225)
+		(size 0.4 0.25)
+		(layers "F.Cu" "F.Mask")
+		(roundrect_rratio 0.2)
+		(uuid "31cb01ce-bef8-41b0-836b-fba020e82d97")
+	)
+	(pad "S" smd roundrect
+		(at -0.35 0.225)
+		(size 0.4 0.25)
+		(layers "F.Cu" "F.Mask")
+		(roundrect_rratio 0.2)
+		(uuid "fd01b9bd-c419-4bfb-842e-860d88a88f96")
+	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Packages/SOT-883.stp"
 		(offset
 			(xyz 0.75 -0.4 0.6)
