@@ -824,7 +824,7 @@
 				)
 			)
 		)
-		(property "Footprint" "https://www.nxp.com/docs/en/data-sheet/PCA9306.pdf"
+		(property "Footprint" "Package_SON_Kampi:XSON-8_0.65x0.17mm_P0.35mm"
 			(at 0 0 0)
 			(effects
 				(font

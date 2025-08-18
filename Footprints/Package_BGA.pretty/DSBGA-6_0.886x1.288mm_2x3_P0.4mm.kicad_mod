@@ -1,7 +1,7 @@
 (footprint "DSBGA-6_0.886x1.288mm_2x3_P0.4mm"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -21,19 +21,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "b3874f01-f3b0-4ff4-a384-2459bc8621a2")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -73,7 +60,7 @@
 			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "46d10dc3-de3d-4cc7-860d-26a5645ba3c1")
 	)
@@ -81,7 +68,7 @@
 		(start -0.4275 -0.4375)
 		(end -0.2375 -0.6275)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -91,7 +78,7 @@
 		(start -0.4275 0.6275)
 		(end -0.4275 -0.4375)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -101,7 +88,7 @@
 		(start -0.2375 -0.6275)
 		(end 0.4275 -0.6275)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -111,7 +98,7 @@
 		(start 0.4275 -0.6275)
 		(end 0.4275 0.6275)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -121,7 +108,7 @@
 		(start 0.4275 0.6275)
 		(end -0.4275 0.6275)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -142,44 +129,45 @@
 		(at -0.2 -0.4)
 		(size 0.23 0.23)
 		(property pad_prop_bga)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "01ec5dd1-b1b1-44ec-b698-274e27e82276")
 	)
 	(pad "A2" smd circle
 		(at 0.2 -0.4)
 		(size 0.23 0.23)
 		(property pad_prop_bga)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "5985532f-eb0d-4d2d-826b-38f0f27d3741")
 	)
 	(pad "B1" smd circle
 		(at -0.2 0)
 		(size 0.23 0.23)
 		(property pad_prop_bga)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "afe7c2da-3271-4823-ace2-fc5c2e277398")
 	)
 	(pad "B2" smd circle
 		(at 0.2 0)
 		(size 0.23 0.23)
 		(property pad_prop_bga)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "20fa36b2-669e-4200-9e64-cba4f168825d")
 	)
 	(pad "C1" smd circle
 		(at -0.2 0.4)
 		(size 0.23 0.23)
 		(property pad_prop_bga)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "291faa40-adbb-41e5-9456-738480b1a094")
 	)
 	(pad "C2" smd circle
 		(at 0.2 0.4)
 		(size 0.23 0.23)
 		(property pad_prop_bga)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "b8f59582-1bec-44c8-b295-87b392f44cde")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Texas Instruments/TPS610994YFFR.stp"
 		(offset
 			(xyz 0 0 0)

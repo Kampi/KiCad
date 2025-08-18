@@ -1,7 +1,7 @@
 (footprint "L_0806_2016"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -21,18 +21,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "c76901e1-9219-40df-a432-34442c7f4bc5")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -66,7 +54,7 @@
 		(start -1.425 -0.95)
 		(end 1.425 -0.95)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.CrtYd")
@@ -76,7 +64,7 @@
 		(start -1.425 0.95)
 		(end -1.425 -0.95)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.CrtYd")
@@ -86,7 +74,7 @@
 		(start 1.425 -0.95)
 		(end 1.425 0.95)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.CrtYd")
@@ -96,7 +84,7 @@
 		(start 1.425 0.95)
 		(end -1.425 0.95)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.CrtYd")
@@ -106,7 +94,7 @@
 		(start -1 -0.6)
 		(end 1 -0.6)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -116,7 +104,7 @@
 		(start -1 0.6)
 		(end -1 -0.6)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -126,7 +114,7 @@
 		(start 1 -0.6)
 		(end 1 0.6)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -136,7 +124,7 @@
 		(start 1 0.6)
 		(end -1 0.6)
 		(stroke
-			(width 0.1)
+			(width 0.05)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -156,15 +144,16 @@
 	(pad "1" smd rect
 		(at -0.8 0)
 		(size 1.15 1.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "b3d466d6-08e4-4365-bee1-65ba6b183d30")
 	)
 	(pad "2" smd rect
 		(at 0.8 0)
 		(size 1.15 1.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "927185c8-ce27-4525-a2ef-9942aeb46684")
 	)
+	(embedded_fonts no)
 	(model "${KICAD6_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_0805_2012Metric.wrl"
 		(offset
 			(xyz 0 0 0)
