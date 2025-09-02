@@ -56,39 +56,6 @@
 	(solder_paste_margin -0.05)
 	(attr smd)
 	(fp_rect
-		(start -0.6 -0.2)
-		(end -0.2 0.2)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(fill no)
-		(layer "Dwgs.User")
-		(uuid "0529b2d8-0511-4154-aab9-9050c49484c4")
-	)
-	(fp_rect
-		(start 0.2 -0.3)
-		(end 0.4 -0.1)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(fill no)
-		(layer "Dwgs.User")
-		(uuid "5e70e99b-cf58-4d46-97a9-bcc8e8018af5")
-	)
-	(fp_rect
-		(start 0.2 0.1)
-		(end 0.4 0.3)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(fill no)
-		(layer "Dwgs.User")
-		(uuid "56f928ae-5ea3-4e38-96a3-fe7bd460e520")
-	)
-	(fp_rect
 		(start -0.95 -0.85)
 		(end 0.95 0.85)
 		(stroke
@@ -109,6 +76,39 @@
 		(fill no)
 		(layer "F.Fab")
 		(uuid "b019e801-bc87-490b-a120-e56f46b33fa0")
+	)
+	(fp_rect
+		(start -0.6 -0.2)
+		(end -0.2 0.2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "0529b2d8-0511-4154-aab9-9050c49484c4")
+	)
+	(fp_rect
+		(start 0.2 -0.3)
+		(end 0.4 -0.1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "5e70e99b-cf58-4d46-97a9-bcc8e8018af5")
+	)
+	(fp_rect
+		(start 0.2 0.1)
+		(end 0.4 0.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "56f928ae-5ea3-4e38-96a3-fe7bd460e520")
 	)
 	(fp_circle
 		(center 0.6 -0.6)
