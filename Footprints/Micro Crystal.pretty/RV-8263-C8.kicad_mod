@@ -1,7 +1,7 @@
 (footprint "RV-8263-C8"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(tags "RV-8263-C8 32.768KHZ 20PPM")
 	(property "Reference" "REF**"
@@ -22,18 +22,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "7ee25dd2-d1fa-4efa-977b-10bb8e78ab98")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -107,7 +95,7 @@
 		(start -0.6 -1)
 		(end 0.6 -1)
 		(stroke
-			(width 0.127)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -117,7 +105,7 @@
 		(start -0.6 1)
 		(end -0.6 -1)
 		(stroke
-			(width 0.127)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -127,7 +115,7 @@
 		(start 0.6 -1)
 		(end 0.6 1)
 		(stroke
-			(width 0.127)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -137,7 +125,7 @@
 		(start 0.6 1)
 		(end -0.6 1)
 		(stroke
-			(width 0.127)
+			(width 0.1)
 			(type solid)
 		)
 		(layer "F.Fab")
@@ -150,7 +138,7 @@
 			(width 0.2)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "dda533e7-cd80-4ee6-aefe-3b18beb857f5")
 	)
@@ -169,51 +157,52 @@
 	(pad "1" smd rect
 		(at -0.5 -0.81)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "f8806dcd-6c61-4c00-a3a5-45c4360e7202")
 	)
 	(pad "2" smd rect
 		(at -0.5 -0.27)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "ab46a01d-b362-4a71-b4bd-86fee82adc9c")
 	)
 	(pad "3" smd rect
 		(at -0.5 0.27)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "f3d6f7ba-c511-4c29-b371-77dd7ce12a01")
 	)
 	(pad "4" smd rect
 		(at -0.5 0.81)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "9e294d00-486b-481f-a8fa-58d4347640af")
 	)
 	(pad "5" smd rect
 		(at 0.5 0.81)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "09ba2206-5235-4431-877a-d7b53f3bed68")
 	)
 	(pad "6" smd rect
 		(at 0.5 0.27)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "c2ba34ad-193e-43a3-a151-ff6dd5e53689")
 	)
 	(pad "7" smd rect
 		(at 0.5 -0.27)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "02e7d852-f340-4763-9756-c0538d7a67a6")
 	)
 	(pad "8" smd rect
 		(at 0.5 -0.81)
 		(size 0.7 0.27)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "f4400dba-9b71-40f7-9b85-1e513f1360e4")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Micro Crystal/RV-8263-C8.stp"
 		(offset
 			(xyz 0 0 0)
