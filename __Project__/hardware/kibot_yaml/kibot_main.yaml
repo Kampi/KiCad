@@ -550,14 +550,14 @@ definitions:
 
   # Metadata ===================================================================
 
-  PROJECT_NAME: ZSWatch Dock
-  BOARD_NAME: Dock-HW
+  PROJECT_NAME: Project
+  BOARD_NAME: Board
 
-  COMPANY: ZSWatch
+  COMPANY: Kampis-Elektroecke
   DESIGNER: Daniel Kampert
 
-  LOGO: 'Logos/ZSWatch_logo_with_text.png'
-  GIT_URL: 'https://github.com/ZSWatch/Dock-HW'
+  LOGO: 'Logos/dummy_logo.png'
+  GIT_URL: 'https://github.com/Kampi/KiCad'
 
   # Preflight ==================================================================
 

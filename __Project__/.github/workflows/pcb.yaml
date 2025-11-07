@@ -19,10 +19,10 @@ env:
   kibot_config: kibot_yaml/kibot_main.yaml
 
   # Output directory for the run results from KiBot
-  kibot_output_dir: beelight
+  kibot_output_dir: Board
 
   # Output path for the run results from KiBot
-  kibot_output_path: ../production
+  kibot_output_path: board
 
   # Input directory with the KiCad project and the KiBot files
   kibot_input_dir: hardware
@@ -32,13 +32,14 @@ env:
   # PRELIMINARY: Will generate both schematic and PCB documents, but no ERC/DRC
   # CHECKED: Will generate both schematic and PCB documents, with ERC/DRC
   # RELEASED: Similar to CHECKED, automatically selected when pushing a tag to main
-  kibot_variant: CHECKED
+  kibot_variant: PRELIMINARY
 
   # Master branch (main or master). Can be changed for testing
   master_branch: main
 
   # API keys used by KiCost
   MOUSER_KEY: ${{ secrets.MOUSER_KEY }}
+  DIGIKEY_KEY: ${{ secrets.DIGIKEY_KEY }}
 
 permissions:
   contents: write
