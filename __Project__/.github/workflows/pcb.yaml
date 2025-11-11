@@ -13,7 +13,7 @@ on:
 
 env:
   # Name of the KiCad PCB file
-  kicad_board: BeeLight
+  kicad_board: __Project__
 
   # KiBot init point
   kibot_config: kibot_yaml/kibot_main.yaml
