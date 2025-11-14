@@ -50,7 +50,7 @@ You can find a commit message template in the `github` directory of the project.
 git config commit.template .github/.commit-msg-template
 ```
 
-to change the template locally for the project. If there is no template available, feel free to create one on your own.
+to change the template locally for the project. If no template is available, feel free to create one yourself.
 
 ## Create a new project
 
@@ -166,6 +166,14 @@ You can either:
 - Create a feature branch from the development branch, make your changes, and open a PR from that branch.
 
 The KiBot workflow state may be set to `DRAFT` or `PRELIMINARY` as needed, but **must not** be set to `CHECKED`.
+
+### Initialization of the development branch
+
+A development branch is created from the `main` branch. The first commit should always remove the production files and reset the workflow state to `DRAFT` or `PRELIMINARY`. The first commit message is always
+
+```sh
+Initialize development branch for version ...
+```
 
 ## Publishing a New Release
 
