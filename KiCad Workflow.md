@@ -175,7 +175,9 @@ A development branch is created from the `main` branch. The first commit should 
 Initialize development branch for version ...
 ```
 
-## Publishing a New Release
+## Publishing a new Release
+
+A new release is pushed to `main` by using a Pull Request. The request can be created as a draft either when a new development branch is created or later, when all the work is done. The title of the Pull Request should always be `Release <Major>.<Minor>.<Fix>`.
 
 To prepare a new release:
 
