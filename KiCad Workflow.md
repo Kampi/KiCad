@@ -105,7 +105,7 @@ Example:
 Watch-DK Version 1 Release 2
 ````
 
-A new development branch named <Major>.<Minor>.<Fix>_Dev is created from the main branch for this milestone.
+A new development branch named `<Major>.<Minor>.<Fix>_Dev` is created from the main branch for this milestone.
 When this branch is initialized:
 
 - The KiBot workflow state in the CI/CD configuration is set to `PRELIMINARY`.
