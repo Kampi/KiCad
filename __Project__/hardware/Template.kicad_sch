@@ -1730,6 +1730,51 @@
 		(uuid "dee96870-b977-4804-a805-318fe8afe5f2")
 	)
 	(sheet
+		(at 306.07 326.39)
+		(size 35.56 5.08)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "41d90350-625c-40a5-8e73-4cf5e8e03642")
+		(property "Sheetname" "Interface - Tree"
+			(at 306.07 325.6784 0)
+			(effects
+				(font
+					(face "Times New Roman")
+					(size 1.905 1.905)
+					(thickness 0.3556)
+					(bold yes)
+					(color 0 0 0 1)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Interface-Tree.kicad_sch"
+			(at 306.324 327.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Template"
+				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
 		(at 346.71 314.96)
 		(size 35.56 5.08)
 		(exclude_from_sim no)
@@ -1774,7 +1819,7 @@
 			)
 			(project "Template"
 				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa"
-					(page "7")
+					(page "4")
 				)
 			)
 		)
@@ -1824,7 +1869,7 @@
 			)
 			(project "Template"
 				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa"
-					(page "6")
+					(page "9")
 				)
 			)
 		)
@@ -1880,7 +1925,7 @@
 		)
 	)
 	(sheet
-		(at 306.07 314.96)
+		(at 346.71 326.39)
 		(size 35.56 5.08)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1895,7 +1940,7 @@
 		)
 		(uuid "c5103ceb-5325-4a84-a025-9638a412984e")
 		(property "Sheetname" "Project Architecture"
-			(at 306.07 313.9309 0)
+			(at 346.71 325.3609 0)
 			(effects
 				(font
 					(face "Times New Roman")
@@ -1907,7 +1952,7 @@
 			)
 		)
 		(property "Sheetfile" "Project Architecture.kicad_sch"
-			(at 307.34 316.23 0)
+			(at 347.98 327.66 0)
 			(effects
 				(font
 					(face "Arial")
@@ -1924,6 +1969,51 @@
 			)
 			(project "Template"
 				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 306.07 314.96)
+		(size 35.56 5.08)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "d997d29b-5865-4812-975d-af678b9a12da")
+		(property "Sheetname" "Power - Topology"
+			(at 306.07 314.2484 0)
+			(effects
+				(font
+					(face "Times New Roman")
+					(size 1.905 1.905)
+					(thickness 0.3556)
+					(bold yes)
+					(color 0 0 0 1)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Power-Topology.kicad_sch"
+			(at 306.324 316.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Template"
+				(path "/d5742f03-3b1a-42e5-a384-018bd4b919aa"
 					(page "3")
 				)
 			)
@@ -1935,32 +2025,4 @@
 		)
 	)
 	(embedded_fonts no)
-	(embedded_files
-		(file
-			(name "KDT_Template_GIT.kicad_wks")
-			(type worksheet)
-			(data |KLUv/WCOH90hADbldCEA0zz8vwV4dA49qrdgbG9UWNWEsQ8RBFilMbXZ//+TKl5pAGcAawB8j718
-				+vQ7v/2UpMfm1X3E3Ny978pmd8wlc1pf5wu/ptgtuJyuStHHdDJ7sM7ldFH1cSif/YM7AQAIbDgd
-				n5TKJFHiu2cSi+VGer775VjjCwEQmLJaa2Wpfb3zyXGHAAicGo9I3jFrCAH1MVufPn2+yz2S5a78
-				dFF2kvQ19/ce7P2JzRxKj8drsZRSqvAFaiQQDTjnII67xuODLLmfnMxlv24gez2tVCq0VgSA3pb6
-				l/1zb6Qqff/gXukXrS779ApMoA8fdbbfL97gp09qzLEOIy30uMcDgqD1bVbg2INHXLglRE4Cgl2t
-				zOt9H3Fm80hV9ZvAbGHkQTqwm3AfparVO5+5g7/KYlajqq22siwdfVxki1QLh3LhrXq9llkUZtnX
-				ZSepvJlvll4Ura9lmkEi83eMMaD0XWPT3GOBCUOAIgPcGGLYLTQNw5yX8T0vbJZZtLL15BxhF2L6
-				jYwY4RYJOY4BWtRllT2HuMyKgiUmvg1ywMQQwTUgH8XbIiB9N+ZGYKPQ27pvm1iW1fXN/E5IfveB
-				1so9No9zdApb68d5iw7kEvqST2wphmEBgP6o4SVDJTIjKUkhbQZQhAjJWJEdEgDBEAZFEAxhGJZC
-				EAzBKAYJ44wRECJoiFBA6wHhizrKqI2WoRGqJst81kW3E7qPTqq+VxKtbeMJC1W8PBrl5rVIdXR3
-				fbWSaYOeQK42nKPAMXrQnlrHIVvD2uamNJqrapdu2IjRqFedDa/rYYhRjIsKv8kkwUHYwRrmzIEy
-				x3jkBh/9dS1+990fuIQYsiQzu0jjib3lu9fEGcfbTm9qf26AfYrwXHBwyw+drVyLsaTFskuBxI/k
-				oKeJFy3zvOIwbbEWPa6fOEZgmhbCEPaia/5AWVsIvf0W/OGnkyve17TyW8ggGkLScP5G8ADr2/Pm
-				0tykbcl+ZFCkWqSmZVMKudto9Y6tibFrJCTiTSfUxvafVIicgJTVHNVGRKZALL9Gqs+OCq+dG6dH
-				JzmRSXo4oyMtTnlmrl/prZE4TukAy9cYy+h3cACCxbDQuzle6c1YBqzKbGDHC32YnSWNhamDuwwF
-				RBp2m5E1lIPIzlWhZcddNe4fxhmuzRknOohgSepQ3q2F8HoDfoAY2TOFhbQIE+IW3tCTIDSlYF4y
-				lnQjLQshsBPQxB/jnEk35EMHtySbLzk+F8MRbmw7jMhcOdacNnQOdNAJAI/Rls5ICgJvgonReU+r
-				kDYqB5pqGPM+zs+NOsilXcAr0JGGUqIPechLGJGXWZHNLjt8kKmKv6CjInHBhBPAvq3h9ruQ9xVh
-				c8CPcRBhCS0DuChaYtg2iHcpxN7Dfns7Uwnwgg2I8XfHpGGpMxhCs0nmwoipez/UY7nqU2GZgs/C
-				D78HSbu2jaWvCg==|
-			)
-			(checksum "DB3DC728C2AEB6FD5D8E1CEB972FF7A3")
-		)
-	)
 )
