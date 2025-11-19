@@ -4,6 +4,11 @@
 	(generator_version "9.0")
 	(uuid "e4072e16-76e5-4cb7-b600-1ae14a69f117")
 	(paper "A3")
+	(title_block
+		(date "2025-06-05")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
+	)
 	(lib_symbols)
 	(image
 		(at 215.9 135.89)

@@ -4,10 +4,15 @@
 	(generator_version "9.0")
 	(uuid "e4072e16-76e5-4cb7-b600-1ae14a69f117")
 	(paper "A3")
+	(title_block
+		(date "2025-06-05")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
+	)
 	(lib_symbols)
 	(rectangle
-		(start 335.28 250.19)
-		(end 406.4 250.952)
+		(start 334.01 240.03)
+		(end 405.13 240.792)
 		(stroke
 			(width 0)
 			(type default)
@@ -20,8 +25,8 @@
 		(uuid a1e57db2-c507-4777-bba1-cf3c72b298ce)
 	)
 	(rectangle
-		(start 335.28 217.17)
-		(end 406.4 217.932)
+		(start 334.01 207.01)
+		(end 405.13 207.772)
 		(stroke
 			(width 0)
 			(type default)
@@ -35,7 +40,7 @@
 	)
 	(text_box "Spec 2"
 		(exclude_from_sim no)
-		(at 336.55 226.06 0)
+		(at 335.28 215.9 0)
 		(size 43.18 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -59,7 +64,7 @@
 	)
 	(text_box "Input voltage:"
 		(exclude_from_sim no)
-		(at 336.55 218.44 0)
+		(at 335.28 208.28 0)
 		(size 41.91 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -83,7 +88,7 @@
 	)
 	(text_box "Spec 4"
 		(exclude_from_sim no)
-		(at 336.55 241.3 0)
+		(at 335.28 231.14 0)
 		(size 44.45 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -107,7 +112,7 @@
 	)
 	(text_box "?? - ?? V"
 		(exclude_from_sim no)
-		(at 382.27 218.44 0)
+		(at 381 208.28 0)
 		(size 24.13 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -129,7 +134,7 @@
 	)
 	(text_box "Target specifications:"
 		(exclude_from_sim no)
-		(at 332.74 209.55 0)
+		(at 331.47 199.39 0)
 		(size 73.66 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -153,7 +158,7 @@
 	)
 	(text_box "??"
 		(exclude_from_sim no)
-		(at 382.27 241.3 0)
+		(at 381 231.14 0)
 		(size 24.13 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -175,7 +180,7 @@
 	)
 	(text_box "??"
 		(exclude_from_sim no)
-		(at 382.27 233.68 0)
+		(at 381 223.52 0)
 		(size 24.13 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -197,7 +202,7 @@
 	)
 	(text_box "Spec 3"
 		(exclude_from_sim no)
-		(at 336.55 233.68 0)
+		(at 335.28 223.52 0)
 		(size 41.91 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke
@@ -221,7 +226,7 @@
 	)
 	(text_box "??"
 		(exclude_from_sim no)
-		(at 382.27 226.06 0)
+		(at 381 215.9 0)
 		(size 24.13 7.62)
 		(margins 2.2859 2.2859 2.2859 2.2859)
 		(stroke

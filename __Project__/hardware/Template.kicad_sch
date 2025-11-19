@@ -2002,7 +2002,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "Power-Topology.kicad_sch"
+		(property "Sheetfile" "Power - Topology.kicad_sch"
 			(at 306.324 316.23 0)
 			(effects
 				(font
