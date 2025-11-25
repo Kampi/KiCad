@@ -114,9 +114,9 @@
 		(end -0.95 -1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "77e12306-b7e9-4ed0-9c3a-f7b2a04ebedd")
 	)
 	(fp_line
@@ -124,9 +124,9 @@
 		(end -1.25 -1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "a2cd02a2-f297-4def-9116-3170497e9376")
 	)
 	(fp_line
@@ -134,9 +134,9 @@
 		(end -1.25 1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "2c40fdb6-0496-4ea2-8fec-22a646a7638b")
 	)
 	(fp_line
@@ -144,9 +144,9 @@
 		(end -0.95 1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "d200847c-5656-4a38-adfc-fabd7ba30b5e")
 	)
 	(fp_line
@@ -154,9 +154,9 @@
 		(end 0.95 -1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "4d78d2da-3ff1-4622-9fd7-523bd9314a8b")
 	)
 	(fp_line
@@ -164,9 +164,9 @@
 		(end 1.25 -1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "88637df2-73f5-4502-b86e-2f8bd3bb0bdd")
 	)
 	(fp_line
@@ -174,9 +174,9 @@
 		(end 1.25 1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "37af1dd6-ca19-465c-891b-22042140ec1a")
 	)
 	(fp_line
@@ -184,9 +184,9 @@
 		(end 0.95 1.1)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(layer "F.SilkS")
+		(layer "Eco1.User")
 		(uuid "a4956cf9-e81d-4754-9cb2-2142fef62a31")
 	)
 	(fp_rect
@@ -355,4 +355,15 @@
 		(uuid "c05bc85a-deb9-41a3-b32d-8d3a075b7c6d")
 	)
 	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Analog Devices/MAX86141ENP+T.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

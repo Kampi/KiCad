@@ -115,7 +115,7 @@
 		)
 		(uuid fda911f3-adb3-4abb-981f-a877a93c831b)
 	)
-	(text "Page 5"
+	(text "Page 8"
 		(exclude_from_sim no)
 		(at 226.06 133.35 0)
 		(effects
@@ -125,11 +125,11 @@
 				(color 100 70 50 1)
 			)
 			(justify right bottom)
-			(href "#5")
+			(href "#8")
 		)
 		(uuid "b60ecde0-2a85-4071-a728-47148cd80779")
 	)
-	(text "Page 4"
+	(text "Page 7"
 		(exclude_from_sim no)
 		(at 226.06 95.25 0)
 		(effects
@@ -139,7 +139,7 @@
 				(color 20 60 40 1)
 			)
 			(justify right bottom)
-			(href "#4")
+			(href "#7")
 		)
 		(uuid "f04f874a-d252-4474-87f2-c34bbb094a4c")
 	)

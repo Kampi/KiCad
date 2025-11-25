@@ -290,7 +290,6 @@
 	)
 	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Renesas/DA7212-01UM2.stp"
-		(opacity 0.9000)
 		(offset
 			(xyz 0 0 0)
 		)

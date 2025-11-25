@@ -2169,7 +2169,7 @@
 				)
 			)
 			(pin power_in line
-				(at -1.27 17.78 270)
+				(at -2.54 17.78 270)
 				(length 2.54)
 				(name "V_{DD}"
 					(effects
@@ -2187,9 +2187,8 @@
 				)
 			)
 			(pin power_in line
-				(at -1.27 17.78 270)
+				(at 0 17.78 270)
 				(length 2.54)
-				(hide yes)
 				(name "V_{DD}"
 					(effects
 						(font
@@ -2243,7 +2242,7 @@
 				)
 			)
 			(pin power_in line
-				(at 1.27 17.78 270)
+				(at 2.54 17.78 270)
 				(length 2.54)
 				(name "V_{CORE}"
 					(effects
@@ -2427,7 +2426,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_BGA_Kampi:WLP-16_1.6x1.6mm_P0.35mm"
 			(at 0 0 0)
 			(effects
 				(font
