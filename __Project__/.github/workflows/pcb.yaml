@@ -250,8 +250,8 @@ jobs:
           find . -type f -iname \*.log -delete
           find . -type f -iname \*.ogv -delete
           find . -type f -iname \*.kicad_pro-bak -delete
-          rm ${{ env.kibot_input_dir }}/kibot_*.kicad_pro
-          rm ${{ env.kibot_input_dir }}/kibot_*.kicad_pcb
+          rm -f ${{ env.kibot_input_dir }}/kibot_*.kicad_pro
+          rm -f ${{ env.kibot_input_dir }}/kibot_*.kicad_pcb
 
       - name: Pull latest changes
         shell: bash
