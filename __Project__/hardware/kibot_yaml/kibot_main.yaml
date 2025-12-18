@@ -556,7 +556,7 @@ definitions:
   COMPANY: Kampis-Elektroecke
   DESIGNER: Daniel Kampert
 
-  LOGO: 'Logos/dummy_logo.png'
+  LOGO: 'logos/dummy_logo.png'
   GIT_URL: 'https://github.com/Kampi/KiCad'
 
   # Preflight ==================================================================
@@ -582,7 +582,7 @@ definitions:
   # Schematic parameters =======================================================
 
   COLOR_THEME: Altium_Theme
-  SHEET_WKS: ${KIPRJMOD}/Templates/KDT_Template_PCB_GIT_A3.kicad_wks
+  SHEET_WKS: ${KIPRJMOD}/templates/KDT_Template_PCB_GIT_A3.kicad_wks
   FAB_SCALING: 1
   ASSEMBLY_SCALING: 1
 
