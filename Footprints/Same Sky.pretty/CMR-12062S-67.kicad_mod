@@ -156,13 +156,13 @@
 	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Same Sky/CMR-12062S-67.stp"
 		(offset
-			(xyz -6 3 2.1)
+			(xyz -6 3 2.5)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 90 170 -90)
+			(xyz 90 180 -90)
 		)
 	)
 )

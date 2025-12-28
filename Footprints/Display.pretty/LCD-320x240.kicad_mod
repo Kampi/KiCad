@@ -1,0 +1,163 @@
+(footprint "LCD-320x240"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "ef3fa736-346d-4bbc-b8d3-991e624b00a4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "LCD"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a0239c5e-c28e-4b8f-8e97-ca1799fb3ced")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "143d2a4e-79b1-409d-9377-58b06b2c07de")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9aba01c4-dc77-4411-abc6-d25246b55f5d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -34.6 -25)
+		(end 34.6 25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "458d36fc-259f-4e8d-8799-328dc535a9df")
+	)
+	(fp_rect
+		(start -26.1 -22.1)
+		(end 32.5 22.1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "36255565-00af-4b7b-91ec-1fbae3485ae2")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "dae6157b-f3f2-4630-af07-f4fad57f1e14")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at -34.125 -24.52)
+		(size 0.95 0.95)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(uuid "059469c6-b4c0-43a7-a4fa-e7813b3c1334")
+	)
+	(pad "" np_thru_hole circle
+		(at -34.125 24.52)
+		(size 0.95 0.95)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(uuid "883fd01c-680d-436f-8e9c-6985e2ea369a")
+	)
+	(pad "" np_thru_hole circle
+		(at 34.125 -24.52)
+		(size 0.95 0.95)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(uuid "af305b3b-cca2-49ed-a733-f91ad5178774")
+	)
+	(pad "" np_thru_hole circle
+		(at 34.125 24.52)
+		(size 0.95 0.95)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(uuid "f8016bfb-634d-497b-834c-86078e43e00f")
+	)
+	(zone
+		(net 0)
+		(net_name "")
+		(layer "F.Fab")
+		(uuid "e504943e-54bf-4dc4-aa5c-e65adff4cf99")
+		(hatch full 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(filled_areas_thickness no)
+		(keepout
+			(tracks not_allowed)
+			(vias not_allowed)
+			(pads not_allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+		)
+		(polygon
+			(pts
+				(xy -26.1 -22.1) (xy 32.5 -22.1) (xy 32.5 22.1) (xy -26.1 22.1)
+			)
+		)
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Display/LCD-320x240.step"
+		(offset
+			(xyz -1.75 0 -2)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 90)
+		)
+	)
+)

@@ -4350,8 +4350,8 @@
 		)
 		(symbol "LMR62014_1_1"
 			(rectangle
-				(start -6.35 -6.35)
-				(end 7.62 6.35)
+				(start -6.35 6.35)
+				(end 7.62 -6.35)
 				(stroke
 					(width 0.3048)
 					(type solid)
@@ -4396,8 +4396,8 @@
 					)
 				)
 			)
-			(pin power_out line
-				(at -8.89 -3.81 0)
+			(pin passive line
+				(at 0 -8.89 90)
 				(length 2.54)
 				(name "GND"
 					(effects
