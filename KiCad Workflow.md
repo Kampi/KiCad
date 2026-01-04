@@ -200,6 +200,7 @@ Release <Major>.<Minor>.<Fix>
 7. Create and push a new Git tag for the version:
 
 ```sh
+git pull <Upstream> <Main>
 git tag <Major.Minor.Fix>
 git push <Upstream> <Major.Minor.Fix>
 ```

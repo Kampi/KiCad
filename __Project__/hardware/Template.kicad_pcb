@@ -147,7 +147,7 @@
 	(property "RELEASE_DATE" "06-Jun-2025")
 	(property "RELEASE_DATE_NUM" "2025-06-06")
 	(property "RELEASE_TITLE_UNRELEASED" "Version Unreleased not found.")
-	(property "REVISION" "(Unreleased)")
+	(property "REVISION" "X.Y.Z")
 	(property "SHEET_NAME_1" "Cover Page")
 	(property "SHEET_NAME_10" "......................................")
 	(property "SHEET_NAME_11" "......................................")
