@@ -435,6 +435,7 @@ import:
       NAME: @COPY_LOGO@
       COMMENT: Copy logo
       DIR: @COPY_LOGO_DIR@
+      LOGO: @LOGO@
 
   # Schematic in PDF format
   - file: kibot_out_pdf_schematic.yaml
