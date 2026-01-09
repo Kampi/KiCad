@@ -5,7 +5,7 @@
 <h1 align="center">${BOARD_NAME}</h1>
 
 <p align="center" width="100%">
-  <a href="${GIT_URL}/actions/workflows/pcb.yaml">
+  <a href="${GIT_URL}/actions/workflows/pcb.yml">
     <img alt="CI Badge" src="${GIT_URL}/actions/workflows/pcb.yml/badge.svg">
   </a>
 </p>
