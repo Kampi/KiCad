@@ -721,7 +721,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "-3.4A Id, -30V Vds, P-Channel MOSFET, SOT-23"
+		(property "Description" "3.4A Id, 30V Vds, N-Channel MOSFET, SOT-23"
 			(at 0 0 0)
 			(effects
 				(font

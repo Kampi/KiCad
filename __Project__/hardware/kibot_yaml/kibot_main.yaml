@@ -557,7 +557,7 @@ definitions:
   COMPANY: Kampis-Elektroecke
   DESIGNER: Daniel Kampert
 
-  LOGO: 'logos/dummy_logo.png'
+  LOGO: 'logos/Logo.png'
   GIT_URL: 'https://github.com/Kampi/KiCad'
 
   # Preflight ==================================================================
