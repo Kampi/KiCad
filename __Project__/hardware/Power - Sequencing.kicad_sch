@@ -5,7 +5,7 @@
 	(uuid "26e99a33-043b-499d-a26e-816ff79b487a")
 	(paper "A4")
 	(title_block
-		(title "Template")
+		(title "Power - Sequencing")
 		(date "2025-06-05")
 		(rev "${REVISION}")
 		(company "${COMPANY}")
@@ -1146,6 +1146,29 @@
 		)
 		(uuid "6505df1b-9fde-4bbe-a672-be1b9857afa1")
 	)
+	(text_box "[${#}] ${TITLE}"
+		(exclude_from_sim no)
+		(at 12.7 12.7 0)
+		(size 271.78 20.32)
+		(margins 5.9999 5.9999 5.9999 5.9999)
+		(stroke
+			(width -0.0001)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(face "Times New Roman")
+				(size 8 8)
+				(thickness 1.2)
+				(bold yes)
+				(color 162 22 34 1)
+			)
+		)
+		(uuid "665be6b2-5262-41c9-956c-cd4bed31ff60")
+	)
 	(text_box "26"
 		(exclude_from_sim no)
 		(at 219.4306 130.7846 0)
@@ -1295,29 +1318,6 @@
 			)
 		)
 		(uuid "7f3e65a9-aab7-4e42-9498-fca7b427e5fc")
-	)
-	(text_box "[${#}] ${TITLE}"
-		(exclude_from_sim no)
-		(at 80.01 16.51 0)
-		(size 137.16 12.7)
-		(margins 4.4999 4.4999 4.4999 4.4999)
-		(stroke
-			(width -0.0001)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(face "Times New Roman")
-				(size 6 6)
-				(thickness 1.2)
-				(bold yes)
-				(color 162 22 34 1)
-			)
-		)
-		(uuid "80f76b8d-52cb-49fe-9647-9cd8137cf5f3")
 	)
 	(text_box "??"
 		(exclude_from_sim no)

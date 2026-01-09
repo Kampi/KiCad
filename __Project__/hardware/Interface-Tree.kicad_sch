@@ -5,11 +5,35 @@
 	(uuid "e4072e16-76e5-4cb7-b600-1ae14a69f117")
 	(paper "A3")
 	(title_block
+		(title "Interface - Tree")
 		(date "2025-06-05")
 		(rev "${REVISION}")
 		(company "${COMPANY}")
 	)
 	(lib_symbols)
+	(text_box "[${#}] ${TITLE}"
+		(exclude_from_sim no)
+		(at 12.7 12.7 0)
+		(size 394.97 20.32)
+		(margins 5.9999 5.9999 5.9999 5.9999)
+		(stroke
+			(width -0.0001)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(face "Times New Roman")
+				(size 8 8)
+				(thickness 1.2)
+				(bold yes)
+				(color 162 22 34 1)
+			)
+		)
+		(uuid "b4f7eb92-549d-4cc3-ac0a-d39d3c5edc22")
+	)
 	(image
 		(at 215.9 135.89)
 		(uuid "7fc1c843-5ea5-4f39-bba6-0619b449189a")

@@ -1,0 +1,240 @@
+(footprint "S2B-PH-SM4-TB"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "7f1c9e11-2b8c-4a62-a933-2e2c6dd072fe")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "S2B-PH-SM4-TB"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "8614f89a-4f8d-47f5-bea2-e65563dcbcf1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "62cce4ff-0a7f-4953-b9ab-3053e23904d7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "276e7ec9-4124-4ccf-9f81-a0d34d99b895")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -4.5 -4.55)
+		(end 4.5 -4.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6e0d5281-9317-4052-84ba-23f5354df7ff")
+	)
+	(fp_line
+		(start -4.5 4.2)
+		(end -4.5 -4.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a2a9b27e-fc7d-4b55-b6a8-0aaf3fc074e5")
+	)
+	(fp_line
+		(start -2.25 4.2)
+		(end -4.5 4.2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2e116ab7-c0a8-41ab-b086-b89070b5a077")
+	)
+	(fp_line
+		(start -2.25 5.7)
+		(end -2.25 4.2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "33dcda0a-d380-42a5-bbd7-90bcc142866b")
+	)
+	(fp_line
+		(start 2.25 4.2)
+		(end 2.25 5.7)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "90ef2b0f-9171-4e7b-ae29-ea620ddcbf86")
+	)
+	(fp_line
+		(start 2.25 5.7)
+		(end -2.25 5.7)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "f9e84f02-620d-4b8a-93fa-34acc89e07bc")
+	)
+	(fp_line
+		(start 4.5 -4.55)
+		(end 4.5 4.2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "fb79512c-1c90-44af-81bd-4be0c78defb3")
+	)
+	(fp_line
+		(start 4.5 4.2)
+		(end 2.25 4.2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a4feb816-79fe-46ce-8428-47d553ae5c40")
+	)
+	(fp_line
+		(start -3.95 -3.8)
+		(end -3.95 3.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d53fe15a-4b64-46b3-84bc-8e6cfbbc1f13")
+	)
+	(fp_line
+		(start -3.95 3.8)
+		(end 3.95 3.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ce98e7c1-511a-4e66-b29d-a531bbc54ec9")
+	)
+	(fp_line
+		(start 1 3.092893)
+		(end 0.5 3.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7023e2c3-8709-41d9-85ee-627450a8ac2c")
+	)
+	(fp_line
+		(start 1.5 3.8)
+		(end 1 3.092893)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "3b3f1264-6b1b-4d73-9a81-3dfc7023e41c")
+	)
+	(fp_line
+		(start 3.95 -3.8)
+		(end -3.95 -3.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e9880ab6-a21f-40f7-8f6c-b33751b28d73")
+	)
+	(fp_line
+		(start 3.95 3.8)
+		(end 3.95 -3.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2c957b62-79b1-4c21-9224-1caac8005723")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "13f49e6b-5f36-45f1-af5c-720d4488b977")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 1 3.45)
+		(size 1 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e6722943-303a-4210-9ad5-9825ae74f1d9")
+	)
+	(pad "2" smd rect
+		(at -1 3.45)
+		(size 1 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "aef9f873-7a03-4826-af0c-d6c98659a5c9")
+	)
+	(pad "P1" smd rect
+		(at 3.35 -2.3)
+		(size 1.5 3.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "edd29548-c4d8-4b6b-ac0a-26696812b810")
+	)
+	(pad "P2" smd rect
+		(at -3.35 -2.3)
+		(size 1.5 3.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "09fd30eb-963f-436e-b619-417383091219")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/JST/S2B-PH-SM4-TB.stp"
+		(offset
+			(xyz 0 4 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -180)
+		)
+	)
+)
