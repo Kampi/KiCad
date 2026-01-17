@@ -119,6 +119,9 @@ Initialize development branch for version <Major>.<Minor>.<Fix>
 Signed-off-by: Your name <Your Email>
 ```
 
+> **NOTE** 
+> You can use the `create-dev-branch` script from `.github/scripts` to run these steps automatically.
+
 ### Issue tracker
 
 The **issue tracker** is used to manage all bugs, features, and tasks.

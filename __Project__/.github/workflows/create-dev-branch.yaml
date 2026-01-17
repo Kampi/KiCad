@@ -1,0 +1,140 @@
+name: Create Development Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Development branch name (e.g., 1.0.1_Dev)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Validate branch name format
+        run: |
+          BRANCH_NAME="${{ inputs.branch_name }}"
+          
+          if [[ ! $BRANCH_NAME =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)_Dev$ ]]; then
+            echo "❌ ERROR: Invalid branch name format!"
+            echo "Expected format: Major.Minor.Rev_Dev (e.g., 1.0.1_Dev)"
+            echo "Provided: $BRANCH_NAME"
+            exit 1
+          fi
+          
+          MAJOR="${BASH_REMATCH[1]}"
+          MINOR="${BASH_REMATCH[2]}"
+          REV="${BASH_REMATCH[3]}"
+          
+          echo "✓ Branch name is valid: $MAJOR.$MINOR.$REV"
+          echo "MAJOR=$MAJOR" >> $GITHUB_ENV
+          echo "MINOR=$MINOR" >> $GITHUB_ENV
+          echo "REV=$REV" >> $GITHUB_ENV
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Pull latest master
+        run: |
+          echo "📥 Pulling latest master branch..."
+          git pull origin master
+          echo "✓ Master branch is up to date"
+      
+      - name: Create new branch
+        run: |
+          BRANCH_NAME="${{ inputs.branch_name }}"
+          echo "🌿 Creating new branch: $BRANCH_NAME..."
+          git checkout -b "$BRANCH_NAME"
+          echo "✓ Branch $BRANCH_NAME created"
+      
+      - name: Delete production folder
+        run: |
+          echo "🗑️  Deleting production folder..."
+          if [ -d "production" ]; then
+            rm -rf production
+            echo "✓ Production folder deleted"
+          else
+            echo "⚠️  Production folder not found (already deleted?)"
+          fi
+      
+      - name: Update pcb.yaml
+        run: |
+          echo "📝 Updating .github/workflows/pcb.yaml..."
+          PCB_YML_PATH=".github/workflows/pcb.yaml"
+          
+          if [ ! -f "$PCB_YML_PATH" ]; then
+            echo "❌ ERROR: File $PCB_YML_PATH not found!"
+            exit 1
+          fi
+          
+          if grep -q "kibot_variant:.*CHECKED" "$PCB_YML_PATH"; then
+            sed -i 's/kibot_variant:\s*CHECKED/kibot_variant: PRELIMINARY/' "$PCB_YML_PATH"
+            echo "✓ Updated kibot_variant from CHECKED to PRELIMINARY"
+          else
+            echo "⚠️  No changes made to pcb.yaml (already set to PRELIMINARY or pattern not found)"
+          fi
+      
+      - name: Read commit signature from template
+        id: signature
+        run: |
+          TEMPLATE_PATH=".github/.commit-msg-template"
+          
+          if [ ! -f "$TEMPLATE_PATH" ]; then
+            echo "⚠️  Commit message template not found at $TEMPLATE_PATH"
+            SIGNED_OFF_BY="Signed-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          else
+            SIGNED_OFF_BY=$(grep -E "^Signed-off-by:" "$TEMPLATE_PATH" | head -n 1)
+            
+            if [ -z "$SIGNED_OFF_BY" ]; then
+              echo "⚠️  Could not find Signed-off-by line in template"
+              SIGNED_OFF_BY="Signed-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+            fi
+          fi
+          
+          echo "✓ Signature: $SIGNED_OFF_BY"
+          echo "signed_off_by=$SIGNED_OFF_BY" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push changes
+        run: |
+          BRANCH_NAME="${{ inputs.branch_name }}"
+          SIGNED_OFF_BY="${{ steps.signature.outputs.signed_off_by }}"
+          
+          echo "💾 Committing changes..."
+          git add -A
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "⚠️  No changes to commit"
+          else
+            git commit -m "Initialize development branch for version ${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.REV }}
+            echo "✓ Changes committed"
+          fi
+          
+          echo "📤 Pushing branch to origin..."
+          git push -u origin "$BRANCH_NAME"
+          echo "✓ Branch pushed successfully"
+      
+      - name: Summary
+        run: |
+          echo "======================================"
+          echo "✅ SUCCESS! Development branch created"
+          echo "======================================"
+          echo ""
+          echo "Branch name: ${{ inputs.branch_name }}"
+          echo "Version: ${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.REV }}"
+          echo ""
+          echo "🔗 View branch: ${{ github.server_url }}/${{ github.repository }}/tree/${{ inputs.branch_name }}"
