@@ -1,6 +1,7 @@
 # Template
 
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/license/gpl-3-0/)
+[![PCB](https://github.com/Kampi/.../actions/workflows/pcb.yml/badge.svg)](https://github.com/Kampi/.../actions/workflows/pcb.yaml)
 
 ## 📑 Table of Contents
 

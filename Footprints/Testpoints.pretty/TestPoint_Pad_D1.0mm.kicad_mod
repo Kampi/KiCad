@@ -69,11 +69,11 @@
 		(center 0 0)
 		(end 0 0.7)
 		(stroke
-			(width 0.12)
+			(width 0.1)
 			(type solid)
 		)
 		(fill no)
-		(layer "F.Fab")
+		(layer "User.2")
 		(uuid "232e49b3-175c-43f1-906b-a67d81adeac2")
 	)
 	(pad "1" smd circle
