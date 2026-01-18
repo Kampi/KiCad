@@ -1,19 +1,19 @@
-# Template
+# "Project"
 
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/license/gpl-3-0/)
-[![PCB](https://github.com/Kampi/.../actions/workflows/pcb.yml/badge.svg)](https://github.com/Kampi/.../actions/workflows/pcb.yaml)
+[![PCB](https://github.com/"$User"/"$Project"/actions/workflows/pcb.yml/badge.svg)](https://github.com/"$User"/"$Project"/actions/workflows/pcb.yaml)
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [Template](#template)
-  - [📑 Table of Contents](#-table-of-contents)
-  - [📖 About](#-about)
-  - [📂 Directory Breakdown](#-directory-breakdown)
+- ["$Project"](#"$Project")
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Directory Breakdown](#directory-breakdown)
   - [Purchasing](#purchasing)
   - [Ressources](#ressources)
-  - [👨‍💻 Maintainer](#-maintainer)
+  - [Maintainer](#maintainer)
 
-## 📖 About
+## About
 
 ...
 
@@ -21,17 +21,17 @@ It is built with **KiCad** and integrates a full **CI/CD pipeline** using **KiBo
 
 Key features:
 
-- 🛠️ Open-source hardware design
-- 📦 Automated generation of Gerber, BoM, and documentation via KiBot
-- 🔄 Workflow stages (DRAFT → PRELIMINARY → CHECKED → RELEASED) for structured releases
-- 📝 Clear documentation and changelog to track progress
-- 🌍 Designed with collaboration and transparency in mind
+- Open-source hardware design
+- Automated generation of Gerber, BoM, and documentation via KiBot
+- Workflow stages (DRAFT → PRELIMINARY → CHECKED → RELEASED) for structured releases
+- Clear documentation and changelog to track progress
+- Designed with collaboration and transparency in mind
 
-Please check the [wiki](https://github.com/ZSWatch/ZSWatch/wiki) for more information about the project.
+Please check the [wiki](https://github.com/"$User"/"$Project"/wiki) for more information about the project.
 
 You can also view this project on [CADLAB.io](...).
 
-## 📂 Directory Breakdown
+## Directory Breakdown
 
 - **`.github`**: GitHub related files
 - **`.gitignore`**: Ignored files list
@@ -49,6 +49,6 @@ TBD
 
 - [KiBot Template](https://github.com/nguyen-v/KDT_Hierarchical_KiBot)
 
-## 👨‍💻 Maintainer
+## Maintainer
 
-- [Daniel Kampert](mailto:danielkameprt@kampis-elektroecke.de)
+- ["$User"](mailto:"$Email")
