@@ -61,7 +61,7 @@
 		(uuid "84c561e5-1a39-41a6-8c9b-4b05006dc64d")
 	)
 	(fp_line
-		(start -6.4 3.55)
+		(start -6.4 3.3)
 		(end -6.4 -3.25)
 		(stroke
 			(width 0.05)
@@ -72,7 +72,7 @@
 	)
 	(fp_line
 		(start 6.4 -3.25)
-		(end 6.4 3.55)
+		(end 6.4 3.3)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -81,8 +81,8 @@
 		(uuid "d76c84c2-af5a-468c-930b-bf96a3e5a19a")
 	)
 	(fp_line
-		(start 6.4 3.55)
-		(end -6.4 3.55)
+		(start 6.4 3.3)
+		(end -6.4 3.3)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -130,6 +130,18 @@
 		(layer "F.Fab")
 		(uuid "b2d54275-9b61-4ca2-bab4-8891fd26a8cd")
 	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "1eb4684c-6079-4bea-80cb-3266f71a394b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
 	(fp_text user "+"
 		(at -4.2 1 0)
 		(layer "F.Fab")
@@ -144,19 +156,19 @@
 	(pad "1" smd rect
 		(at -5.4 2.3)
 		(size 1.5 2)
-		(layers "F.Cu" "F.Mask" "F.Paste")
+		(layers "F.Cu" "F.Mask")
 		(uuid "2e65ef06-c24a-4205-ab50-7adaaeb036db")
 	)
 	(pad "2" smd rect
 		(at 5.4 2.3)
 		(size 1.5 2)
-		(layers "F.Cu" "F.Mask" "F.Paste")
+		(layers "F.Cu" "F.Mask")
 		(uuid "2fdf24e1-79ef-46f2-bba3-d5b729240fae")
 	)
 	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Same Sky/CMR-12062S-67.stp"
 		(offset
-			(xyz -6 3 2.5)
+			(xyz -6 3 2.3)
 		)
 		(scale
 			(xyz 1 1 1)

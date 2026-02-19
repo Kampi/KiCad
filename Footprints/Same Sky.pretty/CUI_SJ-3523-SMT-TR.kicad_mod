@@ -1,7 +1,7 @@
 (footprint "CUI_SJ-3523-SMT-TR"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -18,18 +18,6 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(uuid "09d42d4e-afee-4c5b-b536-c7ff8fa9155a")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "b32a668a-9dac-4e59-b166-fbd2dffa920d")
 		(effects
 			(font
 				(size 1 1)
@@ -219,9 +207,21 @@
 			(width 0.2)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "4bbeac2a-9b4a-4bd1-959c-ae4c70deaf80")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "63b55466-22f8-4e62-b2b0-f3aab13a3835")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
 	)
 	(pad "" np_thru_hole circle
 		(at 0 0)
@@ -240,21 +240,22 @@
 	(pad "1" smd rect
 		(at -1.1 3.7)
 		(size 2.2 2.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "9cbc3b3b-bf6f-49ed-a455-70eaf244bd03")
 	)
 	(pad "2" smd rect
 		(at 8.3 3.7)
 		(size 2.8 2.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "24e89718-85fb-43ed-8093-bec955b9d384")
 	)
 	(pad "3" smd rect
 		(at 0.9 -3.7)
 		(size 2.2 2.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "30aa8d8b-cf81-4861-87d5-486d5db1d646")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Same Sky/SJ-3523-SMT-TR.stp"
 		(offset
 			(xyz -3.5 0 2.5)
