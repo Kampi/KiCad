@@ -141,12 +141,12 @@ get_license_info() {
 # Function to update KiCad text variables in .kicad_pro file
 update_kicad_text_variables() {
     local kicad_pro_file=$1
-    local project_name=$2
-    local board_name=$3
-    local designer=$4
-    local company=$5
-    local date=$6
-    local revision=$7
+    local param_project_name=$2
+    local param_board_name=$3
+    local param_designer=$4
+    local param_company=$5
+    local param_date=$6
+    local param_revision=$7
     
     if [ ! -f "$kicad_pro_file" ]; then
         print_color "$YELLOW" "Warning: KiCad project file not found: $kicad_pro_file"
@@ -169,7 +169,7 @@ update_kicad_text_variables() {
     fi
     
     # Set company value, use "null" if empty
-    local company_value="${company:-null}"
+    local company_value="${param_company:-null}"
     local date_num=$(date +%Y-%m-%d)
     
     # Use Python to update JSON
@@ -187,13 +187,13 @@ try:
         data['text_variables'] = {}
     
     # Update text_variables
-    data['text_variables']['PROJECT_NAME'] = '$project_name'
-    data['text_variables']['BOARD_NAME'] = '$board_name'
-    data['text_variables']['DESIGNER'] = '$designer'
+    data['text_variables']['PROJECT_NAME'] = '$param_project_name'
+    data['text_variables']['BOARD_NAME'] = '$param_board_name'
+    data['text_variables']['DESIGNER'] = '$param_designer'
     data['text_variables']['COMPANY'] = '$company_value'
-    data['text_variables']['RELEASE_DATE'] = '$date'
+    data['text_variables']['RELEASE_DATE'] = '$param_date'
     data['text_variables']['RELEASE_DATE_NUM'] = '$date_num'
-    data['text_variables']['REVISION'] = '$revision'
+    data['text_variables']['REVISION'] = '$param_revision'
     
     # Write back to file with proper formatting
     with open('$kicad_pro_file', 'w', encoding='utf-8') as f:
@@ -246,6 +246,90 @@ EOF
     fi
 }
 
+# Function to replace all variable placeholders in template files
+replace_all_variables() {
+    local param_project_path=$1
+    local param_project_name=$2
+    local param_board_name=$3
+    local param_designer=$4
+    local param_company=$5
+    local param_revision=$6
+    local param_git_url=$7
+    local param_master_branch=$8
+    local param_email=$9
+    local param_git_user=${10}
+    local param_git_repo=${11}
+    
+    # Files to skip (already handled or binary)
+    local skip_extensions=(".kicad_pcb" ".kicad_sch" ".kicad_pro" ".png" ".jpg" ".jpeg" ".gif" ".pdf" ".zip" ".tar.gz" ".o" ".so" ".dll" ".exe")
+    local skip_dirs=("__pycache__" ".git" ".svn" "node_modules")
+    
+    # Get current dates
+    local release_date=$(date +%d-%b-%Y)
+    local release_date_num=$(date +%Y-%m-%d)
+    
+    # Company value (empty string if not provided)
+    local company_value="${param_company:-}"
+    
+    # Create lowercase anchor for Markdown ToC
+    local project_name_anchor=$(echo "$param_project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    local board_name_anchor=$(echo "$param_board_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    
+    print_color "$BLUE" "Replacing variables in all template files..."
+    
+    # Find all text files recursively
+    while IFS= read -r -d '' file; do
+        # Get file extension
+        local ext="${file##*.}"
+        local filename=$(basename "$file")
+        
+        # Skip backup files
+        if [[ "$filename" =~ ~$ ]] || [[ "$filename" =~ \.bak$ ]]; then
+            continue
+        fi
+        
+        # Skip based on extension
+        local skip=false
+        for skip_ext in "${skip_extensions[@]}"; do
+            if [[ "$file" == *"$skip_ext" ]]; then
+                skip=true
+                break
+            fi
+        done
+        
+        if [ "$skip" = true ]; then
+            continue
+        fi
+        
+        # Try to process as text file
+        if file "$file" | grep -q "text"; then
+            # Replace all variables
+            sed -i "s|\${PROJECT_NAME}|$param_project_name|g" "$file" 2>/dev/null || true
+            sed -i "s|\${BOARD_NAME}|$param_board_name|g" "$file" 2>/dev/null || true
+            sed -i "s|\${DESIGNER}|$param_designer|g" "$file" 2>/dev/null || true
+            sed -i "s|\${COMPANY}|$company_value|g" "$file" 2>/dev/null || true
+            sed -i "s|\${REVISION}|$param_revision|g" "$file" 2>/dev/null || true
+            sed -i "s|\${RELEASE_DATE}|$release_date|g" "$file" 2>/dev/null || true
+            sed -i "s|\${RELEASE_DATE_NUM}|$release_date_num|g" "$file" 2>/dev/null || true
+            sed -i "s|\${PROJECT_NAME_ANCHOR}|$project_name_anchor|g" "$file" 2>/dev/null || true
+            sed -i "s|\${BOARD_NAME_ANCHOR}|$board_name_anchor|g" "$file" 2>/dev/null || true
+            sed -i "s|\${GIT_URL}|$param_git_url|g" "$file" 2>/dev/null || true
+            sed -i "s|\${MASTER_BRANCH}|$param_master_branch|g" "$file" 2>/dev/null || true
+            sed -i "s|\${EMAIL}|$param_email|g" "$file" 2>/dev/null || true
+            sed -i "s|\${GIT_USER}|$param_git_user|g" "$file" 2>/dev/null || true
+            sed -i "s|\${GIT_REPO}|$param_git_repo|g" "$file" 2>/dev/null || true
+            
+            # Shell compatibility format
+            sed -i "s|\"\$Project\"|$param_project_name|g" "$file" 2>/dev/null || true
+            sed -i "s|\"\$Designer\"|$param_designer|g" "$file" 2>/dev/null || true
+            sed -i "s|\"\$Email\"|$param_email|g" "$file" 2>/dev/null || true
+            sed -i "s|\"\$User\"|$param_git_user|g" "$file" 2>/dev/null || true
+        fi
+    done < <(find "$param_project_path" -type f ! -path "*/.git/*" ! -path "*/__pycache__/*" ! -path "*/node_modules/*" -print0)
+    
+    print_color "$GREEN" "Completed variable replacement in template files"
+}
+
 # Main Script
 print_color "$BLUE" "========================================"
 print_color "$BLUE" "  KiCad Project Initialization Script  "
@@ -271,16 +355,18 @@ COMPANY=$(get_input "Enter company name" "" false)
 
 MASTER_BRANCH=$(get_input "Enter main branch name" "main" true)
 
+TARGET_DIR=$(get_input "Enter target directory for project" "$(pwd)" true)
+
 # Step 2: Determine KiCad library path
 # Script is in Scripts/ folder, template is one level up
 SCRIPT_DIR="$(dirname "$0")"
 KICAD_LIBRARY="${KICAD_LIBRARY:-$(dirname "$SCRIPT_DIR")}"
-TEMPLATE_PATH="$KICAD_LIBRARY/__Project__"
+TEMPLATE_PATH="$KICAD_LIBRARY/Template-Project"
 
 if [ ! -d "$TEMPLATE_PATH" ]; then
     print_color "$RED" "Template directory not found: $TEMPLATE_PATH"
     print_color "$YELLOW" "Expected path: $TEMPLATE_PATH"
-    print_color "$YELLOW" "Make sure __Project__ exists in the KiCad root directory"
+    print_color "$YELLOW" "Make sure Template-Project exists in the KiCad root directory"
     exit 1
 fi
 
@@ -302,15 +388,21 @@ IFS='|' read -r PCB_FILENAME PCB_MANUFACTURER PCB_THICKNESS PCB_LAYERS <<< "$SEL
 
 print_color "$GREEN" "Selected PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
 
+# Create lowercase versions for directory names
+PROJECT_NAME_ANCHOR=$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+BOARD_NAME_ANCHOR=$(echo "$BOARD_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+
 # Step 3: Create project directory
 print_color "$BLUE" "\nCreating project directory: $PROJECT_NAME"
-if [ -d "$PROJECT_NAME" ]; then
-    print_color "$RED" "Directory '$PROJECT_NAME' already exists!"
+PROJECT_PATH="$TARGET_DIR/$PROJECT_NAME"
+
+if [ -d "$PROJECT_PATH" ]; then
+    print_color "$RED" "Directory '$PROJECT_PATH' already exists!"
     exit 1
 fi
 
-cp -r "$TEMPLATE_PATH" "$PROJECT_NAME"
-cd "$PROJECT_NAME"
+cp -r "$TEMPLATE_PATH" "$PROJECT_PATH"
+cd "$PROJECT_PATH"
 
 # Step 3b: Replace PCB template with selected one and remove all other templates
 print_color "$BLUE" "Applying PCB template: $PCB_FILENAME"
@@ -345,17 +437,17 @@ fi
 cd ..
 
 # Step 4: Rename hardware directory
-print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME'"
+print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME_ANCHOR'"
 if [ -d "hardware" ]; then
-    mv "hardware" "$BOARD_NAME"
+    mv "hardware" "$BOARD_NAME_ANCHOR"
 else
     print_color "$YELLOW" "Warning: 'hardware' directory not found"
 fi
 
 # Step 5: Rename KiCad project files
 print_color "$BLUE" "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
-if [ -d "$BOARD_NAME" ]; then
-    cd "$BOARD_NAME"
+if [ -d "$BOARD_NAME_ANCHOR" ]; then
+    cd "$BOARD_NAME_ANCHOR"
     for file in Template.*; do
         if [ -f "$file" ]; then
             new_name="${file/Template/$BOARD_NAME}"
@@ -376,14 +468,14 @@ fi
 
 # Step 5b: Update KiCad text variables
 print_color "$BLUE" "Updating KiCad project text variables"
-KICAD_PRO_FILE="$BOARD_NAME/$BOARD_NAME.kicad_pro"
+KICAD_PRO_FILE="$BOARD_NAME_ANCHOR/$BOARD_NAME.kicad_pro"
 CURRENT_DATE=$(date +"%d-%b-%Y")
 COMPANY_VALUE="${COMPANY:-}"
 update_kicad_text_variables "$KICAD_PRO_FILE" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY_VALUE" "$CURRENT_DATE" "1.0.0"
 
 # Step 5c: Update kibot_main.yaml
 print_color "$BLUE" "Updating kibot_main.yaml"
-KIBOT_MAIN="$BOARD_NAME/kibot_yaml/kibot_main.yaml"
+KIBOT_MAIN="$BOARD_NAME_ANCHOR/kibot_yaml/kibot_main.yaml"
 if [ -f "$KIBOT_MAIN" ]; then
     COMPANY_VALUE_KIBOT="${COMPANY:-null}"
     sed -i "s/PROJECT_NAME: Project/PROJECT_NAME: $PROJECT_NAME/g" "$KIBOT_MAIN"
@@ -408,10 +500,7 @@ if [ -d "$WORKFLOWS_DIR" ]; then
             
             # Update PCB-specific settings
             if [ "$workflow_name" = "pcb.yaml" ]; then
-                sed -i "s/kicad_board: __Project__/kicad_board: $BOARD_NAME/g" "$workflow_file"
-                sed -i "s/kibot_output_dir: Board/kibot_output_dir: $PROJECT_NAME/g" "$workflow_file"
-                sed -i "s|kibot_output_path: board|kibot_output_path: ../production|g" "$workflow_file"
-                sed -i "s/kibot_input_dir: hardware/kibot_input_dir: $BOARD_NAME/g" "$workflow_file"
+                sed -i "s/kicad_board: Template-Project/kicad_board: $BOARD_NAME/g" "$workflow_file"
                 sed -i "s/kibot_variant: PRELIMINARY/kibot_variant: DRAFT/g" "$workflow_file"
             fi
             
@@ -439,7 +528,7 @@ if [ "$LICENSE_NAME" != "None" ]; then
     download_license "$LICENSE_KEY" "LICENSE" "$CURRENT_YEAR" "$DESIGNER"
     
     # Add license to subdirectories
-    for dir in docs cad "$BOARD_NAME" 3d-print firmware; do
+    for dir in docs cad "$BOARD_NAME_ANCHOR" 3d-print firmware; do
         if [ -d "$dir" ]; then
             download_license "$LICENSE_KEY" "$dir/LICENSE" "$CURRENT_YEAR" "$DESIGNER"
         fi
@@ -491,7 +580,10 @@ if [ -f "$DOCUMENTATION_YAML" ]; then
     print_color "$GREEN" "Updated: $DOCUMENTATION_YAML"
 fi
 
-# Step 9c: Create basic AsciiDoc documentation
+# Step 9c: Replace all variables in template files
+replace_all_variables "$(pwd)" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY" "1.0.0" "$GIT_URL" "$MASTER_BRANCH" "$EMAIL" "$GIT_USER" "$GIT_REPO"
+
+# Step 9d: Create basic AsciiDoc documentation
 print_color "$BLUE" "Creating AsciiDoc documentation"
 DOCS_DIR="docs"
 if [ -d "$DOCS_DIR" ]; then
@@ -586,12 +678,17 @@ git config commit.template ".github/.commit-msg-template"
 print_color "$GREEN" "Set commit message template to .github/.commit-msg-template"
 
 # Set master as main branch
-git branch -M master
-print_color "$GREEN" "Set default branch to 'master'"
+git branch -M "$MASTER_BRANCH"
+print_color "$GREEN" "Set default branch to '$MASTER_BRANCH'"
 
 # Step 11: Add remote
-git remote add origin "$GIT_URL"
-print_color "$GREEN" "Added remote: $GIT_URL"
+if git remote | grep -q '^origin$'; then
+    git remote set-url origin "$GIT_URL"
+    print_color "$GREEN" "Updated remote: $GIT_URL"
+else
+    git remote add origin "$GIT_URL"
+    print_color "$GREEN" "Added remote: $GIT_URL"
+fi
 
 # Step 12: Initial commit
 print_color "$BLUE" "Creating initial commit"

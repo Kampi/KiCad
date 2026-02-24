@@ -9,6 +9,7 @@
     - [Project Initialization Script](#project-initialization-script)
       - [What the Script Does](#what-the-script-does)
       - [Usage](#usage)
+      - [Non-Interactive Usage](#non-interactive-usage)
       - [Requirements](#requirements)
   - [Directories](#directories)
   - [PCB Template Structure](#pcb-template-structure)
@@ -83,6 +84,37 @@ cd /path/to/KiCad
 
 The script will guide you through an interactive setup process. After completion, your new project directory will contain a fully configured KiCad project ready for development.
 
+#### Non-Interactive Usage
+
+For automated or scripted usage, you can pipe all inputs to the initialization script using `echo`:
+
+**Windows (PowerShell):**
+
+```powershell
+"MyProject`nMyBoard`nJohn Doe`njohn.doe@example.com`nhttps://github.com/user/repo`nMyCompany`nmain`nC:\Projects`n1`n1" | .\Scripts\init-project.ps1
+```
+
+**Linux/macOS (Bash):**
+
+```bash
+echo -e "MyProject\nMyBoard\nJohn Doe\njohn.doe@example.com\nhttps://github.com/user/repo\nMyCompany\nmain\n/home/user/projects\n1\n1" | Scripts/init-project.sh
+```
+
+**Input Order:**
+
+1. Project name (e.g., "MyProject")
+2. KiCad board name (e.g., "MyBoard", or press Enter to use project name)
+3. Designer name (e.g., "John Doe")
+4. Designer email (e.g., "john.doe@example.com")
+5. GitHub repository URL (e.g., "https://github.com/user/repo") - username and repository name are extracted automatically
+6. Company name (optional, or press Enter to skip)
+7. Main branch name (default: "main")
+8. Target directory (default: current directory)
+9. PCB template selection (number, e.g., "1" for first template)
+10. License selection (1-11, e.g., "1" for MIT)
+
+**Note:** Empty values (just `\n` or backtick-n in PowerShell) will use the default value for that field.
+
 #### Requirements
 
 - **Windows**: PowerShell 5.1 or later
@@ -102,11 +134,11 @@ The library contain the following directory and file structure:
 - `Layout` : Layout templates
 - `Scripts` : Python scripts for KiCad
 - `Symbols` : Part symbols
-- `__Project__` : Project template
+- `Template-Project` : Project template
 
 ## PCB Template Structure
 
-The project template supports multiple PCB stackup configurations through template files. Templates must be placed in the `__Project__/hardware/` directory.
+The project template supports multiple PCB stackup configurations through template files. Templates must be placed in the `Tempalte-Project/hardware/` directory.
 
 ### Template Naming Convention
 
@@ -125,6 +157,7 @@ Template - <manufacturer>_<thickness>_<layers>-layer.kicad_pcb
 - `-layer.kicad_pcb` - Fixed suffix (required)
 
 **Examples:**
+
 - `Template - pcbway_1.6mm_4-layer.kicad_pcb` - PCBWay, 1.6mm thickness, 4 layers
 - `Template - jlcpcb_1.6mm_2-layer.kicad_pcb` - JLCPCB, 1.6mm thickness, 2 layers
 - `Template - oshpark_1.6mm_4-layer.kicad_pcb` - OSH Park, 1.6mm thickness, 4 layers
@@ -133,7 +166,7 @@ Template - <manufacturer>_<thickness>_<layers>-layer.kicad_pcb
 
 During project initialization, the script will:
 
-1. Scan the `__Project__/hardware/` directory for all template files
+1. Scan the `Template-Project/hardware/` directory for all template files
 2. Parse the manufacturer, thickness, and layer count from each filename
 3. Present an interactive menu with available templates
 4. Copy the selected template as the base PCB file for the new project
@@ -144,7 +177,7 @@ To add a new PCB template:
 
 1. Create a KiCad PCB file with your desired stackup and design rules
 2. Name the file following the convention above
-3. Place it in the `__Project__/hardware/` directory
+3. Place it in the `Template-Project/hardware/` directory
 4. The template will automatically appear in the selection menu
 
 **Template Requirements:**
@@ -156,7 +189,7 @@ To add a new PCB template:
 
 ## CI/CD Pipelines
 
-The project template includes automated GitHub Actions workflows for continuous integration and deployment. All pipelines are located in `__Project__/.github/workflows/`.
+The project template includes automated GitHub Actions workflows for continuous integration and deployment. All pipelines are located in `Template-Project/.github/workflows/`.
 
 ### PCB Workflow
 

@@ -101,12 +101,12 @@ function Show-LicenseMenu {
 function Update-KiCadTextVariables {
     param(
         [string]$KicadProFile,
-        [string]$ProjectName,
-        [string]$BoardName,
-        [string]$Designer,
-        [string]$Company,
-        [string]$Date,
-        [string]$Revision
+        [string]$ParamProjectName,
+        [string]$ParamBoardName,
+        [string]$ParamDesigner,
+        [string]$ParamCompany,
+        [string]$ParamDate,
+        [string]$ParamRevision
     )
     
     if (-not (Test-Path $KicadProFile)) {
@@ -122,13 +122,13 @@ function Update-KiCadTextVariables {
         $jsonContent | Add-Member -MemberType NoteProperty -Name "text_variables" -Value @{}
     }
     
-    $jsonContent.text_variables.PROJECT_NAME = $ProjectName
-    $jsonContent.text_variables.BOARD_NAME = $BoardName
-    $jsonContent.text_variables.DESIGNER = $Designer
-    $jsonContent.text_variables.COMPANY = if ([string]::IsNullOrWhiteSpace($Company)) { "null" } else { $Company }
-    $jsonContent.text_variables.RELEASE_DATE = $Date
+    $jsonContent.text_variables.PROJECT_NAME = $ParamProjectName
+    $jsonContent.text_variables.BOARD_NAME = $ParamBoardName
+    $jsonContent.text_variables.DESIGNER = $ParamDesigner
+    $jsonContent.text_variables.COMPANY = if ([string]::IsNullOrWhiteSpace($ParamCompany)) { "null" } else { $ParamCompany }
+    $jsonContent.text_variables.RELEASE_DATE = $ParamDate
     $jsonContent.text_variables.RELEASE_DATE_NUM = (Get-Date -Format "yyyy-MM-dd")
-    $jsonContent.text_variables.REVISION = $Revision
+    $jsonContent.text_variables.REVISION = $ParamRevision
     
     # Write back to file with proper formatting
     $jsonContent | ConvertTo-Json -Depth 100 | Set-Content $KicadProFile
@@ -184,6 +184,111 @@ function Download-License {
     }
 }
 
+function Replace-AllVariables {
+    param(
+        [string]$ParamProjectPath,
+        [string]$ParamProjectName,
+        [string]$ParamBoardName,
+        [string]$ParamDesigner,
+        [string]$ParamCompany,
+        [string]$ParamRevision,
+        [string]$ParamGitUrl,
+        [string]$ParamMasterBranch,
+        [string]$ParamEmail,
+        [string]$ParamGitUser,
+        [string]$ParamGitRepo
+    )
+    
+    # Files to skip (already handled or binary)
+    $skipExtensions = @('.kicad_pcb', '.kicad_sch', '.kicad_pro', '.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.tar.gz', '.o', '.so', '.dll', '.exe')
+    $skipDirs = @('__pycache__', '.git', '.svn', 'node_modules')
+    
+    # Get current dates
+    $releaseDate = Get-Date -Format "dd-MMM-yyyy"
+    $releaseDateNum = Get-Date -Format "yyyy-MM-dd"
+    
+    # Company value (empty string if not provided)
+    $companyValue = if ([string]::IsNullOrWhiteSpace($ParamCompany)) { "" } else { $ParamCompany }
+    
+    # Create lowercase anchor for Markdown ToC
+    $projectNameAnchor = $ParamProjectName.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
+    $boardNameAnchor = $ParamBoardName.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
+    
+    Write-ColorOutput $BLUE "Replacing variables in all template files..."
+    
+    # Find all text files recursively
+    Get-ChildItem -Path $ParamProjectPath -Recurse -File | Where-Object {
+        # Skip directories
+        $skip = $false
+        foreach ($dir in $skipDirs) {
+            if ($_.FullName -like "*\$dir\*") {
+                $skip = $true
+                break
+            }
+        }
+        
+        if ($skip) { return $false }
+        
+        # Skip based on extension
+        foreach ($ext in $skipExtensions) {
+            if ($_.Extension -eq $ext) {
+                return $false
+            }
+        }
+        
+        # Skip backup files
+        if ($_.Name -match '~$|\.bak$') {
+            return $false
+        }
+        
+        return $true
+    } | ForEach-Object {
+        try {
+            # Try to read as text file
+            $content = Get-Content -Path $_.FullName -Raw -ErrorAction Stop
+            
+            # Replace all variables
+            $modified = $false
+            $replacements = @{
+                '${PROJECT_NAME}' = $ParamProjectName
+                '${BOARD_NAME}' = $ParamBoardName
+                '${DESIGNER}' = $ParamDesigner
+                '${COMPANY}' = $companyValue
+                '${REVISION}' = $ParamRevision
+                '${RELEASE_DATE}' = $releaseDate
+                '${RELEASE_DATE_NUM}' = $releaseDateNum
+                '${PROJECT_NAME_ANCHOR}' = $projectNameAnchor
+                '${BOARD_NAME_ANCHOR}' = $boardNameAnchor
+                '${GIT_URL}' = $ParamGitUrl
+                '${MASTER_BRANCH}' = $ParamMasterBranch
+                '${EMAIL}' = $ParamEmail
+                '${GIT_USER}' = $ParamGitUser
+                '${GIT_REPO}' = $ParamGitRepo
+                '"$Project"' = $ParamProjectName
+                '"$Designer"' = $ParamDesigner
+                '"$Email"' = $ParamEmail
+                '"$User"' = $ParamGitUser
+            }
+            
+            foreach ($key in $replacements.Keys) {
+                if ($content -match [regex]::Escape($key)) {
+                    $content = $content -replace [regex]::Escape($key), $replacements[$key]
+                    $modified = $true
+                }
+            }
+            
+            # Write back if modified
+            if ($modified) {
+                Set-Content -Path $_.FullName -Value $content -NoNewline -Encoding UTF8
+            }
+        } catch {
+            # Skip binary files or files we can't read
+        }
+    }
+    
+    Write-ColorOutput $GREEN "Completed variable replacement in template files"
+}
+
 # Main Script
 Write-ColorOutput $BLUE "========================================"
 Write-ColorOutput $BLUE "  KiCad Project Initialization Script  "
@@ -195,7 +300,6 @@ $BOARD_NAME = Get-UserInput "Enter KiCad board name" -DefaultValue $PROJECT_NAME
 $DESIGNER = Get-UserInput "Enter designer name"
 $EMAIL = Get-UserInput "Enter designer email"
 $GIT_URL = Get-UserInput "Enter GitHub repository URL (e.g., https://github.com/user/repo)"
-$MASTER_BRANCH = Get-UserInput "Enter main branch name" -DefaultValue "main"
 
 # Parse GitHub user and repo from URL
 if ($GIT_URL -match 'github\.com[:/]([^/]+)/([^/\.]+)') {
@@ -208,6 +312,9 @@ if ($GIT_URL -match 'github\.com[:/]([^/]+)/([^/\.]+)') {
 
 $COMPANY = Get-UserInput "Enter company name" -Required $false
 
+$MASTER_BRANCH = Get-UserInput "Enter main branch name" -DefaultValue "main"
+$TARGET_DIR = Get-UserInput "Enter target directory for project" -DefaultValue (Get-Location).Path
+
 # Step 2: Determine KiCad library path
 # Script is in Scripts/ folder, template is one level up
 $SCRIPT_DIR = Split-Path -Parent $PSCommandPath
@@ -215,12 +322,12 @@ if ([string]::IsNullOrEmpty($KicadLibraryPath)) {
     $KicadLibraryPath = Split-Path -Parent $SCRIPT_DIR
 }
 
-$TEMPLATE_PATH = Join-Path $KicadLibraryPath "__Project__"
+$TEMPLATE_PATH = Join-Path $KicadLibraryPath "Template-Project"
 
 if (-not (Test-Path $TEMPLATE_PATH)) {
     Write-ColorOutput $RED "Template directory not found: $TEMPLATE_PATH"
     Write-ColorOutput $YELLOW "Expected path: $TEMPLATE_PATH"
-    Write-ColorOutput $YELLOW "Make sure __Project__ exists in the KiCad root directory"
+    Write-ColorOutput $YELLOW "Make sure Template-Project exists in the KiCad root directory"
     exit 1
 }
 
@@ -243,16 +350,21 @@ $PCB_LAYERS = $SELECTED_PCB.Layers
 
 Write-ColorOutput $GREEN "Selected PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
 
+# Create lowercase versions for directory names
+$PROJECT_NAME_ANCHOR = $PROJECT_NAME.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
+$BOARD_NAME_ANCHOR = $BOARD_NAME.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
+
 # Step 3: Create project directory
 Write-ColorOutput $BLUE "`nCreating project directory: $PROJECT_NAME"
+$PROJECT_PATH = Join-Path $TARGET_DIR $PROJECT_NAME
 
-if (Test-Path $PROJECT_NAME) {
-    Write-ColorOutput $RED "Directory '$PROJECT_NAME' already exists!"
+if (Test-Path $PROJECT_PATH) {
+    Write-ColorOutput $RED "Directory '$PROJECT_PATH' already exists!"
     exit 1
 }
 
-Copy-Item -Path $TEMPLATE_PATH -Destination $PROJECT_NAME -Recurse
-Set-Location $PROJECT_NAME
+Copy-Item -Path $TEMPLATE_PATH -Destination $PROJECT_PATH -Recurse
+Set-Location $PROJECT_PATH
 
 # Step 3b: Replace PCB template with selected one
 Write-ColorOutput $BLUE "Applying PCB template: $PCB_FILENAME"
@@ -284,15 +396,15 @@ if (Test-Path $TARGET_PCB) {
 Set-Location ..
 
 # Step 4: Rename hardware directory
-Write-ColorOutput $BLUE "Renaming 'hardware' directory to '$BOARD_NAME'"
+Write-ColorOutput $BLUE "Renaming 'hardware' directory to '$BOARD_NAME_ANCHOR'"
 if (Test-Path "hardware") {
-    Rename-Item -Path "hardware" -NewName $BOARD_NAME
+    Rename-Item -Path "hardware" -NewName $BOARD_NAME_ANCHOR
 }
 
 # Step 5: Rename KiCad project files
 Write-ColorOutput $BLUE "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
-if (Test-Path $BOARD_NAME) {
-    Set-Location $BOARD_NAME
+if (Test-Path $BOARD_NAME_ANCHOR) {
+    Set-Location $BOARD_NAME_ANCHOR
     Get-ChildItem -Filter "Template.*" | ForEach-Object {
         $newName = $_.Name -replace "^Template", $BOARD_NAME
         Rename-Item -Path $_.Name -NewName $newName
@@ -311,14 +423,14 @@ if (Test-Path $BOARD_NAME) {
 
 # Step 5b: Update KiCad text variables
 Write-ColorOutput $BLUE "Updating KiCad project text variables"
-$KICAD_PRO_FILE = Join-Path $BOARD_NAME "$BOARD_NAME.kicad_pro"
+$KICAD_PRO_FILE = Join-Path $BOARD_NAME_ANCHOR "$BOARD_NAME.kicad_pro"
 $CURRENT_DATE = Get-Date -Format "dd-MMM-yyyy"
 $COMPANY_VALUE = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
-Update-KiCadTextVariables -KicadProFile $KICAD_PRO_FILE -ProjectName $PROJECT_NAME -BoardName $BOARD_NAME -Designer $DESIGNER -Company $COMPANY_VALUE -Date $CURRENT_DATE -Revision "1.0.0"
+Update-KiCadTextVariables -KicadProFile $KICAD_PRO_FILE -ParamProjectName $PROJECT_NAME -ParamBoardName $BOARD_NAME -ParamDesigner $DESIGNER -ParamCompany $COMPANY_VALUE -ParamDate $CURRENT_DATE -ParamRevision "1.0.0"
 
 # Step 5c: Update kibot_main.yaml
 Write-ColorOutput $BLUE "Updating kibot_main.yaml"
-$KIBOT_MAIN = Join-Path $BOARD_NAME "kibot_yaml\kibot_main.yaml"
+$KIBOT_MAIN = Join-Path $BOARD_NAME_ANCHOR "kibot_yaml\kibot_main.yaml"
 if (Test-Path $KIBOT_MAIN) {
     $COMPANY_VALUE_KIBOT = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "null" } else { $COMPANY }
     (Get-Content $KIBOT_MAIN -Raw) `
@@ -345,10 +457,7 @@ if (Test-Path $WORKFLOWS_DIR) {
         
         # Update PCB-specific settings
         if ($_.Name -eq 'pcb.yaml') {
-            $workflowContent = $workflowContent -replace 'kicad_board: __Project__', "kicad_board: $BOARD_NAME"
-            $workflowContent = $workflowContent -replace 'kibot_output_dir: Board', "kibot_output_dir: $PROJECT_NAME"
-            $workflowContent = $workflowContent -replace 'kibot_output_path: board', 'kibot_output_path: ../production'
-            $workflowContent = $workflowContent -replace 'kibot_input_dir: hardware', "kibot_input_dir: $BOARD_NAME"
+            $workflowContent = $workflowContent -replace 'kicad_board: Template-Project', "kicad_board: $BOARD_NAME"
             $workflowContent = $workflowContent -replace 'kibot_variant: PRELIMINARY', 'kibot_variant: DRAFT'
         }
         
@@ -376,7 +485,7 @@ if ($LICENSE_NAME -ne "None") {
     
     Download-License -LicenseKey $LICENSE_KEY -Destination "LICENSE" -Year $CURRENT_YEAR -Author $DESIGNER
     
-    foreach ($dir in @("docs", "cad", $BOARD_NAME, "3d-print", "firmware")) {
+    foreach ($dir in @("docs", "cad", $BOARD_NAME_ANCHOR, "3d-print", "firmware")) {
         if (Test-Path $dir) {
             Download-License -LicenseKey $LICENSE_KEY -Destination "$dir\LICENSE" -Year $CURRENT_YEAR -Author $DESIGNER
         }
@@ -426,7 +535,10 @@ if (Test-Path $DOCUMENTATION_YAML) {
     Write-ColorOutput $GREEN "Updated: $DOCUMENTATION_YAML"
 }
 
-# Step 9c: Create basic AsciiDoc documentation
+# Step 9c: Replace all variables in template files
+Replace-AllVariables -ParamProjectPath (Get-Location).Path -ParamProjectName $PROJECT_NAME -ParamBoardName $BOARD_NAME -ParamDesigner $DESIGNER -ParamCompany $COMPANY -ParamRevision "1.0.0" -ParamGitUrl $GIT_URL -ParamMasterBranch $MASTER_BRANCH -ParamEmail $EMAIL -ParamGitUser $GIT_USER -ParamGitRepo $GIT_REPO
+
+# Step 9d: Create basic AsciiDoc documentation
 Write-ColorOutput $BLUE "Creating AsciiDoc documentation"
 $DOCS_DIR = "docs"
 if (Test-Path $DOCS_DIR) {
@@ -519,12 +631,18 @@ git config user.email $EMAIL
 git config commit.template ".github/.commit-msg-template"
 Write-ColorOutput $GREEN "Set commit message template to .github/.commit-msg-template"
 
-git branch -M master
-Write-ColorOutput $GREEN "Set default branch to 'master'"
+git branch -M $MASTER_BRANCH
+Write-ColorOutput $GREEN "Set default branch to '$MASTER_BRANCH'"
 
 # Step 11: Add remote
-git remote add origin $GIT_URL
-Write-ColorOutput $GREEN "Added remote: $GIT_URL"
+$existingRemotes = git remote
+if ($existingRemotes -contains "origin") {
+    git remote set-url origin $GIT_URL
+    Write-ColorOutput $GREEN "Updated remote: $GIT_URL"
+} else {
+    git remote add origin $GIT_URL
+    Write-ColorOutput $GREEN "Added remote: $GIT_URL"
+}
 
 # Step 12: Initial commit
 Write-ColorOutput $BLUE "Creating initial commit"
