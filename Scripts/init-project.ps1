@@ -366,6 +366,12 @@ if (Test-Path $PROJECT_PATH) {
 Copy-Item -Path $TEMPLATE_PATH -Destination $PROJECT_PATH -Recurse
 Set-Location $PROJECT_PATH
 
+# Remove template-only files that should not be part of the project
+if (Test-Path "VARIABLES.md") {
+    Remove-Item "VARIABLES.md" -Force
+    Write-ColorOutput $GREEN "Removed: VARIABLES.md"
+}
+
 # Step 3b: Replace PCB template with selected one
 Write-ColorOutput $BLUE "Applying PCB template: $PCB_FILENAME"
 $SOURCE_PCB = $PCB_FILENAME

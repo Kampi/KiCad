@@ -404,6 +404,10 @@ fi
 cp -r "$TEMPLATE_PATH" "$PROJECT_PATH"
 cd "$PROJECT_PATH"
 
+# Remove template-only files that should not be part of the project
+rm -f "VARIABLES.md"
+print_color "$GREEN" "Removed: VARIABLES.md"
+
 # Step 3b: Replace PCB template with selected one and remove all other templates
 print_color "$BLUE" "Applying PCB template: $PCB_FILENAME"
 SOURCE_PCB="$PCB_FILENAME"
