@@ -1,0 +1,28 @@
+{
+  "_comment": "KiCad Part-DB Integration — settings template. Copy to settings.json and fill in your values. Never commit the settings.json with a real api_key to version control.",
+  "api_url": "https://your-partdb-instance/api",
+  "api_key": "YOUR_API_KEY_HERE",
+  "release_url": "https://github.com/org/repo/releases/download/v1.0/release.zip",
+  "project_name": null,
+  "default_category": "Miscellaneous",
+  "category_map": {
+    "BT": "Batteries",
+    "C": "Capacitors",
+    "D": "Diodes",
+    "F": "Fuses",
+    "IC": "Integrated Circuits",
+    "J": "Connectors",
+    "K": "Relays",
+    "L": "Inductors",
+    "LED": "LEDs",
+    "M": "Modules",
+    "P": "Connectors",
+    "Q": "Transistors",
+    "R": "Resistors",
+    "SW": "Switches",
+    "TH": "Sensors",
+    "U": "Integrated Circuits",
+    "X": "Connectors",
+    "Y": "Crystals & Oscillators"
+  }
+}

@@ -1,0 +1,17 @@
+# Ignore the settings file that contains the API key
+settings.json
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Byte-compiled / optimised / DLL files
+*.egg-info/
+dist/
+build/
