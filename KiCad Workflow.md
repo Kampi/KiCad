@@ -16,9 +16,9 @@
     - [Milestones](#milestones)
     - [Issue tracker](#issue-tracker)
     - [Types](#types)
-      - [Bug](#bug)
-      - [Feature](#feature)
-      - [Task](#task)
+      - [Added](#added)
+      - [Removed](#removed)
+      - [Changed](#changed)
   - [Working with the Issue Tracker](#working-with-the-issue-tracker)
     - [Branch Workflow](#branch-workflow)
   - [Publishing a New Release](#publishing-a-new-release)
@@ -133,15 +133,11 @@ Have the correct type and labels.
 
 ### Types
 
-#### Bug
+#### Added
 
-An error or flaw in the design (schematic or PCB layout). Documentation issues do **not** count as bugs.
+#### Removed
 
-#### Feature
-
-A new functionality or an enhancement of an existing one.
-
-#### Task
+#### Changed
 
 General to-dos such as documentation improvements, refactoring, or cleanup tasks.
 
