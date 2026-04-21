@@ -168,6 +168,56 @@
 		(uuid "e6662572-af80-4228-afcc-c10b580734c6")
 	)
 	(fp_line
+		(start -0.3 -0.5)
+		(end -0.3 0.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "86b12d2f-304e-4c69-927b-fe68809d9903")
+	)
+	(fp_line
+		(start -0.3 0)
+		(end 0.3 -0.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "7cb64e9c-0ad2-46f3-a3c3-dc596bde12f1")
+	)
+	(fp_line
+		(start 0.3 -0.4)
+		(end 0.3 0.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "261507b7-8cf8-4306-8cab-b447ccaa2473")
+	)
+	(fp_line
+		(start 0.3 0.4)
+		(end -0.3 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "fce7ed77-b179-4f1d-8d27-3cb202b71784")
+	)
+	(fp_line
+		(start 0.8 0)
+		(end -0.9 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "6f15bdad-c9fe-4f5c-b989-29f4e9b4a60a")
+	)
+	(fp_line
 		(start 1.65 -1.65)
 		(end 1.65 1.65)
 		(stroke
@@ -199,7 +249,7 @@
 		(uuid "be2bee71-faba-4177-bb2b-03c6c54cb863")
 	)
 	(fp_text user "${REFERENCE}"
-		(at 0 0 0)
+		(at 0 -1.65 0)
 		(layer "F.Fab")
 		(uuid "f6b0e902-2d1a-4215-8195-ec15d47dc9ef")
 		(effects
@@ -228,13 +278,13 @@
 		(uuid "c85e087b-451c-4d3d-91ca-aca9cb0268d0")
 	)
 	(pad "1" smd rect
-		(at -1.399999 0)
+		(at -1.4 0)
 		(size 0.5 3.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "315dc2d7-aa5d-4869-852c-0e58fd52ffeb")
 	)
 	(pad "2" smd rect
-		(at 1.399999 0)
+		(at 1.4 0)
 		(size 0.5 3.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "2953872f-4cb6-4081-8ecd-136f26e8cdea")

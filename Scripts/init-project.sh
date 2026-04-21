@@ -147,6 +147,7 @@ update_kicad_text_variables() {
     local param_company=$5
     local param_date=$6
     local param_revision=$7
+    local param_git_url=$8
     
     if [ ! -f "$kicad_pro_file" ]; then
         print_color "$YELLOW" "Warning: KiCad project file not found: $kicad_pro_file"
@@ -168,8 +169,8 @@ update_kicad_text_variables() {
         exit 1
     fi
     
-    # Set company value, use "null" if empty
-    local company_value="${param_company:-null}"
+    # Set company value, use empty string if not provided
+    local company_value="${param_company:-}"
     local date_num=$(date +%Y-%m-%d)
     
     # Use Python to update JSON
@@ -194,6 +195,7 @@ try:
     data['text_variables']['RELEASE_DATE'] = '$param_date'
     data['text_variables']['RELEASE_DATE_NUM'] = '$date_num'
     data['text_variables']['REVISION'] = '$param_revision'
+    data['text_variables']['GIT_URL'] = '$param_git_url'
     
     # Write back to file with proper formatting
     with open('$kicad_pro_file', 'w', encoding='utf-8') as f:
@@ -261,7 +263,7 @@ replace_all_variables() {
     local param_git_repo=${11}
     
     # Files to skip (already handled or binary)
-    local skip_extensions=(".kicad_pcb" ".kicad_sch" ".kicad_pro" ".png" ".jpg" ".jpeg" ".gif" ".pdf" ".zip" ".tar.gz" ".o" ".so" ".dll" ".exe")
+    local skip_extensions=(".kicad_pcb" ".kicad_sch" ".kicad_pro" ".kicad_prl" ".kicad_wks" ".png" ".jpg" ".jpeg" ".gif" ".pdf" ".zip" ".tar.gz" ".o" ".so" ".dll" ".exe")
     local skip_dirs=("__pycache__" ".git" ".svn" "node_modules")
     
     # Get current dates
@@ -313,7 +315,6 @@ replace_all_variables() {
             sed -i "s|\${RELEASE_DATE_NUM}|$release_date_num|g" "$file" 2>/dev/null || true
             sed -i "s|\${PROJECT_NAME_ANCHOR}|$project_name_anchor|g" "$file" 2>/dev/null || true
             sed -i "s|\${BOARD_NAME_ANCHOR}|$board_name_anchor|g" "$file" 2>/dev/null || true
-            sed -i "s|\${GIT_URL}|$param_git_url|g" "$file" 2>/dev/null || true
             sed -i "s|\${MASTER_BRANCH}|$param_master_branch|g" "$file" 2>/dev/null || true
             sed -i "s|\${EMAIL}|$param_email|g" "$file" 2>/dev/null || true
             sed -i "s|\${GIT_USER}|$param_git_user|g" "$file" 2>/dev/null || true
@@ -404,9 +405,17 @@ fi
 cp -r "$TEMPLATE_PATH" "$PROJECT_PATH"
 cd "$PROJECT_PATH"
 
-# Remove template-only files that should not be part of the project
-rm -f "VARIABLES.md"
-print_color "$GREEN" "Removed: VARIABLES.md"
+# Remove .git directory from copied template to avoid conflicts
+if [ -d ".git" ]; then
+    rm -rf ".git"
+    print_color "$GREEN" "Removed .git directory from template"
+fi
+
+# Remove Template-backups directory if it exists
+if [ -d "Template-backups" ]; then
+    rm -rf "Template-backups"
+    print_color "$GREEN" "Removed Template-backups directory from template"
+fi
 
 # Step 3b: Replace PCB template with selected one and remove all other templates
 print_color "$BLUE" "Applying PCB template: $PCB_FILENAME"
@@ -425,20 +434,27 @@ else
     exit 1
 fi
 
-# Remove all Template - *.kicad_pcb files (keep only Template.kicad_pcb)
-find . -maxdepth 1 -name "Template - *.kicad_pcb" -type f -delete
+# Remove all Template - * files related to PCB templates (.kicad_pcb, .kicad_pro, .kicad_prl)
+find . -maxdepth 1 \( -name "Template - *.kicad_pcb" -o -name "Template - *.kicad_pro" -o -name "Template - *.kicad_prl" \) -type f -delete
 print_color "$GREEN" "Cleaned up unused PCB template files"
 
 # Replace "Template" with BOARD_NAME in the PCB file
 print_color "$BLUE" "Updating board name in PCB file"
 if [ -f "$TARGET_PCB" ]; then
+    sed -i "s/(title \"Template\")/(title \"$BOARD_NAME\")/g" "$TARGET_PCB"
     sed -i "s/BOARD_NAME\" \"Template\"/BOARD_NAME\" \"$BOARD_NAME\"/g" "$TARGET_PCB"
     sed -i "s/PROJECT_NAME\" \"Template\"/PROJECT_NAME\" \"$PROJECT_NAME\"/g" "$TARGET_PCB"
-    print_color "$GREEN" "Updated BOARD_NAME and PROJECT_NAME in PCB file"
+    print_color "$GREEN" "Updated title, BOARD_NAME and PROJECT_NAME in PCB file"
 fi
 
 # Go back to project root
 cd ..
+
+# Remove VARIABLES.md from the project root
+if [ -f "VARIABLES.md" ]; then
+    rm -f "VARIABLES.md"
+    print_color "$GREEN" "Removed VARIABLES.md from project"
+fi
 
 # Step 4: Rename hardware directory
 print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME_ANCHOR'"
@@ -475,13 +491,13 @@ print_color "$BLUE" "Updating KiCad project text variables"
 KICAD_PRO_FILE="$BOARD_NAME_ANCHOR/$BOARD_NAME.kicad_pro"
 CURRENT_DATE=$(date +"%d-%b-%Y")
 COMPANY_VALUE="${COMPANY:-}"
-update_kicad_text_variables "$KICAD_PRO_FILE" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY_VALUE" "$CURRENT_DATE" "1.0.0"
+update_kicad_text_variables "$KICAD_PRO_FILE" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY_VALUE" "$CURRENT_DATE" "1.0.0" "$GIT_URL"
 
 # Step 5c: Update kibot_main.yaml
 print_color "$BLUE" "Updating kibot_main.yaml"
 KIBOT_MAIN="$BOARD_NAME_ANCHOR/kibot_yaml/kibot_main.yaml"
 if [ -f "$KIBOT_MAIN" ]; then
-    COMPANY_VALUE_KIBOT="${COMPANY:-null}"
+    COMPANY_VALUE_KIBOT="${COMPANY:-}"
     sed -i "s/PROJECT_NAME: Project/PROJECT_NAME: $PROJECT_NAME/g" "$KIBOT_MAIN"
     sed -i "s/BOARD_NAME: Board/BOARD_NAME: $BOARD_NAME/g" "$KIBOT_MAIN"
     sed -i "s/COMPANY: Kampis-Elektroecke/COMPANY: $COMPANY_VALUE_KIBOT/g" "$KIBOT_MAIN"
@@ -668,53 +684,56 @@ fi
 
 # Step 10: Initialize Git repository
 print_color "$BLUE" "\nInitializing Git repository"
-git init
+if git init 2>&1; then
+    # Fix dubious ownership issues on network drives
+    CURRENT_PATH=$(pwd)
+    git config --global --add safe.directory "$CURRENT_PATH" 2>&1 || true
 
-# Fix dubious ownership issues on network drives
-CURRENT_PATH=$(pwd)
-git config --global --add safe.directory "$CURRENT_PATH"
+    git config user.name "$DESIGNER" 2>&1 || true
+    git config user.email "$EMAIL" 2>&1 || true
 
-git config user.name "$DESIGNER"
-git config user.email "$EMAIL"
+    # Set commit message template (local)
+    git config commit.template ".github/.commit-msg-template" 2>&1 || true
+    print_color "$GREEN" "Set commit message template to .github/.commit-msg-template"
 
-# Set commit message template (local)
-git config commit.template ".github/.commit-msg-template"
-print_color "$GREEN" "Set commit message template to .github/.commit-msg-template"
+    # Set master as main branch
+    git branch -M "$MASTER_BRANCH" 2>&1 || true
+    print_color "$GREEN" "Set default branch to '$MASTER_BRANCH'"
 
-# Set master as main branch
-git branch -M "$MASTER_BRANCH"
-print_color "$GREEN" "Set default branch to '$MASTER_BRANCH'"
+    # Step 11: Add remote
+    if git remote 2>&1 | grep -q '^origin$'; then
+        git remote set-url origin "$GIT_URL" 2>&1 || true
+        print_color "$GREEN" "Updated remote: $GIT_URL"
+    else
+        git remote add origin "$GIT_URL" 2>&1 || true
+        print_color "$GREEN" "Added remote: $GIT_URL"
+    fi
 
-# Step 11: Add remote
-if git remote | grep -q '^origin$'; then
-    git remote set-url origin "$GIT_URL"
-    print_color "$GREEN" "Updated remote: $GIT_URL"
-else
-    git remote add origin "$GIT_URL"
-    print_color "$GREEN" "Added remote: $GIT_URL"
-fi
+    # Step 12: Initial commit
+    print_color "$BLUE" "Creating initial commit"
+    git add . 2>&1 || true
 
-# Step 12: Initial commit
-print_color "$BLUE" "Creating initial commit"
-git add .
-
-# Create commit message
-git commit -m "chore: Initialize project $PROJECT_NAME
+    # Create commit message
+    git commit -m "chore: Initialize project $PROJECT_NAME
 
 Initial project setup with KiCad template structure
 
-Signed-off-by: $DESIGNER <$EMAIL>"
+Signed-off-by: $DESIGNER <$EMAIL>" 2>&1 || true
 
-print_color "$GREEN" "Initial commit created"
+    print_color "$GREEN" "Initial commit created"
 
-# Step 13: Push to GitHub
-print_color "$BLUE" "Pushing to GitHub"
-read -p "Push to GitHub now? (y/N): " push_confirm
-if [[ "$push_confirm" =~ ^[Yy]$ ]]; then
-    git push -u origin master
-    print_color "$GREEN" "Pushed to GitHub successfully"
+    # Step 13: Push to GitHub
+    print_color "$BLUE" "Pushing to GitHub"
+    read -p "Push to GitHub now? (y/N): " push_confirm
+    if [[ "$push_confirm" =~ ^[Yy]$ ]]; then
+        git push -u origin "$MASTER_BRANCH" 2>&1 || true
+        print_color "$GREEN" "Pushed to GitHub successfully"
+    else
+        print_color "$YELLOW" "Skipped push to GitHub. You can push later with: git push -u origin $MASTER_BRANCH"
+    fi
 else
-    print_color "$YELLOW" "Skipped push to GitHub. You can push later with: git push -u origin master"
+    print_color "$RED" "Failed to initialize Git repository"
+    print_color "$YELLOW" "Continuing without Git initialization..."
 fi
 
 # Summary

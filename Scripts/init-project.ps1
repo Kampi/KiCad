@@ -98,6 +98,7 @@ function Show-LicenseMenu {
     
     return [int]$selection
 }
+
 function Update-KiCadTextVariables {
     param(
         [string]$KicadProFile,
@@ -106,7 +107,8 @@ function Update-KiCadTextVariables {
         [string]$ParamDesigner,
         [string]$ParamCompany,
         [string]$ParamDate,
-        [string]$ParamRevision
+        [string]$ParamRevision,
+        [string]$ParamGitUrl
     )
     
     if (-not (Test-Path $KicadProFile)) {
@@ -125,16 +127,18 @@ function Update-KiCadTextVariables {
     $jsonContent.text_variables.PROJECT_NAME = $ParamProjectName
     $jsonContent.text_variables.BOARD_NAME = $ParamBoardName
     $jsonContent.text_variables.DESIGNER = $ParamDesigner
-    $jsonContent.text_variables.COMPANY = if ([string]::IsNullOrWhiteSpace($ParamCompany)) { "null" } else { $ParamCompany }
+    $jsonContent.text_variables.COMPANY = if ([string]::IsNullOrWhiteSpace($ParamCompany)) { "" } else { $ParamCompany }
     $jsonContent.text_variables.RELEASE_DATE = $ParamDate
     $jsonContent.text_variables.RELEASE_DATE_NUM = (Get-Date -Format "yyyy-MM-dd")
     $jsonContent.text_variables.REVISION = $ParamRevision
+    $jsonContent.text_variables.GIT_URL = $ParamGitUrl
     
     # Write back to file with proper formatting
     $jsonContent | ConvertTo-Json -Depth 100 | Set-Content $KicadProFile
     
     Write-ColorOutput $GREEN "Updated text_variables in: $KicadProFile"
 }
+
 function Get-LicenseInfo {
     param([int]$Selection)
     
@@ -200,7 +204,7 @@ function Replace-AllVariables {
     )
     
     # Files to skip (already handled or binary)
-    $skipExtensions = @('.kicad_pcb', '.kicad_sch', '.kicad_pro', '.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.tar.gz', '.o', '.so', '.dll', '.exe')
+    $skipExtensions = @('.kicad_pcb', '.kicad_sch', '.kicad_pro', '.kicad_prl', '.kicad_wks', '.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.tar.gz', '.o', '.so', '.dll', '.exe')
     $skipDirs = @('__pycache__', '.git', '.svn', 'node_modules')
     
     # Get current dates
@@ -259,7 +263,6 @@ function Replace-AllVariables {
                 '${RELEASE_DATE_NUM}' = $releaseDateNum
                 '${PROJECT_NAME_ANCHOR}' = $projectNameAnchor
                 '${BOARD_NAME_ANCHOR}' = $boardNameAnchor
-                '${GIT_URL}' = $ParamGitUrl
                 '${MASTER_BRANCH}' = $ParamMasterBranch
                 '${EMAIL}' = $ParamEmail
                 '${GIT_USER}' = $ParamGitUser
@@ -366,10 +369,16 @@ if (Test-Path $PROJECT_PATH) {
 Copy-Item -Path $TEMPLATE_PATH -Destination $PROJECT_PATH -Recurse
 Set-Location $PROJECT_PATH
 
-# Remove template-only files that should not be part of the project
-if (Test-Path "VARIABLES.md") {
-    Remove-Item "VARIABLES.md" -Force
-    Write-ColorOutput $GREEN "Removed: VARIABLES.md"
+# Remove .git directory from copied template to avoid conflicts
+if (Test-Path ".git") {
+    Remove-Item -Path ".git" -Recurse -Force
+    Write-ColorOutput $GREEN "Removed .git directory from template"
+}
+
+# Remove Template-backups directory if it exists
+if (Test-Path "Template-backups") {
+    Remove-Item -Path "Template-backups" -Recurse -Force
+    Write-ColorOutput $GREEN "Removed Template-backups directory from template"
 }
 
 # Step 3b: Replace PCB template with selected one
@@ -387,19 +396,26 @@ if (Test-Path $SOURCE_PCB) {
     exit 1
 }
 
-# Remove all Template - *.kicad_pcb files
-Get-ChildItem -Filter "Template - *.kicad_pcb" | Remove-Item
+# Remove all Template - *.kicad_pcb files and their associated project files
+Get-ChildItem -Filter "Template - *" | Where-Object { $_.Extension -in @('.kicad_pcb', '.kicad_pro', '.kicad_prl') } | Remove-Item
 Write-ColorOutput $GREEN "Cleaned up unused PCB template files"
 
 # Replace "Template" with BOARD_NAME in the PCB file
 Write-ColorOutput $BLUE "Updating board name in PCB file"
 if (Test-Path $TARGET_PCB) {
+    (Get-Content $TARGET_PCB) -replace '\(title "Template"\)', "(title `"$BOARD_NAME`")" | Set-Content $TARGET_PCB
     (Get-Content $TARGET_PCB) -replace 'BOARD_NAME" "Template"', "BOARD_NAME`" `"$BOARD_NAME`"" | Set-Content $TARGET_PCB
     (Get-Content $TARGET_PCB) -replace 'PROJECT_NAME" "Template"', "PROJECT_NAME`" `"$PROJECT_NAME`"" | Set-Content $TARGET_PCB
-    Write-ColorOutput $GREEN "Updated BOARD_NAME and PROJECT_NAME in PCB file"
+    Write-ColorOutput $GREEN "Updated title, BOARD_NAME and PROJECT_NAME in PCB file"
 }
 
 Set-Location ..
+
+# Remove VARIABLES.md from the project root
+if (Test-Path "VARIABLES.md") {
+    Remove-Item "VARIABLES.md" -Force
+    Write-ColorOutput $GREEN "Removed VARIABLES.md from project"
+}
 
 # Step 4: Rename hardware directory
 Write-ColorOutput $BLUE "Renaming 'hardware' directory to '$BOARD_NAME_ANCHOR'"
@@ -432,13 +448,13 @@ Write-ColorOutput $BLUE "Updating KiCad project text variables"
 $KICAD_PRO_FILE = Join-Path $BOARD_NAME_ANCHOR "$BOARD_NAME.kicad_pro"
 $CURRENT_DATE = Get-Date -Format "dd-MMM-yyyy"
 $COMPANY_VALUE = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
-Update-KiCadTextVariables -KicadProFile $KICAD_PRO_FILE -ParamProjectName $PROJECT_NAME -ParamBoardName $BOARD_NAME -ParamDesigner $DESIGNER -ParamCompany $COMPANY_VALUE -ParamDate $CURRENT_DATE -ParamRevision "1.0.0"
+Update-KiCadTextVariables -KicadProFile $KICAD_PRO_FILE -ParamProjectName $PROJECT_NAME -ParamBoardName $BOARD_NAME -ParamDesigner $DESIGNER -ParamCompany $COMPANY_VALUE -ParamDate $CURRENT_DATE -ParamRevision "1.0.0" -ParamGitUrl $GIT_URL
 
 # Step 5c: Update kibot_main.yaml
 Write-ColorOutput $BLUE "Updating kibot_main.yaml"
 $KIBOT_MAIN = Join-Path $BOARD_NAME_ANCHOR "kibot_yaml\kibot_main.yaml"
 if (Test-Path $KIBOT_MAIN) {
-    $COMPANY_VALUE_KIBOT = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "null" } else { $COMPANY }
+    $COMPANY_VALUE_KIBOT = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
     (Get-Content $KIBOT_MAIN -Raw) `
         -replace "PROJECT_NAME: Project", "PROJECT_NAME: $PROJECT_NAME" `
         -replace "BOARD_NAME: Board", "BOARD_NAME: $BOARD_NAME" `
@@ -626,35 +642,38 @@ TBD - Add testing procedures and validation criteria
 
 # Step 10: Initialize Git repository
 Write-ColorOutput $BLUE "`nInitializing Git repository"
-git init
-
-$CURRENT_PATH = (Get-Location).Path
-git config --global --add safe.directory $CURRENT_PATH
-
-git config user.name $DESIGNER
-git config user.email $EMAIL
-
-git config commit.template ".github/.commit-msg-template"
-Write-ColorOutput $GREEN "Set commit message template to .github/.commit-msg-template"
-
-git branch -M $MASTER_BRANCH
-Write-ColorOutput $GREEN "Set default branch to '$MASTER_BRANCH'"
-
-# Step 11: Add remote
-$existingRemotes = git remote
-if ($existingRemotes -contains "origin") {
-    git remote set-url origin $GIT_URL
-    Write-ColorOutput $GREEN "Updated remote: $GIT_URL"
+$gitInitResult = git init 2>&1
+if ($LASTEXITCODE -ne 0) {
+    Write-ColorOutput $RED "Failed to initialize Git repository: $gitInitResult"
+    Write-ColorOutput $YELLOW "Continuing without Git initialization..."
 } else {
-    git remote add origin $GIT_URL
-    Write-ColorOutput $GREEN "Added remote: $GIT_URL"
-}
+    $CURRENT_PATH = (Get-Location).Path
+    git config --global --add safe.directory $CURRENT_PATH 2>&1 | Out-Null
 
-# Step 12: Initial commit
-Write-ColorOutput $BLUE "Creating initial commit"
-git add .
+    git config user.name $DESIGNER 2>&1 | Out-Null
+    git config user.email $EMAIL 2>&1 | Out-Null
 
-$commitMessage = @"
+    git config commit.template ".github/.commit-msg-template" 2>&1 | Out-Null
+    Write-ColorOutput $GREEN "Set commit message template to .github/.commit-msg-template"
+
+    git branch -M $MASTER_BRANCH 2>&1 | Out-Null
+    Write-ColorOutput $GREEN "Set default branch to '$MASTER_BRANCH'"
+
+    # Step 11: Add remote
+    $existingRemotes = git remote 2>&1
+    if ($existingRemotes -contains "origin") {
+        git remote set-url origin $GIT_URL 2>&1 | Out-Null
+        Write-ColorOutput $GREEN "Updated remote: $GIT_URL"
+    } else {
+        git remote add origin $GIT_URL 2>&1 | Out-Null
+        Write-ColorOutput $GREEN "Added remote: $GIT_URL"
+    }
+
+    # Step 12: Initial commit
+    Write-ColorOutput $BLUE "Creating initial commit"
+    git add . 2>&1 | Out-Null
+
+    $commitMessage = @"
 chore: Initialize project $PROJECT_NAME
 
 Initial project setup with KiCad template structure
@@ -662,17 +681,18 @@ Initial project setup with KiCad template structure
 Signed-off-by: $DESIGNER <$EMAIL>
 "@
 
-git commit -m $commitMessage
-Write-ColorOutput $GREEN "Initial commit created"
+    git commit -m $commitMessage 2>&1 | Out-Null
+    Write-ColorOutput $GREEN "Initial commit created"
 
-# Step 13: Push to GitHub
-Write-ColorOutput $BLUE "Pushing to GitHub"
-$pushConfirm = Read-Host "Push to GitHub now? (y/N)"
-if ($pushConfirm -match '^[Yy]$') {
-    git push -u origin master
-    Write-ColorOutput $GREEN "Pushed to GitHub successfully"
-} else {
-    Write-ColorOutput $YELLOW "Skipped push to GitHub. You can push later with: git push -u origin master"
+    # Step 13: Push to GitHub
+    Write-ColorOutput $BLUE "Pushing to GitHub"
+    $pushConfirm = Read-Host "Push to GitHub now? (y/N)"
+    if ($pushConfirm -match '^[Yy]$') {
+        git push -u origin $MASTER_BRANCH 2>&1 | Out-Null
+        Write-ColorOutput $GREEN "Pushed to GitHub successfully"
+    } else {
+        Write-ColorOutput $YELLOW "Skipped push to GitHub. You can push later with: git push -u origin $MASTER_BRANCH"
+    }
 }
 
 # Summary
