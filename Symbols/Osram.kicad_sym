@@ -7,19 +7,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "LED"
-			(at -4.826 9.906 0)
+			(at -6.604 9.906 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "SFH 7016"
-			(at -1.778 -10.16 0)
+			(at -6.35 -10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Osram:SFH7016"

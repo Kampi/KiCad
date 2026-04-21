@@ -10,21 +10,19 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "Q"
-			(at 2.54 1.905 0)
+			(at 3.556 1.524 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "BSH205G2AR"
-			(at 2.54 0 0)
+			(at 8.89 -1.524 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
@@ -32,9 +30,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-					(italic yes)
 				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -44,7 +40,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -312,21 +307,19 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "Q"
-			(at 5.08 1.27 0)
+			(at 6.096 1.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "PMPB27EPZ"
-			(at 5.08 -1.27 0)
+			(at 11.176 -1.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Package_SOT_SMD_Kampi:SOT-1220"
@@ -688,19 +681,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "Q"
-			(at 0 0 0)
+			(at 3.302 1.524 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "PMV50XNEAR"
-			(at 0 0 0)
+			(at 3.302 -1.778 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
@@ -1261,7 +1256,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "Q"
-			(at 2.54 1.905 0)
+			(at 3.048 1.524 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1270,7 +1265,7 @@
 			)
 		)
 		(property "Value" "PMZ950UPELYL"
-			(at 2.54 0 0)
+			(at 3.048 -1.524 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1558,7 +1553,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "Q"
-			(at 2.54 1.905 0)
+			(at 3.048 1.778 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1567,7 +1562,7 @@
 			)
 		)
 		(property "Value" "PMZB320UPE"
-			(at -6.35 0 0)
+			(at 3.048 -1.778 0)
 			(effects
 				(font
 					(size 1.27 1.27)
