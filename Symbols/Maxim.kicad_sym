@@ -10,21 +10,19 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "IC"
-			(at -10.16 10.668 0)
+			(at -9.398 11.176 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
 		(property "Value" "MAX17048"
-			(at -10.16 -12.446 0)
+			(at -5.588 -11.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
 		(property "Footprint" "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm"
@@ -33,7 +31,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
 				(hide yes)
 			)
 		)
@@ -147,7 +144,7 @@
 				)
 			)
 			(pin output line
-				(at 12.7 0 180)
+				(at 12.7 1.27 180)
 				(length 2.54)
 				(name "~{ALERT}"
 					(effects
@@ -165,7 +162,7 @@
 				)
 			)
 			(pin input line
-				(at 12.7 -2.54 180)
+				(at 12.7 -1.27 180)
 				(length 2.54)
 				(name "QSTRT"
 					(effects
