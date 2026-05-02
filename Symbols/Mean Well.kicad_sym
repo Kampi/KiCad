@@ -102,7 +102,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin power_out line
 				(at 15.24 2.54 180)
 				(length 2.54)
 				(name "+VO"
@@ -120,7 +120,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin passive line
 				(at 15.24 -2.54 180)
 				(length 2.54)
 				(name "-VO"

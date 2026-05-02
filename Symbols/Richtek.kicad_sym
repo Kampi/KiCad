@@ -46,37 +46,11 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "CONFIG" ""
 			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "mouser#" "835-RT9742SNGV"
-			(at -2.54 -1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "manf#" "RT9742SNGV"
-			(at -2.54 -1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "manf" "Richtek"
-			(at -2.54 -1.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -132,7 +106,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin power_out line
 				(at 7.62 2.54 180)
 				(length 2.54)
 				(name "OUT"

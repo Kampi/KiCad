@@ -1,0 +1,262 @@
+(footprint "CPT-9019S-SMT"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "https://www.cui.com/product/resource/cpt-9019s-smt.pdf")
+	(tags "buzzer piezo")
+	(property "Reference" "REF**"
+		(at 0 -5.5 0)
+		(layer "F.SilkS")
+		(uuid "26611729-ce45-4b7e-a7c0-8ae4d0274268")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "CPT-9019S-SMT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "2ba3204d-4a71-4f17-9f0f-74dabe0e8f85")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "09e1762e-e5b8-4120-8326-bf2bb48b3d68")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1b97a7f4-36d7-406e-bdd9-5ad296d7235e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -5.25 -2.35)
+		(end -4.75 -2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6bf785b4-47c0-459c-8c25-507a0f9ef3a2")
+	)
+	(fp_line
+		(start -5.25 2.35)
+		(end -5.25 -2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "07ee6529-d095-4c34-a0f6-da3dff838bd0")
+	)
+	(fp_line
+		(start -4.75 -4.75)
+		(end 4.75 -4.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "c6f96c77-2a59-4931-accc-52264586296c")
+	)
+	(fp_line
+		(start -4.75 -2.35)
+		(end -4.75 -4.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "ec0c2ddd-8ee1-4729-9e52-d0d92ed508d2")
+	)
+	(fp_line
+		(start -4.75 2.35)
+		(end -5.25 2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6ce099cc-6481-4c3b-ab5b-8af11f27e3fa")
+	)
+	(fp_line
+		(start -4.75 4.75)
+		(end -4.75 2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "bb7fd1bf-a0b2-4e56-9216-7a89435507b1")
+	)
+	(fp_line
+		(start 4.75 -4.75)
+		(end 4.75 -2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "c97401a5-4986-431a-a867-05ef9ad7c681")
+	)
+	(fp_line
+		(start 4.75 -2.35)
+		(end 5.25 -2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "748c3aae-7477-4ac0-a223-13a24cfea41c")
+	)
+	(fp_line
+		(start 4.75 2.35)
+		(end 4.75 4.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d646a794-2578-46fe-93ba-62ff39056153")
+	)
+	(fp_line
+		(start 4.75 4.75)
+		(end -4.75 4.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "007f80b7-eddd-4ec5-9835-356f16b84410")
+	)
+	(fp_line
+		(start 5.25 -2.35)
+		(end 5.25 2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9c8e4d50-9d44-4ca8-a40e-0bc086806756")
+	)
+	(fp_line
+		(start 5.25 2.35)
+		(end 4.75 2.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "3609af2b-3c75-4154-bb2f-383bdb342603")
+	)
+	(fp_line
+		(start -4.5 -3.5)
+		(end -4.5 4.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f63bcf06-f450-4173-9467-e68b11de50fc")
+	)
+	(fp_line
+		(start -4.5 4.5)
+		(end 4.5 4.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "582628e8-75f2-4ae9-b9b9-490c51e38954")
+	)
+	(fp_line
+		(start -3.5 -4.5)
+		(end -4.5 -3.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "192b08d1-b472-4035-94a4-bfd8d7125f95")
+	)
+	(fp_line
+		(start 4.5 -4.5)
+		(end -3.5 -4.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "76731d7a-0a54-4fbc-a42c-5e818258b8fe")
+	)
+	(fp_line
+		(start 4.5 4.5)
+		(end 4.5 -4.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c535b0da-b0cc-43c0-bc45-fedb47893de0")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "56181a09-9fc2-4410-81d1-58bc655aa9ac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -4 0)
+		(size 2 4.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d39b202e-62f4-44d8-b5ac-d283e1688a6a")
+	)
+	(pad "2" smd rect
+		(at 4 0)
+		(size 2 4.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ca72a435-1061-4f95-815f-57e78f8b2626")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Same Sky/CPT-9019S-SMT-TR.stp"
+		(offset
+			(xyz 4.5 4.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -180)
+		)
+	)
+)
