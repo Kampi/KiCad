@@ -51,17 +51,6 @@
 		)
 	)
 	(attr smd)
-	(fp_circle
-		(center -0.9 -1)
-		(end -0.8 -1)
-		(stroke
-			(width 0.2)
-			(type solid)
-		)
-		(fill no)
-		(layer "F.SilkS")
-		(uuid "5c0a6b28-8ed4-4de2-8f44-0f6b6f8db53c")
-	)
 	(fp_line
 		(start -2.125 -1.8)
 		(end 2.125 -1.8)
@@ -141,6 +130,17 @@
 		)
 		(layer "F.Fab")
 		(uuid "58b33172-07e1-450a-b729-ac36c6654665")
+	)
+	(fp_circle
+		(center -0.9 -1)
+		(end -0.8 -1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "5c0a6b28-8ed4-4de2-8f44-0f6b6f8db53c")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
