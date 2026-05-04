@@ -414,4 +414,15 @@
 			(xyz -0 180 -0)
 		)
 	)
+	(model "${KICAD_LIBRARY}/3D/Keystone/3034.stp"
+		(offset
+			(xyz 0 7.5 4)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 90 -180 -0)
+		)
+	)
 )
