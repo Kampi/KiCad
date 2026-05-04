@@ -1,10 +1,10 @@
 (footprint "3002"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(tags "BR2016 CR2016 DL2016 BR2020 CL2020 BR2025 CR2025 DL2025 DR2032 CR2032 DL2032")
-	(property "Reference" "BT"
+	(property "Reference" "REF**"
 		(at 0 0 0)
 		(layer "F.SilkS")
 		(hide yes)
@@ -21,19 +21,6 @@
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "ebe555d2-b6bd-4d01-b280-99677daffc1b")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "42fadca1-bfab-4fd8-a185-752e56646a89")
 		(effects
 			(font
 				(size 1 1)
@@ -383,13 +370,13 @@
 	(pad "1" smd rect
 		(at -12.8 0)
 		(size 5.1 5.1)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "b9ffa25b-c9fd-4547-8d6f-4f27da289c0c")
 	)
 	(pad "1" smd rect
 		(at 12.8 0)
 		(size 5.1 5.1)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "d83a21de-6eb1-4df9-93ed-3f2becaa086a")
 	)
 	(pad "2" smd circle
@@ -398,6 +385,7 @@
 		(layers "F.Cu" "F.Mask")
 		(uuid "b1b7dfd1-930e-4059-9836-eaeeaf43ab36")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Keystone/3002.stp"
 		(offset
 			(xyz 0 -10 3.75)

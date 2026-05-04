@@ -1,7 +1,7 @@
 (footprint "1043"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
@@ -20,18 +20,6 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "6cc0d10d-dc8b-4db1-81e5-cf2206998221")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "07b1449a-115d-434a-9a58-bf560453556a")
 		(effects
 			(font
 				(size 1 1)
@@ -64,39 +52,6 @@
 		)
 	)
 	(attr through_hole)
-	(fp_circle
-		(center -27.6 7.87)
-		(end -25.825 7.87)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(fill none)
-		(layer "Edge.Cuts")
-		(uuid "28c42959-8e72-4709-83e0-fbb99eade23c")
-	)
-	(fp_circle
-		(center 27.6 -7.87)
-		(end 29.375 -7.87)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(fill none)
-		(layer "Edge.Cuts")
-		(uuid "b988d6e1-acde-48d5-aaac-780083f0a33d")
-	)
-	(fp_circle
-		(center 36.11 7.87)
-		(end 37.305 7.87)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(fill none)
-		(layer "Edge.Cuts")
-		(uuid "17fe3b89-79e8-4a30-906a-b7ddedec1f39")
-	)
 	(fp_rect
 		(start -35 -10.5)
 		(end 35 10.5)
@@ -104,7 +59,7 @@
 			(width 0.1)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "357049db-c668-4a77-9a25-ce8b90dfd32b")
 	)
@@ -115,7 +70,7 @@
 			(width 0.1)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "7d701962-e3b3-493d-b55f-77b1dcc5ae44")
 	)
@@ -130,6 +85,27 @@
 				(thickness 0.15)
 			)
 		)
+	)
+	(pad "" np_thru_hole circle
+		(at -27.6 7.87)
+		(size 0.1 0.1)
+		(drill 3.55)
+		(layers "F&B.Cu" "*.Mask")
+		(uuid "78536882-7414-499c-b6a9-67fc1bd3f029")
+	)
+	(pad "" np_thru_hole circle
+		(at 27.6 -7.87)
+		(size 0.1 0.1)
+		(drill 3.55)
+		(layers "F&B.Cu" "*.Mask")
+		(uuid "a038637d-1391-48f7-b59a-724a8eb27d16")
+	)
+	(pad "" np_thru_hole circle
+		(at 36.11 7.87)
+		(size 0.1 0.1)
+		(drill 2.39)
+		(layers "F&B.Cu" "*.Mask")
+		(uuid "a6af03a1-2c81-41f0-9471-d71064e46e2e")
 	)
 	(pad "1" thru_hole circle
 		(at 36.11 0)
@@ -147,6 +123,7 @@
 		(remove_unused_layers no)
 		(uuid "ff54cdc2-4b40-4994-8140-ac296a31bdc0")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Batteryholder/Keystone/1043.stp"
 		(offset
 			(xyz 0 0 0)
