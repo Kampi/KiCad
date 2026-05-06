@@ -21,14 +21,15 @@
       - [Changed](#changed)
   - [Working with the Issue Tracker](#working-with-the-issue-tracker)
     - [Branch Workflow](#branch-workflow)
-  - [Publishing a New Release](#publishing-a-new-release)
+    - [Initialization of the development branch](#initialization-of-the-development-branch)
+  - [Publishing a new Release](#publishing-a-new-release)
   - [Maintainer](#maintainer)
 
 ## Related files
 
 ### Project template
 
-You can find a ready-to-use project template in `__Project__` directory of the [KiCad library](https://github.com/Kampi/KiCad) project.
+You can find a ready-to-use project template inthe  `Template-Project` directory of the [KiCad library](https://github.com/Kampi/KiCad) project.
 
 ### Commit message template
 

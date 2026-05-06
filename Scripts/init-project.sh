@@ -1,5 +1,55 @@
 #!/bin/bash
-# Bash Script to Initialize a New KiCad Project
+#
+# init-project.sh - KiCad Project Initialization Script (Linux/macOS)
+#
+# Usage:
+#   ./Scripts/init-project.sh
+#
+# Non-interactive usage (pipe all inputs in order):
+#   echo -e "<project>\n<board>\n<designer>\n<email>\n<git-url>\n<company>\n<branch>\n<dir>\n<pcb#>\n<license#>" | ./Scripts/init-project.sh
+#
+# Description:
+#   Interactive script that creates a complete new KiCad project from the
+#   Template-Project directory. It performs the following steps:
+#
+#   1.  Collects project metadata from the user (name, board, designer, etc.)
+#   2.  Scans Template-Project/hardware/ for available PCB templates and lets
+#       the user select one
+#   3.  Creates the project directory at the chosen target location
+#   4.  Copies the full template structure and removes template artefacts
+#   5.  Applies the selected PCB template and removes unused ones
+#   6.  Renames all project files from 'Template.*' to '<BoardName>.*'
+#   7.  Updates KiCad project text variables in the .kicad_pro file
+#   8.  Updates kibot_main.yaml with project-specific definitions
+#   9.  Updates all .github/workflows/*.yaml files (branch, board name, etc.)
+#   10. Prompts for a license selection and downloads the license text
+#   11. Updates .github/.commit-msg-template with the designer sign-off
+#   12. Replaces all \${...} placeholders in every text file of the project
+#   13. Creates AsciiDoc documentation scaffolding in docs/
+#   14. Initialises a Git repository with an initial commit
+#   15. Optionally pushes the repository to GitHub
+#
+# Input order (interactive prompts / pipe order):
+#   1.  Project name
+#   2.  KiCad board name          (default: project name)
+#   3.  Designer name
+#   4.  Designer email
+#   5.  GitHub repository URL     (user and repo extracted automatically)
+#   6.  Company name              (optional)
+#   7.  Main branch name          (default: main)
+#   8.  Target directory          (default: current directory)
+#   9.  PCB template selection    (number)
+#   10. License selection         (1-11)
+#
+# Requirements:
+#   - Bash
+#   - Python 3 (for JSON processing)
+#   - Git
+#   - curl (for license download)
+#   - KiCad 9.0 or later
+#   - KICAD_LIBRARY environment variable set to the KiCad root directory,
+#     OR the script must be run from inside the KiCad root directory
+#
 # Author: GitHub Copilot
 # Date: 2026-01-18
 
