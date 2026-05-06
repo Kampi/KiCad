@@ -586,7 +586,6 @@ if [ -f "README.md" ]; then
     GIT_URL_CLEAN="${GIT_URL%.git}"
     sed -i "s|\${GIT_URL}|$GIT_URL_CLEAN|g" "README.md"
     sed -i "s|https://github.com/\"\$User\"/\"\$Project\"|$GIT_URL_CLEAN|g" "README.md"
-    sed -i "s|github.com/[^/]*/[^/)]*|${GIT_URL_CLEAN#https://}|g" "README.md"
     
     # Update ToC anchor (lowercase for markdown)
     PROJECT_LOWER=$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
