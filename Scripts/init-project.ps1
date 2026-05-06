@@ -543,6 +543,7 @@ if (Test-Path "README.md") {
     
     # Remove .git extension if present
     $GIT_URL_CLEAN = $GIT_URL -replace '\.git$', ''
+    $content = $content -replace '\$\{GIT_URL\}', $GIT_URL_CLEAN
     $content = $content -replace 'https://github\.com/"\$User"/"\$Project"', $GIT_URL_CLEAN
     
     $PROJECT_LOWER = $PROJECT_NAME.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'

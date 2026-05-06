@@ -584,6 +584,7 @@ if [ -f "README.md" ]; then
     
     # Update GitHub URLs (remove .git extension if present)
     GIT_URL_CLEAN="${GIT_URL%.git}"
+    sed -i "s|\${GIT_URL}|$GIT_URL_CLEAN|g" "README.md"
     sed -i "s|https://github.com/\"\$User\"/\"\$Project\"|$GIT_URL_CLEAN|g" "README.md"
     sed -i "s|github.com/[^/]*/[^/)]*|${GIT_URL_CLEAN#https://}|g" "README.md"
     
