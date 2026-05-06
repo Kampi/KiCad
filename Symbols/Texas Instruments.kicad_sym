@@ -5636,8 +5636,8 @@
 					)
 				)
 			)
-			(pin no_connect line
-				(at -7.62 -10.16 0)
+			(pin passive line
+				(at -7.62 -7.62 0)
 				(length 2.54)
 				(hide yes)
 				(name "NC"
@@ -5655,8 +5655,8 @@
 					)
 				)
 			)
-			(pin no_connect line
-				(at -7.62 -5.08 0)
+			(pin passive line
+				(at -7.62 -2.54 0)
 				(length 2.54)
 				(hide yes)
 				(name "NC"
@@ -5693,8 +5693,8 @@
 					)
 				)
 			)
-			(pin no_connect line
-				(at -7.62 2.54 0)
+			(pin passive line
+				(at -7.62 5.08 0)
 				(length 2.54)
 				(hide yes)
 				(name "NC"
@@ -5712,8 +5712,8 @@
 					)
 				)
 			)
-			(pin no_connect line
-				(at -7.62 7.62 0)
+			(pin passive line
+				(at -7.62 10.16 0)
 				(length 2.54)
 				(hide yes)
 				(name "NC"
