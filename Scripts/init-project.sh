@@ -397,6 +397,8 @@ BOARD_NAME_ANCHOR=$(echo "$BOARD_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-'
 print_color "$BLUE" "\nCreating project directory: $PROJECT_NAME"
 PROJECT_PATH="$TARGET_DIR/$PROJECT_NAME"
 
+mkdir -p "$TARGET_DIR"
+
 if [ -d "$PROJECT_PATH" ]; then
     print_color "$RED" "Directory '$PROJECT_PATH' already exists!"
     exit 1

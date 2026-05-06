@@ -97,7 +97,7 @@ For automated or scripted usage, you can pipe all inputs to the initialization s
 **Linux/macOS (Bash):**
 
 ```bash
-echo -e "MyProject\nMyBoard\nJohn Doe\njohn.doe@example.com\nhttps://github.com/user/repo\nMyCompany\nmain\n/home/user/projects\n1\n1" | Scripts/init-project.sh
+echo -e "MyProject\nMyBoard\nJohn Doe\njohn.doe@example.com\nhttps://github.com/user/repo\nMyCompany\nmain\n/home/$(whoami)/projects\n1\n1" | Scripts/init-project.sh
 ```
 
 **Input Order:**

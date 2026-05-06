@@ -361,6 +361,10 @@ $BOARD_NAME_ANCHOR = $BOARD_NAME.ToLower() -replace '[^a-z0-9-]', '' -replace ' 
 Write-ColorOutput $BLUE "`nCreating project directory: $PROJECT_NAME"
 $PROJECT_PATH = Join-Path $TARGET_DIR $PROJECT_NAME
 
+if (-not (Test-Path $TARGET_DIR)) {
+    New-Item -ItemType Directory -Path $TARGET_DIR -Force | Out-Null
+}
+
 if (Test-Path $PROJECT_PATH) {
     Write-ColorOutput $RED "Directory '$PROJECT_PATH' already exists!"
     exit 1
