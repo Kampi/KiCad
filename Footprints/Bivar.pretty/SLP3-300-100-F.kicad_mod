@@ -1,0 +1,177 @@
+(footprint "SLP3-300-100-F"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "f98d3eb1-9ee1-43b8-8993-39d59a4ac9df")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "SLP3-300-100-F"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "356381c2-feb8-479c-a5fe-2d1f748229b9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.bivar.com/parts_content/Datasheets/SLP3-XXX-XXX-X.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bbf8388d-a151-4fd4-873f-a98e043bb7f5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Light pipe angled."
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c327beae-00b1-4bca-b2bf-a24c34a1cbd1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd allow_missing_courtyard)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -2.25 -1.8)
+		(end 2.25 1.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "Eco1.User")
+		(uuid "37be1806-e91c-47e5-99f6-31026fe58072")
+	)
+	(fp_line
+		(start -2.25 -3.9)
+		(end 2.25 -3.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "65ac0e78-8720-416c-a043-5fd91ef040a8")
+	)
+	(fp_line
+		(start -2.25 2.5)
+		(end -2.25 -3.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "4ffb1415-6640-4cd0-ae4b-003e65a0ccdc")
+	)
+	(fp_line
+		(start -2.25 2.5)
+		(end 2.25 2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6e549e50-57b7-4329-98bf-b3291c856cd1")
+	)
+	(fp_line
+		(start -1.5 2.5)
+		(end -1.5 5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0095a78a-4ddc-4d22-b84c-af796b5a5bef")
+	)
+	(fp_line
+		(start -1.5 5)
+		(end 1.5 5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7ccbfbf1-2b51-4387-8da7-d3a149ac0e68")
+	)
+	(fp_line
+		(start 1.5 5)
+		(end 1.5 2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9750366a-91e6-4c59-8396-adb36c42046e")
+	)
+	(fp_line
+		(start 2.25 2.5)
+		(end 2.25 -3.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "355cfd55-9466-4432-bfe8-0ef7d66b435d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "be26106b-ccef-497e-ad1e-8ad6771f1941")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at -1.25 -2.7)
+		(size 0.52 0.52)
+		(drill 1.32)
+		(layers "*.Cu" "*.Mask")
+		(uuid "80da0436-15eb-48cc-879c-1ac581b66182")
+	)
+	(pad "" np_thru_hole circle
+		(at 1.25 -2.7)
+		(size 0.52 0.52)
+		(drill 1.32)
+		(layers "*.Cu" "*.Mask")
+		(uuid "94f94b39-5265-4cb0-b3ff-4bc706131f93")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Bivar/SLP3-300-100-R.stp"
+		(offset
+			(xyz 17.5 3.75 25)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)
