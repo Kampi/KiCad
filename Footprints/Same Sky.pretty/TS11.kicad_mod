@@ -134,7 +134,7 @@
 	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Same Sky/TS11-674-50-BK-260-RA-D.stp"
 		(offset
-			(xyz 0 -3.5 4)
+			(xyz 0 -3.25 4)
 		)
 		(scale
 			(xyz 1 1 1)
