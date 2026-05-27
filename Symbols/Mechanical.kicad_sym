@@ -122,7 +122,7 @@
 		(on_board yes)
 		(in_pos_files no)
 		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "H1001"
+		(property "Reference" "H1004"
 			(at 2.54 1.2701 0)
 			(show_name no)
 			(do_not_autoplace no)
