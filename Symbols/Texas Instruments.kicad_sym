@@ -5744,7 +5744,7 @@
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "IC"
-			(at -0.635 8.89 0)
+			(at -6.858 8.636 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5754,7 +5754,7 @@
 			)
 		)
 		(property "Value" "TPD4EUSB30"
-			(at 8.89 -10.16 0)
+			(at -1.524 -8.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6292,8 +6292,8 @@
 		)
 		(symbol "TPD4EUSB30_1_1"
 			(pin passive line
-				(at -12.7 2.54 0)
-				(length 5.08)
+				(at -10.16 2.54 0)
+				(length 2.54)
 				(name ""
 					(effects
 						(font
@@ -6310,8 +6310,8 @@
 				)
 			)
 			(pin passive line
-				(at -12.7 -2.54 0)
-				(length 5.08)
+				(at -10.16 -2.54 0)
+				(length 2.54)
 				(name ""
 					(effects
 						(font
@@ -6346,8 +6346,8 @@
 				)
 			)
 			(pin passive line
-				(at 12.7 2.54 180)
-				(length 5.08)
+				(at 10.16 2.54 180)
+				(length 2.54)
 				(name ""
 					(effects
 						(font
@@ -6364,8 +6364,8 @@
 				)
 			)
 			(pin passive line
-				(at 12.7 -2.54 180)
-				(length 5.08)
+				(at 10.16 -2.54 180)
+				(length 2.54)
 				(name ""
 					(effects
 						(font
