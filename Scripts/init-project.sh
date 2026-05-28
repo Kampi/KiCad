@@ -493,10 +493,9 @@ print_color "$GREEN" "Cleaned up unused PCB template files"
 # Replace "Template" with BOARD_NAME in the PCB file
 print_color "$BLUE" "Updating board name in PCB file"
 if [ -f "$TARGET_PCB" ]; then
-    sed -i "s/(title \"Template\")/(title \"$BOARD_NAME\")/g" "$TARGET_PCB"
     sed -i "s/BOARD_NAME\" \"Template\"/BOARD_NAME\" \"$BOARD_NAME\"/g" "$TARGET_PCB"
     sed -i "s/PROJECT_NAME\" \"Template\"/PROJECT_NAME\" \"$PROJECT_NAME\"/g" "$TARGET_PCB"
-    print_color "$GREEN" "Updated title, BOARD_NAME and PROJECT_NAME in PCB file"
+    print_color "$GREEN" "Updated BOARD_NAME and PROJECT_NAME in PCB file"
 fi
 
 # Go back to project root

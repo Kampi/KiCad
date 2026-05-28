@@ -463,10 +463,9 @@ Write-ColorOutput $GREEN "Cleaned up unused PCB template files"
 # Replace "Template" with BOARD_NAME in the PCB file
 Write-ColorOutput $BLUE "Updating board name in PCB file"
 if (Test-Path $TARGET_PCB) {
-    (Get-Content $TARGET_PCB) -replace '\(title "Template"\)', "(title `"$BOARD_NAME`")" | Set-Content $TARGET_PCB
     (Get-Content $TARGET_PCB) -replace 'BOARD_NAME" "Template"', "BOARD_NAME`" `"$BOARD_NAME`"" | Set-Content $TARGET_PCB
     (Get-Content $TARGET_PCB) -replace 'PROJECT_NAME" "Template"', "PROJECT_NAME`" `"$PROJECT_NAME`"" | Set-Content $TARGET_PCB
-    Write-ColorOutput $GREEN "Updated title, BOARD_NAME and PROJECT_NAME in PCB file"
+    Write-ColorOutput $GREEN "Updated BOARD_NAME and PROJECT_NAME in PCB file"
 }
 
 Set-Location ..
