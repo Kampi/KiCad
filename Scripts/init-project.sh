@@ -508,17 +508,17 @@ if [ -f "VARIABLES.md" ]; then
 fi
 
 # Step 4: Rename hardware directory
-print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME_ANCHOR'"
+print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME'"
 if [ -d "hardware" ]; then
-    mv "hardware" "$BOARD_NAME_ANCHOR"
+    mv "hardware" "$BOARD_NAME"
 else
     print_color "$YELLOW" "Warning: 'hardware' directory not found"
 fi
 
 # Step 5: Rename KiCad project files
 print_color "$BLUE" "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
-if [ -d "$BOARD_NAME_ANCHOR" ]; then
-    cd "$BOARD_NAME_ANCHOR"
+if [ -d "$BOARD_NAME" ]; then
+    cd "$BOARD_NAME"
     for file in Template.*; do
         if [ -f "$file" ]; then
             new_name="${file/Template/$BOARD_NAME}"
@@ -539,14 +539,14 @@ fi
 
 # Step 5b: Update KiCad text variables
 print_color "$BLUE" "Updating KiCad project text variables"
-KICAD_PRO_FILE="$BOARD_NAME_ANCHOR/$BOARD_NAME.kicad_pro"
+KICAD_PRO_FILE="$BOARD_NAME/$BOARD_NAME.kicad_pro"
 CURRENT_DATE=$(date +"%d-%b-%Y")
 COMPANY_VALUE="${COMPANY:-}"
 update_kicad_text_variables "$KICAD_PRO_FILE" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY_VALUE" "$CURRENT_DATE" "1.0.0" "$GIT_URL"
 
 # Step 5c: Update kibot_main.yaml
 print_color "$BLUE" "Updating kibot_main.yaml"
-KIBOT_MAIN="$BOARD_NAME_ANCHOR/kibot_yaml/kibot_main.yaml"
+KIBOT_MAIN="$BOARD_NAME/kibot_yaml/kibot_main.yaml"
 if [ -f "$KIBOT_MAIN" ]; then
     COMPANY_VALUE_KIBOT="${COMPANY:-}"
     sed -i "s/PROJECT_NAME: Project/PROJECT_NAME: $PROJECT_NAME/g" "$KIBOT_MAIN"
@@ -599,7 +599,7 @@ if [ "$LICENSE_NAME" != "None" ]; then
     download_license "$LICENSE_KEY" "LICENSE" "$CURRENT_YEAR" "$DESIGNER"
     
     # Add license to subdirectories
-    for dir in docs cad "$BOARD_NAME_ANCHOR" 3d-print firmware; do
+    for dir in docs cad "$BOARD_NAME" 3d-print firmware; do
         if [ -d "$dir" ]; then
             download_license "$LICENSE_KEY" "$dir/LICENSE" "$CURRENT_YEAR" "$DESIGNER"
         fi

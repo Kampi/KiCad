@@ -477,15 +477,15 @@ if (Test-Path "VARIABLES.md") {
 }
 
 # Step 4: Rename hardware directory
-Write-ColorOutput $BLUE "Renaming 'hardware' directory to '$BOARD_NAME_ANCHOR'"
+Write-ColorOutput $BLUE "Renaming 'hardware' directory to '$BOARD_NAME'"
 if (Test-Path "hardware") {
-    Rename-Item -Path "hardware" -NewName $BOARD_NAME_ANCHOR
+    Rename-Item -Path "hardware" -NewName $BOARD_NAME
 }
 
 # Step 5: Rename KiCad project files
 Write-ColorOutput $BLUE "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
-if (Test-Path $BOARD_NAME_ANCHOR) {
-    Set-Location $BOARD_NAME_ANCHOR
+if (Test-Path $BOARD_NAME) {
+    Set-Location $BOARD_NAME
     Get-ChildItem -Filter "Template.*" | ForEach-Object {
         $newName = $_.Name -replace "^Template", $BOARD_NAME
         Rename-Item -Path $_.Name -NewName $newName
@@ -504,14 +504,14 @@ if (Test-Path $BOARD_NAME_ANCHOR) {
 
 # Step 5b: Update KiCad text variables
 Write-ColorOutput $BLUE "Updating KiCad project text variables"
-$KICAD_PRO_FILE = Join-Path $BOARD_NAME_ANCHOR "$BOARD_NAME.kicad_pro"
+$KICAD_PRO_FILE = Join-Path $BOARD_NAME "$BOARD_NAME.kicad_pro"
 $CURRENT_DATE = Get-Date -Format "dd-MMM-yyyy"
 $COMPANY_VALUE = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
 Update-KiCadTextVariables -KicadProFile $KICAD_PRO_FILE -ParamProjectName $PROJECT_NAME -ParamBoardName $BOARD_NAME -ParamDesigner $DESIGNER -ParamCompany $COMPANY_VALUE -ParamDate $CURRENT_DATE -ParamRevision "1.0.0" -ParamGitUrl $GIT_URL
 
 # Step 5c: Update kibot_main.yaml
 Write-ColorOutput $BLUE "Updating kibot_main.yaml"
-$KIBOT_MAIN = Join-Path $BOARD_NAME_ANCHOR "kibot_yaml\kibot_main.yaml"
+$KIBOT_MAIN = Join-Path $BOARD_NAME "kibot_yaml\kibot_main.yaml"
 if (Test-Path $KIBOT_MAIN) {
     $COMPANY_VALUE_KIBOT = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
     (Get-Content $KIBOT_MAIN -Raw) `
@@ -566,7 +566,7 @@ if ($LICENSE_NAME -ne "None") {
     
     Download-License -LicenseKey $LICENSE_KEY -Destination "LICENSE" -Year $CURRENT_YEAR -Author $DESIGNER
     
-    foreach ($dir in @("docs", "cad", $BOARD_NAME_ANCHOR, "3d-print", "firmware")) {
+    foreach ($dir in @("docs", "cad", $BOARD_NAME, "3d-print", "firmware")) {
         if (Test-Path $dir) {
             Download-License -LicenseKey $LICENSE_KEY -Destination "$dir\LICENSE" -Year $CURRENT_YEAR -Author $DESIGNER
         }

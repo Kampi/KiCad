@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains a KiCad project template with initialization scripts for Windows (PowerShell) and Linux/macOS (Bash). The template includes a complete CI/CD pipeline using GitHub Actions and KiBot for automated hardware manufacturing outputs.
+This repository contains a KiCad project template with initialization scripts for Windows (PowerShell) and Linux/macOS (Bash). The template includes a complete CI/CD pipeline using both GitHub Actions and GitLab CI/CD with KiBot for automated hardware manufacturing outputs.
 
 ## Development Rules and Guidelines
 
@@ -22,13 +22,14 @@ This repository contains a KiCad project template with initialization scripts fo
      - KiCad project files (.kicad_pro, .kicad_sch, .kicad_pcb)
      - KiBot configuration (kibot_main.yaml)
      - GitHub Actions workflows (all .yaml files in .github/workflows/)
+     - GitLab CI pipelines (all .gitlab-ci.yml files in .gitlab/ci/)
      - Documentation files (README.md)
    - Keep the scripts idempotent - they should be safe to run multiple times
    - Provide clear, colored output messages for all operations
 
 3. **File Updates**
    - When updating configuration files, search ALL workflow files for similar patterns
-   - Example: If updating `master_branch` in pcb.yaml, update it in ALL workflow files
+   - Example: If updating `master_branch` in pcb.yaml, update it in ALL GitHub AND GitLab workflow files
    - When adding new project metadata fields, update:
      - .kicad_pro (text_variables section)
      - kibot_main.yaml (definitions section)
@@ -56,7 +57,7 @@ The following variables are used by the initialization scripts to pass data to t
 
 **Derived Variables** (lowercase/anchor versions):
 - `PROJECT_NAME_ANCHOR` - Lowercase version of PROJECT_NAME for Markdown anchors
-- `BOARD_NAME_ANCHOR` - Lowercase version of BOARD_NAME for directory names and anchors
+- `BOARD_NAME_ANCHOR` - Lowercase version of BOARD_NAME for Markdown anchors (README links, ToC)
 
 **Date Variables**:
 - `RELEASE_DATE` - Current date in dd-MMM-yyyy format
@@ -101,20 +102,23 @@ The following variables are used by the initialization scripts to pass data to t
 **KiBot Configuration (kibot_main.yaml)**:
 - PROJECT_NAME, BOARD_NAME, COMPANY, DESIGNER, GIT_URL
 
-**GitHub Workflows (all .yaml in .github/workflows/)**:
+**GitHub Workflows (all .yaml in .github/workflows/)** AND **GitLab CI Pipelines (all .gitlab-ci.yml in .gitlab/ci/)**:
 ALL workflow environment variables must be in UPPERCASE format: `${VARIABLE_NAME}`
 - MASTER_BRANCH - Main branch name (main/master)
-- KICAD_BOARD - Board name (pcb.yaml only)
-- KIBOT_INPUT_DIR - Input directory name (pcb.yaml only)
-- KIBOT_OUTPUT_DIR - Output directory name (pcb.yaml only)  
-- PROJECT_NAME - Project name (documentation.yaml)
+- KICAD_BOARD - Board name (pcb pipelines only)
+- KIBOT_INPUT_DIR - Input directory name (pcb pipelines only)
+- KIBOT_OUTPUT_DIR - Output directory name (pcb pipelines only)
+- PROJECT_NAME - Project name (documentation pipelines)
+
+GitLab CI uses predefined variables (e.g. `CI_COMMIT_TAG`, `CI_COMMIT_BRANCH`, `CI_PROJECT_URL`) instead of GitHub Actions equivalents (`github.ref_type`, `github.ref_name`, `github.repository`).
 
 **When adding or modifying variables**:
 1. Add the variable to this list with a clear description
 2. Update BOTH PowerShell and Bash scripts
-3. Document in README.md if user-facing
-4. Use consistent UPPERCASE naming in workflow files
-5. Never use these names for local function variables
+3. Update BOTH GitHub Actions AND GitLab CI pipeline files
+4. Document in README.md if user-facing
+5. Use consistent UPPERCASE naming in all pipeline files
+6. Never use these names for local function variables
 
 ### Documentation Requirements
 
@@ -125,9 +129,9 @@ ALL workflow environment variables must be in UPPERCASE format: `${VARIABLE_NAME
    - Use English language and avoid emojis in documentation
 
 2. **CI/CD Documentation**
-   - When adding new GitHub Actions workflows, document them in the "CI/CD Pipelines" section
-   - Include: file name, trigger conditions, main features, and any required secrets
-   - Update the "GitHub Secrets Configuration" section when adding new secrets
+   - When adding new GitHub Actions workflows, also add the equivalent GitLab CI pipeline and document both in the "CI/CD Pipelines" section
+   - Include: file name, trigger conditions, main features, and any required secrets/variables
+   - Update the "GitHub Secrets Configuration" and "GitLab CI/CD Variables" sections when adding new secrets
 
 3. **Code Comments**
    - Use clear, descriptive comments in both scripts
@@ -157,24 +161,45 @@ ALL workflow environment variables must be in UPPERCASE format: `${VARIABLE_NAME
 
 ### CI/CD Pipeline Development
 
-1. **Workflow Files**
-   - All workflows are in `__Project__/.github/workflows/`
+**CRITICAL: GitHub Actions and GitLab CI pipelines must be kept in sync. Every pipeline that exists for one platform must also exist for the other.**
+
+1. **GitHub Actions Workflow Files**
+   - All workflows are in `Template-Project/.github/workflows/`
    - Use consistent naming: lowercase with hyphens (e.g., changelog-check.yaml)
    - Always include descriptive job and step names
    - Use environment variables for configuration where possible
 
-2. **Required Workflows**
-   - pcb.yaml - Main hardware manufacturing pipeline
-   - changelog-check.yaml - CHANGELOG.md format validation
-   - documentation.yaml - Documentation generation and deployment
-   - astyle.yaml - Code formatting for firmware
-   - create-dev-branch.yaml - Development branch management
-   - component_release.yaml - Component publishing
+2. **GitLab CI Pipeline Files**
+   - All pipeline files are in `Template-Project/.gitlab/ci/`
+   - Use consistent naming: lowercase with hyphens and `.gitlab-ci.yml` suffix (e.g., changelog.gitlab-ci.yml)
+   - The root `Template-Project/.gitlab-ci.yml` includes all modular pipeline files via `include:`
+   - Use GitLab predefined variables (`CI_COMMIT_TAG`, `CI_COMMIT_BRANCH`, `CI_PROJECT_URL`, etc.)
+   - Secrets are stored as GitLab CI/CD Variables (not GitHub Secrets)
 
-3. **Workflow Variables**
-   - Use env variables at the workflow level for reusable configuration
-   - Document all required secrets in README.md
-   - Use consistent naming across workflows
+3. **Required Pipelines (both GitHub Actions AND GitLab CI)**
+   - pcb / pcb.gitlab-ci.yml - Main hardware manufacturing pipeline
+   - changelog-check / changelog.gitlab-ci.yml - CHANGELOG.md format validation
+   - documentation / documentation.gitlab-ci.yml - Documentation generation and deployment
+   - astyle / astyle.gitlab-ci.yml - Code formatting for firmware
+   - init-kibot-release / init-kibot-release.gitlab-ci.yml - Dev branch initialization
+   - esp-component-release / esp-component-release.gitlab-ci.yml - Component publishing
+   - west-astyle / west-astyle.gitlab-ci.yml - Zephyr/West code style check
+
+4. **Pipeline Variables**
+   - Use env/variables at the workflow level for reusable configuration
+   - Document all required secrets in README.md for both platforms
+   - Use consistent UPPERCASE naming across all pipeline files
+
+5. **Key Platform Differences**
+   | Concept              | GitHub Actions                  | GitLab CI                        |
+   |----------------------|---------------------------------|----------------------------------|
+   | Tag push detection   | `github.ref_type == 'tag'`      | `CI_COMMIT_TAG`                  |
+   | Branch name          | `github.ref_name`               | `CI_COMMIT_BRANCH`               |
+   | Repository URL       | `github.server_url/github.repository` | `CI_PROJECT_URL`           |
+   | Token for pushes     | `GITHUB_TOKEN` / `WORKFLOW_PAT` | `WORKFLOW_PAT`                   |
+   | Release creation     | `actions/create-release`        | GitLab Releases API              |
+   | Artifact upload      | `actions/upload-artifact`       | `artifacts:` block               |
+   | Pages deployment     | GitHub Pages action             | `pages:` job with `public/`      |
 
 ### CHANGELOG Format Requirements
 
@@ -244,9 +269,26 @@ D:\KiCad\
 ├── init-project.ps1          # Windows initialization script
 ├── init-project.sh            # Linux/macOS initialization script
 ├── README.md                  # Main documentation
-├── __Project__/               # Project template
+├── Template-Project/          # Project template
 │   ├── .github/
-│   │   └── workflows/        # CI/CD pipelines
+│   │   └── workflows/        # GitHub Actions CI/CD pipelines
+│   │       ├── pcb.yaml
+│   │       ├── changelog-check.yaml
+│   │       ├── documentation.yaml
+│   │       ├── astyle.yaml
+│   │       ├── west-astyle.yaml
+│   │       ├── init-kibot-release.yaml
+│   │       └── esp-component-release.yaml
+│   ├── .gitlab-ci.yml         # GitLab CI root (includes all .gitlab/ci/ files)
+│   ├── .gitlab/
+│   │   └── ci/               # GitLab CI/CD pipeline files
+│   │       ├── pcb.gitlab-ci.yml
+│   │       ├── changelog.gitlab-ci.yml
+│   │       ├── documentation.gitlab-ci.yml
+│   │       ├── astyle.gitlab-ci.yml
+│   │       ├── west-astyle.gitlab-ci.yml
+│   │       ├── init-kibot-release.gitlab-ci.yml
+│   │       └── esp-component-release.gitlab-ci.yml
 │   ├── hardware/             # KiCad project (renamed during init)
 │   │   ├── *.kicad_pro       # KiCad project file
 │   │   ├── *.kicad_sch       # Schematic files
@@ -284,12 +326,14 @@ D:\KiCad\
 3. Update the "Current input order" list in .github/copilot-instructions.md
 4. Test both interactive and non-interactive modes
 
-**Adding a new workflow**:
-1. Create .yaml file in `__Project__/.github/workflows/`
-2. Add any required secrets to GitHub Secrets Configuration in README
-3. Document workflow in CI/CD Pipelines section of README
-4. Update init scripts to replace any template values (both scripts)
-5. Test the workflow
+**Adding a new pipeline**:
+1. Create `.yaml` file in `Template-Project/.github/workflows/` (GitHub Actions)
+2. Create the equivalent `.gitlab-ci.yml` file in `Template-Project/.gitlab/ci/` (GitLab CI)
+3. Add the new GitLab CI file to the `include:` list in `Template-Project/.gitlab-ci.yml`
+4. Add any required secrets to both GitHub Secrets Configuration and GitLab CI/CD Variables sections in README
+5. Document the pipeline in CI/CD Pipelines section of README (cover both platforms)
+6. Update init scripts to replace any template values (both scripts)
+7. Test both pipeline variants
 
 **Updating file format handling**:
 1. Check both PowerShell and Bash implementations
@@ -301,15 +345,18 @@ D:\KiCad\
 ### Anti-Patterns (DO NOT DO)
 
 - ❌ Making changes only to init-project.ps1 without updating init-project.sh
+- ❌ Making changes only to a GitHub Actions workflow without creating/updating the equivalent GitLab CI pipeline
+- ❌ Making changes only to a GitLab CI pipeline without creating/updating the equivalent GitHub Actions workflow
 - ❌ Hardcoding values instead of using variables
 - ❌ Forgetting to update README.md when adding features
 - ❌ Adding/modifying input prompts without updating the non-interactive example commands in README.md
 - ❌ Not testing both scripts after changes
 - ❌ Using emojis in documentation
-- ❌ Updating only one workflow file when pattern applies to all
+- ❌ Updating only one workflow/pipeline file when pattern applies to all
 - ❌ Not validating file existence before operations
 - ❌ Ignoring error cases
 - ❌ Using platform-specific paths without conversion
+- ❌ Forgetting to add new GitLab CI pipeline files to the `include:` list in `.gitlab-ci.yml`
 
 ### Version Control
 
@@ -330,8 +377,9 @@ D:\KiCad\
 
 The golden rules:
 1. **Always update BOTH scripts** (PowerShell and Bash)
-2. **Always update README** when adding features
-3. **Search ALL workflow files** for similar patterns
-4. **Test both platforms** before committing
-5. **No emojis** in documentation
-6. **Use English** for all documentation
+2. **Always update BOTH pipeline platforms** (GitHub Actions AND GitLab CI) - every pipeline must exist on both
+3. **Always update README** when adding features
+4. **Search ALL workflow files** for similar patterns (both GitHub and GitLab)
+5. **Test both platforms** before committing
+6. **No emojis** in documentation
+7. **Use English** for all documentation
