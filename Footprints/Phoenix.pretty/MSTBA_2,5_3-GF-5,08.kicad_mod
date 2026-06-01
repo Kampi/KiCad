@@ -1,12 +1,12 @@
 (footprint "MSTBA_2,5_3-GF-5,08"
-	(version 20240108)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
 		(layer "F.SilkS")
-		(uuid "cf630227-96c2-4b90-94db-40d112c19137")
+		(uuid "00aeffd0-c7f0-4125-bba2-796347c7737c")
 		(effects
 			(font
 				(size 1 1)
@@ -17,23 +17,10 @@
 	(property "Value" "MSTBA_2,5_3-GF-5,08"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "50a1246f-35da-4824-b3c7-fe8790b20e13")
+		(uuid "f78d67a0-d570-4d73-a3a5-e635632eb43d")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 -3 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "281e70ba-8cf9-4050-b391-789495c4ef73")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -43,7 +30,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "23eb8a03-9a3f-4f04-a05d-552df9918811")
+		(uuid "10665a6a-a6c4-4c17-a5a7-b13f3608b8c3")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -56,7 +43,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "dd6048ea-f59e-402e-8cba-196d672ad920")
+		(uuid "3972ec9a-5e5b-42f5-a3ba-5c92d7d4f01c")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -65,16 +52,17 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
-		(start -12.7 -6)
-		(end 12.7 6)
+		(start -13.2 -6.5)
+		(end 13.2 6.5)
 		(stroke
 			(width 0.05)
-			(type default)
+			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
-		(uuid "c81c434a-bf51-4d63-ae86-cdc5dcae39d6")
+		(uuid "c134b646-a7b5-4c7d-8590-f4a983679f3d")
 	)
 	(fp_rect
 		(start -12.7 -6)
@@ -83,9 +71,9 @@
 			(width 0.1)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
-		(uuid "7102d1ce-54b8-4e36-9863-006ed4151d3f")
+		(uuid "a0be05a4-d4e9-413d-a8f6-e73b9a157451")
 	)
 	(fp_circle
 		(center -5.08 -6.7)
@@ -94,14 +82,14 @@
 			(width 0.4)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
-		(uuid "b3b2a06e-60be-4ec9-8cc2-d39980e4e13d")
+		(uuid "e184a07e-58ce-4e16-8cf3-07e24ecc8105")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "e6f67ebb-6771-4a34-8014-340d02e1d22a")
+		(uuid "b71fd23e-908c-4cd1-befe-824b875ed13d")
 		(effects
 			(font
 				(size 1 1)
@@ -116,7 +104,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(roundrect_rratio 0.125)
-		(uuid "7c3199e0-7fc2-40bc-80ba-3a2ef7c52d9b")
+		(uuid "81cafc9a-8626-44c7-b853-df3f74ad4d2a")
 	)
 	(pad "2" thru_hole oval
 		(at 0 -3)
@@ -124,7 +112,7 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "43cc6941-bc09-451f-9e96-3bc1dfda7e27")
+		(uuid "54598f19-02a1-4085-9927-ca1bd28db9e6")
 	)
 	(pad "3" thru_hole oval
 		(at 5.08 -3)
@@ -132,8 +120,9 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "2233ecbd-6c33-4c99-8165-ba7db2b52dc7")
+		(uuid "71ef13e8-598b-4f0b-b0e3-be83eccc16f4")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Phoenix/MSTBA-2-5-3-G-5-08-LR.stp"
 		(offset
 			(xyz -12.5 -7 0)

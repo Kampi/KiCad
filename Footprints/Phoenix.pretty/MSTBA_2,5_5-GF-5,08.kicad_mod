@@ -1,12 +1,12 @@
 (footprint "MSTBA_2,5_5-GF-5,08"
-	(version 20240108)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 0 0)
 		(layer "F.SilkS")
-		(uuid "cf630227-96c2-4b90-94db-40d112c19137")
+		(uuid "807ae884-6c24-4566-be1d-11037ba1fc0e")
 		(effects
 			(font
 				(size 1 1)
@@ -17,23 +17,10 @@
 	(property "Value" "MSTBA_2,5_5-GF-5,08"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "50a1246f-35da-4824-b3c7-fe8790b20e13")
+		(uuid "a98a681a-48c4-4d89-a01d-b8649c249e05")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at -5.08 -3 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "281e70ba-8cf9-4050-b391-789495c4ef73")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -43,7 +30,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "23eb8a03-9a3f-4f04-a05d-552df9918811")
+		(uuid "e4effc0f-538c-42e5-a1c1-5ef6bb7c7fb9")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -56,7 +43,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "dd6048ea-f59e-402e-8cba-196d672ad920")
+		(uuid "00f32540-5637-49b8-a7f8-1c7acd8c4a6a")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -65,16 +52,17 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
-		(start -17.78 -6)
-		(end 17.78 6)
+		(start -18.28 -6.5)
+		(end 18.28 6.5)
 		(stroke
 			(width 0.05)
-			(type default)
+			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
-		(uuid "c81c434a-bf51-4d63-ae86-cdc5dcae39d6")
+		(uuid "3e1cf3f5-5970-4856-9ce3-dfc0522bc6d7")
 	)
 	(fp_rect
 		(start -17.78 -6)
@@ -83,9 +71,9 @@
 			(width 0.1)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
-		(uuid "7102d1ce-54b8-4e36-9863-006ed4151d3f")
+		(uuid "a1a4dc7e-150c-4edd-8f81-52d2fde1bf73")
 	)
 	(fp_circle
 		(center -10.16 -6.7)
@@ -94,14 +82,14 @@
 			(width 0.4)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
-		(uuid "b3b2a06e-60be-4ec9-8cc2-d39980e4e13d")
+		(uuid "9677630f-4839-4d07-b801-42adad062cd0")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "e6f67ebb-6771-4a34-8014-340d02e1d22a")
+		(uuid "55152db6-39a8-4a10-baa7-094c09902c44")
 		(effects
 			(font
 				(size 1 1)
@@ -116,7 +104,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(roundrect_rratio 0.125)
-		(uuid "7c3199e0-7fc2-40bc-80ba-3a2ef7c52d9b")
+		(uuid "c55e2d32-7a9f-43b3-adfc-f197f09782d2")
 	)
 	(pad "2" thru_hole oval
 		(at -5.08 -3)
@@ -124,7 +112,7 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "43cc6941-bc09-451f-9e96-3bc1dfda7e27")
+		(uuid "e3670834-46e6-4401-8e40-3b132226d8ab")
 	)
 	(pad "3" thru_hole oval
 		(at 0 -3)
@@ -132,7 +120,7 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "2233ecbd-6c33-4c99-8165-ba7db2b52dc7")
+		(uuid "05d77818-c309-474d-b1a9-e4ddeb80c419")
 	)
 	(pad "4" thru_hole oval
 		(at 5.08 -3)
@@ -140,7 +128,7 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "5237b7ca-41a3-49df-b73a-2fa7408ff2c9")
+		(uuid "1b10c14f-48e5-4e17-b4ad-49d07d8a1006")
 	)
 	(pad "5" thru_hole oval
 		(at 10.16 -3)
@@ -148,8 +136,9 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d68981bb-d416-4ffc-9655-52df59531f59")
+		(uuid "d558e271-f71f-47d1-ab4c-7af83a6a505f")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Phoenix/MSTB-2-5-5-GF-5-08.stp"
 		(offset
 			(xyz -17.75 -7 0)

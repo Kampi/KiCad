@@ -1,12 +1,14 @@
 (footprint "MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal"
-	(version 20240108)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
+	(descr "Generic Phoenix Contact connector footprint for: MSTBA_2,5/2-G-5,08; number of pins: 02; pin pitch: 5.08mm; Angled || order number: 1757242 12A || order number: 1923869 16A (HC)")
+	(tags "phoenix_contact connector MSTBA_01x02_G_5.08mm")
 	(property "Reference" "REF**"
-		(at 0.025 0 0)
+		(at 0 0 0)
 		(layer "F.SilkS")
-		(uuid "68137617-af1a-48a0-972d-e0ee0114843e")
+		(uuid "9b116eae-0fc6-492a-a284-9eeb8ecdfcdc")
 		(effects
 			(font
 				(size 1 1)
@@ -17,7 +19,7 @@
 	(property "Value" "MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "0a025997-18f2-49c1-b35a-53379a51bf16")
+		(uuid "d1dbf29a-c0dd-4726-a529-9198c12dd5d4")
 		(effects
 			(font
 				(size 1 1)
@@ -25,83 +27,79 @@
 			)
 		)
 	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "920ca30b-1e31-4dcf-8411-6c51610d6b9c")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
-			)
-		)
-	)
 	(property "Datasheet" ""
 		(at 0 0 0)
-		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "52fd8c67-790e-4f85-8267-c24075ce5019")
+		(uuid "3de76816-9709-4fbe-82d4-5cdb0d6753b2")
 		(effects
 			(font
 				(size 1.27 1.27)
-				(thickness 0.15)
 			)
 		)
 	)
 	(property "Description" ""
 		(at 0 0 0)
-		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0cfe1068-efe7-43d8-a1b0-b3c28e13736f")
+		(uuid "7954fb13-5e78-4b6e-81ed-362860aa2b6e")
 		(effects
 			(font
 				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" "connector/PhoenixContact"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "b018d7ac-39c3-4b98-aadb-585a98f0c2de")
+		(effects
+			(font
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
-		(start -10.15 -6)
-		(end 10.15 6)
+		(start -6.54 -6.5)
+		(end 6.54 6.5)
 		(stroke
 			(width 0.05)
-			(type default)
+			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
-		(uuid "a9105d34-5d99-4306-a59e-d360f90c11f1")
+		(uuid "1893f202-0218-4e4e-b767-270f55b4179f")
 	)
 	(fp_rect
-		(start -10.15 -6)
-		(end 10.15 6)
+		(start -6.04 -6)
+		(end 6.04 6)
 		(stroke
 			(width 0.1)
-			(type default)
+			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
-		(uuid "e71c5505-cc86-422a-aea6-aa26f80c51d5")
+		(uuid "42bc345b-668e-495d-861d-fdebfef88ec0")
 	)
 	(fp_circle
-		(center -2.54 -6.7)
-		(end -2.34 -6.7)
+		(center -2.5 -7.2)
+		(end -2.3 -7.2)
 		(stroke
 			(width 0.4)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
-		(uuid "bbb46654-1296-4224-968d-e52a55e92dfb")
+		(uuid "f4b3a735-8558-4a26-a9f4-cc6e49b55b24")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "23c12b0e-a940-409a-b99c-1659eabaac32")
+		(uuid "102d68a4-b157-410c-a389-6c0889db0d8d")
 		(effects
 			(font
 				(size 1 1)
@@ -110,31 +108,32 @@
 		)
 	)
 	(pad "1" thru_hole roundrect
-		(at -2.54 -3)
-		(size 2 4)
-		(drill 1.5)
+		(at -2.5 -4)
+		(size 2.08 3.6)
+		(drill 1.4)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(roundrect_rratio 0.125)
-		(uuid "214837bf-0d06-4f45-9578-b00d1818d030")
+		(roundrect_rratio 0.120192)
+		(uuid "bfd97da4-7a6a-4e1a-9ac6-e6aab91eba3b")
 	)
 	(pad "2" thru_hole oval
-		(at 2.54 -3)
-		(size 2 4)
-		(drill 1.5)
+		(at 2.58 -4)
+		(size 2.08 3.6)
+		(drill 1.4)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "67872cf3-cc6b-4096-a0be-250e1bfe6e6e")
+		(uuid "8c8dba1c-1842-4874-9b0f-efdf1d55b6b0")
 	)
-	(model "${KICAD_LIBRARY}/3D/Phoenix/MSTBA-2-5-2-G-5-08-LR.stp"
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Phoenix/MSTBA-2-5-2-G.stp"
 		(offset
-			(xyz -10 -7 0)
+			(xyz -6 -6 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -0 -0 -0)
 		)
 	)
 )
