@@ -28,7 +28,7 @@
 				)
 			)
 		)
-		(property "Footprint" "CM4IO:Raspberry-Pi-4-Compute-Module"
+		(property "Footprint" "Raspberry Pi:CM4"
 			(at 142.24 -26.67 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1390,7 +1390,7 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin power_in line
 				(at -35.56 -64.77 0)
 				(length 5.08)
 				(name "+3V3"
@@ -1427,7 +1427,7 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin power_in line
 				(at -35.56 -64.77 0)
 				(length 5.08)
 				(hide yes)
@@ -1465,7 +1465,7 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin power_in line
 				(at -35.56 -68.58 0)
 				(length 5.08)
 				(name "+1V8"
@@ -1501,7 +1501,7 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin power_in line
 				(at -35.56 -68.58 0)
 				(length 5.08)
 				(hide yes)
