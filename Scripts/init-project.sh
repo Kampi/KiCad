@@ -326,6 +326,7 @@ replace_all_variables() {
     # Create lowercase anchor for Markdown ToC
     local project_name_anchor=$(echo "$param_project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local board_name_anchor=$(echo "$param_board_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    local board_name_lower=$(echo "$param_board_name" | tr '[:upper:]' '[:lower:]')
     
     print_color "$BLUE" "Replacing variables in all template files..."
     
@@ -365,6 +366,7 @@ replace_all_variables() {
             sed -i "s|\${RELEASE_DATE_NUM}|$release_date_num|g" "$file" 2>/dev/null || true
             sed -i "s|\${PROJECT_NAME_ANCHOR}|$project_name_anchor|g" "$file" 2>/dev/null || true
             sed -i "s|\${BOARD_NAME_ANCHOR}|$board_name_anchor|g" "$file" 2>/dev/null || true
+            sed -i "s|\${BOARD_NAME_LOWER}|$board_name_lower|g" "$file" 2>/dev/null || true
             sed -i "s|\${MASTER_BRANCH}|$param_master_branch|g" "$file" 2>/dev/null || true
             sed -i "s|\${EMAIL}|$param_email|g" "$file" 2>/dev/null || true
             sed -i "s|\${GIT_USER}|$param_git_user|g" "$file" 2>/dev/null || true
@@ -442,6 +444,7 @@ print_color "$GREEN" "Selected PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS 
 # Create lowercase versions for directory names
 PROJECT_NAME_ANCHOR=$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
 BOARD_NAME_ANCHOR=$(echo "$BOARD_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+BOARD_NAME_LOWER=$(echo "$BOARD_NAME" | tr '[:upper:]' '[:lower:]')
 
 # Step 3: Create project directory
 print_color "$BLUE" "\nCreating project directory: $PROJECT_NAME"
@@ -508,17 +511,17 @@ if [ -f "VARIABLES.md" ]; then
 fi
 
 # Step 4: Rename hardware directory
-print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME'"
+print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME_LOWER'"
 if [ -d "hardware" ]; then
-    mv "hardware" "$BOARD_NAME"
+    mv "hardware" "$BOARD_NAME_LOWER"
 else
     print_color "$YELLOW" "Warning: 'hardware' directory not found"
 fi
 
 # Step 5: Rename KiCad project files
 print_color "$BLUE" "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
-if [ -d "$BOARD_NAME" ]; then
-    cd "$BOARD_NAME"
+if [ -d "$BOARD_NAME_LOWER" ]; then
+    cd "$BOARD_NAME_LOWER"
     for file in Template.*; do
         if [ -f "$file" ]; then
             new_name="${file/Template/$BOARD_NAME}"
@@ -539,14 +542,14 @@ fi
 
 # Step 5b: Update KiCad text variables
 print_color "$BLUE" "Updating KiCad project text variables"
-KICAD_PRO_FILE="$BOARD_NAME/$BOARD_NAME.kicad_pro"
+KICAD_PRO_FILE="$BOARD_NAME_LOWER/$BOARD_NAME.kicad_pro"
 CURRENT_DATE=$(date +"%d-%b-%Y")
 COMPANY_VALUE="${COMPANY:-}"
 update_kicad_text_variables "$KICAD_PRO_FILE" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY_VALUE" "$CURRENT_DATE" "1.0.0" "$GIT_URL"
 
 # Step 5c: Update kibot_main.yaml
 print_color "$BLUE" "Updating kibot_main.yaml"
-KIBOT_MAIN="$BOARD_NAME/kibot_yaml/kibot_main.yaml"
+KIBOT_MAIN="$BOARD_NAME_LOWER/kibot_yaml/kibot_main.yaml"
 if [ -f "$KIBOT_MAIN" ]; then
     COMPANY_VALUE_KIBOT="${COMPANY:-}"
     sed -i "s/PROJECT_NAME: Project/PROJECT_NAME: $PROJECT_NAME/g" "$KIBOT_MAIN"
@@ -599,7 +602,7 @@ if [ "$LICENSE_NAME" != "None" ]; then
     download_license "$LICENSE_KEY" "LICENSE" "$CURRENT_YEAR" "$DESIGNER"
     
     # Add license to subdirectories
-    for dir in docs cad "$BOARD_NAME" 3d-print firmware; do
+    for dir in docs cad "$BOARD_NAME_LOWER" 3d-print firmware; do
         if [ -d "$dir" ]; then
             download_license "$LICENSE_KEY" "$dir/LICENSE" "$CURRENT_YEAR" "$DESIGNER"
         fi
