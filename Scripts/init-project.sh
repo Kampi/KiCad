@@ -628,11 +628,16 @@ if [ -f "README.md" ]; then
     sed -i "s/\"\$Designer\"/$DESIGNER/g" "README.md"
     sed -i "s/\"\$Email\"/$EMAIL/g" "README.md"
     
-    # Update license badge
+    # Update license badge placeholders
     if [ -n "$LICENSE_BADGE" ]; then
-        sed -i "s|https://img.shields.io/badge/License-[^)]*)|https://img.shields.io/badge/License-$LICENSE_BADGE.svg)|g" "README.md"
-        sed -i "s|https://opensource.org/license/[^)]*)|https://opensource.org/license/$LICENSE_KEY/)|g" "README.md"
+        display_badge="$LICENSE_BADGE"
+        display_link="https://opensource.org/license/$LICENSE_KEY/"
+    else
+        display_badge="No-License-lightgrey"
+        display_link="https://choosealicense.com/no-permission/"
     fi
+    sed -i "s|\${LICENSE_BADGE}|$display_badge|g" "README.md"
+    sed -i "s|\${LICENSE_LINK}|$display_link|g" "README.md"
     
     # Update GitHub URLs (remove .git extension if present)
     GIT_URL_CLEAN="${GIT_URL%.git}"

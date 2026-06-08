@@ -73,6 +73,7 @@ The following variables are used by the initialization scripts to pass data to t
 - `LICENSE_BADGE` - Badge text for README (e.g., "MIT-yellow")
 - `LICENSE_KEY` - License key for template download (e.g., "mit")
 - `LICENSE_SELECTION` - User's license selection (1-11)
+- `LICENSE_LINK` - Full URL to license page (derived: `https://opensource.org/license/${LICENSE_KEY}/`, or `https://choosealicense.com/no-permission/` when no license selected)
 
 **PCB Template Variables**:
 - `PCB_FILENAME` - Selected PCB template filename

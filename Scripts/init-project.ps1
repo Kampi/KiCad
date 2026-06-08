@@ -594,10 +594,10 @@ if (Test-Path "README.md") {
     $content = $content -replace '"\$Designer"', $DESIGNER
     $content = $content -replace '"\$Email"', $EMAIL
     
-    if (-not [string]::IsNullOrWhiteSpace($LICENSE_BADGE)) {
-        $content = $content -replace 'https://img\.shields\.io/badge/License-[^)]*\)', "https://img.shields.io/badge/License-$LICENSE_BADGE.svg)"
-        $content = $content -replace 'https://opensource\.org/license/[^)]*\)', "https://opensource.org/license/$LICENSE_KEY/)"
-    }
+    $displayBadge = if (-not [string]::IsNullOrWhiteSpace($LICENSE_BADGE)) { $LICENSE_BADGE } else { "No-License-lightgrey" }
+    $displayLink = if (-not [string]::IsNullOrWhiteSpace($LICENSE_BADGE)) { "https://opensource.org/license/$LICENSE_KEY/" } else { "https://choosealicense.com/no-permission/" }
+    $content = $content -replace [regex]::Escape('${LICENSE_BADGE}'), $displayBadge
+    $content = $content -replace [regex]::Escape('${LICENSE_LINK}'), $displayLink
     
     # Remove .git extension if present
     $GIT_URL_CLEAN = $GIT_URL -replace '\.git$', ''
