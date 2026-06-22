@@ -50,7 +50,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "The iM891A-XL is an ideal radio module for numerous applications such as smart metering, wireless M-Bus gateway expansion, IoT sensors, as well as home-, building- and industrial-automation."
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
