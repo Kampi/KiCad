@@ -4786,7 +4786,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at 0 -48.26 90)
 				(length 5.08)
 				(name "SH"
@@ -4804,7 +4804,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at 0 -48.26 90)
 				(length 5.08)
 				(hide yes)

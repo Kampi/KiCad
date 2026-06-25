@@ -2646,7 +2646,7 @@
 			)
 		)
 		(symbol "CC2530_0_0"
-			(pin power_in line
+			(pin passive line
 				(at 1.27 -35.56 90)
 				(length 2.54)
 				(name "GND"
@@ -2664,7 +2664,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at 1.27 -35.56 90)
 				(length 2.54)
 				(hide yes)
@@ -2683,7 +2683,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at 1.27 -35.56 90)
 				(length 2.54)
 				(hide yes)
@@ -2702,7 +2702,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at 1.27 -35.56 90)
 				(length 2.54)
 				(hide yes)
@@ -3099,24 +3099,6 @@
 					)
 				)
 			)
-			(pin bidirectional line
-				(at -1.27 -35.56 90)
-				(length 2.54)
-				(name "EP"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "41"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 		)
 		(symbol "CC2530_1_0"
 			(pin power_in line
@@ -3388,6 +3370,24 @@
 					)
 				)
 				(number "39"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -1.27 -35.56 90)
+				(length 2.54)
+				(name "EP"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "41"
 					(effects
 						(font
 							(size 1.27 1.27)
