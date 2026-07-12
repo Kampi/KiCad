@@ -1,0 +1,175 @@
+(footprint "DF40C100DS04V51-Dummy"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(tags "Connector")
+	(property "Reference" "X**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "951478aa-1adc-4a3f-a24b-0ab6b4ba7d2d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "DF40C100DS04V51-Dummy"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "d6240717-131a-463c-bb36-20a319309073")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "af49deb0-e2f4-4493-9b3c-2d25691c8314")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Dummy footprint to get P&P and BOM informations when a module footprint has his own copper layer (like the Raspberry Pi CM4)"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2738be98-afc2-4745-890f-fa9a08bd0351")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(solder_paste_margin_ratio -0.2)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -11.4 -2)
+		(end 11.5 2)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "49d80abd-153a-40f2-a456-8ac10812f59a")
+	)
+	(fp_line
+		(start -11.3 1.44)
+		(end -11.3 -1.44)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b6bbc24b-b356-4036-92f1-c9179f27a82c")
+	)
+	(fp_line
+		(start 11.3 -1.44)
+		(end -11.3 -1.44)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c9954d57-3b61-4bff-827f-bd443cff1dca")
+	)
+	(fp_line
+		(start 11.3 -1.44)
+		(end 11.3 1.44)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "4994c724-ae54-4cfb-aaa2-8e4948a8b337")
+	)
+	(fp_line
+		(start 11.3 1.44)
+		(end -11.3 1.44)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "59914a56-6c7b-41bb-a4ad-7ebdcf535e3b")
+	)
+	(fp_rect
+		(start -9.9 -1.89)
+		(end -9.7 -1.19)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "67d4afc6-68c4-4a33-8e48-28be75ee40c8")
+	)
+	(fp_rect
+		(start -9.9 1.19)
+		(end -9.7 1.89)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "1c9c0d48-d7ab-4897-92a3-72c59181fa1a")
+	)
+	(fp_rect
+		(start 9.7 -1.89)
+		(end 9.9 -1.19)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "8d252c0a-11db-4746-87c0-3ec03aa6750e")
+	)
+	(fp_rect
+		(start 9.7 1.19)
+		(end 9.9 1.89)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "c77d28a7-b871-4eeb-9db2-0acbc63e2244")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "608efcad-407d-432c-a8db-7aa229754993")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Hirose/DF40C-100DS-0.4V_51_1.5mm.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)
