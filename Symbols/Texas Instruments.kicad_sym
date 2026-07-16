@@ -9434,7 +9434,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Texas Instruments:TPS2121RUXT"
+		(property "Footprint" "Texas Instruments:RUX0012A"
 			(at 24.13 -87.3 0)
 			(show_name no)
 			(do_not_autoplace no)

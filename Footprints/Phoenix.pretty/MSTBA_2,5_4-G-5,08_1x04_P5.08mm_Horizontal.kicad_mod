@@ -1,0 +1,152 @@
+(footprint "MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Generic Phoenix Contact connector footprint for: MSTBA_2,5/4-G-5,08; number of pins: 04; pin pitch: 5.08mm; Angled || order number: 1757268 12A || order number: 1923885 16A (HC)")
+	(tags "phoenix_contact connector MSTBA_01x04_G_5.08mm")
+	(property "Value" "MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "d3352c03-332b-4fda-87ed-cf891f163d77")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cf3bcd3e-00fe-4d30-9334-4d379fca1b6f")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "deb5e69e-e0d2-468b-a3de-f2f0f7751154")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "040a9b1e-4d7d-4810-8235-fc235ca96526")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -11.66 -2.5)
+		(end 11.66 10.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "7b3daadd-77b4-48fa-a72e-14ab0e2c11c0")
+	)
+	(fp_line
+		(start -7.62 -0.5)
+		(end -8.57 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5ce8bf1b-4998-445c-ace2-6ff09ea3ca36")
+	)
+	(fp_line
+		(start -6.67 -2)
+		(end -7.62 -0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0e587355-768b-4e05-919f-a74b795c8513")
+	)
+	(fp_rect
+		(start -11.16 -2)
+		(end 11.16 10)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "8058d7d1-a9fb-4a1b-8cb6-43f4e7c530c9")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "698cd448-7a98-4633-bbe6-fadd32ad118d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at -7.62 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.120192)
+		(uuid "c9fab050-1491-448c-9023-094eec205812")
+	)
+	(pad "2" thru_hole oval
+		(at -2.54 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1bb7556a-8dc0-4edc-a73f-47384db9e463")
+	)
+	(pad "3" thru_hole oval
+		(at 2.54 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b1b43daf-271e-46f6-a386-04b363d21494")
+	)
+	(pad "4" thru_hole oval
+		(at 7.62 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a9b48809-0fff-4db5-a9eb-fc17aadaf0a4")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Phoenix/MSTBA-2-5-4-G-5-08.stp"
+		(offset
+			(xyz -11.2 -10 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)

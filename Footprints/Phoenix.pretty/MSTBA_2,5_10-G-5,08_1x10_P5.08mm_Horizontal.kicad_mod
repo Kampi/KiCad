@@ -1,0 +1,212 @@
+(footprint "MSTBA_2,5_10-G-5,08_1x10_P5.08mm_Horizontal"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Generic Phoenix Contact connector footprint for: MSTBA_2,5/10-G-5,08; number of pins: 10; pin pitch: 5.08mm; Angled || order number: 1757323 12A || order number: 1923940 16A (HC)")
+	(tags "phoenix_contact connector MSTBA_01x10_G_5.08mm")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "d08020a0-ff43-41e6-98e3-a80bf969def0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "MSTBA_2,5_10-G-5,08_1x10_P5.08mm_Horizontal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "2407218f-bc74-4abf-a2ad-4aa7580d90d9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a74eb1ad-ce2c-447e-a358-3f1a60fa08f0")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4e3e2f79-38bb-421d-a329-6f1d7c3f1e80")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" "connector/PhoenixContact"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "d7e1ecad-b869-40e6-9164-5dd4261a67fe")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -24.36 -2.5)
+		(end 29.44 10.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "dd3ffc90-4b40-4f03-81b5-b6f590efe929")
+	)
+	(fp_line
+		(start -20.32 -0.5)
+		(end -21.27 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "1881f869-e4cf-4d55-9798-37f19006d379")
+	)
+	(fp_line
+		(start -19.37 -2)
+		(end -20.32 -0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "579a7190-a51c-4cf7-8888-1e18dbc60564")
+	)
+	(fp_rect
+		(start -23.86 -2)
+		(end 28.94 10)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9655be7f-b6ee-4475-8bc7-ae5811ada884")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "28f3c13e-f84e-4f14-84d6-d0b1a6f99a16")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at -20.32 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.120192)
+		(uuid "a31dd822-38bd-4e54-a699-06475cb52fb6")
+	)
+	(pad "2" thru_hole oval
+		(at -15.24 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4f21faae-232a-4f68-ad49-75b1341a4bca")
+	)
+	(pad "3" thru_hole oval
+		(at -10.16 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0581c533-6c51-4a03-ad6b-41c9f86a22b9")
+	)
+	(pad "4" thru_hole oval
+		(at -5.08 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a20dd8e5-6a8c-458a-87f1-ca9aed6ec4c1")
+	)
+	(pad "5" thru_hole oval
+		(at 0 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b2f439a9-1f39-46da-8fd8-6579a8112f66")
+	)
+	(pad "6" thru_hole oval
+		(at 5.08 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e4e3a4f1-888c-490e-b66c-bc8d9978d5f1")
+	)
+	(pad "7" thru_hole oval
+		(at 10.16 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "63e9b6ea-ecb2-4391-91f1-0adb0608a133")
+	)
+	(pad "8" thru_hole oval
+		(at 15.24 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7e012b62-778a-4089-b039-540e2c28b990")
+	)
+	(pad "9" thru_hole oval
+		(at 20.32 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a7c47e7e-44db-4e4d-ad13-ad7208d14b02")
+	)
+	(pad "10" thru_hole oval
+		(at 25.4 0)
+		(size 2.08 3.6)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "334938e6-0071-40b5-a066-fcc8d96a0cc2")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Phoenix/MSTBA-2-5-10-G-5-08.stp"
+		(offset
+			(xyz -23.8 -10 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)

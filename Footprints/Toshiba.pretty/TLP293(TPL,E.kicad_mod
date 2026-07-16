@@ -1,0 +1,237 @@
+(footprint "TLP293(TPL,E"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "SOIC, 4 Pin (https://toshiba.semicon-storage.com/info/docget.jsp?did=12884&prodName=TLP291)")
+	(tags "SOIC SO")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "b80601b4-4144-4396-ad0b-93ad88e983d8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "TLP293(TPL,E"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "75d1f790-68cc-403a-9439-ea0240080333")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8a12b55b-47af-483a-aa19-58c96528b6eb")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "49dc888b-63dd-4aed-baa3-6eaf5578dca0")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -4.3 -1.16)
+		(end -2.53 -1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "bd81fd6d-00b9-4b4e-981d-7f00a672cff3")
+	)
+	(fp_line
+		(start -4.3 1.16)
+		(end -4.3 -1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a9f73347-2929-4ac2-8769-4786925ee4b2")
+	)
+	(fp_line
+		(start -2.53 -1.55)
+		(end 2.53 -1.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "e6d1474e-8d5c-4e5d-b5d8-a18e6299871c")
+	)
+	(fp_line
+		(start -2.53 -1.16)
+		(end -2.53 -1.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9e02f4a9-812b-4661-b42b-b8bb32a06281")
+	)
+	(fp_line
+		(start -2.53 1.16)
+		(end -4.3 1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2ccbe392-7b1e-48c8-a102-687f3e2945ad")
+	)
+	(fp_line
+		(start -2.53 1.55)
+		(end -2.53 1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "36be0773-d243-4ec4-b85c-8c47a8720ffd")
+	)
+	(fp_line
+		(start 2.53 -1.55)
+		(end 2.53 -1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "cd7e4c95-e701-4ce6-8858-dab44d88dabd")
+	)
+	(fp_line
+		(start 2.53 -1.16)
+		(end 4.3 -1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "85adbcfc-f81e-4cb1-891b-06b548aff78a")
+	)
+	(fp_line
+		(start 2.53 1.16)
+		(end 2.53 1.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "39e35772-8a10-46a4-b6f3-1889d042472d")
+	)
+	(fp_line
+		(start 2.53 1.55)
+		(end -2.53 1.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b336404d-b1ea-4fdf-90f7-dc8d104820f8")
+	)
+	(fp_line
+		(start 4.3 -1.16)
+		(end 4.3 1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "81bcceff-42be-4617-b401-51bb6a66b7e0")
+	)
+	(fp_line
+		(start 4.3 1.16)
+		(end 2.53 1.16)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9de8fd53-1e4e-4ca0-bef4-a558522a01fa")
+	)
+	(fp_poly
+		(pts
+			(xy -1.625 -1.3) (xy 2.275 -1.3) (xy 2.275 1.3) (xy -2.275 1.3) (xy -2.275 -0.65)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "efb3cf9a-25cd-4550-b344-ef20bd8f27ca")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "2e218f3f-c5e5-4c4d-b74c-9e76a398584c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -3.25 -0.635)
+		(size 1.6 0.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "bb9e2b0c-440a-4fba-8403-0e658acb4973")
+	)
+	(pad "2" smd roundrect
+		(at -3.25 0.635)
+		(size 1.6 0.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "86552c32-a11f-40b4-bb6e-00b68437ed57")
+	)
+	(pad "3" smd roundrect
+		(at 3.25 0.635)
+		(size 1.6 0.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "6bce6431-2244-49f0-9f38-0923b94a71bd")
+	)
+	(pad "4" smd roundrect
+		(at 3.25 -0.635)
+		(size 1.6 0.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "70b9f4f0-eb16-4832-bbf0-38290506f392")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBRARY}/3D/Toshiba/TLP293(TPL,E.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 90 180 -90)
+		)
+	)
+)
