@@ -9516,7 +9516,7 @@
 				)
 			)
 			(pin input line
-				(at 11.43 -6.35 180)
+				(at -11.43 -10.16 0)
 				(length 2.54)
 				(name "CP2"
 					(effects
@@ -9552,7 +9552,7 @@
 				)
 			)
 			(pin input line
-				(at -11.43 -1.27 0)
+				(at -11.43 6.35 0)
 				(length 2.54)
 				(name "OV1"
 					(effects
@@ -9570,7 +9570,7 @@
 				)
 			)
 			(pin input line
-				(at 11.43 3.81 180)
+				(at -11.43 11.43 0)
 				(length 2.54)
 				(name "PR1"
 					(effects
@@ -9588,7 +9588,7 @@
 				)
 			)
 			(pin input line
-				(at -11.43 8.89 0)
+				(at -11.43 15.24 0)
 				(length 2.54)
 				(name "IN1"
 					(effects
