@@ -222,12 +222,12 @@
         "black_and_white": true,
         "check_zones": false,
         "color_theme": "",
-        "crossout_dnp_footprints_on_fab_layers": true,
+        "crossout_dnp_footprints_on_fab_layers": false,
         "description": "",
         "drawing_sheet": "",
         "drill_shape": "full",
         "front_fp_property_popups": true,
-        "hide_dnp_footprints_on_fab_layers": false,
+        "hide_dnp_footprints_on_fab_layers": true,
         "layers": [
           "In30.Cu",
           "In29.Cu",
@@ -277,7 +277,7 @@
         "plot_ref_des": true,
         "scale": 1.0,
         "single_document": true,
-        "sketch_dnp_footprints_on_fab_layers": true,
+        "sketch_dnp_footprints_on_fab_layers": false,
         "sketch_pads_on_fab_layers": false,
         "subtract_solder_mask_from_silk": false,
         "use_drill_origin": false,
@@ -294,12 +294,12 @@
         "black_and_white": true,
         "check_zones": false,
         "color_theme": "",
-        "crossout_dnp_footprints_on_fab_layers": true,
+        "crossout_dnp_footprints_on_fab_layers": false,
         "description": "",
         "drawing_sheet": "",
         "drill_shape": "full",
         "front_fp_property_popups": true,
-        "hide_dnp_footprints_on_fab_layers": false,
+        "hide_dnp_footprints_on_fab_layers": true,
         "layers": [
           "B.Fab",
           "In30.Cu",
@@ -349,7 +349,7 @@
         "plot_ref_des": true,
         "scale": 1.0,
         "single_document": true,
-        "sketch_dnp_footprints_on_fab_layers": true,
+        "sketch_dnp_footprints_on_fab_layers": false,
         "sketch_pads_on_fab_layers": false,
         "subtract_solder_mask_from_silk": false,
         "use_drill_origin": false,
@@ -428,6 +428,27 @@
         "variant": ""
       },
       "type": "pcb_export_pdf"
+    },
+    {
+      "description": "",
+      "id": "8f2eb300-d946-4d1f-9ade-dff94ce29108",
+      "settings": {
+        "description": "",
+        "exclude_bom": true,
+        "exclude_dnp": true,
+        "exclude_footprints_with_th": false,
+        "format": "ascii",
+        "gerber_board_edge": true,
+        "negate_bottom_x": false,
+        "output_filename": "Manufacturing/Centroid",
+        "side": "both",
+        "single_file": false,
+        "smd_only": false,
+        "units": "mm",
+        "use_drill_place_file_origin": true,
+        "variant": ""
+      },
+      "type": "pcb_export_pos"
     }
   ],
   "meta": {
