@@ -19,7 +19,7 @@
     10. Prompts for a license selection and downloads the license text
     11. Updates .github/.commit-msg-template with the designer sign-off
     12. Replaces all ${...} placeholders in every text file of the project
-    13. Creates AsciiDoc documentation scaffolding in docs/
+    13. Creates AsciiDoc documentation scaffolding in firmware/docs/
     14. Initialises a Git repository with an initial commit
     15. Optionally pushes the repository to GitHub
 
@@ -188,6 +188,22 @@ function Update-KiCadTextVariables {
     $jsonContent.text_variables.RELEASE_DATE_NUM = (Get-Date -Format "yyyy-MM-dd")
     $jsonContent.text_variables.REVISION = $ParamRevision
     $jsonContent.text_variables.GIT_URL = $ParamGitUrl
+
+    # Replace the references to the template project name
+    if ($null -ne $jsonContent.meta -and $null -ne $jsonContent.meta.filename) {
+        $jsonContent.meta.filename = "$ParamBoardName.kicad_pro"
+    }
+    if ($null -ne $jsonContent.schematic -and $null -ne $jsonContent.schematic.top_level_sheets) {
+        foreach ($sheet in $jsonContent.schematic.top_level_sheets) {
+            if ($sheet.filename -eq 'Template.kicad_sch') { $sheet.filename = "$ParamBoardName.kicad_sch" }
+            if ($sheet.name -eq 'Template') { $sheet.name = $ParamBoardName }
+        }
+    }
+    if ($null -ne $jsonContent.sheets) {
+        foreach ($sheet in $jsonContent.sheets) {
+            if ($sheet.Count -gt 1 -and $sheet[1] -eq 'Template') { $sheet[1] = $ParamBoardName }
+        }
+    }
     
     # Write back to file with proper formatting
     $jsonContent | ConvertTo-Json -Depth 100 | Set-Content $KicadProFile
@@ -325,6 +341,7 @@ function Replace-AllVariables {
                 '${EMAIL}' = $ParamEmail
                 '${GIT_USER}' = $ParamGitUser
                 '${GIT_REPO}' = $ParamGitRepo
+                '${GIT_URL}' = ($ParamGitUrl -replace '\.git$', '')
                 '"$Project"' = $ParamProjectName
                 '"$Designer"' = $ParamDesigner
                 '"$Email"' = $ParamEmail
@@ -370,6 +387,9 @@ if ($GIT_URL -match 'github\.com[:/]([^/]+)/([^/\.]+)') {
     Write-ColorOutput $RED "Invalid GitHub URL format"
     exit 1
 }
+
+# Use the plain repository URL everywhere (links are built from it)
+$GIT_URL = $GIT_URL.TrimEnd('/') -replace '\.git$', ''
 
 $COMPANY = Get-UserInput "Enter company name" -Required $false
 
@@ -438,11 +458,12 @@ if (Test-Path ".git") {
     Write-ColorOutput $GREEN "Removed .git directory from template"
 }
 
-# Remove Template-backups directory if it exists
-if (Test-Path "Template-backups") {
-    Remove-Item -Path "Template-backups" -Recurse -Force
-    Write-ColorOutput $GREEN "Removed Template-backups directory from template"
-}
+# Remove local KiCad files (backups, footprint cache, local settings, lock files)
+# copied from the template
+Get-ChildItem -Path "hardware" -Force | Where-Object {
+    $_.Name -like '*-backups' -or $_.Name -eq 'fp-info-cache' -or $_.Name -like '*.kicad_prl' -or $_.Name -like '*.lck'
+} | Remove-Item -Recurse -Force
+Write-ColorOutput $GREEN "Removed local KiCad files from template"
 
 # Step 3b: Replace PCB template with selected one
 Write-ColorOutput $BLUE "Applying PCB template: $PCB_FILENAME"
@@ -501,6 +522,14 @@ if (Test-Path $BOARD_NAME_LOWER) {
         (Get-Content $MAIN_SCH) -replace '\(title "Template"\)', "(title `"$BOARD_NAME`")" | Set-Content $MAIN_SCH
         Write-ColorOutput $GREEN "  Updated Sheet Title in: $MAIN_SCH"
     }
+
+    # Sheet instances (page numbers) are stored per project name
+    Get-ChildItem -Filter "*.kicad_sch" | ForEach-Object {
+        $text = [System.IO.File]::ReadAllText($_.FullName)
+        $updated = $text.Replace('(project "Template"', "(project `"$BOARD_NAME`"")
+        if ($updated -ne $text) { [System.IO.File]::WriteAllText($_.FullName, $updated) }
+    }
+    Write-ColorOutput $GREEN "  Updated project name in the schematic sheets"
     
     Set-Location ..
 }
@@ -625,7 +654,8 @@ Replace-AllVariables -ParamProjectPath (Get-Location).Path -ParamProjectName $PR
 
 # Step 9d: Create basic AsciiDoc documentation
 Write-ColorOutput $BLUE "Creating AsciiDoc documentation"
-$DOCS_DIR = "docs"
+$DOCS_DIR = "firmware\docs"
+New-Item -ItemType Directory -Force -Path $DOCS_DIR | Out-Null
 if (Test-Path $DOCS_DIR) {
     $asciidocContent = @"
 = $PROJECT_NAME Documentation

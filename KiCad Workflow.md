@@ -110,7 +110,6 @@ A new development branch named `<Major>.<Minor>.<Fix>_Dev` is created from the m
 When this branch is initialized:
 
 - The KiBot workflow state in the CI/CD configuration is set to `PRELIMINARY`.
-- Production files from the previous version are removed.
 
 The initial commit message must be:
 
@@ -169,7 +168,7 @@ The KiBot workflow state may be set to `DRAFT` or `PRELIMINARY` as needed, but *
 
 ### Initialization of the development branch
 
-A development branch is created from the `main` branch. The first commit should always remove the production files and reset the workflow state to `DRAFT` or `PRELIMINARY`. The first commit message is always
+A development branch is created from the `main` branch. The first commit should always reset the workflow state to `DRAFT` or `PRELIMINARY`. The first commit message is always
 
 ```sh
 Initialize development branch for version ...

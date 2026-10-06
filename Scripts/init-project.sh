@@ -25,7 +25,7 @@
 #   10. Prompts for a license selection and downloads the license text
 #   11. Updates .github/.commit-msg-template with the designer sign-off
 #   12. Replaces all \${...} placeholders in every text file of the project
-#   13. Creates AsciiDoc documentation scaffolding in docs/
+#   13. Creates AsciiDoc documentation scaffolding in firmware/docs/
 #   14. Initialises a Git repository with an initial commit
 #   15. Optionally pushes the repository to GitHub
 #
@@ -246,6 +246,18 @@ try:
     data['text_variables']['RELEASE_DATE_NUM'] = '$date_num'
     data['text_variables']['REVISION'] = '$param_revision'
     data['text_variables']['GIT_URL'] = '$param_git_url'
+
+    # Replace the references to the template project name
+    if isinstance(data.get('meta'), dict) and 'filename' in data['meta']:
+        data['meta']['filename'] = '$param_board_name.kicad_pro'
+    for sheet in (data.get('schematic') or {}).get('top_level_sheets') or []:
+        if sheet.get('filename') == 'Template.kicad_sch':
+            sheet['filename'] = '$param_board_name.kicad_sch'
+        if sheet.get('name') == 'Template':
+            sheet['name'] = '$param_board_name'
+    for sheet in data.get('sheets') or []:
+        if len(sheet) > 1 and sheet[1] == 'Template':
+            sheet[1] = '$param_board_name'
     
     # Write back to file with proper formatting
     with open('$kicad_pro_file', 'w', encoding='utf-8') as f:
@@ -371,6 +383,7 @@ replace_all_variables() {
             sed -i "s|\${EMAIL}|$param_email|g" "$file" 2>/dev/null || true
             sed -i "s|\${GIT_USER}|$param_git_user|g" "$file" 2>/dev/null || true
             sed -i "s|\${GIT_REPO}|$param_git_repo|g" "$file" 2>/dev/null || true
+            sed -i "s|\${GIT_URL}|${param_git_url%.git}|g" "$file" 2>/dev/null || true
             
             # Shell compatibility format
             sed -i "s|\"\$Project\"|$param_project_name|g" "$file" 2>/dev/null || true
@@ -403,6 +416,10 @@ else
     print_color "$RED" "Invalid GitHub URL format"
     exit 1
 fi
+
+# Use the plain repository URL everywhere (links are built from it)
+GIT_URL="${GIT_URL%/}"
+GIT_URL="${GIT_URL%.git}"
 
 COMPANY=$(get_input "Enter company name" "" false)
 
@@ -460,17 +477,18 @@ fi
 cp -r "$TEMPLATE_PATH" "$PROJECT_PATH"
 cd "$PROJECT_PATH"
 
-# Remove .git directory from copied template to avoid conflicts
-if [ -d ".git" ]; then
+# Remove .git from copied template to avoid conflicts. It is a directory in a
+# regular clone and a file (gitdir link) when the template is a submodule.
+if [ -e ".git" ]; then
     rm -rf ".git"
-    print_color "$GREEN" "Removed .git directory from template"
+    print_color "$GREEN" "Removed .git from template"
 fi
 
-# Remove Template-backups directory if it exists
-if [ -d "Template-backups" ]; then
-    rm -rf "Template-backups"
-    print_color "$GREEN" "Removed Template-backups directory from template"
-fi
+# Remove local KiCad files (backups, footprint cache, local settings, lock files)
+# copied from the template
+rm -rf hardware/*-backups
+rm -f hardware/fp-info-cache hardware/*.kicad_prl hardware/*.lck
+print_color "$GREEN" "Removed local KiCad files from template"
 
 # Step 3b: Replace PCB template with selected one and remove all other templates
 print_color "$BLUE" "Applying PCB template: $PCB_FILENAME"
@@ -490,7 +508,7 @@ else
 fi
 
 # Remove all Template - * files related to PCB templates (.kicad_pcb, .kicad_pro, .kicad_prl)
-find . -maxdepth 1 \( -name "Template - *.kicad_pcb" -o -name "Template - *.kicad_pro" -o -name "Template - *.kicad_prl" \) -type f -delete
+find . -maxdepth 1 \( -name "Template - *.kicad_pcb" -o -name "Template - *.kicad_pro" \) -type f -delete
 print_color "$GREEN" "Cleaned up unused PCB template files"
 
 # Replace "Template" with BOARD_NAME in the PCB file
@@ -536,6 +554,12 @@ if [ -d "$BOARD_NAME_LOWER" ]; then
         sed -i "s/(title \"Template\")/(title \"$BOARD_NAME\")/g" "$MAIN_SCH"
         print_color "$GREEN" "  Updated Sheet Title in: $MAIN_SCH"
     fi
+
+    # Sheet instances (page numbers) are stored per project name
+    for sch in *.kicad_sch; do
+        sed -i "s/(project \"Template\"/(project \"$BOARD_NAME\"/g" "$sch"
+    done
+    print_color "$GREEN" "  Updated project name in the schematic sheets"
     
     cd ..
 fi
@@ -664,7 +688,8 @@ replace_all_variables "$(pwd)" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPA
 
 # Step 9d: Create basic AsciiDoc documentation
 print_color "$BLUE" "Creating AsciiDoc documentation"
-DOCS_DIR="docs"
+DOCS_DIR="firmware/docs"
+mkdir -p "$DOCS_DIR"
 if [ -d "$DOCS_DIR" ]; then
     cat > "$DOCS_DIR/index.adoc" << EOF
 = $PROJECT_NAME Documentation
