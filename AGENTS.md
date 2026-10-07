@@ -28,13 +28,14 @@ A new rule file needs the `description` and `applyTo` front matter and a row in 
   - `.claude/skills/`: Pointers to the skills in `.github/skills/` for Claude Code. They contain no steps, only the same `name` and `description`. A new skill needs a pointer here
   - `firmware/`: Firmware profiles, the init scripts keep one of them: `blank`, `platformio` (ESP32, ESP-IDF via PlatformIO) and `esp-idf-component` (moved to the repository root)
   - `scripts/`: Helper scripts of the generated projects (changelog, format)
-- `GitHub/`, `Plugins/`: Third-party Git submodules. Don't edit them
+- `Plugins/KiCad-Project-Initialization-Plugin/` (Git submodule, own repository): KiCad action plugin that creates projects from the template like the init scripts. `kicad_project_init.py` must create the same files as `init-project.sh`. Its template is the submodule `__Project__`
+- `GitHub/`: Third-party Git submodules. Don't edit them
 
 ## Conventions
 
 - KiCad 10.0 or later only. Don't add compatibility code for older KiCad versions. KiBot runs in `ghcr.io/inti-cmnb/kicad10_auto_full:latest`
 - Keep these pairs in sync and never change only one side:
-  - `init-project.sh` and `init-project.ps1`
+  - `init-project.sh`, `init-project.ps1` and `kicad_project_init.py` of the project initialization plugin
   - Each GitHub Actions workflow and its GitLab CI pipeline
 - Versions are SemVer: development branches `x.y.z_Dev`, release tags `x.y.z` without `v` prefix
 - KiBot variants: `DRAFT`, `PRELIMINARY` (set by the `create-dev-branch` skill), `CHECKED` (set by the `create-release` skill), `RELEASED` (tag pushes)

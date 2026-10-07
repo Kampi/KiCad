@@ -5,6 +5,7 @@ applyTo: "Scripts/**"
 # Init Scripts
 
 - Implement every change in `init-project.sh` and `init-project.ps1` with the same behavior and the same step numbers
+- Port every change to `Plugins/KiCad-Project-Initialization-Plugin/kicad_project_init.py` (prompts become dialog fields). The plugin must create the same files as the scripts, except the Git repository. Compare the results with `diff -r` for every project type
 - Bash: snake_case functions, quoted variables, `[[ ]]`, `print_color` for output, Python 3 for JSON
 - PowerShell: approved verb-noun functions, typed parameter blocks, native cmdlets, `Write-ColorOutput` for output
 - Check that a file exists before changing it. Exit with 1 on errors
