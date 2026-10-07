@@ -154,7 +154,7 @@
 		(uuid "927185c8-ce27-4525-a2ef-9942aeb46684")
 	)
 	(embedded_fonts no)
-	(model "${KICAD6_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_0805_2012Metric.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_0805_2012Metric.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

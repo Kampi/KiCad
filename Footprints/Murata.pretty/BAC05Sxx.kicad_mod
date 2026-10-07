@@ -292,7 +292,7 @@
 			)
 		)
 	)
-	(model "${KICAD8_3DMODEL_DIR}/Converter_ACDC.3dshapes/Converter_ACDC_Murata_BAC05SxxDC_THT.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Converter_ACDC.3dshapes/Converter_ACDC_Murata_BAC05SxxDC_THT.wrl"
 		(offset
 			(xyz -10.5 10 0)
 		)

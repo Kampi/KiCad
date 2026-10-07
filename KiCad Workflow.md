@@ -57,7 +57,7 @@ to change the template locally for the project. If no template is available, fee
 
 1. Copy the template project (`__Project__`) and rename it
 2. Rename the KiCad files in `hardware` according to your project
-3. Open `.github/workflows/pcb.yaml`
+3. Open `.github/workflows/hw-pcb.yaml`
 
     - Replace the variables in the `env` section according to your project
 
@@ -114,13 +114,11 @@ When this branch is initialized:
 The initial commit message must be:
 
 ```txt
-Initialize development branch for version <Major>.<Minor>.<Fix>
-
-Signed-off-by: Your name <Your Email>
+Prepare Development Branch for Release <Major>.<Minor>.<Fix>
 ```
 
-> **NOTE** 
-> You can use the `create-dev-branch` script from `.github/scripts` to run these steps automatically.
+> **NOTE**
+> You can use the `create-dev-branch` skill of the project to run these steps automatically.
 
 ### Issue tracker
 

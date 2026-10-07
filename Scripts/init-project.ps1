@@ -7,10 +7,12 @@
     Template-Project directory. It performs the following steps:
 
     1.  Collects project metadata from the user (name, board, designer, etc.)
+        and the project type (hardware, PlatformIO firmware, ESP-IDF component)
     2.  Scans Template-Project/hardware/ for available PCB templates and lets
-        the user select one
+        the user select one (project types with hardware only)
     3.  Creates the project directory at the chosen target location
-    4.  Copies the full template structure and removes template artefacts
+    4.  Copies the full template structure, removes template artefacts and
+        applies the project type (firmware profile, workflows, directories)
     5.  Applies the selected PCB template and removes unused ones
     6.  Renames all project files from 'Template.*' to '<BoardName>.*'
     7.  Updates KiCad project text variables in the .kicad_pro file
@@ -32,7 +34,7 @@
     Runs the script interactively.
 
 .EXAMPLE
-    "MyProject`nMyBoard`nJohn Doe`njohn.doe@example.com`nhttps://github.com/user/repo`nMyCompany`nmain`nC:\Projects`n1`n1" | .\Scripts\init-project.ps1
+    "MyProject`nMyBoard`nJohn Doe`njohn.doe@example.com`nhttps://github.com/user/repo`nMyCompany`nmain`nC:\Projects`n1`n1`n1" | .\Scripts\init-project.ps1
     Runs the script non-interactively by piping all inputs in order:
       1. Project name
       2. KiCad board name          (default: project name)
@@ -42,14 +44,16 @@
       6. Company name              (optional, empty = skip)
       7. Main branch name          (default: main)
       8. Target directory          (default: current directory)
-      9. PCB template selection    (number)
-     10. License selection         (1-11)
+      9. Project type selection    (1-4, default: 1)
+     10. PCB template selection    (number, project types with hardware only)
+     11. License selection         (1-11)
+     12. Push to GitHub now        (y/N)
 
 .NOTES
     Requirements:
       - PowerShell 5.1 or later
       - Git
-      - KiCad 9.0 or later
+      - KiCad 10.0 or later
       - KICAD_LIBRARY environment variable set to the KiCad root directory,
         OR the script must be run from inside the KiCad root directory
 
@@ -132,6 +136,109 @@ function Show-PCBTemplateMenu {
     } while ($index -lt 0 -or $index -ge $Templates.Count)
     
     return $Templates[$index]
+}
+
+function Show-ProjectTypeMenu {
+    Write-ColorOutput $BLUE "`n=== Select Project Type ==="
+    Write-Host "1. Hardware (KiCad project)"
+    Write-Host "2. Hardware with PlatformIO firmware (ESP32, ESP-IDF)"
+    Write-Host "3. PlatformIO firmware (ESP32, ESP-IDF)"
+    Write-Host "4. ESP-IDF component"
+
+    do {
+        $selection = Read-Host "`nEnter selection (1-4) [1]"
+        if ([string]::IsNullOrWhiteSpace($selection)) {
+            $selection = '1'
+        }
+    } while ($selection -notmatch '^[1-4]$')
+
+    return [int]$selection
+}
+
+# Applies the project type: keeps the selected firmware profile and removes the
+# directories and workflows of the other project types
+function Set-ProjectType {
+    param(
+        [bool]$ParamHasHardware,
+        [string]$ParamFirmwareProfile,
+        [string]$ParamGitRepoLower
+    )
+
+    $workflowsDir = ".github\workflows"
+    $profilePath = Join-Path "firmware" $ParamFirmwareProfile
+
+    if (-not (Test-Path $profilePath)) {
+        Write-ColorOutput $RED "Firmware profile not found: $profilePath"
+        exit 1
+    }
+
+    # Hardware: KiCad project, hardware workflows and the release skills
+    if (-not $ParamHasHardware) {
+        foreach ($item in @('hardware', 'cad', '3d-print', '.github\skills', '.claude\skills')) {
+            if (Test-Path $item) {
+                Remove-Item -Path $item -Recurse -Force
+            }
+        }
+        # .claude only contains the pointers to the skills
+        if ((Test-Path ".claude") -and -not (Get-ChildItem -Path ".claude" -Force)) {
+            Remove-Item -Path ".claude" -Force
+        }
+        Get-ChildItem -Path $workflowsDir -Filter "hw-*.yaml" | Remove-Item -Force
+        Write-ColorOutput $GREEN "Removed hardware directories, workflows and skills"
+    }
+
+    # Workflows of the firmware profiles that are not used
+    if ($ParamFirmwareProfile -ne 'platformio') {
+        Get-ChildItem -Path $workflowsDir -Filter "fw-platformio.yaml" | Remove-Item -Force
+    }
+    if ($ParamFirmwareProfile -ne 'esp-idf-component') {
+        Get-ChildItem -Path $workflowsDir -Filter "fw-esp-component*.yaml" | Remove-Item -Force
+    }
+
+    if ($ParamFirmwareProfile -eq 'esp-idf-component') {
+        # The component is the repository root, the profile brings its own
+        # README.md, CHANGELOG.md and .gitignore
+        Get-ChildItem -Path $workflowsDir -Filter "docs-*.yaml" | Remove-Item -Force
+        foreach ($item in @('README.md', '.gitignore')) {
+            if (Test-Path $item) {
+                Remove-Item -Path $item -Force
+            }
+        }
+        Get-ChildItem -Path $profilePath -Force | Copy-Item -Destination "." -Recurse -Force
+        Remove-Item -Path "firmware" -Recurse -Force
+
+        # Name the sources after the component
+        Rename-Item -Path "include\template.h" -NewName "$ParamGitRepoLower.h"
+        Rename-Item -Path "src\template.c" -NewName "$ParamGitRepoLower.c"
+
+        $formatWorkflow = Join-Path $workflowsDir "fw-format.yaml"
+        if (Test-Path $formatWorkflow) {
+            (Get-Content $formatWorkflow -Raw) -replace '(?m)^  source_dirs: [^\r\n]*', '  source_dirs: src include examples' |
+                Set-Content $formatWorkflow -NoNewline
+        }
+    } else {
+        # The selected profile becomes the content of firmware/
+        Get-ChildItem -Path "firmware" -Directory -Force | Where-Object { $_.Name -ne $ParamFirmwareProfile } |
+            Remove-Item -Recurse -Force
+        Get-ChildItem -Path $profilePath -Force | Copy-Item -Destination "firmware" -Recurse -Force
+        Remove-Item -Path $profilePath -Recurse -Force
+    }
+
+    # README badges of removed workflows
+    if (Test-Path "README.md") {
+        $readmeLines = Get-Content "README.md"
+        foreach ($workflowName in @('hw-pcb.yaml', 'fw-platformio.yaml', 'fw-esp-component.yaml')) {
+            if (-not (Test-Path (Join-Path $workflowsDir $workflowName))) {
+                $readmeLines = $readmeLines | Where-Object { $_ -notlike "*actions/workflows/$workflowName*" }
+            }
+        }
+        if (-not $ParamHasHardware) {
+            $readmeLines = $readmeLines | Where-Object { $_ -notmatch '^- \*\*`(3d-print|cad|\$\{BOARD_NAME_LOWER\})`\*\*' }
+        }
+        $readmeLines | Set-Content "README.md"
+    }
+
+    Write-ColorOutput $GREEN "Applied project type (firmware profile: $ParamFirmwareProfile)"
 }
 
 function Show-LicenseMenu {
@@ -290,6 +397,10 @@ function Replace-AllVariables {
     $projectNameAnchor = $ParamProjectName.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
     $boardNameAnchor = $ParamBoardName.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
     $boardNameLower = $ParamBoardName.ToLower()
+
+    # Repository name as C identifier (file names, functions, CMake variables)
+    $gitRepoLower = $ParamGitRepo.ToLower() -replace '-', '_'
+    $gitRepoUpper = $ParamGitRepo.ToUpper() -replace '-', '_'
     
     Write-ColorOutput $BLUE "Replacing variables in all template files..."
     
@@ -341,6 +452,8 @@ function Replace-AllVariables {
                 '${EMAIL}' = $ParamEmail
                 '${GIT_USER}' = $ParamGitUser
                 '${GIT_REPO}' = $ParamGitRepo
+                '${GIT_REPO_LOWER}' = $gitRepoLower
+                '${GIT_REPO_UPPER}' = $gitRepoUpper
                 '${GIT_URL}' = ($ParamGitUrl -replace '\.git$', '')
                 '"$Project"' = $ParamProjectName
                 '"$Designer"' = $ParamDesigner
@@ -396,6 +509,15 @@ $COMPANY = Get-UserInput "Enter company name" -Required $false
 $MASTER_BRANCH = Get-UserInput "Enter main branch name" -DefaultValue "main"
 $TARGET_DIR = Get-UserInput "Enter target directory for project" -DefaultValue (Get-Location).Path
 
+$PROJECT_TYPE = Show-ProjectTypeMenu
+switch ($PROJECT_TYPE) {
+    1 { $PROJECT_TYPE_NAME = "Hardware"; $HAS_HARDWARE = $true; $FIRMWARE_PROFILE = "blank" }
+    2 { $PROJECT_TYPE_NAME = "Hardware with PlatformIO firmware"; $HAS_HARDWARE = $true; $FIRMWARE_PROFILE = "platformio" }
+    3 { $PROJECT_TYPE_NAME = "PlatformIO firmware"; $HAS_HARDWARE = $false; $FIRMWARE_PROFILE = "platformio" }
+    4 { $PROJECT_TYPE_NAME = "ESP-IDF component"; $HAS_HARDWARE = $false; $FIRMWARE_PROFILE = "esp-idf-component" }
+}
+Write-ColorOutput $GREEN "Selected project type: $PROJECT_TYPE_NAME"
+
 # Step 2: Determine KiCad library path
 # Script is in Scripts/ folder, template is one level up
 $SCRIPT_DIR = Split-Path -Parent $PSCommandPath
@@ -414,27 +536,30 @@ if (-not (Test-Path $TEMPLATE_PATH)) {
 
 Write-ColorOutput $GREEN "Using template from: $TEMPLATE_PATH"
 
-# Step 2b: Select PCB template
-Write-ColorOutput $BLUE "`nScanning for PCB templates..."
-$PCB_TEMPLATES = Get-PCBTemplates -HardwarePath (Join-Path $TEMPLATE_PATH "hardware")
+if ($HAS_HARDWARE) {
+    # Step 2b: Select PCB template
+    Write-ColorOutput $BLUE "`nScanning for PCB templates..."
+    $PCB_TEMPLATES = Get-PCBTemplates -HardwarePath (Join-Path $TEMPLATE_PATH "hardware")
 
-if ($PCB_TEMPLATES.Count -eq 0) {
-    Write-ColorOutput $RED "No PCB templates found in template directory"
-    exit 1
+    if ($PCB_TEMPLATES.Count -eq 0) {
+        Write-ColorOutput $RED "No PCB templates found in template directory"
+        exit 1
+    }
+
+    $SELECTED_PCB = Show-PCBTemplateMenu -Templates $PCB_TEMPLATES
+    $PCB_FILENAME = $SELECTED_PCB.FileName
+    $PCB_MANUFACTURER = $SELECTED_PCB.Manufacturer
+    $PCB_THICKNESS = $SELECTED_PCB.Thickness
+    $PCB_LAYERS = $SELECTED_PCB.Layers
+
+    Write-ColorOutput $GREEN "Selected PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
 }
-
-$SELECTED_PCB = Show-PCBTemplateMenu -Templates $PCB_TEMPLATES
-$PCB_FILENAME = $SELECTED_PCB.FileName
-$PCB_MANUFACTURER = $SELECTED_PCB.Manufacturer
-$PCB_THICKNESS = $SELECTED_PCB.Thickness
-$PCB_LAYERS = $SELECTED_PCB.Layers
-
-Write-ColorOutput $GREEN "Selected PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
 
 # Create lowercase versions for directory names
 $PROJECT_NAME_ANCHOR = $PROJECT_NAME.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
 $BOARD_NAME_ANCHOR = $BOARD_NAME.ToLower() -replace '[^a-z0-9-]', '' -replace ' ', '-'
 $BOARD_NAME_LOWER = $BOARD_NAME.ToLower()
+$GIT_REPO_LOWER = $GIT_REPO.ToLower() -replace '-', '_'
 
 # Step 3: Create project directory
 Write-ColorOutput $BLUE "`nCreating project directory: $PROJECT_NAME"
@@ -465,34 +590,40 @@ Get-ChildItem -Path "hardware" -Force | Where-Object {
 } | Remove-Item -Recurse -Force
 Write-ColorOutput $GREEN "Removed local KiCad files from template"
 
-# Step 3b: Replace PCB template with selected one
-Write-ColorOutput $BLUE "Applying PCB template: $PCB_FILENAME"
-$SOURCE_PCB = $PCB_FILENAME
-$TARGET_PCB = "Template.kicad_pcb"
+# Step 3a: Apply the project type
+Write-ColorOutput $BLUE "Applying project type: $PROJECT_TYPE_NAME"
+Set-ProjectType -ParamHasHardware $HAS_HARDWARE -ParamFirmwareProfile $FIRMWARE_PROFILE -ParamGitRepoLower $GIT_REPO_LOWER
 
-Set-Location hardware
+if ($HAS_HARDWARE) {
+    # Step 3b: Replace PCB template with selected one
+    Write-ColorOutput $BLUE "Applying PCB template: $PCB_FILENAME"
+    $SOURCE_PCB = $PCB_FILENAME
+    $TARGET_PCB = "Template.kicad_pcb"
 
-if (Test-Path $SOURCE_PCB) {
-    Copy-Item -Path $SOURCE_PCB -Destination $TARGET_PCB -Force
-    Write-ColorOutput $GREEN "Applied PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
-} else {
-    Write-ColorOutput $RED "Error: Selected template file not found: $SOURCE_PCB"
-    exit 1
+    Set-Location hardware
+
+    if (Test-Path $SOURCE_PCB) {
+        Copy-Item -Path $SOURCE_PCB -Destination $TARGET_PCB -Force
+        Write-ColorOutput $GREEN "Applied PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
+    } else {
+        Write-ColorOutput $RED "Error: Selected template file not found: $SOURCE_PCB"
+        exit 1
+    }
+
+    # Remove all Template - *.kicad_pcb files and their associated project files
+    Get-ChildItem -Filter "Template - *" | Where-Object { $_.Extension -in @('.kicad_pcb', '.kicad_pro', '.kicad_prl') } | Remove-Item
+    Write-ColorOutput $GREEN "Cleaned up unused PCB template files"
+
+    # Replace "Template" with BOARD_NAME in the PCB file
+    Write-ColorOutput $BLUE "Updating board name in PCB file"
+    if (Test-Path $TARGET_PCB) {
+        (Get-Content $TARGET_PCB) -replace 'BOARD_NAME" "Template"', "BOARD_NAME`" `"$BOARD_NAME`"" | Set-Content $TARGET_PCB
+        (Get-Content $TARGET_PCB) -replace 'PROJECT_NAME" "Template"', "PROJECT_NAME`" `"$PROJECT_NAME`"" | Set-Content $TARGET_PCB
+        Write-ColorOutput $GREEN "Updated BOARD_NAME and PROJECT_NAME in PCB file"
+    }
+
+    Set-Location ..
 }
-
-# Remove all Template - *.kicad_pcb files and their associated project files
-Get-ChildItem -Filter "Template - *" | Where-Object { $_.Extension -in @('.kicad_pcb', '.kicad_pro', '.kicad_prl') } | Remove-Item
-Write-ColorOutput $GREEN "Cleaned up unused PCB template files"
-
-# Replace "Template" with BOARD_NAME in the PCB file
-Write-ColorOutput $BLUE "Updating board name in PCB file"
-if (Test-Path $TARGET_PCB) {
-    (Get-Content $TARGET_PCB) -replace 'BOARD_NAME" "Template"', "BOARD_NAME`" `"$BOARD_NAME`"" | Set-Content $TARGET_PCB
-    (Get-Content $TARGET_PCB) -replace 'PROJECT_NAME" "Template"', "PROJECT_NAME`" `"$PROJECT_NAME`"" | Set-Content $TARGET_PCB
-    Write-ColorOutput $GREEN "Updated BOARD_NAME and PROJECT_NAME in PCB file"
-}
-
-Set-Location ..
 
 # Remove VARIABLES.md from the project root
 if (Test-Path "VARIABLES.md") {
@@ -500,60 +631,62 @@ if (Test-Path "VARIABLES.md") {
     Write-ColorOutput $GREEN "Removed VARIABLES.md from project"
 }
 
-# Step 4: Rename hardware directory
-Write-ColorOutput $BLUE "Renaming 'hardware' directory to '$BOARD_NAME_LOWER'"
-if (Test-Path "hardware") {
-    Rename-Item -Path "hardware" -NewName $BOARD_NAME_LOWER
-}
-
-# Step 5: Rename KiCad project files
-Write-ColorOutput $BLUE "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
-if (Test-Path $BOARD_NAME_LOWER) {
-    Set-Location $BOARD_NAME_LOWER
-    Get-ChildItem -Filter "Template.*" | ForEach-Object {
-        $newName = $_.Name -replace "^Template", $BOARD_NAME
-        Rename-Item -Path $_.Name -NewName $newName
-        Write-ColorOutput $GREEN "  Renamed: $($_.Name) -> $newName"
+if ($HAS_HARDWARE) {
+    # Step 4: Rename hardware directory
+    Write-ColorOutput $BLUE "Renaming 'hardware' directory to '$BOARD_NAME_LOWER'"
+    if (Test-Path "hardware") {
+        Rename-Item -Path "hardware" -NewName $BOARD_NAME_LOWER
     }
+
+    # Step 5: Rename KiCad project files
+    Write-ColorOutput $BLUE "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
+    if (Test-Path $BOARD_NAME_LOWER) {
+        Set-Location $BOARD_NAME_LOWER
+        Get-ChildItem -Filter "Template.*" | ForEach-Object {
+            $newName = $_.Name -replace "^Template", $BOARD_NAME
+            Rename-Item -Path $_.Name -NewName $newName
+            Write-ColorOutput $GREEN "  Renamed: $($_.Name) -> $newName"
+        }
     
-    # Update Sheet Title in main schematic file
-    $MAIN_SCH = "$BOARD_NAME.kicad_sch"
-    if (Test-Path $MAIN_SCH) {
-        (Get-Content $MAIN_SCH) -replace '\(title "Template"\)', "(title `"$BOARD_NAME`")" | Set-Content $MAIN_SCH
-        Write-ColorOutput $GREEN "  Updated Sheet Title in: $MAIN_SCH"
-    }
+        # Update Sheet Title in main schematic file
+        $MAIN_SCH = "$BOARD_NAME.kicad_sch"
+        if (Test-Path $MAIN_SCH) {
+            (Get-Content $MAIN_SCH) -replace '\(title "Template"\)', "(title `"$BOARD_NAME`")" | Set-Content $MAIN_SCH
+            Write-ColorOutput $GREEN "  Updated Sheet Title in: $MAIN_SCH"
+        }
 
-    # Sheet instances (page numbers) are stored per project name
-    Get-ChildItem -Filter "*.kicad_sch" | ForEach-Object {
-        $text = [System.IO.File]::ReadAllText($_.FullName)
-        $updated = $text.Replace('(project "Template"', "(project `"$BOARD_NAME`"")
-        if ($updated -ne $text) { [System.IO.File]::WriteAllText($_.FullName, $updated) }
-    }
-    Write-ColorOutput $GREEN "  Updated project name in the schematic sheets"
+        # Sheet instances (page numbers) are stored per project name
+        Get-ChildItem -Filter "*.kicad_sch" | ForEach-Object {
+            $text = [System.IO.File]::ReadAllText($_.FullName)
+            $updated = $text.Replace('(project "Template"', "(project `"$BOARD_NAME`"")
+            if ($updated -ne $text) { [System.IO.File]::WriteAllText($_.FullName, $updated) }
+        }
+        Write-ColorOutput $GREEN "  Updated project name in the schematic sheets"
     
-    Set-Location ..
-}
+        Set-Location ..
+    }
 
-# Step 5b: Update KiCad text variables
-Write-ColorOutput $BLUE "Updating KiCad project text variables"
-$KICAD_PRO_FILE = Join-Path $BOARD_NAME_LOWER "$BOARD_NAME.kicad_pro"
-$CURRENT_DATE = Get-Date -Format "dd-MMM-yyyy"
-$COMPANY_VALUE = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
-Update-KiCadTextVariables -KicadProFile $KICAD_PRO_FILE -ParamProjectName $PROJECT_NAME -ParamBoardName $BOARD_NAME -ParamDesigner $DESIGNER -ParamCompany $COMPANY_VALUE -ParamDate $CURRENT_DATE -ParamRevision "1.0.0" -ParamGitUrl $GIT_URL
+    # Step 5b: Update KiCad text variables
+    Write-ColorOutput $BLUE "Updating KiCad project text variables"
+    $KICAD_PRO_FILE = Join-Path $BOARD_NAME_LOWER "$BOARD_NAME.kicad_pro"
+    $CURRENT_DATE = Get-Date -Format "dd-MMM-yyyy"
+    $COMPANY_VALUE = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
+    Update-KiCadTextVariables -KicadProFile $KICAD_PRO_FILE -ParamProjectName $PROJECT_NAME -ParamBoardName $BOARD_NAME -ParamDesigner $DESIGNER -ParamCompany $COMPANY_VALUE -ParamDate $CURRENT_DATE -ParamRevision "1.0.0" -ParamGitUrl $GIT_URL
 
-# Step 5c: Update kibot_main.yaml
-Write-ColorOutput $BLUE "Updating kibot_main.yaml"
-$KIBOT_MAIN = Join-Path $BOARD_NAME_LOWER "kibot_yaml\kibot_main.yaml"
-if (Test-Path $KIBOT_MAIN) {
-    $COMPANY_VALUE_KIBOT = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
-    (Get-Content $KIBOT_MAIN -Raw) `
-        -replace "PROJECT_NAME: Project", "PROJECT_NAME: $PROJECT_NAME" `
-        -replace "BOARD_NAME: Board", "BOARD_NAME: $BOARD_NAME" `
-        -replace "COMPANY: Kampis-Elektroecke", "COMPANY: $COMPANY_VALUE_KIBOT" `
-        -replace "DESIGNER: Daniel Kampert", "DESIGNER: $DESIGNER" `
-        -replace "GIT_URL: 'https://github.com/Kampi/KiCad'", "GIT_URL: '$GIT_URL'" |
-        Set-Content $KIBOT_MAIN
-    Write-ColorOutput $GREEN "Updated: $KIBOT_MAIN"
+    # Step 5c: Update kibot_main.yaml
+    Write-ColorOutput $BLUE "Updating kibot_main.yaml"
+    $KIBOT_MAIN = Join-Path $BOARD_NAME_LOWER "kibot_yaml\kibot_main.yaml"
+    if (Test-Path $KIBOT_MAIN) {
+        $COMPANY_VALUE_KIBOT = if ([string]::IsNullOrWhiteSpace($COMPANY)) { "" } else { $COMPANY }
+        (Get-Content $KIBOT_MAIN -Raw) `
+            -replace "PROJECT_NAME: Project", "PROJECT_NAME: $PROJECT_NAME" `
+            -replace "BOARD_NAME: Board", "BOARD_NAME: $BOARD_NAME" `
+            -replace "COMPANY: Kampis-Elektroecke", "COMPANY: $COMPANY_VALUE_KIBOT" `
+            -replace "DESIGNER: Daniel Kampert", "DESIGNER: $DESIGNER" `
+            -replace "GIT_URL: 'https://github.com/Kampi/KiCad'", "GIT_URL: '$GIT_URL'" |
+            Set-Content $KIBOT_MAIN
+        Write-ColorOutput $GREEN "Updated: $KIBOT_MAIN"
+    }
 }
 
 # Step 6: Update .github/workflows files
@@ -569,7 +702,7 @@ if (Test-Path $WORKFLOWS_DIR) {
         $workflowContent = $workflowContent -replace 'master_branch: master', "master_branch: $MASTER_BRANCH"
         
         # Update PCB-specific settings
-        if ($_.Name -eq 'pcb.yaml') {
+        if ($_.Name -eq 'hw-pcb.yaml') {
             $workflowContent = $workflowContent -replace 'kicad_board: Template-Project', "kicad_board: $BOARD_NAME"
             $workflowContent = $workflowContent -replace 'kibot_variant: PRELIMINARY', 'kibot_variant: DRAFT'
         }
@@ -640,9 +773,9 @@ if (Test-Path "README.md") {
     Write-ColorOutput $GREEN "Updated: README.md"
 }
 
-# Step 9b: Update .github/workflows/documentation.yaml
-Write-ColorOutput $BLUE "Updating .github/workflows/documentation.yaml"
-$DOCUMENTATION_YAML = ".github\workflows\documentation.yaml"
+# Step 9b: Update .github/workflows/docs-build.yaml
+Write-ColorOutput $BLUE "Updating .github/workflows/docs-build.yaml"
+$DOCUMENTATION_YAML = ".github\workflows\docs-build.yaml"
 if (Test-Path $DOCUMENTATION_YAML) {
     (Get-Content $DOCUMENTATION_YAML) -replace '\$PROJECT_NAME', $PROJECT_NAME |
         Set-Content $DOCUMENTATION_YAML
@@ -655,7 +788,10 @@ Replace-AllVariables -ParamProjectPath (Get-Location).Path -ParamProjectName $PR
 # Step 9d: Create basic AsciiDoc documentation
 Write-ColorOutput $BLUE "Creating AsciiDoc documentation"
 $DOCS_DIR = "firmware\docs"
-New-Item -ItemType Directory -Force -Path $DOCS_DIR | Out-Null
+# The ESP-IDF component documents itself in the README.md
+if ($FIRMWARE_PROFILE -ne 'esp-idf-component') {
+    New-Item -ItemType Directory -Force -Path $DOCS_DIR | Out-Null
+}
 if (Test-Path $DOCS_DIR) {
     $asciidocContent = @"
 = $PROJECT_NAME Documentation
@@ -794,6 +930,7 @@ Write-ColorOutput $GREEN "  Project Initialization Complete!     "
 Write-ColorOutput $GREEN "========================================"
 Write-ColorOutput $BLUE "`nProject Details:"
 Write-ColorOutput $BLUE "  Project Name: $PROJECT_NAME"
+Write-ColorOutput $BLUE "  Project Type: $PROJECT_TYPE_NAME"
 Write-ColorOutput $BLUE "  Board Name: $BOARD_NAME"
 Write-ColorOutput $BLUE "  Designer: $DESIGNER <$EMAIL>"
 Write-ColorOutput $BLUE "  Git URL: $GIT_URL"
@@ -801,4 +938,4 @@ Write-ColorOutput $BLUE "  License: $LICENSE_NAME"
 Write-ColorOutput $BLUE "`nNext steps:"
 Write-ColorOutput $BLUE "  1. cd $PROJECT_NAME"
 Write-ColorOutput $BLUE "  2. Review and customize the project files"
-Write-ColorOutput $BLUE "  3. Start developing your hardware!"
+Write-ColorOutput $BLUE "  3. Start developing!"

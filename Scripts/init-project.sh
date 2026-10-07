@@ -6,17 +6,20 @@
 #   ./Scripts/init-project.sh
 #
 # Non-interactive usage (pipe all inputs in order):
-#   echo -e "<project>\n<board>\n<designer>\n<email>\n<git-url>\n<company>\n<branch>\n<dir>\n<pcb#>\n<license#>" | ./Scripts/init-project.sh
+#   echo -e "<project>\n<board>\n<designer>\n<email>\n<git-url>\n<company>\n<branch>\n<dir>\n<type#>\n<pcb#>\n<license#>" | ./Scripts/init-project.sh
+#   Leave out <pcb#> for the project types without hardware (3 and 4).
 #
 # Description:
 #   Interactive script that creates a complete new KiCad project from the
 #   Template-Project directory. It performs the following steps:
 #
 #   1.  Collects project metadata from the user (name, board, designer, etc.)
+#       and the project type (hardware, PlatformIO firmware, ESP-IDF component)
 #   2.  Scans Template-Project/hardware/ for available PCB templates and lets
-#       the user select one
+#       the user select one (project types with hardware only)
 #   3.  Creates the project directory at the chosen target location
-#   4.  Copies the full template structure and removes template artefacts
+#   4.  Copies the full template structure, removes template artefacts and
+#       applies the project type (firmware profile, workflows, directories)
 #   5.  Applies the selected PCB template and removes unused ones
 #   6.  Renames all project files from 'Template.*' to '<BoardName>.*'
 #   7.  Updates KiCad project text variables in the .kicad_pro file
@@ -38,15 +41,17 @@
 #   6.  Company name              (optional)
 #   7.  Main branch name          (default: main)
 #   8.  Target directory          (default: current directory)
-#   9.  PCB template selection    (number)
-#   10. License selection         (1-11)
+#   9.  Project type selection    (1-4, default: 1)
+#   10. PCB template selection    (number, project types with hardware only)
+#   11. License selection         (1-11)
+#   12. Push to GitHub now        (y/N)
 #
 # Requirements:
 #   - Bash
 #   - Python 3 (for JSON processing)
 #   - Git
 #   - curl (for license download)
-#   - KiCad 9.0 or later
+#   - KiCad 10.0 or later
 #   - KICAD_LIBRARY environment variable set to the KiCad root directory,
 #     OR the script must be run from inside the KiCad root directory
 #
@@ -140,6 +145,104 @@ show_pcb_template_menu() {
     done
     
     echo "$((selection - 1))"
+}
+
+# Function to show project type menu
+show_project_type_menu() {
+    print_color "$BLUE" "\n=== Select Project Type ===" >&2
+    echo "1. Hardware (KiCad project)" >&2
+    echo "2. Hardware with PlatformIO firmware (ESP32, ESP-IDF)" >&2
+    echo "3. PlatformIO firmware (ESP32, ESP-IDF)" >&2
+    echo "4. ESP-IDF component" >&2
+
+    local selection
+    while true; do
+        read -p $'\nEnter selection (1-4) [1]: ' selection
+        selection="${selection:-1}"
+        if [[ "$selection" =~ ^[1-4]$ ]]; then
+            break
+        fi
+        print_color "$RED" "Invalid selection. Please enter a number between 1 and 4." >&2
+    done
+
+    echo "$selection"
+}
+
+# Function to apply the project type: keeps the selected firmware profile and
+# removes the directories and workflows of the other project types
+apply_project_type() {
+    local param_has_hardware=$1
+    local param_firmware_profile=$2
+    local param_git_repo_lower=$3
+
+    local workflows_dir=".github/workflows"
+    local profile_path="firmware/$param_firmware_profile"
+
+    if [ ! -d "$profile_path" ]; then
+        print_color "$RED" "Firmware profile not found: $profile_path"
+        exit 1
+    fi
+
+    # Hardware: KiCad project, hardware workflows and the release skills
+    if [ "$param_has_hardware" != true ]; then
+        rm -rf hardware cad 3d-print .github/skills .claude/skills
+        # .claude only contains the pointers to the skills
+        if [ -d ".claude" ] && [ -z "$(ls -A .claude)" ]; then
+            rmdir .claude
+        fi
+        rm -f "$workflows_dir"/hw-*.yaml
+        print_color "$GREEN" "Removed hardware directories, workflows and skills"
+    fi
+
+    # Workflows of the firmware profiles that are not used
+    if [ "$param_firmware_profile" != "platformio" ]; then
+        rm -f "$workflows_dir/fw-platformio.yaml"
+    fi
+    if [ "$param_firmware_profile" != "esp-idf-component" ]; then
+        rm -f "$workflows_dir"/fw-esp-component*.yaml
+    fi
+
+    if [ "$param_firmware_profile" = "esp-idf-component" ]; then
+        # The component is the repository root, the profile brings its own
+        # README.md, CHANGELOG.md and .gitignore
+        rm -f "$workflows_dir"/docs-*.yaml
+        rm -f README.md .gitignore
+        cp -a "$profile_path/." .
+        rm -rf firmware
+
+        # Name the sources after the component
+        mv "include/template.h" "include/$param_git_repo_lower.h"
+        mv "src/template.c" "src/$param_git_repo_lower.c"
+
+        if [ -f "$workflows_dir/fw-format.yaml" ]; then
+            sed -i "s|^  source_dirs: .*|  source_dirs: src include examples|" "$workflows_dir/fw-format.yaml"
+        fi
+    else
+        # The selected profile becomes the content of firmware/
+        local profile_dir
+        for profile_dir in firmware/*/; do
+            if [ "${profile_dir%/}" != "$profile_path" ]; then
+                rm -rf "$profile_dir"
+            fi
+        done
+        cp -a "$profile_path/." firmware/
+        rm -rf "$profile_path"
+    fi
+
+    # README badges of removed workflows
+    if [ -f "README.md" ]; then
+        local workflow_name
+        for workflow_name in hw-pcb.yaml fw-platformio.yaml fw-esp-component.yaml; do
+            if [ ! -f "$workflows_dir/$workflow_name" ]; then
+                sed -i "/actions\/workflows\/$workflow_name/d" "README.md"
+            fi
+        done
+        if [ "$param_has_hardware" != true ]; then
+            sed -i '/^- \*\*`\(3d-print\|cad\|\${BOARD_NAME_LOWER}\)`\*\*/d' "README.md"
+        fi
+    fi
+
+    print_color "$GREEN" "Applied project type (firmware profile: $param_firmware_profile)"
 }
 
 # Function to show license menu
@@ -339,6 +442,10 @@ replace_all_variables() {
     local project_name_anchor=$(echo "$param_project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local board_name_anchor=$(echo "$param_board_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local board_name_lower=$(echo "$param_board_name" | tr '[:upper:]' '[:lower:]')
+
+    # Repository name as C identifier (file names, functions, CMake variables)
+    local git_repo_lower=$(echo "$param_git_repo" | tr '[:upper:]' '[:lower:]' | tr '-' '_')
+    local git_repo_upper=$(echo "$param_git_repo" | tr '[:lower:]' '[:upper:]' | tr '-' '_')
     
     print_color "$BLUE" "Replacing variables in all template files..."
     
@@ -383,6 +490,8 @@ replace_all_variables() {
             sed -i "s|\${EMAIL}|$param_email|g" "$file" 2>/dev/null || true
             sed -i "s|\${GIT_USER}|$param_git_user|g" "$file" 2>/dev/null || true
             sed -i "s|\${GIT_REPO}|$param_git_repo|g" "$file" 2>/dev/null || true
+            sed -i "s|\${GIT_REPO_LOWER}|$git_repo_lower|g" "$file" 2>/dev/null || true
+            sed -i "s|\${GIT_REPO_UPPER}|$git_repo_upper|g" "$file" 2>/dev/null || true
             sed -i "s|\${GIT_URL}|${param_git_url%.git}|g" "$file" 2>/dev/null || true
             
             # Shell compatibility format
@@ -427,6 +536,15 @@ MASTER_BRANCH=$(get_input "Enter main branch name" "main" true)
 
 TARGET_DIR=$(get_input "Enter target directory for project" "$(pwd)" true)
 
+PROJECT_TYPE=$(show_project_type_menu)
+case "$PROJECT_TYPE" in
+    1) PROJECT_TYPE_NAME="Hardware"; HAS_HARDWARE=true; FIRMWARE_PROFILE="blank" ;;
+    2) PROJECT_TYPE_NAME="Hardware with PlatformIO firmware"; HAS_HARDWARE=true; FIRMWARE_PROFILE="platformio" ;;
+    3) PROJECT_TYPE_NAME="PlatformIO firmware"; HAS_HARDWARE=false; FIRMWARE_PROFILE="platformio" ;;
+    4) PROJECT_TYPE_NAME="ESP-IDF component"; HAS_HARDWARE=false; FIRMWARE_PROFILE="esp-idf-component" ;;
+esac
+print_color "$GREEN" "Selected project type: $PROJECT_TYPE_NAME"
+
 # Step 2: Determine KiCad library path
 # Script is in Scripts/ folder, template is one level up
 SCRIPT_DIR="$(dirname "$0")"
@@ -442,26 +560,29 @@ fi
 
 print_color "$GREEN" "Using template from: $TEMPLATE_PATH"
 
-# Step 2b: Select PCB template
-print_color "$BLUE" "\nScanning for PCB templates..."
-mapfile -t PCB_TEMPLATES < <(get_pcb_templates "$TEMPLATE_PATH/hardware")
+if [ "$HAS_HARDWARE" = true ]; then
+    # Step 2b: Select PCB template
+    print_color "$BLUE" "\nScanning for PCB templates..."
+    mapfile -t PCB_TEMPLATES < <(get_pcb_templates "$TEMPLATE_PATH/hardware")
 
-if [ ${#PCB_TEMPLATES[@]} -eq 0 ]; then
-    print_color "$RED" "No PCB templates found in template directory"
-    exit 1
+    if [ ${#PCB_TEMPLATES[@]} -eq 0 ]; then
+        print_color "$RED" "No PCB templates found in template directory"
+        exit 1
+    fi
+
+    SELECTED_INDEX=$(show_pcb_template_menu "${PCB_TEMPLATES[@]}")
+    SELECTED_PCB_TEMPLATE="${PCB_TEMPLATES[$SELECTED_INDEX]}"
+
+    IFS='|' read -r PCB_FILENAME PCB_MANUFACTURER PCB_THICKNESS PCB_LAYERS <<< "$SELECTED_PCB_TEMPLATE"
+
+    print_color "$GREEN" "Selected PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
 fi
-
-SELECTED_INDEX=$(show_pcb_template_menu "${PCB_TEMPLATES[@]}")
-SELECTED_PCB_TEMPLATE="${PCB_TEMPLATES[$SELECTED_INDEX]}"
-
-IFS='|' read -r PCB_FILENAME PCB_MANUFACTURER PCB_THICKNESS PCB_LAYERS <<< "$SELECTED_PCB_TEMPLATE"
-
-print_color "$GREEN" "Selected PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
 
 # Create lowercase versions for directory names
 PROJECT_NAME_ANCHOR=$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
 BOARD_NAME_ANCHOR=$(echo "$BOARD_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
 BOARD_NAME_LOWER=$(echo "$BOARD_NAME" | tr '[:upper:]' '[:lower:]')
+GIT_REPO_LOWER=$(echo "$GIT_REPO" | tr '[:upper:]' '[:lower:]' | tr '-' '_')
 
 # Step 3: Create project directory
 print_color "$BLUE" "\nCreating project directory: $PROJECT_NAME"
@@ -490,37 +611,43 @@ rm -rf hardware/*-backups
 rm -f hardware/fp-info-cache hardware/*.kicad_prl hardware/*.lck
 print_color "$GREEN" "Removed local KiCad files from template"
 
-# Step 3b: Replace PCB template with selected one and remove all other templates
-print_color "$BLUE" "Applying PCB template: $PCB_FILENAME"
-SOURCE_PCB="$PCB_FILENAME"
-TARGET_PCB="Template.kicad_pcb"
+# Step 3a: Apply the project type
+print_color "$BLUE" "Applying project type: $PROJECT_TYPE_NAME"
+apply_project_type "$HAS_HARDWARE" "$FIRMWARE_PROFILE" "$GIT_REPO_LOWER"
 
-# Navigate to hardware directory
-cd hardware
+if [ "$HAS_HARDWARE" = true ]; then
+    # Step 3b: Replace PCB template with selected one and remove all other templates
+    print_color "$BLUE" "Applying PCB template: $PCB_FILENAME"
+    SOURCE_PCB="$PCB_FILENAME"
+    TARGET_PCB="Template.kicad_pcb"
 
-# Copy selected template to Template.kicad_pcb
-if [ -f "$SOURCE_PCB" ]; then
-    cp "$SOURCE_PCB" "$TARGET_PCB"
-    print_color "$GREEN" "Applied PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
-else
-    print_color "$RED" "Error: Selected template file not found: $SOURCE_PCB"
-    exit 1
+    # Navigate to hardware directory
+    cd hardware
+
+    # Copy selected template to Template.kicad_pcb
+    if [ -f "$SOURCE_PCB" ]; then
+        cp "$SOURCE_PCB" "$TARGET_PCB"
+        print_color "$GREEN" "Applied PCB template: $PCB_MANUFACTURER - $PCB_THICKNESS - $PCB_LAYERS layers"
+    else
+        print_color "$RED" "Error: Selected template file not found: $SOURCE_PCB"
+        exit 1
+    fi
+
+    # Remove all Template - * files related to PCB templates (.kicad_pcb, .kicad_pro, .kicad_prl)
+    find . -maxdepth 1 \( -name "Template - *.kicad_pcb" -o -name "Template - *.kicad_pro" \) -type f -delete
+    print_color "$GREEN" "Cleaned up unused PCB template files"
+
+    # Replace "Template" with BOARD_NAME in the PCB file
+    print_color "$BLUE" "Updating board name in PCB file"
+    if [ -f "$TARGET_PCB" ]; then
+        sed -i "s/BOARD_NAME\" \"Template\"/BOARD_NAME\" \"$BOARD_NAME\"/g" "$TARGET_PCB"
+        sed -i "s/PROJECT_NAME\" \"Template\"/PROJECT_NAME\" \"$PROJECT_NAME\"/g" "$TARGET_PCB"
+        print_color "$GREEN" "Updated BOARD_NAME and PROJECT_NAME in PCB file"
+    fi
+
+    # Go back to project root
+    cd ..
 fi
-
-# Remove all Template - * files related to PCB templates (.kicad_pcb, .kicad_pro, .kicad_prl)
-find . -maxdepth 1 \( -name "Template - *.kicad_pcb" -o -name "Template - *.kicad_pro" \) -type f -delete
-print_color "$GREEN" "Cleaned up unused PCB template files"
-
-# Replace "Template" with BOARD_NAME in the PCB file
-print_color "$BLUE" "Updating board name in PCB file"
-if [ -f "$TARGET_PCB" ]; then
-    sed -i "s/BOARD_NAME\" \"Template\"/BOARD_NAME\" \"$BOARD_NAME\"/g" "$TARGET_PCB"
-    sed -i "s/PROJECT_NAME\" \"Template\"/PROJECT_NAME\" \"$PROJECT_NAME\"/g" "$TARGET_PCB"
-    print_color "$GREEN" "Updated BOARD_NAME and PROJECT_NAME in PCB file"
-fi
-
-# Go back to project root
-cd ..
 
 # Remove VARIABLES.md from the project root
 if [ -f "VARIABLES.md" ]; then
@@ -528,60 +655,62 @@ if [ -f "VARIABLES.md" ]; then
     print_color "$GREEN" "Removed VARIABLES.md from project"
 fi
 
-# Step 4: Rename hardware directory
-print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME_LOWER'"
-if [ -d "hardware" ]; then
-    mv "hardware" "$BOARD_NAME_LOWER"
-else
-    print_color "$YELLOW" "Warning: 'hardware' directory not found"
-fi
-
-# Step 5: Rename KiCad project files
-print_color "$BLUE" "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
-if [ -d "$BOARD_NAME_LOWER" ]; then
-    cd "$BOARD_NAME_LOWER"
-    for file in Template.*; do
-        if [ -f "$file" ]; then
-            new_name="${file/Template/$BOARD_NAME}"
-            mv "$file" "$new_name"
-            print_color "$GREEN" "  Renamed: $file -> $new_name"
-        fi
-    done
-    
-    # Update Sheet Title in main schematic file
-    MAIN_SCH="$BOARD_NAME.kicad_sch"
-    if [ -f "$MAIN_SCH" ]; then
-        sed -i "s/(title \"Template\")/(title \"$BOARD_NAME\")/g" "$MAIN_SCH"
-        print_color "$GREEN" "  Updated Sheet Title in: $MAIN_SCH"
+if [ "$HAS_HARDWARE" = true ]; then
+    # Step 4: Rename hardware directory
+    print_color "$BLUE" "Renaming 'hardware' directory to '$BOARD_NAME_LOWER'"
+    if [ -d "hardware" ]; then
+        mv "hardware" "$BOARD_NAME_LOWER"
+    else
+        print_color "$YELLOW" "Warning: 'hardware' directory not found"
     fi
 
-    # Sheet instances (page numbers) are stored per project name
-    for sch in *.kicad_sch; do
-        sed -i "s/(project \"Template\"/(project \"$BOARD_NAME\"/g" "$sch"
-    done
-    print_color "$GREEN" "  Updated project name in the schematic sheets"
+    # Step 5: Rename KiCad project files
+    print_color "$BLUE" "Renaming KiCad project files from 'Template' to '$BOARD_NAME'"
+    if [ -d "$BOARD_NAME_LOWER" ]; then
+        cd "$BOARD_NAME_LOWER"
+        for file in Template.*; do
+            if [ -f "$file" ]; then
+                new_name="${file/Template/$BOARD_NAME}"
+                mv "$file" "$new_name"
+                print_color "$GREEN" "  Renamed: $file -> $new_name"
+            fi
+        done
     
-    cd ..
-fi
+        # Update Sheet Title in main schematic file
+        MAIN_SCH="$BOARD_NAME.kicad_sch"
+        if [ -f "$MAIN_SCH" ]; then
+            sed -i "s/(title \"Template\")/(title \"$BOARD_NAME\")/g" "$MAIN_SCH"
+            print_color "$GREEN" "  Updated Sheet Title in: $MAIN_SCH"
+        fi
 
-# Step 5b: Update KiCad text variables
-print_color "$BLUE" "Updating KiCad project text variables"
-KICAD_PRO_FILE="$BOARD_NAME_LOWER/$BOARD_NAME.kicad_pro"
-CURRENT_DATE=$(date +"%d-%b-%Y")
-COMPANY_VALUE="${COMPANY:-}"
-update_kicad_text_variables "$KICAD_PRO_FILE" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY_VALUE" "$CURRENT_DATE" "1.0.0" "$GIT_URL"
+        # Sheet instances (page numbers) are stored per project name
+        for sch in *.kicad_sch; do
+            sed -i "s/(project \"Template\"/(project \"$BOARD_NAME\"/g" "$sch"
+        done
+        print_color "$GREEN" "  Updated project name in the schematic sheets"
+    
+        cd ..
+    fi
 
-# Step 5c: Update kibot_main.yaml
-print_color "$BLUE" "Updating kibot_main.yaml"
-KIBOT_MAIN="$BOARD_NAME_LOWER/kibot_yaml/kibot_main.yaml"
-if [ -f "$KIBOT_MAIN" ]; then
-    COMPANY_VALUE_KIBOT="${COMPANY:-}"
-    sed -i "s/PROJECT_NAME: Project/PROJECT_NAME: $PROJECT_NAME/g" "$KIBOT_MAIN"
-    sed -i "s/BOARD_NAME: Board/BOARD_NAME: $BOARD_NAME/g" "$KIBOT_MAIN"
-    sed -i "s/COMPANY: Kampis-Elektroecke/COMPANY: $COMPANY_VALUE_KIBOT/g" "$KIBOT_MAIN"
-    sed -i "s/DESIGNER: Daniel Kampert/DESIGNER: $DESIGNER/g" "$KIBOT_MAIN"
-    sed -i "s|GIT_URL: 'https://github.com/Kampi/KiCad'|GIT_URL: '$GIT_URL'|g" "$KIBOT_MAIN"
-    print_color "$GREEN" "Updated: $KIBOT_MAIN"
+    # Step 5b: Update KiCad text variables
+    print_color "$BLUE" "Updating KiCad project text variables"
+    KICAD_PRO_FILE="$BOARD_NAME_LOWER/$BOARD_NAME.kicad_pro"
+    CURRENT_DATE=$(date +"%d-%b-%Y")
+    COMPANY_VALUE="${COMPANY:-}"
+    update_kicad_text_variables "$KICAD_PRO_FILE" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPANY_VALUE" "$CURRENT_DATE" "1.0.0" "$GIT_URL"
+
+    # Step 5c: Update kibot_main.yaml
+    print_color "$BLUE" "Updating kibot_main.yaml"
+    KIBOT_MAIN="$BOARD_NAME_LOWER/kibot_yaml/kibot_main.yaml"
+    if [ -f "$KIBOT_MAIN" ]; then
+        COMPANY_VALUE_KIBOT="${COMPANY:-}"
+        sed -i "s/PROJECT_NAME: Project/PROJECT_NAME: $PROJECT_NAME/g" "$KIBOT_MAIN"
+        sed -i "s/BOARD_NAME: Board/BOARD_NAME: $BOARD_NAME/g" "$KIBOT_MAIN"
+        sed -i "s/COMPANY: Kampis-Elektroecke/COMPANY: $COMPANY_VALUE_KIBOT/g" "$KIBOT_MAIN"
+        sed -i "s/DESIGNER: Daniel Kampert/DESIGNER: $DESIGNER/g" "$KIBOT_MAIN"
+        sed -i "s|GIT_URL: 'https://github.com/Kampi/KiCad'|GIT_URL: '$GIT_URL'|g" "$KIBOT_MAIN"
+        print_color "$GREEN" "Updated: $KIBOT_MAIN"
+    fi
 fi
 
 # Step 6: Update .github/workflows files
@@ -597,7 +726,7 @@ if [ -d "$WORKFLOWS_DIR" ]; then
             sed -i "s/master_branch: master/master_branch: $MASTER_BRANCH/g" "$workflow_file"
             
             # Update PCB-specific settings
-            if [ "$workflow_name" = "pcb.yaml" ]; then
+            if [ "$workflow_name" = "hw-pcb.yaml" ]; then
                 sed -i "s/kicad_board: Template-Project/kicad_board: $BOARD_NAME/g" "$workflow_file"
                 sed -i "s/kibot_variant: PRELIMINARY/kibot_variant: DRAFT/g" "$workflow_file"
             fi
@@ -675,9 +804,9 @@ if [ -f "README.md" ]; then
     print_color "$GREEN" "Updated: README.md"
 fi
 
-# Step 9b: Update .github/workflows/documentation.yaml
-print_color "$BLUE" "Updating .github/workflows/documentation.yaml"
-DOCUMENTATION_YAML=".github/workflows/documentation.yaml"
+# Step 9b: Update .github/workflows/docs-build.yaml
+print_color "$BLUE" "Updating .github/workflows/docs-build.yaml"
+DOCUMENTATION_YAML=".github/workflows/docs-build.yaml"
 if [ -f "$DOCUMENTATION_YAML" ]; then
     sed -i "s/\$PROJECT_NAME/$PROJECT_NAME/g" "$DOCUMENTATION_YAML"
     print_color "$GREEN" "Updated: $DOCUMENTATION_YAML"
@@ -689,7 +818,10 @@ replace_all_variables "$(pwd)" "$PROJECT_NAME" "$BOARD_NAME" "$DESIGNER" "$COMPA
 # Step 9d: Create basic AsciiDoc documentation
 print_color "$BLUE" "Creating AsciiDoc documentation"
 DOCS_DIR="firmware/docs"
-mkdir -p "$DOCS_DIR"
+# The ESP-IDF component documents itself in the README.md
+if [ "$FIRMWARE_PROFILE" != "esp-idf-component" ]; then
+    mkdir -p "$DOCS_DIR"
+fi
 if [ -d "$DOCS_DIR" ]; then
     cat > "$DOCS_DIR/index.adoc" << EOF
 = $PROJECT_NAME Documentation
@@ -826,6 +958,7 @@ print_color "$GREEN" "  Project Initialization Complete!     "
 print_color "$GREEN" "========================================"
 print_color "$BLUE" "\nProject Details:"
 print_color "$BLUE" "  Project Name: $PROJECT_NAME"
+print_color "$BLUE" "  Project Type: $PROJECT_TYPE_NAME"
 print_color "$BLUE" "  Board Name: $BOARD_NAME"
 print_color "$BLUE" "  Designer: $DESIGNER <$EMAIL>"
 print_color "$BLUE" "  Git URL: $GIT_URL"
@@ -833,4 +966,4 @@ print_color "$BLUE" "  License: $LICENSE_NAME"
 print_color "$BLUE" "\nNext steps:"
 print_color "$BLUE" "  1. cd $PROJECT_NAME"
 print_color "$BLUE" "  2. Review and customize the project files"
-print_color "$BLUE" "  3. Start developing your hardware!"
+print_color "$BLUE" "  3. Start developing!"

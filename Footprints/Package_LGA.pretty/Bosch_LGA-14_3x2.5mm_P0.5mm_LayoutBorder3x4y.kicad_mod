@@ -236,7 +236,7 @@
 		(uuid "e83e0227-ac0f-4180-82bd-68d3a7b56476")
 	)
 	(embedded_fonts no)
-	(model "${KICAD6_3DMODEL_DIR}/Package_LGA.3dshapes/LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Package_LGA.3dshapes/LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y.wrl"
 		(offset
 			(xyz 0 0 0)
 		)
