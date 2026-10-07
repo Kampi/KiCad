@@ -113,7 +113,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "MountingHole"
+	(symbol "Spacer"
 		(pin_names
 			(offset 1.016)
 		)
@@ -133,7 +133,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MountingHole"
+		(property "Value" "Spacer"
 			(at 2.54 -1.2699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -210,7 +210,7 @@
 				)
 			)
 		)
-		(property "ki_keywords" "mounting hole"
+		(property "ki_keywords" "spacer"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -221,7 +221,7 @@
 				)
 			)
 		)
-		(property "ki_fp_filters" "MountingHole*"
+		(property "ki_fp_filters" "Spacer*"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -232,7 +232,7 @@
 				)
 			)
 		)
-		(symbol "MountingHole_0_1"
+		(symbol "Spacer_0_1"
 			(circle
 				(center 0 0)
 				(radius 1.27)
