@@ -7,7 +7,7 @@
 	(property "Reference" "H**"
 		(at 0 0 0)
 		(layer "F.SilkS")
-		(uuid "80ff9025-5fb1-4f81-ba40-62c15c52dfdb")
+		(uuid "36262bcc-732f-458e-8515-4bd018aee884")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 		(at 0 0 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "5317c84a-78bf-45ac-a6fd-dc193fd47851")
+		(uuid "3030c2b7-53d3-489a-8e46-ced1687fa6ab")
 		(effects
 			(font
 				(size 1 1)
@@ -31,7 +31,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "97920add-4734-4d9b-979a-e480f5c3b30c")
+		(uuid "f07f4d6e-95bd-45c5-b50c-ecb976814b77")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "95e2248b-47a3-4d3e-898f-736811976ff3")
+		(uuid "2eb0500f-c99f-46a0-ba73-1b7ec275325f")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -54,16 +54,6 @@
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
-		(start 3.1 0)
-		(end 3.1 0)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "b2dd9e2b-9995-48a9-9165-9cd3377447de")
-	)
-	(fp_line
 		(start -4.5 -4.5)
 		(end 4.5 -4.5)
 		(stroke
@@ -71,7 +61,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "2252870b-79be-43d1-ac60-64dbdd95f12a")
+		(uuid "efaf0116-da55-4c60-adfa-8332691c31dd")
 	)
 	(fp_line
 		(start -4.5 4.5)
@@ -81,7 +71,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "b49ad4b6-be5b-46ca-aa1a-2fad68bbde18")
+		(uuid "3f4112a8-8a71-4ba4-91bb-2acc21e38c5d")
 	)
 	(fp_line
 		(start 4.5 -4.5)
@@ -91,7 +81,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "a90194c1-8f5e-4abb-909a-bf2b4f7fc1c2")
+		(uuid "fbc3c209-49de-41b5-abd1-91804fd314ce")
 	)
 	(fp_line
 		(start 4.5 4.5)
@@ -101,7 +91,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "adcf6cfa-b409-4c8b-8166-57a600ce950e")
+		(uuid "55d35103-25e9-486a-af2f-1f289ca45699")
 	)
 	(fp_line
 		(start 2.55 0)
@@ -111,7 +101,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "474faf8c-32b5-455b-bbad-c0477a590a1e")
+		(uuid "cdc42ad3-d490-48f4-a8e8-db4f69b516b9")
 	)
 	(fp_arc
 		(start -3.1 0)
@@ -122,7 +112,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "e4db2692-82ca-4e56-b607-d7597857cdbc")
+		(uuid "16b18733-19a5-4e86-bfaf-cb31944cc541")
 	)
 	(fp_arc
 		(start -2.55 0)
@@ -133,7 +123,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "9f58f34b-5b08-4fbf-bdcc-c4e2c0ec77c7")
+		(uuid "8a9f66f5-43ce-4eb8-b128-3db36d2f450e")
 	)
 	(fp_arc
 		(start 2.55 0)
@@ -144,7 +134,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "1d1b4da2-88d3-453a-9d04-8b6ead8dadc1")
+		(uuid "9996c140-a622-4200-a3b4-3300147f99fa")
 	)
 	(fp_arc
 		(start 3.1 0)
@@ -155,12 +145,12 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "1d7f93e5-2877-4140-955b-ecbdc5c33ced")
+		(uuid "5029df57-d49d-467e-aa55-2e42bc9b7e80")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "aa95b416-5605-4286-9ff6-1af3ae0f5220")
+		(uuid "2ed39294-543f-4dd7-b839-77b402e0172f")
 		(effects
 			(font
 				(size 1 1)
@@ -174,7 +164,7 @@
 		(drill 3.7)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "3b033c13-e05f-405e-a729-928494cc5682")
+		(uuid "6ac248aa-a0fb-42e3-b36e-5630e433e90f")
 	)
 	(embedded_fonts no)
 	(model "${KICAD_LIBRARY}/3D/Wuerth Elektronik/9774015151R.stp"
