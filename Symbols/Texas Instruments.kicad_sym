@@ -311,7 +311,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25186.pdf?ts=1746956777960"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25186.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -583,7 +583,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25308.pdf?ts=1719898702995&ref_url=https%253A%252F%252Fwww.mouser.in%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25308.pdf"
 			(at 26.67 -184.76 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -977,7 +977,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25308.pdf?ts=1719898702995&ref_url=https%253A%252F%252Fwww.mouser.in%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25308.pdf"
 			(at 26.67 -184.76 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3860,7 +3860,7 @@
 				(justify left)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd13380f3.pdf?ts=1615049947559&ref_url=https%253A%252F%252Fwww.google.com%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd13380f3.pdf"
 			(at 0 0 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4163,7 +4163,7 @@
 				(justify left)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd13381f4.pdf?ts=1614879669058"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/csd13381f4.pdf"
 			(at 0 0 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4467,7 +4467,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/dp83869hm.pdf?ts=1780511324581&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252Fde-de%252FDP83869HM"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/dp83869hm.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5427,7 +5427,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/drv2603.pdf?HQS=dis-mous-null-mousermode-dsf-pf-null-wwe&ts=1692200896697&ref_url=https%253A%252F%252Feu.mouser.com%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/drv2603.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5687,7 +5687,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/drv425.pdf?ts=1600166825310&ref_url=https%253A%252F%252Fwww.google.com%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/drv425.pdf"
 			(at -6.35 13.97 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6132,7 +6132,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm2679.pdf?ts=1747939772679&ref_url=https%253A%252F%252Fwww.mouser.de%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm2679.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6483,7 +6483,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm2679.pdf?ts=1747939772679&ref_url=https%253A%252F%252Fwww.mouser.de%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm2679.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6701,7 +6701,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm2831.pdf?ts=1746036450892&ref_url=https%253A%252F%252Fwww.mouser.es%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm2831.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7258,7 +7258,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm66200.pdf?ts=1703254483263"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm66200.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7479,7 +7479,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lmr62014.pdf?ts=1614788288715&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FLMR62014"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lmr62014.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8633,7 +8633,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv9151.pdf?ts=1614843816572&ref_url=https%253A%252F%252Fwww.google.com%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv9151.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10099,7 +10099,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps2120.pdf?ts=1776877495931"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps2120.pdf"
 			(at 24.13 -187.3 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11291,7 +11291,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps61240.pdf?ts=1729943439201&ref_url=https%253A%252F%252Fwww.mouser.de%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps61240.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11476,7 +11476,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/trf7962a.pdf?ts=1591176946193"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/trf7962a.pdf"
 			(at 6.35 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12144,7 +12144,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ts3usb221a.pdf?HQS=dis-mous-null-mousermode-dsf-pf-null-wwe&ts=1695813909306&ref_url=https%253A%252F%252Feu.mouser.com%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ts3usb221a.pdf"
 			(at 0 0.635 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12546,7 +12546,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "TXU0102"
+	(symbol "TXU0202"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -12562,7 +12562,7 @@
 				)
 			)
 		)
-		(property "Value" "TXU0102"
+		(property "Value" "TXU0202"
 			(at -7.874 -11.43 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12584,7 +12584,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/txu0102.pdf?ts=1780221658041"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/txu0202.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12595,7 +12595,7 @@
 				)
 			)
 		)
-		(property "Description" "Dual-Bit Fixed Direction Voltage-Level Translator with Schmitt-Trigger Inputs and 3-State Outputs"
+		(property "Description" "Single-Bit Fixed Direction Voltage-Level Translator With Schmitt-Trigger Inputs and 3-State Outputs"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12606,7 +12606,7 @@
 				)
 			)
 		)
-		(symbol "TXU0102_0_1"
+		(symbol "TXU0202_0_1"
 			(rectangle
 				(start -7.62 10.16)
 				(end 7.62 -10.16)
@@ -12691,7 +12691,7 @@
 				)
 			)
 		)
-		(symbol "TXU0102_1_1"
+		(symbol "TXU0202_1_1"
 			(pin input line
 				(at 10.16 -2.54 180)
 				(length 2.54)

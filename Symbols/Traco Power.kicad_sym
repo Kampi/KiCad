@@ -31,7 +31,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.tracopower.com/sites/default/files/products/datasheets/tmpw25_datasheet.pdf?t=1722297601"
+		(property "Datasheet" "https://www.tracopower.com/sites/default/files/products/datasheets/tmpw25_datasheet.pdf"
 			(at 8.89 0 0)
 			(effects
 				(font

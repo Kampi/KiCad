@@ -260,7 +260,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.renesas.com/en/document/dst/da7212-datasheet?r=1563326"
+		(property "Datasheet" "https://www.renesas.com/en/document/dst/da7212-datasheet"
 			(at 0 0 0)
 			(effects
 				(font

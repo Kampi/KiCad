@@ -34,7 +34,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc2g04.pdf?HQS=TI-null-null-mousermode-df-pf-null-wwe&ts=1601356906646&ref_url=https%253A%252F%252Fwww.mouser.de%252F"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc2g04.pdf"
 			(at 0 0 0)
 			(effects
 				(font
