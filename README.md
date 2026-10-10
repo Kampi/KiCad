@@ -42,6 +42,10 @@
   - [GitHub Secrets Configuration](#github-secrets-configuration)
   - [GitLab CI/CD Variables](#gitlab-cicd-variables)
   - [How to Obtain API Keys](#how-to-obtain-api-keys)
+  - [Part-DB](#part-db)
+    - [Part Links with a Hostname](#part-links-with-a-hostname)
+    - [Resolve the Hostname on Windows](#resolve-the-hostname-on-windows)
+    - [create-partdb-part Skill](#create-partdb-part-skill)
   - [Resources](#resources)
   - [Maintainer](#maintainer)
 
@@ -572,6 +576,62 @@ Only the Mouser API is enabled in `kibot_yaml/kicost_config_local.yaml` of the t
 1. Log in to the [ESP Component Registry](https://components.espressif.com/)
 2. Navigate to your profile settings
 3. Generate an API token for component uploads
+
+## Part-DB
+
+Notes for using [Part-DB](https://github.com/Part-DB/Part-DB-server) as KiCad HTTP library. The examples use the hostname `inventory.lan` and the server address `192.168.178.103`, replace them with your own values.
+
+### Part Links with a Hostname
+
+Part-DB builds the links of a part (fields `datasheet` and `Part-DB URL`) from the host KiCad uses for the request. A library that calls Part-DB by its IP address gets links like `http://192.168.178.103:8980/de/part/109/info`.
+
+Use the hostname in the `root_url` of the `.kicad_httplib` file to get links with the hostname:
+
+```json
+"root_url": "https://inventory.lan/de/kicad-api/",
+```
+
+Symbols that are already placed keep the old link, because it is stored in the symbol. Update them in the schematic editor with **Tools > Update Symbol Fields from Library**.
+
+### Resolve the Hostname on Windows
+
+KiCad can not load the library if Windows does not resolve the hostname. This happens when the router announces itself as additional DNS server via IPv6 and does not know the local name, even if the local DNS server does. Check it with:
+
+```powershell
+Resolve-DnsName inventory.lan
+```
+
+If no address is returned, add the name to the `hosts` file. The file can only be written with administrator rights, the command starts an elevated PowerShell for it:
+
+```powershell
+Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -Command "Add-Content $env:SystemRoot\System32\drivers\etc\hosts ''192.168.178.103 inventory.lan''"'
+```
+
+`ping inventory.lan` must show the address of the server afterwards. Restart KiCad to load the library again.
+
+The entry is only valid for this computer. For all devices in the network, stop the router from announcing itself as DNSv6 server, so only the local DNS server is used.
+
+### create-partdb-part Skill
+
+The agent skill [create-partdb-part](.github/skills/create-partdb-part/SKILL.md) adds a component to Part-DB. It reads the existing parts of the same kind as schema, fetches the datasheet, the image and the prices through the Part-DB info providers and creates the part with parameters, attachments, order details and stock lot. It never deletes or changes existing parts.
+
+The skill asks before it guesses:
+
+- **Info source**: Always asks whether the data comes from an active info provider of Part-DB (e.g. Mouser) or from another source
+- **Part number**: Checks that the info source knows exactly this number and that the values coded in it match. Asks when the number is not found, ambiguous or contradicting
+- **Assignment**: Asks when the category, the footprint, the manufacturer or the storage location is not clear from the existing parts
+- **Label**: Generates a label with the label profile of Part-DB that fits the kind of the part. Asks when no profile or several profiles fit
+- **Printer**: Always asks on which installed printer the label is printed
+
+Ask the agent for it in the chat, e.g. `Add the part CR0805-JW-182ELF to Part-DB`.
+
+The skill reads the server and the token only from the environment. Set the variables before starting the agent:
+
+| Variable | Description |
+| -------- | ----------- |
+| `PARTDB_URL` | Base URL of the Part-DB server, without `/api` |
+| `PARTDB_TOKEN` | API token with the level `edit`. Create it in Part-DB in the user settings under the API tokens. The token of the KiCad library is read-only and not sufficient |
+| `PARTDB_INSECURE` | `1` if the server uses a self-signed certificate |
 
 ## Resources
 
