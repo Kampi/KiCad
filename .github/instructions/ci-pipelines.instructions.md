@@ -12,7 +12,7 @@ Every pipeline exists for GitHub Actions and GitLab CI. Change both files togeth
 | Changelog check | `common-changelog.yaml` | `changelog.gitlab-ci.yml` |
 | Documentation | `docs-build.yaml` | `documentation.gitlab-ci.yml` |
 | Code style check (AStyle) | `fw-format.yaml` | `astyle.gitlab-ci.yml` |
-| Code style check (West) | - | `west-astyle.gitlab-ci.yml` |
+| Code style check (West, clang-format) | - | `west-clang-format.gitlab-ci.yml` |
 | PlatformIO firmware | `fw-platformio.yaml` | - |
 | ESP-IDF component | `fw-esp-component.yaml` | - |
 | Component release (ESP-IDF) | `fw-esp-component-release.yaml` | `esp-component-release.gitlab-ci.yml` |

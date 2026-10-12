@@ -139,7 +139,7 @@ Take from the reference parts:
 | `name`, `manufacturer_product_number`        | Same pattern, usually the manufacturer part number in both        |
 | `description`                                | Same pattern and notation (e.g. `2k8 100mW 1%`)                   |
 | `manufacturing_status`, `tags`, `comment`    | Same pattern                                                      |
-| `eda_info`                                   | Same symbol, footprint and prefix. `value` in the same notation   |
+| `eda_info`                                   | Same prefix, `value` in the same notation. Symbol and footprint: see below |
 | `parameters`                                 | Same names, symbols and units. Values of the new part             |
 | `attachments`, `master_picture_attachment`   | Same names and attachment types, URLs from the info source        |
 | `orderdetails`, `pricedetails`               | Same supplier, order number and prices from the info source       |
@@ -147,7 +147,26 @@ Take from the reference parts:
 
 If the reference parts differ in a point (e.g. unit `Ohm` or `kOhm`), use the notation of the newest parts.
 
+**KiCad symbol and footprint.** The own library of the user has priority over the libraries that are shipped
+with KiCad. Check it for every part, also when the reference parts use a shipped library:
+
+1. Read the global `sym-lib-table` and `fp-lib-table` of the newest KiCad version of the user (KiCad
+   configuration directory). The own libraries are the entries whose `uri` does not point into the KiCad
+   installation (`${KICAD<n>_SYMBOL_DIR}`, `${KICAD<n>_FOOTPRINT_DIR}`), e.g. the ones below `${KICAD_LIBRARY}`.
+2. Search the files of these libraries (`*.kicad_sym`, `*.pretty/*.kicad_mod`) for the part: the part number
+   without packaging suffix, the series and the name of the manufacturer. Search symbols and footprints
+   separately, often only one of them exists.
+3. If a matching symbol and / or footprint exists, use it as `<nickname>:<name>` with the nickname from the
+   library table, not the file name. Check that it really fits the part (pin count, package, variant).
+4. Only for what is missing in the own library, use the symbol and footprint of the reference parts or of the
+   libraries shipped with KiCad. Check that the name exists in the installed version.
+
+A library file that is not listed in the library table can not be used by KiCad: do not enter it, report it.
+Report for the symbol and for the footprint whether it comes from the own or a shipped library (step 11).
+
 Ask the user when the assignment is not clear, for example:
+
+- Several symbols or footprints of the own library fit the part
 
 - No reference part of this kind exists, or the reference parts are in different categories
 - The category of the info source fits several categories of Part-DB, or none

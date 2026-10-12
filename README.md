@@ -335,7 +335,7 @@ The GitHub Actions workflows are grouped by a prefix in the file name and in the
 | Changelog check | `common-changelog.yaml` | `changelog.gitlab-ci.yml` |
 | Documentation | `docs-build.yaml` | `documentation.gitlab-ci.yml` |
 | Code style check (AStyle) | `fw-format.yaml` | `astyle.gitlab-ci.yml` |
-| Code style check (West) | - | `west-astyle.gitlab-ci.yml` |
+| Code style check (West, clang-format) | - | `west-clang-format.gitlab-ci.yml` |
 | PlatformIO firmware | `fw-platformio.yaml` | - |
 | ESP-IDF component | `fw-esp-component.yaml` | - |
 | Component release (ESP-IDF) | `fw-esp-component-release.yaml` | `esp-component-release.gitlab-ci.yml` |
@@ -401,7 +401,9 @@ Example:
 
 - Builds AStyle and runs `scripts/bash/check-format.sh` in dry-run mode. Style violations are reported, files are not changed
 - The GitHub workflow checks the directories from `source_dirs` (`firmware`, for the ESP-IDF component `src include examples`). Without arguments the script checks `src` and `include`
-- GitLab only: `west-astyle.gitlab-ci.yml` runs `west format --dry-run` for Zephyr/West based firmware (requires a West workspace)
+- GitLab only: `west-clang-format.gitlab-ci.yml` checks Zephyr/West based firmware with clang-format instead of AStyle. It runs `scripts/bash/check-clang-format.sh` for the directories from `SOURCE_DIRS` (`firmware`). The job only exists in repositories with a West manifest (`west.yml`), a West workspace is not needed
+- The style for Zephyr/West based firmware is stored in `scripts/config/.clang-format`: the rules of the Zephyr project with an indentation of 4 spaces instead of tabs. Copy the file as `.clang-format` to the root of the West application, then clangd and clang-format use it in the editor. It requires clang-format 16 or later
+- A West based project is checked by both GitLab jobs. Remove `astyle.gitlab-ci.yml` from the `include:` list of `.gitlab-ci.yml` in such a project, because the AStyle rules differ from the clang-format rules
 
 ### PlatformIO Firmware
 
@@ -620,6 +622,7 @@ The skill asks before it guesses:
 - **Info source**: Always asks whether the data comes from an active info provider of Part-DB (e.g. Mouser) or from another source
 - **Part number**: Checks that the info source knows exactly this number and that the values coded in it match. Asks when the number is not found, ambiguous or contradicting
 - **Assignment**: Asks when the category, the footprint, the manufacturer or the storage location is not clear from the existing parts
+- **Symbol and footprint**: Uses the symbol and the footprint of the own KiCad library when they exist there, and only falls back to the libraries shipped with KiCad for what is missing. Asks when several own symbols or footprints fit
 - **Label**: Generates a label with the label profile of Part-DB that fits the kind of the part. Asks when no profile or several profiles fit
 - **Printer**: Always asks on which installed printer the label is printed
 
