@@ -364,6 +364,16 @@ Generates the hardware outputs with KiBot in the `kicad10_auto_full` container:
 - `CHECKED`: Full outputs with ERC/DRC. Set by the `create-release` skill
 - `RELEASED`: Full outputs with ERC/DRC, automatically used for version tags
 
+**Enclosed components**:
+
+Components that are not assembled, but supplied loose with the board (e.g. jumpers, screws, spacers, cables), are marked with the value `Enclosed` in the symbol field `assembly`. The project template offers this field for every symbol. Leave it empty for all other components.
+
+- **BoM**: Enclosed components stay in the BoM (CSV, HTML and XLSX) and are marked in the column `Assembly`. They get their own row, even when an assembled component has the same value and part number
+- **Position file**: Enclosed components with a footprint are removed from the position file
+- **Assembly notes**: A note tells the assembler that the components marked as `Enclosed` are not populated
+
+Don't set `DNP` or `Exclude from bill of materials` for these components, otherwise they are removed from the BoM. A component without a footprint also needs `Exclude from board`. The field name and the value are set by `ASSEMBLY_FIELD` and `ASSEMBLY_ENCLOSED` in `hardware/kibot_yaml/kibot_main.yaml`
+
 ### Changelog Check
 
 **Trigger**: Pull/merge requests targeting `main` or `master`, push to `main`, `master` or `dev`
