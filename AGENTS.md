@@ -29,7 +29,7 @@ A new rule file needs the `description` and `applyTo` front matter and a row in 
   - `firmware/`: Firmware profiles, the init scripts keep one of them: `blank`, `platformio` (ESP32, ESP-IDF via PlatformIO) and `esp-idf-component` (moved to the repository root)
   - `scripts/`: Helper scripts of the generated projects (changelog, format)
 - `Plugins/KiCad-Project-Initialization-Plugin/` (Git submodule, own repository): KiCad action plugin that creates projects from the template like the init scripts. `kicad_project_init.py` must create the same files as `init-project.sh`. Its template is the submodule `__Project__`
-- `.github/skills/create-partdb-part/`: Agent skill that creates components in Part-DB through its REST API, with the helper `partdb_api.py`. `.claude/skills/` contains the pointer for Claude Code. The server address and the API token are only read from the environment, never write them into the repository
+- `.github/skills/create-partdb-part/`: Agent skill that creates components in Part-DB through its REST API, with the helper `partdb_api.py`. `.claude/skills/` contains the pointer for Claude Code. The server address and the API token are only read from the environment or from the file `.partdb.env` in the repository root, which is ignored by Git. Never write them into a tracked file
 - `GitHub/`: Third-party Git submodules. Don't edit them
 
 ## Conventions

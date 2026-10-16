@@ -638,7 +638,12 @@ The skill asks before it guesses:
 
 Ask the agent for it in the chat, e.g. `Add the part CR0805-JW-182ELF to Part-DB`.
 
-The skill reads the server and the token only from the environment. Set the variables before starting the agent:
+The skill reads the server and the token from the environment. Variables that are not set there are read from the file `.partdb.env` in the root of this repository. The file is ignored by Git and contains one `NAME=value` per line:
+
+```sh
+PARTDB_URL=https://inventory.lan
+PARTDB_TOKEN=<API token>
+```
 
 | Variable | Description |
 | -------- | ----------- |

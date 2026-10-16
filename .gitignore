@@ -1,1 +1,4 @@
 *.bak
+
+# Access to the Part-DB server (address and API token)
+.partdb.env

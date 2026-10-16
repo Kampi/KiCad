@@ -2,10 +2,13 @@
 """
 partdb_api.py - Minimal client for the Part-DB REST API, used by the create-partdb-part skill.
 
-The server and the token are only read from the environment, never from arguments or files:
+The server and the token are read from the environment, never from arguments:
     PARTDB_URL        Base URL of the Part-DB server, without '/api'
     PARTDB_TOKEN      API token with the level 'edit'
     PARTDB_INSECURE   Set to 1 to accept a self-signed certificate
+
+Variables that are not set in the environment are read from the file '.partdb.env' in the root of the
+repository (lines 'NAME=value'). The file is ignored by Git.
 
 Usage:
     python partdb_api.py get <path>
@@ -32,6 +35,22 @@ import urllib.error
 import urllib.request
 
 METHODS = {"get": "GET", "post": "POST", "patch": "PATCH"}
+
+# Repository root: <root>/.github/skills/create-partdb-part/partdb_api.py
+ENV_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", ".partdb.env")
+
+
+def load_env_file():
+    """Sets the variables of the file '.partdb.env' that are missing in the environment"""
+    if not os.path.isfile(ENV_FILE):
+        return
+    with open(ENV_FILE, encoding="utf-8-sig") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            name, value = line.split("=", 1)
+            os.environ.setdefault(name.strip(), value.strip().strip("\"'"))
 
 
 def simplify(data):
@@ -63,10 +82,12 @@ def main():
         sys.exit(__doc__)
     output = args[3] if len(args) == 4 else None
 
+    load_env_file()
     url = os.environ.get("PARTDB_URL", "").rstrip("/")
     token = os.environ.get("PARTDB_TOKEN", "")
     if not url or not token:
-        print("PARTDB_URL and PARTDB_TOKEN must be set in the environment", file=sys.stderr)
+        print("PARTDB_URL and PARTDB_TOKEN must be set in the environment or in the file .partdb.env",
+              file=sys.stderr)
         sys.exit(2)
 
     method = METHODS[command]

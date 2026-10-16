@@ -15,8 +15,10 @@ At the end a label of the part is generated and printed.
   parameters, attachments, order details, prices and lots. [partdb_api.py](partdb_api.py) has no delete command
   on purpose, do not work around it.
 - Only create. If the part already exists, stop and ask the user (step 2).
-- The server address and the API token are secrets of the user. Never write them into this skill, a script, a file
-  of the repository, a commit message or a report. They are only read from the environment.
+- The server address and the API token are secrets of the user. Never write them into this skill, a script, a
+  tracked file of the repository, a commit message or a report. They are only read from the environment or from
+  the file `.partdb.env` in the root of the repository, which is ignored by Git. Never add this file to a commit
+  and never print its content.
 - Do not invent values. Everything comes from the reference parts, the info source or the user.
 
 ## Questions to the User
@@ -34,7 +36,8 @@ Ask instead of guessing. Collect the open questions and ask them together where 
 ## Prerequisites
 
 - `python3`
-- Environment variables, set by the user for the session:
+- The access to the server, as environment variables or as lines `NAME=value` in the file `.partdb.env` in the
+  root of the repository. The environment has priority:
 
   | Variable          | Description                                            |
   | ----------------- | ------------------------------------------------------ |
@@ -42,7 +45,8 @@ Ask instead of guessing. Collect the open questions and ask them together where 
   | `PARTDB_TOKEN`    | API token with the level `edit`                        |
   | `PARTDB_INSECURE` | `1` if the server uses a self-signed certificate       |
 
-  If a variable is missing, ask the user to set it. Do not store the values.
+  If a variable is missing, ask the user to set it. Only store a value in `.partdb.env`, and only when the user
+  asks for it.
 
 All requests are done with [partdb_api.py](partdb_api.py) from this directory:
 
@@ -331,6 +335,8 @@ In KiCad the part appears after the HTTP library is reloaded (restart KiCad).
 
 ## Notes
 
+- Git Bash on Windows converts arguments that start with `/` to Windows paths, so `/api/parts/123` does not reach
+  the server (`getaddrinfo failed`). Set `MSYS_NO_PATHCONV=1` for the calls or use PowerShell.
 - PowerShell pipes text with a byte order mark, `partdb_api.py` accepts it. Characters outside of ASCII (e.g. the
   `±` of a tolerance parameter) are only kept when the body is UTF-8.
 - The filter `?category=` of `/api/parts` does not return results. Filter the complete list locally.
